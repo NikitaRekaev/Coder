@@ -36,7 +36,7 @@ MainView:
 9. Pop-up sort window - 1h
 10. Sort alphabetically - 30m
 11. Sort by date of birth - 30m
-12. Создание рефреша - 30m
+12. Pull-to-refresh - 30m
 
 
 DetailsView:
