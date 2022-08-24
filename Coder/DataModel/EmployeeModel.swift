@@ -6,7 +6,7 @@ struct EmployeeModel: Codable {
     let firstName: String
     let lastName: String
     let userTag: String
-    let department: [String]
+    let department: DepartmentModel?
     let position: String
     let birthday: String
     var birthdayDate: Date? {
