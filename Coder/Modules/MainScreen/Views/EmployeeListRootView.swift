@@ -39,6 +39,7 @@ class EmployeeListRootView: BaseView {
     let errorView = LostInternetConnectionView()
     override func setup() {
         backgroundColor = .white
+        employeeTableView.backgroundColor = .white
         addSubview(searchTextField)
         addSubview(cancelButton)
         addSubview(employeeTableView)

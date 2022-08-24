@@ -13,11 +13,13 @@ class BirthView: BaseView {
     }()
     private let birthDataLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .black
         label.font = UIFont(name: "Inter-Medium", size: 16)
         return label
     }()
     private let yearsLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .black
         label.font = UIFont(name: "Inter-Medium", size: 16)
         return label
     }()
