@@ -1,5 +1,5 @@
 import Foundation
-
+// swiftlint:disable identifier_name
 enum DepartmentModel: String, Codable {
     case design
     case analytics
@@ -14,7 +14,7 @@ enum DepartmentModel: String, Codable {
     case backOffice = "back_office"
     case support
 }
-
+// swiftlint:enable identifier_name
 extension DepartmentModel: CaseIterable {
     var title: String {
         switch self {
