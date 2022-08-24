@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  Coder
-//
-//  Created by Nikita Rekaev on 30.07.2022.
-//
-
 import UIKit
 
 @UIApplicationMain
