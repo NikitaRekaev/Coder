@@ -1,6 +1,6 @@
 import UIKit
 
-class DetailsViewCOntroller: BaseViewController<ProfileView> {
+class DetailsViewController: BaseViewController<ProfileView> {
     var employee: EmployeeModel!
 
     override func viewDidLoad() {
