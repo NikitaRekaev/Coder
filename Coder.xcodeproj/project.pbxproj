@@ -27,6 +27,7 @@
 		111B697428B66313006E2BF0 /* TopTabsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697328B66313006E2BF0 /* TopTabsCollectionViewCell.swift */; };
 		111B697728B663BB006E2BF0 /* EmployeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697628B663BB006E2BF0 /* EmployeeTableViewCell.swift */; };
 		111B697D28B66934006E2BF0 /* NotFoundOnSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697C28B66934006E2BF0 /* NotFoundOnSearchView.swift */; };
+		111B697F28B6698E006E2BF0 /* LostInternetConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697E28B6698E006E2BF0 /* LostInternetConnectionView.swift */; };
 		11300F2128953E5D00BC51E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11300F2028953E5D00BC51E4 /* AppDelegate.swift */; };
 		11300F2528953E5D00BC51E4 /* EmployeeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11300F2428953E5D00BC51E4 /* EmployeeListViewController.swift */; };
 		11300F2A28953E5E00BC51E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11300F2928953E5E00BC51E4 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		111B697328B66313006E2BF0 /* TopTabsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabsCollectionViewCell.swift; sourceTree = "<group>"; };
 		111B697628B663BB006E2BF0 /* EmployeeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeTableViewCell.swift; sourceTree = "<group>"; };
 		111B697C28B66934006E2BF0 /* NotFoundOnSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFoundOnSearchView.swift; sourceTree = "<group>"; };
+		111B697E28B6698E006E2BF0 /* LostInternetConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostInternetConnectionView.swift; sourceTree = "<group>"; };
 		11300F1D28953E5D00BC51E4 /* Coder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11300F2028953E5D00BC51E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11300F2428953E5D00BC51E4 /* EmployeeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				111B697528B6631B006E2BF0 /* ViewCells */,
 				111B697128B6600B006E2BF0 /* SearchTextField.swift */,
 				111B697C28B66934006E2BF0 /* NotFoundOnSearchView.swift */,
+				111B697E28B6698E006E2BF0 /* LostInternetConnectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				111B697728B663BB006E2BF0 /* EmployeeTableViewCell.swift in Sources */,
 				111B697228B6600B006E2BF0 /* SearchTextField.swift in Sources */,
 				111B696A28B65589006E2BF0 /* BaseViewController.swift in Sources */,
+				111B697F28B6698E006E2BF0 /* LostInternetConnectionView.swift in Sources */,
 				11300F2528953E5D00BC51E4 /* EmployeeListViewController.swift in Sources */,
 				111B696C28B65BC6006E2BF0 /* ImageResizer.swift in Sources */,
 				111B697D28B66934006E2BF0 /* NotFoundOnSearchView.swift in Sources */,
