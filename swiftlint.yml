@@ -8,6 +8,7 @@ disabled_rules:
   - colon
   - comma
   - control_statement
+  - identifier_name
   
 opt_in_rules:
   - empty_count
@@ -16,6 +17,3 @@ opt_in_rules:
 reporter: xcode
 
 warning_threshold: 1
-
-identifier_name:
-w/e: 2/1
