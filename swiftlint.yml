@@ -17,3 +17,11 @@ opt_in_rules:
 reporter: xcode
 
 warning_threshold: 1
+
+identifier_name:
+  min_length:
+    error: 4
+force_cast:
+  severity: warning
+  excluded:
+    - BaseViewController.swift
