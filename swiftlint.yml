@@ -1,0 +1,21 @@
+excluded:
+  - Carthage
+  - Pods
+  - Source/ExcludedFolder
+  - Source/ExcludedFile.swift
+  
+disabled_rules:
+  - colon
+  - comma
+  - control_statement
+  
+opt_in_rules:
+  - empty_count
+  - missing_docs
+  
+reporter: xcode
+
+warning_threshold: 1
+
+identifier_name:
+w/e: 2/1

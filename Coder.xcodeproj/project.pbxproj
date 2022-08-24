@@ -7,23 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		111B695328B64A90006E2BF0 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 111B694A28B64A8F006E2BF0 /* Inter-Medium.ttf */; };
+		111B695428B64A90006E2BF0 /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 111B694B28B64A8F006E2BF0 /* Inter-Light.ttf */; };
+		111B695528B64A90006E2BF0 /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 111B694C28B64A8F006E2BF0 /* Inter-Thin.ttf */; };
+		111B695628B64A90006E2BF0 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 111B694D28B64A8F006E2BF0 /* Inter-Bold.ttf */; };
+		111B695728B64A90006E2BF0 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 111B694E28B64A8F006E2BF0 /* Inter-Regular.ttf */; };
+		111B695828B64A90006E2BF0 /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 111B694F28B64A8F006E2BF0 /* Inter-ExtraBold.ttf */; };
+		111B695928B64A90006E2BF0 /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 111B695028B64A8F006E2BF0 /* Inter-ExtraLight.ttf */; };
+		111B695A28B64A90006E2BF0 /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 111B695128B64A8F006E2BF0 /* Inter-Black.ttf */; };
+		111B695B28B64A90006E2BF0 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 111B695228B64A8F006E2BF0 /* Inter-SemiBold.ttf */; };
 		11300F2128953E5D00BC51E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11300F2028953E5D00BC51E4 /* AppDelegate.swift */; };
-		11300F2328953E5D00BC51E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11300F2228953E5D00BC51E4 /* SceneDelegate.swift */; };
 		11300F2528953E5D00BC51E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11300F2428953E5D00BC51E4 /* ViewController.swift */; };
-		11300F2828953E5D00BC51E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11300F2628953E5D00BC51E4 /* Main.storyboard */; };
 		11300F2A28953E5E00BC51E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11300F2928953E5E00BC51E4 /* Assets.xcassets */; };
 		11300F2D28953E5E00BC51E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11300F2B28953E5E00BC51E4 /* LaunchScreen.storyboard */; };
+		192C7B47D0FBB022BF34E54E /* Pods_Coder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ECD2464FC092B843E87DE73 /* Pods_Coder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		111B694A28B64A8F006E2BF0 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
+		111B694B28B64A8F006E2BF0 /* Inter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.ttf"; sourceTree = "<group>"; };
+		111B694C28B64A8F006E2BF0 /* Inter-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Thin.ttf"; sourceTree = "<group>"; };
+		111B694D28B64A8F006E2BF0 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
+		111B694E28B64A8F006E2BF0 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
+		111B694F28B64A8F006E2BF0 /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
+		111B695028B64A8F006E2BF0 /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
+		111B695128B64A8F006E2BF0 /* Inter-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Black.ttf"; sourceTree = "<group>"; };
+		111B695228B64A8F006E2BF0 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
 		11300F1D28953E5D00BC51E4 /* Coder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11300F2028953E5D00BC51E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		11300F2228953E5D00BC51E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		11300F2428953E5D00BC51E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		11300F2728953E5D00BC51E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		11300F2928953E5E00BC51E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11300F2C28953E5E00BC51E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11300F2E28953E5E00BC51E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16295E38A00A7553B5CE73AD /* Pods-Coder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coder.debug.xcconfig"; path = "Target Support Files/Pods-Coder/Pods-Coder.debug.xcconfig"; sourceTree = "<group>"; };
+		345A1FB59AED49E5A3284C90 /* Pods-Coder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coder.release.xcconfig"; path = "Target Support Files/Pods-Coder/Pods-Coder.release.xcconfig"; sourceTree = "<group>"; };
+		4ECD2464FC092B843E87DE73 /* Pods_Coder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +49,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				192C7B47D0FBB022BF34E54E /* Pods_Coder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		111B694828B64A80006E2BF0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				11300F2E28953E5E00BC51E4 /* Info.plist */,
+				11300F2928953E5E00BC51E4 /* Assets.xcassets */,
+				111B694928B64A8F006E2BF0 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		111B694928B64A8F006E2BF0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				111B694A28B64A8F006E2BF0 /* Inter-Medium.ttf */,
+				111B694B28B64A8F006E2BF0 /* Inter-Light.ttf */,
+				111B694C28B64A8F006E2BF0 /* Inter-Thin.ttf */,
+				111B694D28B64A8F006E2BF0 /* Inter-Bold.ttf */,
+				111B694E28B64A8F006E2BF0 /* Inter-Regular.ttf */,
+				111B694F28B64A8F006E2BF0 /* Inter-ExtraBold.ttf */,
+				111B695028B64A8F006E2BF0 /* Inter-ExtraLight.ttf */,
+				111B695128B64A8F006E2BF0 /* Inter-Black.ttf */,
+				111B695228B64A8F006E2BF0 /* Inter-SemiBold.ttf */,
+			);
+			name = Fonts;
+			path = Coder/Fonts;
+			sourceTree = SOURCE_ROOT;
+		};
 		11300F1428953E5D00BC51E4 = {
 			isa = PBXGroup;
 			children = (
 				11300F1F28953E5D00BC51E4 /* Coder */,
 				11300F1E28953E5D00BC51E4 /* Products */,
+				4049CF99DA23E4E7B3E3BFF4 /* Pods */,
+				47D7E5E9DEA28CAACD67F8FC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,14 +105,28 @@
 			isa = PBXGroup;
 			children = (
 				11300F2028953E5D00BC51E4 /* AppDelegate.swift */,
-				11300F2228953E5D00BC51E4 /* SceneDelegate.swift */,
 				11300F2428953E5D00BC51E4 /* ViewController.swift */,
-				11300F2628953E5D00BC51E4 /* Main.storyboard */,
-				11300F2928953E5E00BC51E4 /* Assets.xcassets */,
+				111B694828B64A80006E2BF0 /* Resources */,
 				11300F2B28953E5E00BC51E4 /* LaunchScreen.storyboard */,
-				11300F2E28953E5E00BC51E4 /* Info.plist */,
 			);
 			path = Coder;
+			sourceTree = "<group>";
+		};
+		4049CF99DA23E4E7B3E3BFF4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				16295E38A00A7553B5CE73AD /* Pods-Coder.debug.xcconfig */,
+				345A1FB59AED49E5A3284C90 /* Pods-Coder.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		47D7E5E9DEA28CAACD67F8FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4ECD2464FC092B843E87DE73 /* Pods_Coder.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +136,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11300F3128953E5E00BC51E4 /* Build configuration list for PBXNativeTarget "Coder" */;
 			buildPhases = (
+				111B691C28B63FE3006E2BF0 /* ShellScript */,
+				DFF7F74C51BD687CE3407311 /* [CP] Check Pods Manifest.lock */,
 				11300F1928953E5D00BC51E4 /* Sources */,
 				11300F1A28953E5D00BC51E4 /* Frameworks */,
 				11300F1B28953E5D00BC51E4 /* Resources */,
@@ -125,13 +189,63 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				111B695628B64A90006E2BF0 /* Inter-Bold.ttf in Resources */,
 				11300F2D28953E5E00BC51E4 /* LaunchScreen.storyboard in Resources */,
 				11300F2A28953E5E00BC51E4 /* Assets.xcassets in Resources */,
-				11300F2828953E5D00BC51E4 /* Main.storyboard in Resources */,
+				111B695B28B64A90006E2BF0 /* Inter-SemiBold.ttf in Resources */,
+				111B695828B64A90006E2BF0 /* Inter-ExtraBold.ttf in Resources */,
+				111B695428B64A90006E2BF0 /* Inter-Light.ttf in Resources */,
+				111B695528B64A90006E2BF0 /* Inter-Thin.ttf in Resources */,
+				111B695328B64A90006E2BF0 /* Inter-Medium.ttf in Resources */,
+				111B695A28B64A90006E2BF0 /* Inter-Black.ttf in Resources */,
+				111B695928B64A90006E2BF0 /* Inter-ExtraLight.ttf in Resources */,
+				111B695728B64A90006E2BF0 /* Inter-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		111B691C28B63FE3006E2BF0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+		DFF7F74C51BD687CE3407311 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Coder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		11300F1928953E5D00BC51E4 /* Sources */ = {
@@ -140,21 +254,12 @@
 			files = (
 				11300F2528953E5D00BC51E4 /* ViewController.swift in Sources */,
 				11300F2128953E5D00BC51E4 /* AppDelegate.swift in Sources */,
-				11300F2328953E5D00BC51E4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		11300F2628953E5D00BC51E4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				11300F2728953E5D00BC51E4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		11300F2B28953E5E00BC51E4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,6 +387,7 @@
 		};
 		11300F3228953E5E00BC51E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16295E38A00A7553B5CE73AD /* Pods-Coder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -289,7 +395,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3V6USXUV59;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Coder/Info.plist;
+				INFOPLIST_FILE = Coder/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -310,6 +416,7 @@
 		};
 		11300F3328953E5E00BC51E4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 345A1FB59AED49E5A3284C90 /* Pods-Coder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -317,7 +424,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3V6USXUV59;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Coder/Info.plist;
+				INFOPLIST_FILE = Coder/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

@@ -1,0 +1,6 @@
+framework module Pods_Coder {
+  umbrella header "Pods-Coder-umbrella.h"
+
+  export *
+  module * { export * }
+}
