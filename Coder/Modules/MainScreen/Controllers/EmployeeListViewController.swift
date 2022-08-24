@@ -5,6 +5,7 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
     private lazy var refreshControl: UIRefreshControl = {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        refresh.tintColor = .lightGray
         return refresh
     }()
     private let tabs = DepartmentModel.allCases
