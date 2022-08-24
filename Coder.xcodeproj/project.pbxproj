@@ -29,6 +29,10 @@
 		111B697D28B66934006E2BF0 /* NotFoundOnSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697C28B66934006E2BF0 /* NotFoundOnSearchView.swift */; };
 		111B697F28B6698E006E2BF0 /* LostInternetConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697E28B6698E006E2BF0 /* LostInternetConnectionView.swift */; };
 		111B698128B669F4006E2BF0 /* EmployeeListRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B698028B669F4006E2BF0 /* EmployeeListRootView.swift */; };
+		111B698D28B674E6006E2BF0 /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B698C28B674E6006E2BF0 /* PhoneView.swift */; };
+		111B698F28B67518006E2BF0 /* BirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B698E28B67518006E2BF0 /* BirthView.swift */; };
+		111B699128B67545006E2BF0 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B699028B67545006E2BF0 /* ProfileView.swift */; };
+		111B699428B675C9006E2BF0 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B699328B675C9006E2BF0 /* DetailsViewController.swift */; };
 		11300F2128953E5D00BC51E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11300F2028953E5D00BC51E4 /* AppDelegate.swift */; };
 		11300F2528953E5D00BC51E4 /* EmployeeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11300F2428953E5D00BC51E4 /* EmployeeListViewController.swift */; };
 		11300F2A28953E5E00BC51E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11300F2928953E5E00BC51E4 /* Assets.xcassets */; };
@@ -59,6 +63,10 @@
 		111B697C28B66934006E2BF0 /* NotFoundOnSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFoundOnSearchView.swift; sourceTree = "<group>"; };
 		111B697E28B6698E006E2BF0 /* LostInternetConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostInternetConnectionView.swift; sourceTree = "<group>"; };
 		111B698028B669F4006E2BF0 /* EmployeeListRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListRootView.swift; sourceTree = "<group>"; };
+		111B698C28B674E6006E2BF0 /* PhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneView.swift; sourceTree = "<group>"; };
+		111B698E28B67518006E2BF0 /* BirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthView.swift; sourceTree = "<group>"; };
+		111B699028B67545006E2BF0 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		111B699328B675C9006E2BF0 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		11300F1D28953E5D00BC51E4 /* Coder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11300F2028953E5D00BC51E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11300F2428953E5D00BC51E4 /* EmployeeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				111B696E28B65FBB006E2BF0 /* MainScreen */,
+				111B698A28B674A7006E2BF0 /* ProfileScreen */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -184,6 +193,33 @@
 				111B697628B663BB006E2BF0 /* EmployeeTableViewCell.swift */,
 			);
 			path = ViewCells;
+			sourceTree = "<group>";
+		};
+		111B698A28B674A7006E2BF0 /* ProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				111B699228B675AC006E2BF0 /* Controllers */,
+				111B698B28B674D1006E2BF0 /* Views */,
+			);
+			path = ProfileScreen;
+			sourceTree = "<group>";
+		};
+		111B698B28B674D1006E2BF0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				111B699028B67545006E2BF0 /* ProfileView.swift */,
+				111B698C28B674E6006E2BF0 /* PhoneView.swift */,
+				111B698E28B67518006E2BF0 /* BirthView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		111B699228B675AC006E2BF0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				111B699328B675C9006E2BF0 /* DetailsViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		11300F1428953E5D00BC51E4 = {
@@ -313,7 +349,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		111B691C28B63FE3006E2BF0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -324,7 +360,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
@@ -360,18 +396,22 @@
 				111B695E28B64EC9006E2BF0 /* EmployeeModel.swift in Sources */,
 				111B696528B652DC006E2BF0 /* NetworkMonitor.swift in Sources */,
 				111B698128B669F4006E2BF0 /* EmployeeListRootView.swift in Sources */,
+				111B698F28B67518006E2BF0 /* BirthView.swift in Sources */,
 				111B696128B64FFD006E2BF0 /* DepartmentModel.swift in Sources */,
 				111B696328B65231006E2BF0 /* ApiProvider.swift in Sources */,
 				111B696828B653AD006E2BF0 /* BaseView.swift in Sources */,
 				111B697728B663BB006E2BF0 /* EmployeeTableViewCell.swift in Sources */,
 				111B697228B6600B006E2BF0 /* SearchTextField.swift in Sources */,
 				111B696A28B65589006E2BF0 /* BaseViewController.swift in Sources */,
+				111B699128B67545006E2BF0 /* ProfileView.swift in Sources */,
 				111B697F28B6698E006E2BF0 /* LostInternetConnectionView.swift in Sources */,
 				11300F2528953E5D00BC51E4 /* EmployeeListViewController.swift in Sources */,
+				111B699428B675C9006E2BF0 /* DetailsViewController.swift in Sources */,
 				111B696C28B65BC6006E2BF0 /* ImageResizer.swift in Sources */,
 				111B697D28B66934006E2BF0 /* NotFoundOnSearchView.swift in Sources */,
 				111B697428B66313006E2BF0 /* TopTabsCollectionViewCell.swift in Sources */,
 				11300F2128953E5D00BC51E4 /* AppDelegate.swift in Sources */,
+				111B698D28B674E6006E2BF0 /* PhoneView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,7 +556,6 @@
 				INFOPLIST_FILE = Coder/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -547,7 +586,6 @@
 				INFOPLIST_FILE = Coder/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
