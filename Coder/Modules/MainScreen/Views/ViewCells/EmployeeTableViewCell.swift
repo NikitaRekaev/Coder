@@ -1,7 +1,6 @@
 import UIKit
 
 class EmployeeTableViewCell: UITableViewCell {
-    var shouldShowBirthday = false
     static let identifier = "tableCell"
 
     private let employeeImageView: UIImageView = {
@@ -30,14 +29,6 @@ class EmployeeTableViewCell: UITableViewCell {
         view.numberOfLines = 0
         view.textColor = UIColor(red: 0.333, green: 0.333, blue: 0.361, alpha: 1)
         view.font = UIFont(name: "Inter-Regular", size: 13)
-        return view
-    }()
-    let birthdayLabel: UILabel = {
-        let view = UILabel()
-        view.numberOfLines = 0
-        view.textColor = UIColor(red: 0.333, green: 0.333, blue: 0.361, alpha: 1)
-        view.font = UIFont(name: "Inter-Regular", size: 15)
-        view.isHidden = true
         return view
     }()
 // MARK: Loading views
@@ -70,7 +61,6 @@ class EmployeeTableViewCell: UITableViewCell {
         addSubview(nameLabel)
         addSubview(tagLabel)
         addSubview(departmentLabel)
-        addSubview(birthdayLabel)
         addSubview(imageLoadingView)
         addSubview(nameLoadingView)
         addSubview(departmentLoadingView)
@@ -80,9 +70,7 @@ class EmployeeTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    func setBirthdayLabelVisibility(shouldShowBirthday: Bool) {
-        birthdayLabel.isHidden = !shouldShowBirthday
-    }
+    
     private func setupConstraints() {
         employeeImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -105,11 +93,6 @@ class EmployeeTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             departmentLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             departmentLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor, constant: 20)
-        ])
-        birthdayLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            birthdayLabel.centerYAnchor.constraint(equalTo: employeeImageView.centerYAnchor, constant: -12),
-            birthdayLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -19.5)
         ])
     }
     private func setLoadingViewsConstraints() {
@@ -169,7 +152,6 @@ class EmployeeTableViewCell: UITableViewCell {
         nameLabel.text = "\(firstName) \(lastName)"
         tagLabel.text = tag
         departmentLabel.text = department?.title
-        birthdayLabel.text = dateBirth
     }
 
 }
