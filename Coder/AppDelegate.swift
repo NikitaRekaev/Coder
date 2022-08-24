@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  Coder
-//
-//  Created by Nikita Rekaev on 30.07.2022.
-//
-
 import UIKit
 
 @UIApplicationMain
@@ -13,7 +6,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let navController = UINavigationController(rootViewController: ViewController())
+        let navController = UINavigationController(rootViewController: EmployeeListViewController())
         navController.navigationBar.prefersLargeTitles = false
         navController.navigationBar.isHidden = false
         navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]

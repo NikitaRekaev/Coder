@@ -8,6 +8,7 @@ disabled_rules:
   - colon
   - comma
   - control_statement
+  - identifier_name
   
 opt_in_rules:
   - empty_count
@@ -18,4 +19,9 @@ reporter: xcode
 warning_threshold: 1
 
 identifier_name:
-w/e: 2/1
+  min_length:
+    error: 4
+force_cast:
+  severity: warning
+  excluded:
+    - BaseViewController.swift
