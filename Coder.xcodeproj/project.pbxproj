@@ -20,6 +20,9 @@
 		111B696128B64FFD006E2BF0 /* DepartmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B696028B64FFD006E2BF0 /* DepartmentModel.swift */; };
 		111B696328B65231006E2BF0 /* ApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B696228B65231006E2BF0 /* ApiProvider.swift */; };
 		111B696528B652DC006E2BF0 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B696428B652DC006E2BF0 /* NetworkMonitor.swift */; };
+		111B696828B653AD006E2BF0 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B696728B653AD006E2BF0 /* BaseView.swift */; };
+		111B696A28B65589006E2BF0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B696928B65589006E2BF0 /* BaseViewController.swift */; };
+		111B696C28B65BC6006E2BF0 /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B696B28B65BC6006E2BF0 /* ImageResizer.swift */; };
 		11300F2128953E5D00BC51E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11300F2028953E5D00BC51E4 /* AppDelegate.swift */; };
 		11300F2528953E5D00BC51E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11300F2428953E5D00BC51E4 /* ViewController.swift */; };
 		11300F2A28953E5E00BC51E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11300F2928953E5E00BC51E4 /* Assets.xcassets */; };
@@ -41,6 +44,9 @@
 		111B696028B64FFD006E2BF0 /* DepartmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentModel.swift; sourceTree = "<group>"; };
 		111B696228B65231006E2BF0 /* ApiProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProvider.swift; sourceTree = "<group>"; };
 		111B696428B652DC006E2BF0 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		111B696728B653AD006E2BF0 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		111B696928B65589006E2BF0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		111B696B28B65BC6006E2BF0 /* ImageResizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
 		11300F1D28953E5D00BC51E4 /* Coder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11300F2028953E5D00BC51E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11300F2428953E5D00BC51E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +118,16 @@
 			path = DataModel/API;
 			sourceTree = "<group>";
 		};
+		111B696628B65384006E2BF0 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				111B696728B653AD006E2BF0 /* BaseView.swift */,
+				111B696928B65589006E2BF0 /* BaseViewController.swift */,
+				111B696B28B65BC6006E2BF0 /* ImageResizer.swift */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
 		11300F1428953E5D00BC51E4 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +152,7 @@
 				11300F2028953E5D00BC51E4 /* AppDelegate.swift */,
 				111B695F28B64EDA006E2BF0 /* API */,
 				11300F2428953E5D00BC51E4 /* ViewController.swift */,
+				111B696628B65384006E2BF0 /* Supporting */,
 				111B694828B64A80006E2BF0 /* Resources */,
 				11300F2B28953E5E00BC51E4 /* LaunchScreen.storyboard */,
 			);
@@ -286,7 +303,10 @@
 				111B696528B652DC006E2BF0 /* NetworkMonitor.swift in Sources */,
 				111B696128B64FFD006E2BF0 /* DepartmentModel.swift in Sources */,
 				111B696328B65231006E2BF0 /* ApiProvider.swift in Sources */,
+				111B696828B653AD006E2BF0 /* BaseView.swift in Sources */,
+				111B696A28B65589006E2BF0 /* BaseViewController.swift in Sources */,
 				11300F2528953E5D00BC51E4 /* ViewController.swift in Sources */,
+				111B696C28B65BC6006E2BF0 /* ImageResizer.swift in Sources */,
 				11300F2128953E5D00BC51E4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
