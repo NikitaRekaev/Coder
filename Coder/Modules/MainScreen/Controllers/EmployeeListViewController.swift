@@ -9,13 +9,14 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
         return refresh
     }()
     private let tabs = DepartmentModel.allCases
+    private let departmentAll = DepartmentModel.all
     private var searchText: String = ""
     private var selectedDepartment: DepartmentModel?
     private var employee: [EmployeeModel] = []
     private var filteredEmployee: [EmployeeModel] {
         return employee
             .filter({
-                $0.department == selectedDepartment || selectedDepartment == nil
+                $0.department == selectedDepartment || selectedDepartment == nil || selectedDepartment == departmentAll
             })
             .filter({
                 $0.firstName.starts(with: searchText) || $0.lastName.starts(with: searchText) || searchText.isEmpty
@@ -85,7 +86,7 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
         employeeProvider.getData(EmployeeList.self,
                                  from: "/kode-education/trainee-test/25143926/users", self.loadData(result:))
     }
-    @objc private func textFieldDidChange(_ sender: UITextField) {// принято называть sender
+    @objc private func textFieldDidChange(_ sender: UITextField) {
         mainView.setSearchEditingMode()
         searchText = sender.text ?? ""
         if filteredEmployee.isEmpty {
@@ -136,7 +137,6 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
     }
     @objc func rightViewButtonClicked(_ sender: UIButton) {
         mainView.setDimView(true)
-
     }
 }
 
