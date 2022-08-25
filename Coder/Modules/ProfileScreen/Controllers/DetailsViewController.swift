@@ -7,7 +7,9 @@ class DetailsViewController: BaseViewController<ProfileView> {
         super.viewDidLoad()
         navigationItem.title = "SecondViewController"
     }
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.tintColor = .black
         let formattedPhone = formatPhone(phone: employee.phone)
         let formattedBirthday = formatDate(date: employee.birthdayDate)
         let calculatedYears = calculateYears(date: employee.birthdayDate)
