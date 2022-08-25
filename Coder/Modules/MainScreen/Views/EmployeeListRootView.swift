@@ -159,7 +159,7 @@ class EmployeeListRootView: BaseView {
         NSLayoutConstraint.activate([searchTextField.widthAnchor.constraint(equalToConstant: 265),
         searchTextField.trailingAnchor.constraint(equalTo: cancelButton.leadingAnchor, constant: -16)])
         cancelButton.isHidden = false
-        layoutIfNeeded()
+        searchTextField.rightImageButton.isHidden = true
         let leftView = UIImageView()
         leftView.image = UIImage(named: "vector_editing")
         self.searchTextField.leftView = leftView
