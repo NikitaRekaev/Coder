@@ -2,15 +2,9 @@ import UIKit
 
 class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
     var shouldShowBirthday: Bool = false
-    private lazy var refreshControl: UIRefreshControl = {
-        let refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
-        refresh.tintColor = .lightGray
-        return refresh
-    }()
+    private var searchText: String = ""
     private let tabs = DepartmentModel.allCases
     private let departmentAll = DepartmentModel.all
-    private var searchText: String = ""
     private var selectedDepartment: DepartmentModel?
     private var employee: [EmployeeModel] = []
     private var filteredEmployee: [EmployeeModel] {
@@ -28,8 +22,9 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
         super.viewWillDisappear(true)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
-        override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
+        mainView.setupSearchBar()
         mainView.errorView.tryAgainButton.addTarget(self, action: #selector(checkConnection(_:)), for: .touchUpInside)
         mainView.employeeTableView.refreshControl = refreshControl
         mainView.employeeTableView.separatorColor = .clear
@@ -43,25 +38,35 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
         mainView.topTabsCollectionView.register(TopTabsCollectionViewCell.self,
                                                 forCellWithReuseIdentifier: TopTabsCollectionViewCell.identifier)
         mainView.topTabsCollectionView.showsHorizontalScrollIndicator = false
-        mainView.searchTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
-        mainView.searchTextField.rightImageButton.addTarget(self,
-                                                            action: #selector(rightViewButtonClicked(_:)),
-                                                            for: .touchUpInside)
-        mainView.cancelButton.addTarget(self, action: #selector(cancelClicked(_:)), for: .touchUpInside)
         employeeProvider.getData(EmployeeList.self, from: "/kode-education/trainee-test/25143926/users") { result in
-
             switch result {
             case let .success(responseData):
                 self.employee = responseData.items
                 self.mainView.setMainView()
                 self.mainView.employeeTableView.reloadData()
-            case .failure(_):
+            case .failure(_:):
                 self.mainView.setErrorView()
             }
-
         }
-        navigationItem.title = "MainNavViewController"
+        mainView.searchBar.delegate = self
+        navigationItem.titleView = mainView.searchBar
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
+    func updateSearchResults(_ searchBar: UISearchBar) {
+        searchText = mainView.searchBar.text ?? ""
+        if searchText.isEmpty {
+            mainView.setNotFoundView()
+        } else {
+            mainView.setIsFoundView()
+        }
+            mainView.employeeTableView.reloadData()
+    }
+    private lazy var refreshControl: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        refresh.tintColor = .lightGray
+        return refresh
+    }()
     @objc private func didPullToRefresh(_ sender: UIRefreshControl) {
         self.mainView.setMainView()
         employeeProvider.getData(EmployeeList.self,
@@ -86,33 +91,13 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
         employeeProvider.getData(EmployeeList.self,
                                  from: "/kode-education/trainee-test/25143926/users", self.loadData(result:))
     }
-    @objc private func textFieldDidChange(_ sender: UITextField) {
-        mainView.setSearchEditingMode()
-        searchText = sender.text ?? ""
-        if filteredEmployee.isEmpty {
-            mainView.setNotFoundView()
-        } else {
-            mainView.setIsFoundView()
-        }
-        mainView.employeeTableView.reloadData()
-    }
-    @objc private func cancelClicked(_ sender: UIButton) {
-        mainView.searchTextField.text = ""
-        searchText = ""
-        mainView.setMainView()
-        mainView.searchTextField.rightImageButton.isHidden = false
-        mainView.searchTextField.endEditing(true)
-        mainView.notFoundSearchView.isHidden = true
-        mainView.employeeTableView.reloadData()
-        mainView.cancelButton.isHidden = true
-    }
     private func loadData(result: Result<EmployeeList, Error>) {
         switch result {
         case let .success(responseData):
             self.employee = responseData.items
             self.mainView.setMainView()
             self.mainView.employeeTableView.reloadData()
-        case .failure(_):
+        case .failure(_:):
             self.mainView.setErrorView()
         }
     }
@@ -139,9 +124,6 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
             let shouldBeSelected = cell.model == self.selectedDepartment
             cell.setCellSelected(shouldBeSelected)
         })
-    }
-    @objc func rightViewButtonClicked(_ sender: UIButton) {
-        mainView.setDimView(true)
     }
 }
 
@@ -213,4 +195,30 @@ extension EmployeeListViewController: UICollectionViewDelegate, UICollectionView
         updateDepartmentSelection()
     }
 
+}
+
+// MARK: - UISearchBarDelegate
+
+extension EmployeeListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchText = mainView.searchBar.text ?? ""
+        if self.searchText.isEmpty {
+            return mainView.setNotFoundView()
+        } else {
+            mainView.setIsFoundView()
+        }
+            mainView.employeeTableView.reloadData()
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        mainView.searchBar.showsCancelButton = true
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        mainView.searchBar.showsCancelButton = false
+        mainView.searchBar.showsBookmarkButton = true
+        mainView.searchBar.text = nil
+        mainView.searchBar.endEditing(true)
+        mainView.employeeTableView.isHidden = false
+        searchText = ""
+        mainView.employeeTableView.reloadData()
+    }
 }
