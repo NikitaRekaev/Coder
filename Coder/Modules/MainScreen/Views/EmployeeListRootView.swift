@@ -50,7 +50,7 @@ class EmployeeListRootView: BaseView {
         ])
         topTabsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            topTabsCollectionView.topAnchor.constraint(equalTo: topAnchor, constant: 70),
+            topTabsCollectionView.topAnchor.constraint(equalTo: topAnchor, constant: 96),
             topTabsCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             topTabsCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             topTabsCollectionView.heightAnchor.constraint(equalToConstant: 36)
@@ -109,7 +109,7 @@ class EmployeeListRootView: BaseView {
             green: 247.0/255.0,
             blue: 248.0/255.0,
             alpha: 1)
-        searchBar.tintColor = UIColor(red: 0.396, green: 0.204, blue: 1, alpha: 1)
+        searchBar.tintColor =  #colorLiteral(red: 0.4257887602, green: 0.1908605397, blue: 1, alpha: 1)
         searchBar.setImage(
             UIImage(named: "list-ui-alt"),
             for: .bookmark,
