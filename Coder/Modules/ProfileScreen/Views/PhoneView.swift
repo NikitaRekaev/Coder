@@ -11,18 +11,20 @@ class PhoneView: BaseView {
         view.layer.borderWidth = 0
         return view
     }()
-   private let phoneLabel: UILabel = {
-       let label = UILabel()
-       label.textColor = .black
-       label.font = UIFont(name: "Inter-Medium", size: 16)
-       return label
-    }()
+    let phoneButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.gray, for: .highlighted)
+        button.isHidden = false
+        button.titleLabel?.font = UIFont(name: "Inter-Medium", size: 16)
+        return button
+     }()
     override func setup() {
         addSubview(phoneView)
         addSubview(phoneImageView)
-        addSubview(phoneLabel)
+        addSubview(phoneButton)
         setPhoneImageConstraints()
-        setPhoneLabelConstraints()
+        setPhoneButtonConstraints()
     }
    private func setPhoneImageConstraints() {
         phoneImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -30,13 +32,13 @@ class PhoneView: BaseView {
         phoneImageView.leadingAnchor.constraint(equalTo: phoneView.safeAreaLayoutGuide.leadingAnchor,
                                                 constant: 20).isActive = true
     }
-    private func setPhoneLabelConstraints() {
-        phoneLabel.translatesAutoresizingMaskIntoConstraints = false
-        phoneLabel.leadingAnchor.constraint(equalTo: phoneImageView.trailingAnchor, constant: 14).isActive = true
-        phoneLabel.centerYAnchor.constraint(equalTo: phoneImageView.centerYAnchor).isActive = true
+    private func setPhoneButtonConstraints() {
+        phoneButton.translatesAutoresizingMaskIntoConstraints = false
+        phoneButton.leadingAnchor.constraint(equalTo: phoneImageView.trailingAnchor, constant: 14).isActive = true
+        phoneButton.centerYAnchor.constraint(equalTo: phoneImageView.centerYAnchor).isActive = true
     }
 
     func setData(phoneNumber: String) {
-        self.phoneLabel.text = phoneNumber
+        phoneButton.setTitle(phoneNumber, for: .normal)
     }
 }

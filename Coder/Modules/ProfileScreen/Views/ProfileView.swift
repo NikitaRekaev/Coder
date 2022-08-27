@@ -1,8 +1,8 @@
 import UIKit
 
 class ProfileView: BaseView {
-    private let birthView = BirthView()
-    private let phoneView = PhoneView()
+    let birthView = BirthView()
+    let phoneView = PhoneView()
     private let upView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0,
                                         width: UIScreen.main.bounds.width,
