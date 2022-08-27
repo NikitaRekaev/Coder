@@ -99,7 +99,12 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
     @objc private func cancelClicked(_ sender: UIButton) {
         mainView.searchTextField.text = ""
         searchText = ""
+        mainView.setMainView()
+        mainView.searchTextField.rightImageButton.isHidden = false
+        mainView.searchTextField.endEditing(true)
+        mainView.notFoundSearchView.isHidden = true
         mainView.employeeTableView.reloadData()
+        mainView.cancelButton.isHidden = true
     }
     private func loadData(result: Result<EmployeeList, Error>) {
         switch result {
