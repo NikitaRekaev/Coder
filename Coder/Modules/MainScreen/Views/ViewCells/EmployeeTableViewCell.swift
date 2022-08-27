@@ -71,7 +71,6 @@ class EmployeeTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     private func setupConstraints() {
         employeeImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

@@ -79,6 +79,7 @@ class ProfileView: BaseView {
         stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
+// swiftlint:disable function_parameter_count
     func setData(firstName: String,
                  lastName: String,
                  tag: String,
@@ -92,4 +93,5 @@ class ProfileView: BaseView {
         phoneView.setData(phoneNumber: phone)
         birthView.setData(dateBirth: dateBirth, years: years)
     }
+// swiftlint:enable function_parameter_count
 }

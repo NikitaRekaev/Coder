@@ -11,7 +11,7 @@ class ApiProvider {
         _ completion: @escaping (Result<Response, Error>) -> Void
     ) -> URLSessionDataTask {
         let url = baseUrl.appendingPathComponent(endpoint)
-        let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
+        let dataTask = URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("Ошибка получения данных")
                 DispatchQueue.main.async {
