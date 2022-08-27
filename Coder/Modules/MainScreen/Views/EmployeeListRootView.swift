@@ -7,16 +7,6 @@ class EmployeeListRootView: BaseView {
         view.isHidden = true
         return view
     }()
-    let cancelButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Отмена", for: .normal)
-        button.setTitleColor(UIColor(red: 0.396, green: 0.204, blue: 1, alpha: 1), for: .normal)
-        button.setTitleColor(UIColor.white, for: .highlighted)
-        button.titleLabel?.font = UIFont(name: "Inter-SemiBold", size: 14)
-        button.isHidden = true
-        return button
-    }()
-    var searchTextField = SearchTextField(inset: UIEdgeInsets(top: 10, left: 44, bottom: 10, right: 35))
     let topTabsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -40,8 +30,6 @@ class EmployeeListRootView: BaseView {
     override func setup() {
         backgroundColor = .white
         employeeTableView.backgroundColor = .white
-        addSubview(searchTextField)
-        addSubview(cancelButton)
         addSubview(employeeTableView)
         addSubview(notFoundSearchView)
         addSubview(topTabsCollectionView)
@@ -60,23 +48,9 @@ class EmployeeListRootView: BaseView {
             globalView.leadingAnchor.constraint(equalTo: leadingAnchor),
             globalView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
-        searchTextField.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            searchTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            searchTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            searchTextField.heightAnchor.constraint(equalToConstant: 40),
-            searchTextField.widthAnchor.constraint(equalToConstant: 343),
-            searchTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
-        ])
-            cancelButton.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                cancelButton.leadingAnchor.constraint(equalTo: searchTextField.trailingAnchor, constant: 12),
-                cancelButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor),
-                cancelButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -28)
-            ])
         topTabsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            topTabsCollectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 6),
+            topTabsCollectionView.topAnchor.constraint(equalTo: topAnchor, constant: 70),
             topTabsCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             topTabsCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             topTabsCollectionView.heightAnchor.constraint(equalToConstant: 36)
@@ -131,12 +105,10 @@ class EmployeeListRootView: BaseView {
         if NetworkMonitor.shared.isConnected {
             print("Интернет присутствует")
             errorView.isHidden = true
-            searchTextField.isHidden = false
             employeeTableView.isHidden = false
             topTabsCollectionView.isHidden = false
         } else {
             print("Интернет отсутствует")
-            searchTextField.isHidden = true
             employeeTableView.isHidden = true
             topTabsCollectionView.isHidden = true
             errorView.isHidden = false
@@ -144,24 +116,13 @@ class EmployeeListRootView: BaseView {
         NetworkMonitor.shared.stopMonitoring()
     }
     func setErrorView() {
-        searchTextField.isHidden = true
         employeeTableView.isHidden = true
         topTabsCollectionView.isHidden = true
         errorView.isHidden = false
     }
     func setMainView() {
         errorView.isHidden = true
-        searchTextField.isHidden = false
         employeeTableView.isHidden = false
         topTabsCollectionView.isHidden = false
-    }
-    func setSearchEditingMode() {
-        NSLayoutConstraint.activate([searchTextField.widthAnchor.constraint(equalToConstant: 265),
-        searchTextField.trailingAnchor.constraint(equalTo: cancelButton.leadingAnchor, constant: -16)])
-        cancelButton.isHidden = false
-        searchTextField.rightImageButton.isHidden = true
-        let leftView = UIImageView()
-        leftView.image = UIImage(named: "vector_editing")
-        self.searchTextField.leftView = leftView
     }
 }
