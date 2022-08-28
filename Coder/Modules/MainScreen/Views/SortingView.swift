@@ -2,28 +2,30 @@ import UIKit
 
 class SortView: BaseView {
     let alphabetSortButton: UIButton = {
-       let button = UIButton()
-        button.setBackgroundImage(UIImage(named: "UnChecked"), for: .normal)
-        button.setBackgroundImage(UIImage(named: "isChecked"), for: .selected)
-        button.titleLabel?.text = "По алфавиту"
-        button.titleLabel?.textColor = .black
-        button.titleLabel?.font = UIFont(name: "Inter-Medium", size: 16)
+        let button = UIButton()
+        button.setTitle("По алфавиту", for: .normal)
+        button.setImage(UIImage(named: "unChecked"), for: .normal)
+        button.setImage(UIImage(named: "isChecked"), for: .selected)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.titleEdgeInsets.left = 14
         return button
     }()
     let birthdaySortButton: UIButton = {
         let button = UIButton()
-        button.setBackgroundImage(UIImage(named: "UnChecked"), for: .normal)
-        button.setBackgroundImage(UIImage(named: "isChecked"), for: .selected)
-        button.titleLabel?.text = "По дню рождения"
-        button.titleLabel?.textColor = .black
-        button.titleLabel?.font = UIFont(name: "Inter-Medium", size: 16)
+        button.setTitle("По дню рождения", for: .normal)
+        button.setImage(UIImage(named: "unChecked"), for: .normal)
+        button.setImage(UIImage(named: "isChecked"), for: .selected)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.titleEdgeInsets.left = 14
         return button
      }()
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Сортировка"
         label.textColor = UIColor(red: 0.02, green: 0.02, blue: 0.063, alpha: 1)
-        label.font = UIFont(name: "Inter-SemiBlond", size: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
     override func setup() {
@@ -40,13 +42,15 @@ class SortView: BaseView {
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)])
         alphabetSortButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            alphabetSortButton.topAnchor.constraint(equalTo: topAnchor, constant: 84),
-            alphabetSortButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 18)
+            alphabetSortButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 41.5),
+            alphabetSortButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 26),
+            alphabetSortButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -214)
         ])
         birthdaySortButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            birthdaySortButton.topAnchor.constraint(equalTo: alphabetSortButton.bottomAnchor, constant: 40),
-            birthdaySortButton.leadingAnchor.constraint(equalTo: alphabetSortButton.leadingAnchor)
+            birthdaySortButton.topAnchor.constraint(equalTo: alphabetSortButton.bottomAnchor, constant: 35),
+            birthdaySortButton.leadingAnchor.constraint(equalTo: alphabetSortButton.leadingAnchor),
+            birthdaySortButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -172)
         ])
     }
 }
