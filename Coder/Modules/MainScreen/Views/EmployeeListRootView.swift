@@ -109,14 +109,15 @@ class EmployeeListRootView: BaseView {
             green: 247.0/255.0,
             blue: 248.0/255.0,
             alpha: 1)
-        searchBar.tintColor =  #colorLiteral(red: 0.4257887602, green: 0.1908605397, blue: 1, alpha: 1)
         searchBar.setImage(
             UIImage(named: "list-ui-alt"),
             for: .bookmark,
             state: .normal
         )
+        searchBar.tintColor = #colorLiteral(red: 0.4257887602, green: 0.1908605397, blue: 1, alpha: 1)
         searchBar.backgroundColor = .white
         searchBar.showsBookmarkButton = true
+        searchBar.sizeToFit()
         searchBar.placeholder = "Введи имя, тег, почту..."
         searchBar.setValue("Отмена", forKey: "cancelButtonText")
     }

@@ -50,7 +50,8 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
         }
         mainView.searchBar.delegate = self
         navigationItem.titleView = mainView.searchBar
-        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     func updateSearchResults(_ searchBar: UISearchBar) {
         searchText = mainView.searchBar.text ?? ""
@@ -203,7 +204,7 @@ extension EmployeeListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchText = mainView.searchBar.text ?? ""
         if self.searchText.isEmpty {
-            return mainView.setNotFoundView()
+            mainView.setNotFoundView()
         } else {
             mainView.setIsFoundView()
         }
@@ -217,8 +218,8 @@ extension EmployeeListViewController: UISearchBarDelegate {
         mainView.searchBar.showsBookmarkButton = true
         mainView.searchBar.text = nil
         mainView.searchBar.endEditing(true)
-        mainView.employeeTableView.isHidden = false
         searchText = ""
+        mainView.setIsFoundView()
         mainView.employeeTableView.reloadData()
     }
 }
