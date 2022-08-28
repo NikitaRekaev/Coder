@@ -43,11 +43,6 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
         mainView.topTabsCollectionView.register(TopTabsCollectionViewCell.self,
                                                 forCellWithReuseIdentifier: TopTabsCollectionViewCell.identifier)
         mainView.topTabsCollectionView.showsHorizontalScrollIndicator = false
-        mainView.searchTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
-        mainView.searchTextField.rightImageButton.addTarget(self,
-                                                            action: #selector(rightViewButtonClicked(_:)),
-                                                            for: .touchUpInside)
-        mainView.cancelButton.addTarget(self, action: #selector(cancelClicked(_:)), for: .touchUpInside)
         employeeProvider.getData(EmployeeList.self, from: "/kode-education/trainee-test/25143926/users") { result in
 
             switch result {
@@ -86,26 +81,6 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
         employeeProvider.getData(EmployeeList.self,
                                  from: "/kode-education/trainee-test/25143926/users", self.loadData(result:))
     }
-    @objc private func textFieldDidChange(_ sender: UITextField) {
-        mainView.setSearchEditingMode()
-        searchText = sender.text ?? ""
-        if filteredEmployee.isEmpty {
-            mainView.setNotFoundView()
-        } else {
-            mainView.setIsFoundView()
-        }
-        mainView.employeeTableView.reloadData()
-    }
-    @objc private func cancelClicked(_ sender: UIButton) {
-        mainView.searchTextField.text = ""
-        searchText = ""
-        mainView.setMainView()
-        mainView.searchTextField.rightImageButton.isHidden = false
-        mainView.searchTextField.endEditing(true)
-        mainView.notFoundSearchView.isHidden = true
-        mainView.employeeTableView.reloadData()
-        mainView.cancelButton.isHidden = true
-    }
     private func loadData(result: Result<EmployeeList, Error>) {
         switch result {
         case let .success(responseData):
@@ -139,9 +114,6 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
             let shouldBeSelected = cell.model == self.selectedDepartment
             cell.setCellSelected(shouldBeSelected)
         })
-    }
-    @objc func rightViewButtonClicked(_ sender: UIButton) {
-        mainView.setDimView(true)
     }
 }
 
