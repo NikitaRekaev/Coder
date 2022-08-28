@@ -3,38 +3,12 @@ import UIKit
 class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
     var shouldShowBirthday: Bool = false
     let sortVC = SortViewController()
-    var employeeModelForSections: [[EmployeeModel]] {
-        return [thisYearBirthdayEmployee, nextYearBirthdayEmployee]
-    }
     private var searchText: String = ""
     private let tabs = DepartmentModel.allCases
     private let departmentAll = DepartmentModel.all
     private var selectedDepartment: DepartmentModel?
     private var employee: [EmployeeModel] = []
-    private var filteredEmployee: [EmployeeModel] {
-        return employee
-            .filter({
-                $0.department == selectedDepartment || selectedDepartment == nil || selectedDepartment == departmentAll
-            })
-            .filter({
-                $0.firstName.starts(with: searchText) || $0.lastName.starts(with: searchText) || searchText.isEmpty
-            })
-    }
-    var thisYearBirthdayEmployee: [EmployeeModel] {
-        return filteredEmployee.filter {
-            return self.calculateDayDifference(birthdayDate: $0.birthdayDate) > 0
-        }
-    }
-    var nextYearBirthdayEmployee: [EmployeeModel] {
-        return filteredEmployee.filter {
-            return self.calculateDayDifference(birthdayDate: $0.birthdayDate) < 0
-        }
-    }
     private let employeeProvider = ApiProvider()
-       override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.setupSearchBar()
@@ -65,6 +39,32 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
         navigationItem.titleView = mainView.searchBar
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    private var filteredEmployee: [EmployeeModel] {
+        return employee
+            .filter({
+                $0.department == selectedDepartment || selectedDepartment == nil || selectedDepartment == departmentAll
+            })
+            .filter({
+                $0.firstName.starts(with: searchText) || $0.lastName.starts(with: searchText) || searchText.isEmpty
+            })
+    }
+    var thisYearBirthdayEmployee: [EmployeeModel] {
+        return filteredEmployee.filter {
+            return self.calculateDayDifference(birthdayDate: $0.birthdayDate) > 0
+        }
+    }
+    var nextYearBirthdayEmployee: [EmployeeModel] {
+        return filteredEmployee.filter {
+            return self.calculateDayDifference(birthdayDate: $0.birthdayDate) < 0
+        }
+    }
+    var employeeModelForSections: [[EmployeeModel]] {
+        return [thisYearBirthdayEmployee, nextYearBirthdayEmployee]
     }
     func calculateDayDifference(birthdayDate: Date?) -> Int {
         guard let date = birthdayDate else { return 0}
@@ -131,7 +131,6 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
         }
     }
     private func formatDate (date: Date?) -> String {
-
             let formatter = DateFormatter()
             formatter.locale = Locale(identifier: "ru_RU")
             formatter.setLocalizedDateFormatFromTemplate("dd MMM")
