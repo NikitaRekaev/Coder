@@ -114,6 +114,11 @@ class EmployeeListRootView: BaseView {
             for: .bookmark,
             state: .normal
         )
+        searchBar.setImage(
+            UIImage(named: "list-ui-alt_selected"),
+            for: .bookmark,
+            state: .selected
+        )
         searchBar.tintColor = #colorLiteral(red: 0.4257887602, green: 0.1908605397, blue: 1, alpha: 1)
         searchBar.backgroundColor = .white
         searchBar.showsBookmarkButton = true
