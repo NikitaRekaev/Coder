@@ -186,8 +186,8 @@
 				111B698028B669F4006E2BF0 /* EmployeeListRootView.swift */,
 				111B697C28B66934006E2BF0 /* NotFoundOnSearchView.swift */,
 				111B697E28B6698E006E2BF0 /* LostInternetConnectionView.swift */,
-				1184A27828BBC855000D9497 /* HeaderSectionView.swift */,
 				118BBA6128BB7C2400194F05 /* SortingView.swift */,
+				1184A27828BBC855000D9497 /* HeaderSectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
