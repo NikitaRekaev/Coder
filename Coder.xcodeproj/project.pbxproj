@@ -23,7 +23,6 @@
 		111B696828B653AD006E2BF0 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B696728B653AD006E2BF0 /* BaseView.swift */; };
 		111B696A28B65589006E2BF0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B696928B65589006E2BF0 /* BaseViewController.swift */; };
 		111B696C28B65BC6006E2BF0 /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B696B28B65BC6006E2BF0 /* ImageResizer.swift */; };
-		111B697228B6600B006E2BF0 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697128B6600B006E2BF0 /* SearchTextField.swift */; };
 		111B697428B66313006E2BF0 /* TopTabsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697328B66313006E2BF0 /* TopTabsCollectionViewCell.swift */; };
 		111B697728B663BB006E2BF0 /* EmployeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697628B663BB006E2BF0 /* EmployeeTableViewCell.swift */; };
 		111B697D28B66934006E2BF0 /* NotFoundOnSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697C28B66934006E2BF0 /* NotFoundOnSearchView.swift */; };
@@ -37,6 +36,9 @@
 		11300F2528953E5D00BC51E4 /* EmployeeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11300F2428953E5D00BC51E4 /* EmployeeListViewController.swift */; };
 		11300F2A28953E5E00BC51E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11300F2928953E5E00BC51E4 /* Assets.xcassets */; };
 		11300F2D28953E5E00BC51E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11300F2B28953E5E00BC51E4 /* LaunchScreen.storyboard */; };
+		1184A27928BBC855000D9497 /* HeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1184A27828BBC855000D9497 /* HeaderSectionView.swift */; };
+		118BBA6228BB7C2400194F05 /* SortingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BBA6128BB7C2400194F05 /* SortingView.swift */; };
+		118BBA6428BB7F6800194F05 /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BBA6328BB7F6800194F05 /* SortViewController.swift */; };
 		192C7B47D0FBB022BF34E54E /* Pods_Coder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ECD2464FC092B843E87DE73 /* Pods_Coder.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,7 +59,6 @@
 		111B696728B653AD006E2BF0 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		111B696928B65589006E2BF0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		111B696B28B65BC6006E2BF0 /* ImageResizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
-		111B697128B6600B006E2BF0 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		111B697328B66313006E2BF0 /* TopTabsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabsCollectionViewCell.swift; sourceTree = "<group>"; };
 		111B697628B663BB006E2BF0 /* EmployeeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeTableViewCell.swift; sourceTree = "<group>"; };
 		111B697C28B66934006E2BF0 /* NotFoundOnSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFoundOnSearchView.swift; sourceTree = "<group>"; };
@@ -73,6 +74,9 @@
 		11300F2928953E5E00BC51E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11300F2C28953E5E00BC51E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11300F2E28953E5E00BC51E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1184A27828BBC855000D9497 /* HeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
+		118BBA6128BB7C2400194F05 /* SortingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingView.swift; sourceTree = "<group>"; };
+		118BBA6328BB7F6800194F05 /* SortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
 		16295E38A00A7553B5CE73AD /* Pods-Coder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coder.debug.xcconfig"; path = "Target Support Files/Pods-Coder/Pods-Coder.debug.xcconfig"; sourceTree = "<group>"; };
 		345A1FB59AED49E5A3284C90 /* Pods-Coder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coder.release.xcconfig"; path = "Target Support Files/Pods-Coder/Pods-Coder.release.xcconfig"; sourceTree = "<group>"; };
 		4ECD2464FC092B843E87DE73 /* Pods_Coder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				11300F2428953E5D00BC51E4 /* EmployeeListViewController.swift */,
+				118BBA6328BB7F6800194F05 /* SortViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -179,9 +184,10 @@
 			children = (
 				111B697528B6631B006E2BF0 /* ViewCells */,
 				111B698028B669F4006E2BF0 /* EmployeeListRootView.swift */,
-				111B697128B6600B006E2BF0 /* SearchTextField.swift */,
 				111B697C28B66934006E2BF0 /* NotFoundOnSearchView.swift */,
 				111B697E28B6698E006E2BF0 /* LostInternetConnectionView.swift */,
+				118BBA6128BB7C2400194F05 /* SortingView.swift */,
+				1184A27828BBC855000D9497 /* HeaderSectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -349,7 +355,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		111B691C28B63FE3006E2BF0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -360,7 +366,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
@@ -393,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1184A27928BBC855000D9497 /* HeaderSectionView.swift in Sources */,
 				111B695E28B64EC9006E2BF0 /* EmployeeModel.swift in Sources */,
 				111B696528B652DC006E2BF0 /* NetworkMonitor.swift in Sources */,
 				111B698128B669F4006E2BF0 /* EmployeeListRootView.swift in Sources */,
@@ -401,9 +408,10 @@
 				111B696328B65231006E2BF0 /* ApiProvider.swift in Sources */,
 				111B696828B653AD006E2BF0 /* BaseView.swift in Sources */,
 				111B697728B663BB006E2BF0 /* EmployeeTableViewCell.swift in Sources */,
-				111B697228B6600B006E2BF0 /* SearchTextField.swift in Sources */,
 				111B696A28B65589006E2BF0 /* BaseViewController.swift in Sources */,
 				111B699128B67545006E2BF0 /* ProfileView.swift in Sources */,
+				118BBA6428BB7F6800194F05 /* SortViewController.swift in Sources */,
+				118BBA6228BB7C2400194F05 /* SortingView.swift in Sources */,
 				111B697F28B6698E006E2BF0 /* LostInternetConnectionView.swift in Sources */,
 				11300F2528953E5D00BC51E4 /* EmployeeListViewController.swift in Sources */,
 				111B699428B675C9006E2BF0 /* DetailsViewController.swift in Sources */,

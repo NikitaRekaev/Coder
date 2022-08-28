@@ -21,6 +21,7 @@ class EmployeeListRootView: BaseView {
         return view
     }()
     let employeeTableView = UITableView()
+    let searchBar = UISearchBar()
     let notFoundSearchView: NotFoundOnSearchView = {
         let view = NotFoundOnSearchView()
         view.isHidden = true
@@ -39,7 +40,6 @@ class EmployeeListRootView: BaseView {
         setupConstraints()
         setViewDependingOnConnection()
     }
-// swiftlint:disable function_body_length
     private func setupConstraints() {
         globalView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -50,7 +50,7 @@ class EmployeeListRootView: BaseView {
         ])
         topTabsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            topTabsCollectionView.topAnchor.constraint(equalTo: topAnchor, constant: 70),
+            topTabsCollectionView.topAnchor.constraint(equalTo: topAnchor, constant: 96),
             topTabsCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             topTabsCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             topTabsCollectionView.heightAnchor.constraint(equalToConstant: 36)
@@ -84,20 +84,7 @@ class EmployeeListRootView: BaseView {
             errorView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
-// swiftlint:enable function_body_length
-    func setDimView(_ shouldSet: Bool) {
-        shouldSet ? (globalView.isHidden = false) : (globalView.isHidden = true)
-    }
-    func setNotFoundView() {
-        employeeTableView.isHidden = true
-        notFoundSearchView.isHidden = false
-    }
-    func setIsFoundView() {
-        employeeTableView.isHidden = false
-        notFoundSearchView.isHidden = true
-    }
     private func setViewDependingOnConnection() {
-
         NetworkMonitor.shared.startMonitoring()
         print("T/f \(NetworkMonitor.shared.isConnected)")
         print("Проверка интернета")
@@ -115,14 +102,51 @@ class EmployeeListRootView: BaseView {
         }
         NetworkMonitor.shared.stopMonitoring()
     }
+    func setupSearchBar() {
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.backgroundColor = UIColor(
+            red: 247.0/255.0,
+            green: 247.0/255.0,
+            blue: 248.0/255.0,
+            alpha: 1)
+        searchBar.setImage(
+            UIImage(named: "list-ui-alt"),
+            for: .bookmark,
+            state: .normal
+        )
+        searchBar.setImage(
+            UIImage(named: "list-ui-alt_selected"),
+            for: .bookmark,
+            state: .selected
+        )
+        searchBar.tintColor = #colorLiteral(red: 0.4257887602, green: 0.1908605397, blue: 1, alpha: 1)
+        searchBar.backgroundColor = .white
+        searchBar.showsBookmarkButton = true
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Введи имя, тег, почту..."
+        searchBar.setValue("Отмена", forKey: "cancelButtonText")
+    }
+    func setDimView(_ shouldSet: Bool) {
+        shouldSet ? (globalView.isHidden = false) : (globalView.isHidden = true)
+    }
+    func setNotFoundView() {
+        employeeTableView.isHidden = true
+        notFoundSearchView.isHidden = false
+    }
+    func setIsFoundView() {
+        notFoundSearchView.isHidden = true
+        employeeTableView.isHidden = false
+    }
     func setErrorView() {
         employeeTableView.isHidden = true
         topTabsCollectionView.isHidden = true
+        searchBar.isHidden = true
         errorView.isHidden = false
     }
     func setMainView() {
         errorView.isHidden = true
         employeeTableView.isHidden = false
         topTabsCollectionView.isHidden = false
+        searchBar.isHidden = false
     }
 }
