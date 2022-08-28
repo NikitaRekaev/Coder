@@ -7,7 +7,7 @@ class SortView: BaseView {
         button.setImage(UIImage(named: "unChecked"), for: .normal)
         button.setImage(UIImage(named: "isChecked"), for: .selected)
         button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.titleLabel?.font = UIFont(name: "Inter-Medium", size: 16)
         button.titleEdgeInsets.left = 14
         return button
     }()
@@ -17,7 +17,7 @@ class SortView: BaseView {
         button.setImage(UIImage(named: "unChecked"), for: .normal)
         button.setImage(UIImage(named: "isChecked"), for: .selected)
         button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.titleLabel?.font = UIFont(name: "Inter-Medium", size: 16)
         button.titleEdgeInsets.left = 14
         return button
      }()
@@ -25,7 +25,7 @@ class SortView: BaseView {
         let label = UILabel()
         label.text = "Сортировка"
         label.textColor = UIColor(red: 0.02, green: 0.02, blue: 0.063, alpha: 1)
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont(name: "Inter-SemiBold", size: 20)
         return label
     }()
     override func setup() {
