@@ -153,6 +153,13 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
             cell.setCellSelected(shouldBeSelected)
         })
     }
+    private func updateSortButtonSelection() {
+        if shouldShowBirthday {
+            mainView.searchBar.setImage(UIImage(named: "list-ui-alt"), for: .bookmark, state: .normal)
+        } else {
+            mainView.searchBar.setImage(UIImage(named: "list-ui-alt_selected"), for: .bookmark, state: .normal)
+        }
+    }
 }
 
 // MARK: extension for UITableView
@@ -160,42 +167,65 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
 extension EmployeeListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         if employee.isEmpty {
             return 15
         } else {
-            return filteredEmployee.count
+        if self.shouldShowBirthday {
+            return section == 0 ? thisYearBirthdayEmployee.count : nextYearBirthdayEmployee.count
+        } else {
+            return filteredEmployee.count // теперь всегда данные берем из filtered
+        }
+    }
+}
+    func numberOfSections(in tableView: UITableView) -> Int {
+
+        return self.shouldShowBirthday ?  2 : 1
+}
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return nil
+        } else {
+            return HeaderSectionView()
+        }
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0
+        } else {
+            return 68
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: EmployeeTableViewCell.identifier
         ) as? EmployeeTableViewCell else {
             return UITableViewCell()
         }
-                if !employee.isEmpty {
-                    if shouldShowBirthday {
-                        let sortedEmployee = employeeModelForSections[indexPath.section][indexPath.row]
-                        cell.setData(firstName: sortedEmployee.firstName,
-                                     lastName: sortedEmployee.lastName,
-                                     tag: sortedEmployee.userTag,
-                                     department: sortedEmployee.department,
-                                     dateBirth: formatDate(date: sortedEmployee.birthdayDate))
-                    } else {
-                        let employee = filteredEmployee[indexPath.row]
-                        cell.setData(
-                            firstName: employee.firstName,
-                            lastName: employee.lastName,
-                            tag: employee.userTag,
-                            department: employee.department,
-                            dateBirth: formatDate(date: employee.birthdayDate))
-                    }
-                    cell.setBirthdayLabelVisibility(shouldShowBirthday: self.shouldShowBirthday)
-                    cell.setViewWithData()
-                } else {
-                    cell.setLoadingView()
-                }
-                return cell
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: tableView.bounds.width)
+        if !employee.isEmpty {
+            if shouldShowBirthday {
+                let sortedEmployee = employeeModelForSections[indexPath.section][indexPath.row]
+                cell.setData(firstName: sortedEmployee.firstName,
+                             lastName: sortedEmployee.lastName,
+                             tag: sortedEmployee.userTag,
+                             department: sortedEmployee.department,
+                             dateBirth: formatDate(date: sortedEmployee.birthdayDate))
+            } else {
+                let employee = filteredEmployee[indexPath.row]
+                cell.setData(
+                    firstName: employee.firstName,
+                    lastName: employee.lastName,
+                    tag: employee.userTag,
+                    department: employee.department,
+                    dateBirth: formatDate(date: employee.birthdayDate))
+            }
+            cell.setBirthdayLabelVisibility(shouldShowBirthday: self.shouldShowBirthday)
+            cell.setViewWithData()
+        } else {
+            cell.setLoadingView()
+        }
+        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -269,6 +299,7 @@ extension EmployeeListViewController: UISearchBarDelegate {
 extension EmployeeListViewController: SortViewDelegate {
     func sortByAlphabet() {
         employee.sort(by: { $0.firstName < $1.firstName })
+        updateSortButtonSelection()
         mainView.employeeTableView.reloadData()
     }
     func sortByBirthday() {
@@ -286,6 +317,7 @@ extension EmployeeListViewController: SortViewDelegate {
             return dayDifference1 < dayDifference2
         }
         mainView.employeeTableView.reloadData()
+        updateSortButtonSelection()
     }
     func showBirthday(shouldShow: Bool) {
         self.shouldShowBirthday = shouldShow
