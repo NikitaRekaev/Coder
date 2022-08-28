@@ -2,7 +2,15 @@ import UIKit
 
 class EmployeeTableViewCell: UITableViewCell {
     static let identifier = "tableCell"
-
+    var shouldShowBirthday = false
+    let birthdayLabel: UILabel = {
+        let view = UILabel()
+        view.numberOfLines = 0
+        view.textColor = UIColor(red: 0.333, green: 0.333, blue: 0.361, alpha: 1)
+        view.font = UIFont(name: "Inter-regular", size: 15)
+        view.isHidden = true
+        return view
+    }()
     private let employeeImageView: UIImageView = {
         let view = UIImageView()
         view.clipsToBounds = true
@@ -65,11 +73,15 @@ class EmployeeTableViewCell: UITableViewCell {
         addSubview(imageLoadingView)
         addSubview(nameLoadingView)
         addSubview(departmentLoadingView)
+        addSubview(birthdayLabel)
         setupConstraints()
         setLoadingViewsConstraints()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    func setBirthdayLabelVisibility(shouldShowBirthday: Bool) {
+        birthdayLabel.isHidden = !shouldShowBirthday
     }
     private func setupConstraints() {
         employeeImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -96,32 +108,29 @@ class EmployeeTableViewCell: UITableViewCell {
         ])
     }
     private func setLoadingViewsConstraints() {
-
         imageLoadingView.translatesAutoresizingMaskIntoConstraints = false
-
         NSLayoutConstraint.activate([
             imageLoadingView.centerYAnchor.constraint(equalTo: centerYAnchor),
             imageLoadingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             imageLoadingView.heightAnchor.constraint(equalToConstant: 72),
             imageLoadingView.widthAnchor.constraint(equalToConstant: 72)])
-
         nameLoadingView.translatesAutoresizingMaskIntoConstraints = false
-
         NSLayoutConstraint.activate([
-
             nameLoadingView.leadingAnchor.constraint(equalTo: imageLoadingView.trailingAnchor, constant: 16),
             nameLoadingView.centerYAnchor.constraint(equalTo: imageLoadingView.centerYAnchor, constant: -20),
             nameLoadingView.widthAnchor.constraint(equalToConstant: 144),
             nameLoadingView.heightAnchor.constraint(equalToConstant: 16)])
-
         departmentLoadingView.translatesAutoresizingMaskIntoConstraints = false
-
         NSLayoutConstraint.activate([
-
             departmentLoadingView.leadingAnchor.constraint(equalTo: nameLoadingView.leadingAnchor),
             departmentLoadingView.centerYAnchor.constraint(equalTo: nameLoadingView.centerYAnchor, constant: 20),
             departmentLoadingView.widthAnchor.constraint(equalToConstant: 80),
             departmentLoadingView.heightAnchor.constraint(equalToConstant: 12)])
+        birthdayLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            birthdayLabel.centerYAnchor.constraint(equalTo: employeeImageView.centerYAnchor, constant: -12),
+            birthdayLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -19.5)
+        ])
 
     }
     func setLoadingView() {
@@ -152,6 +161,7 @@ class EmployeeTableViewCell: UITableViewCell {
         nameLabel.text = "\(firstName) \(lastName)"
         tagLabel.text = tag
         departmentLabel.text = department?.title
+        birthdayLabel.text = dateBirth
     }
 
 }
