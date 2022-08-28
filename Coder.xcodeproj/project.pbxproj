@@ -283,11 +283,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11300F3128953E5E00BC51E4 /* Build configuration list for PBXNativeTarget "Coder" */;
 			buildPhases = (
-				111B691C28B63FE3006E2BF0 /* ShellScript */,
 				DFF7F74C51BD687CE3407311 /* [CP] Check Pods Manifest.lock */,
+				111B691C28B63FE3006E2BF0 /* ShellScript */,
 				11300F1928953E5D00BC51E4 /* Sources */,
 				11300F1A28953E5D00BC51E4 /* Frameworks */,
 				11300F1B28953E5D00BC51E4 /* Resources */,
+				BCFA5361E7B7F54597D7D019 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -369,6 +370,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+		BCFA5361E7B7F54597D7D019 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Coder/Pods-Coder-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Coder/Pods-Coder-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Coder/Pods-Coder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		DFF7F74C51BD687CE3407311 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

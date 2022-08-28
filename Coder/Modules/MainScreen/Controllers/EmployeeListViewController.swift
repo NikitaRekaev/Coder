@@ -1,4 +1,5 @@
 import UIKit
+import SkeletonView
 
 class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
     var shouldShowBirthday: Bool = false
