@@ -2,14 +2,17 @@ import UIKit
 import SkeletonView
 
 class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
-    var shouldShowBirthday: Bool = false
+    
     let sortVC = SortViewController()
+    var shouldShowBirthday: Bool = false
+    
     private var searchText: String = ""
     private let tabs = DepartmentModel.allCases
     private let departmentAll = DepartmentModel.all
     private var selectedDepartment: DepartmentModel?
     private var employee: [EmployeeModel] = []
     private let employeeProvider = ApiProvider()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.setupSearchBar()
@@ -41,10 +44,12 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
+    
     private var filteredEmployee: [EmployeeModel] {
         return employee
             .filter({
@@ -54,19 +59,23 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
                 $0.firstName.starts(with: searchText) || $0.lastName.starts(with: searchText) || searchText.isEmpty
             })
     }
+    
     var thisYearBirthdayEmployee: [EmployeeModel] {
         return filteredEmployee.filter {
             return self.calculateDayDifference(birthdayDate: $0.birthdayDate) > 0
         }
     }
+    
     var nextYearBirthdayEmployee: [EmployeeModel] {
         return filteredEmployee.filter {
             return self.calculateDayDifference(birthdayDate: $0.birthdayDate) < 0
         }
     }
+    
     var employeeModelForSections: [[EmployeeModel]] {
         return [thisYearBirthdayEmployee, nextYearBirthdayEmployee]
     }
+    
     func calculateDayDifference(birthdayDate: Date?) -> Int {
         guard let date = birthdayDate else { return 0}
         let calendar = Calendar.current
@@ -82,6 +91,7 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
                                                           from: dateCurrent, to: bufferDate).day else { return 0 }
         return dayDifference
     }
+    
     func updateSearchResults(_ searchBar: UISearchBar) {
         searchText = mainView.searchBar.text ?? ""
         if searchText.isEmpty {
@@ -91,12 +101,14 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
         }
             mainView.employeeTableView.reloadData()
     }
+    
     private lazy var refreshControl: UIRefreshControl = {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
         refresh.tintColor = .lightGray
         return refresh
     }()
+    
     @objc private func didPullToRefresh(_ sender: UIRefreshControl) {
         self.mainView.setMainView()
         employeeProvider.getData(EmployeeList.self,
@@ -115,15 +127,20 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
             }
         }
     }
+    
     @objc private func checkConnection(_ sender: UIButton) {
         sender.backgroundColor = UIColor(red: 0.3, green: 0.5, blue: 0.8, alpha: 0.3)
         self.mainView.setMainView()
         employeeProvider.getData(EmployeeList.self,
                                  from: "/kode-education/trainee-test/25143926/users", self.loadData(result:))
     }
+    
     private func loadData(result: Result<EmployeeList, Error>) {
         switch result {
         case let .success(responseData):
+            self.mainView.hideSkeleton()
+            self.mainView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
+
             self.employee = responseData.items
             self.mainView.setMainView()
             self.mainView.employeeTableView.reloadData()
@@ -131,6 +148,7 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
             self.mainView.setErrorView()
         }
     }
+    
     private func formatDate (date: Date?) -> String {
             let formatter = DateFormatter()
             formatter.locale = Locale(identifier: "ru_RU")
@@ -148,12 +166,14 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
         }
         return "Дата не была получена"
     }
+    
     private func updateDepartmentSelection() {
         mainView.topTabsCollectionView.visibleCells.compactMap({ $0 as? TopTabsCollectionViewCell }).forEach({ cell in
             let shouldBeSelected = cell.model == self.selectedDepartment
             cell.setCellSelected(shouldBeSelected)
         })
     }
+    
     private func updateSortButtonSelection() {
         if shouldShowBirthday {
             mainView.searchBar.setImage(UIImage(named: "list-ui-alt"), for: .bookmark, state: .normal)
@@ -166,23 +186,25 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
 // MARK: extension for UITableView
 
 extension EmployeeListViewController: UITableViewDelegate, UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         if employee.isEmpty {
             return 15
         } else {
-        if self.shouldShowBirthday {
-            return section == 0 ? thisYearBirthdayEmployee.count : nextYearBirthdayEmployee.count
-        } else {
-            return filteredEmployee.count // теперь всегда данные берем из filtered
+            if self.shouldShowBirthday {
+                return section == 0 ? thisYearBirthdayEmployee.count : nextYearBirthdayEmployee.count
+            } else {
+                return filteredEmployee.count
+            }
         }
     }
-}
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-
+        
         return self.shouldShowBirthday ?  2 : 1
-}
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             return nil
@@ -190,6 +212,7 @@ extension EmployeeListViewController: UITableViewDelegate, UITableViewDataSource
             return HeaderSectionView()
         }
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 0
@@ -197,13 +220,16 @@ extension EmployeeListViewController: UITableViewDelegate, UITableViewDataSource
             return 68
         }
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: EmployeeTableViewCell.identifier
-        ) as? EmployeeTableViewCell else {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: EmployeeTableViewCell.identifier)
+                as? EmployeeTableViewCell else {
             return UITableViewCell()
         }
+        
         cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: tableView.bounds.width)
+        
         if !employee.isEmpty {
             if shouldShowBirthday {
                 let sortedEmployee = employeeModelForSections[indexPath.section][indexPath.row]
@@ -214,6 +240,7 @@ extension EmployeeListViewController: UITableViewDelegate, UITableViewDataSource
                              dateBirth: formatDate(date: sortedEmployee.birthdayDate))
             } else {
                 let employee = filteredEmployee[indexPath.row]
+                
                 cell.setData(
                     firstName: employee.firstName,
                     lastName: employee.lastName,
@@ -221,6 +248,7 @@ extension EmployeeListViewController: UITableViewDelegate, UITableViewDataSource
                     department: employee.department,
                     dateBirth: formatDate(date: employee.birthdayDate))
             }
+            
             cell.setBirthdayLabelVisibility(shouldShowBirthday: self.shouldShowBirthday)
             cell.setViewWithData()
         } else {
@@ -228,9 +256,9 @@ extension EmployeeListViewController: UITableViewDelegate, UITableViewDataSource
         }
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
         let viewController = DetailsViewController()
         viewController.employee = filteredEmployee[indexPath.item]
         tableView.deselectRow(at: indexPath, animated: false)
@@ -241,46 +269,56 @@ extension EmployeeListViewController: UITableViewDelegate, UITableViewDataSource
 // MARK: extension for UICollectionView
 
 extension EmployeeListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tabs.count
     }
+    
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopTabsCollectionViewCell.identifier,
                                                             for: indexPath) as? TopTabsCollectionViewCell else {
             return UICollectionViewCell()
         }
+        
         cell.setModel(tabs[indexPath.item])
         cell.setCellSelected(tabs[indexPath.item] == selectedDepartment)
+        
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         if selectedDepartment == tabs[indexPath.item] {
             selectedDepartment = nil
         } else {
             selectedDepartment = tabs[indexPath.item]
         }
+        
         mainView.employeeTableView.reloadData()
         updateDepartmentSelection()
     }
-
 }
 
 // MARK: - UISearchBarDelegate
 
 extension EmployeeListViewController: UISearchBarDelegate {
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchText = mainView.searchBar.text ?? ""
+        
         if self.searchText.isEmpty {
             mainView.setNotFoundView()
         } else {
             mainView.setIsFoundView()
         }
-            mainView.employeeTableView.reloadData()
+        mainView.employeeTableView.reloadData()
     }
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         mainView.searchBar.showsCancelButton = true
     }
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         mainView.searchBar.showsCancelButton = false
         mainView.searchBar.showsBookmarkButton = true
@@ -290,36 +328,42 @@ extension EmployeeListViewController: UISearchBarDelegate {
         mainView.setIsFoundView()
         mainView.employeeTableView.reloadData()
     }
+    
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         present(sortVC, animated: true, completion: nil)
     }
 }
 
- // MARK: - SortViewDelegate
+// MARK: - SortViewDelegate
 
 extension EmployeeListViewController: SortViewDelegate {
+    
     func sortByAlphabet() {
         employee.sort(by: { $0.firstName < $1.firstName })
         updateSortButtonSelection()
         mainView.employeeTableView.reloadData()
     }
+    
     func sortByBirthday() {
         employee.sort { date1, date2 in
             guard let date1 = date1.birthdayDate else { return false }
             guard let date2 = date2.birthdayDate else { return false }
             var dayDifference1 = calculateDayDifference(birthdayDate: date1)
             var dayDifference2 = calculateDayDifference(birthdayDate: date2)
+            
             if dayDifference1 < 0 {
                 dayDifference1 += 365
             }
             if dayDifference2 < 0 {
                 dayDifference2 += 365
             }
+            
             return dayDifference1 < dayDifference2
         }
         mainView.employeeTableView.reloadData()
         updateSortButtonSelection()
     }
+    
     func showBirthday(shouldShow: Bool) {
         self.shouldShowBirthday = shouldShow
         mainView.employeeTableView.reloadData()
