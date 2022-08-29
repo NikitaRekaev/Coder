@@ -1,6 +1,7 @@
 import UIKit
 
 class SortView: BaseView {
+    
     let alphabetSortButton: UIButton = {
         let button = UIButton()
         button.setTitle("По алфавиту", for: .normal)
@@ -11,6 +12,7 @@ class SortView: BaseView {
         button.titleEdgeInsets.left = 14
         return button
     }()
+    
     let birthdaySortButton: UIButton = {
         let button = UIButton()
         button.setTitle("По дню рождения", for: .normal)
@@ -21,6 +23,7 @@ class SortView: BaseView {
         button.titleEdgeInsets.left = 14
         return button
      }()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Сортировка"
@@ -28,6 +31,7 @@ class SortView: BaseView {
         label.font = UIFont(name: "Inter-SemiBold", size: 20)
         return label
     }()
+    
     override func setup() {
         backgroundColor = .white
         addSubview(titleLabel)
@@ -35,17 +39,20 @@ class SortView: BaseView {
         addSubview(birthdaySortButton)
         setupConstraints()
     }
+    
    private func setupConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 24),
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)])
+       
         alphabetSortButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             alphabetSortButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 41.5),
             alphabetSortButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 26),
             alphabetSortButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -214)
         ])
+       
         birthdaySortButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             birthdaySortButton.topAnchor.constraint(equalTo: alphabetSortButton.bottomAnchor, constant: 35),
