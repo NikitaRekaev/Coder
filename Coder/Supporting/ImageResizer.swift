@@ -1,6 +1,7 @@
 import UIKit
 
 extension UIImage {
+    
     func resized(_ targetSize: CGSize) -> UIImage! {
         let currentSize = self.size
         let widthRatio = targetSize.width / currentSize.width
