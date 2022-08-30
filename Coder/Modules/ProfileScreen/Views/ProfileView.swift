@@ -66,7 +66,6 @@ class ProfileView: BaseView {
         addSubview(stackView)
         stackView.addArrangedSubview(birthView)
         stackView.addArrangedSubview(phoneView)
-        
         setupConstraints()
     }
     
@@ -103,7 +102,9 @@ class ProfileView: BaseView {
         NSLayoutConstraint.activate([
         stackView.topAnchor.constraint(equalTo: upView.bottomAnchor),
         stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-        stackView.trailingAnchor.constraint(equalTo: trailingAnchor)])
+        stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+        stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
     }
     
 // swiftlint:disable function_parameter_count

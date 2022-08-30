@@ -7,7 +7,7 @@ class DetailsViewController: BaseViewController<ProfileView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "SecondViewController"
-        mainView.phoneView.phoneButton.addTarget(self, action: #selector(phoneButtonClicked(_:)), for: .touchUpInside)
+        mainView.phoneView.phoneButton.addTarget(self, action: #selector(phoneButtonClicked), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,7 +90,8 @@ class DetailsViewController: BaseViewController<ProfileView> {
         present(alert, animated: true, completion: nil)
     }
     
-    @objc func phoneButtonClicked(_ sender: UIButton) {
+    @objc func phoneButtonClicked() {
         aler(title: formatPhone(phone: employee.phone), titleSecond: formatPhone(phone: employee.phone))
+        print("work phoneButton")
     }
 }
