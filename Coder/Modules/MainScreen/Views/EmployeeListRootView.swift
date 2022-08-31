@@ -1,4 +1,5 @@
 import UIKit
+import SkeletonView
 
 class EmployeeListRootView: BaseView {
     
@@ -8,13 +9,6 @@ class EmployeeListRootView: BaseView {
     
     let notFoundSearchView: NotFoundOnSearchView = {
         let view = NotFoundOnSearchView()
-        view.isHidden = true
-        return view
-    }()
-    
-    let globalView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(red: 0.02, green: 0.02, blue: 0.063, alpha: 0.16)
         view.isHidden = true
         return view
     }()
@@ -43,21 +37,13 @@ class EmployeeListRootView: BaseView {
         addSubview(topTabsCollectionView)
         addSubview(separatorLineUnderTabs)
         addSubview(errorView)
-        addSubview(globalView)
-        
+
+        employeeTableView.isSkeletonable = true
         setupConstraints()
         setViewDependingOnConnection()
     }
     
     private func setupConstraints() {
-        globalView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            globalView.topAnchor.constraint(equalTo: topAnchor),
-            globalView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            globalView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            globalView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-        
         topTabsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             topTabsCollectionView.topAnchor.constraint(equalTo: topAnchor, constant: 96),
@@ -68,7 +54,7 @@ class EmployeeListRootView: BaseView {
         
         separatorLineUnderTabs.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            separatorLineUnderTabs.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor, constant: 7.67),
+            separatorLineUnderTabs.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor, constant: 0),
             separatorLineUnderTabs.leadingAnchor.constraint(equalTo: leadingAnchor),
             separatorLineUnderTabs.trailingAnchor.constraint(equalTo: trailingAnchor),
             separatorLineUnderTabs.heightAnchor.constraint(equalToConstant: 0.33)
@@ -84,7 +70,7 @@ class EmployeeListRootView: BaseView {
         
         employeeTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            employeeTableView.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor, constant: 22),
+            employeeTableView.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor, constant: 0),
             employeeTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             employeeTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             employeeTableView.bottomAnchor.constraint(equalTo: bottomAnchor)
@@ -145,10 +131,6 @@ class EmployeeListRootView: BaseView {
         searchBar.sizeToFit()
         searchBar.placeholder = "Введи имя, тег, почту..."
         searchBar.setValue("Отмена", forKey: "cancelButtonText")
-    }
-    
-    func setDimView(_ shouldSet: Bool) {
-        shouldSet ? (globalView.isHidden = false) : (globalView.isHidden = true)
     }
     
     func setNotFoundView() {
