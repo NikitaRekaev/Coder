@@ -9,12 +9,14 @@ struct EmployeeModel: Codable {
     let department: DepartmentModel?
     let position: String
     let birthday: String
+    
     var birthdayDate: Date? {
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd"
         let date = dateFormatterGet.date(from: birthday)
         return date
-}
+    }
+    
     let phone: String
 }
 

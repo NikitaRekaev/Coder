@@ -1,9 +1,11 @@
 import Foundation
 
 class ApiProvider {
+    
     init(baseUrl: URL = URL(string: "https://stoplight.io/mocks/")!) {
         self.baseUrl = baseUrl
     }
+    
     private let baseUrl: URL
     @discardableResult func getData<Response: Codable>(
         _ model: Response.Type = Response.self,
@@ -23,6 +25,7 @@ class ApiProvider {
                 }
              return
             }
+            
             do {
                 let decoder = JSONDecoder()
                 let dateFormatter = DateFormatter()

@@ -1,16 +1,19 @@
 import UIKit
 
 class DetailsViewController: BaseViewController<ProfileView> {
+    
     var employee: EmployeeModel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "SecondViewController"
-        mainView.phoneView.phoneButton.addTarget(self, action: #selector(phoneButtonClicked(_:)), for: .touchUpInside)
+        mainView.phoneView.phoneButton.addTarget(self, action: #selector(phoneButtonClicked), for: .touchUpInside)
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.tintColor = .black
+        
         let formattedPhone = formatPhone(phone: employee.phone)
         let formattedBirthday = formatDate(date: employee.birthdayDate)
         let calculatedYears = calculateYears(date: employee.birthdayDate)
@@ -22,6 +25,7 @@ class DetailsViewController: BaseViewController<ProfileView> {
                          dateBirth: formattedBirthday,
                          years: calculatedYears)
     }
+    
     func formatPhone(phone: String) -> String {
         var formattedPhone = "+7 (" + phone.filter { $0.isNumber }
         formattedPhone.insert(contentsOf: [")", " "], at: formattedPhone.index(formattedPhone.startIndex, offsetBy: 7))
@@ -29,12 +33,13 @@ class DetailsViewController: BaseViewController<ProfileView> {
         formattedPhone.insert(" ", at: formattedPhone.index(formattedPhone.startIndex, offsetBy: 15))
         return formattedPhone
     }
+    
     func formatDate (date: Date?) -> String {
-
-            let formatter = DateFormatter()
-            formatter.locale = Locale(identifier: "ru_RU")
-            formatter.setLocalizedDateFormatFromTemplate("dd MMMM yyyy")
-
+        
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ru_RU")
+        formatter.setLocalizedDateFormatFromTemplate("dd MMMM yyyy")
+        
         if let date = date {
             var date = formatter.string(from: date)
             date.removeLast(3)
@@ -42,13 +47,16 @@ class DetailsViewController: BaseViewController<ProfileView> {
         }
         return "Дата не была получена"
     }
+    
     func calculateYears(date: Date?) -> String {
         if let date = date {
             let calendar = Calendar.current
             let dateCurrent = Date()
+            
             if let years = calendar.dateComponents([.year], from: date, to: dateCurrent).year {
                 var stringOfAge = "\(years)"
                 let arrayOfAge = stringOfAge.compactMap { $0.wholeNumberValue }
+                
                 if arrayOfAge.last != nil {
                     switch arrayOfAge.last! {
                     case 1: stringOfAge = "\(years) год"
@@ -61,8 +69,10 @@ class DetailsViewController: BaseViewController<ProfileView> {
         }
         return "Не удалось вычислить год"
     }
+    
     private func aler(title: String, titleSecond: String) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
         let number = UIAlertAction(title: title, style: .default) { _ in
             if let phoneCallURL = URL(string: "tel://\(titleSecond)") {
                 let application: UIApplication = UIApplication.shared
@@ -71,6 +81,7 @@ class DetailsViewController: BaseViewController<ProfileView> {
                 }
             }
         }
+        
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         cancel.setValue(UIColor.black, forKey: "titleTextColor")
         number.setValue(UIColor.black, forKey: "titleTextColor")
@@ -78,7 +89,8 @@ class DetailsViewController: BaseViewController<ProfileView> {
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
-    @objc func phoneButtonClicked(_ sender: UIButton) {
-        aler(title: formatPhone(phone: employee.phone), titleSecond: "")
+    
+    @objc func phoneButtonClicked() {
+        aler(title: formatPhone(phone: employee.phone), titleSecond: formatPhone(phone: employee.phone))
     }
 }

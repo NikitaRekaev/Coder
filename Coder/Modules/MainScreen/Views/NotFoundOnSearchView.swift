@@ -1,11 +1,13 @@
 import UIKit
 
 class NotFoundOnSearchView: BaseView {
+    
     private let loupe: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "loupe")
         return view
     }()
+    
     private let employeeNotFoundLabel: UILabel = {
         let view = UILabel()
         view.text = "Мы никого не нашли"
@@ -15,6 +17,7 @@ class NotFoundOnSearchView: BaseView {
         view.textAlignment = .center
         return view
     }()
+    
     private let tryToCorrectLabel: UILabel = {
         let view = UILabel()
         view.text = "Попробуйте скорректировать запрос"
@@ -29,8 +32,10 @@ class NotFoundOnSearchView: BaseView {
         addSubview(loupe)
         addSubview(employeeNotFoundLabel)
         addSubview(tryToCorrectLabel)
+        
         setupConstraints()
     }
+    
     private func setupConstraints() {
         loupe.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -39,16 +44,17 @@ class NotFoundOnSearchView: BaseView {
             loupe.widthAnchor.constraint(equalToConstant: 56),
             loupe.heightAnchor.constraint(equalToConstant: 56)
         ])
+        
         employeeNotFoundLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             employeeNotFoundLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             employeeNotFoundLabel.topAnchor.constraint(equalTo: loupe.bottomAnchor, constant: 8)
         ])
+        
         tryToCorrectLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tryToCorrectLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             tryToCorrectLabel.topAnchor.constraint(equalTo: employeeNotFoundLabel.bottomAnchor, constant: 12)
         ])
     }
-
 }
