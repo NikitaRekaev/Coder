@@ -1,31 +1,39 @@
 import UIKit
+import SkeletonView
 
 class EmployeeTableViewCell: UITableViewCell {
     
     static let identifier = "tableCell"
     var shouldShowBirthday = false
     
-    let birthdayLabel: UILabel = {
-        let view = UILabel()
-        view.numberOfLines = 0
-        view.textColor = UIColor(red: 0.333, green: 0.333, blue: 0.361, alpha: 1)
-        view.font = UIFont(name: "Inter-regular", size: 15)
-        view.isHidden = true
-        return view
-    }()
-    
-    private let employeeImageView: UIImageView = {
+    let employeeImageView: UIImageView = {
         let view = UIImageView()
+        view.skeletonCornerRadius = 36
+        view.showSkeleton(usingColor: .lightGray, animated: true, delay: 0, transition: .crossDissolve(0.25))
         view.clipsToBounds = true
         view.layer.borderWidth = 0
         return view
     }()
     
-    private let nameLabel: UILabel = {
+    let nameLabel: UILabel = {
         let view = UILabel()
+        view.skeletonCornerRadius = 8
+        view.showSkeleton(usingColor: .lightGray, animated: true, delay: 0, transition: .crossDissolve(0.25))
         view.numberOfLines = 0
+        view.text = "Nikita Rekaev"
         view.textColor = UIColor(red: 0.02, green: 0.02, blue: 0.063, alpha: 1)
         view.font = UIFont(name: "Inter-Medium", size: 16)
+        return view
+    }()
+    
+    let departmentLabel: UILabel = {
+        let view = UILabel()
+        view.skeletonCornerRadius = 7
+        view.showSkeleton(usingColor: .lightGray, animated: true, delay: 0, transition: .crossDissolve(0.25))
+        view.numberOfLines = 0
+        view.text = "iOS Developer"
+        view.textColor = UIColor(red: 0.333, green: 0.333, blue: 0.361, alpha: 1)
+        view.font = UIFont(name: "Inter-Regular", size: 13)
         return view
     }()
     
@@ -37,37 +45,12 @@ class EmployeeTableViewCell: UITableViewCell {
         return view
     }()
     
-    private let departmentLabel: UILabel = {
+    let birthdayLabel: UILabel = {
         let view = UILabel()
         view.numberOfLines = 0
         view.textColor = UIColor(red: 0.333, green: 0.333, blue: 0.361, alpha: 1)
-        view.font = UIFont(name: "Inter-Regular", size: 13)
-        return view
-    }()
-    
-// MARK: Loading views
-    
-    private let nameLoadingView: UIView = {
-        let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: 144, height: 16)
-        view.layer.cornerRadius = 8
-        view.backgroundColor = UIColor(red: 0.955, green: 0.955, blue: 0.965, alpha: 1)
-        return view
-    }()
-
-    private let departmentLoadingView: UIView = {
-        let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: 80, height: 12)
-        view.layer.cornerRadius = 6
-        view.backgroundColor = UIColor(red: 0.955, green: 0.955, blue: 0.965, alpha: 1)
-        return view
-    }()
-
-    private let imageLoadingView: UIView = {
-        let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: 72, height: 72)
-        view.layer.cornerRadius = 36
-        view.backgroundColor = UIColor(red: 0.955, green: 0.955, blue: 0.965, alpha: 1)
+        view.font = UIFont(name: "Inter-regular", size: 15)
+        view.isHidden = true
         return view
     }()
     
@@ -79,13 +62,9 @@ class EmployeeTableViewCell: UITableViewCell {
         addSubview(nameLabel)
         addSubview(tagLabel)
         addSubview(departmentLabel)
-        addSubview(imageLoadingView)
-        addSubview(nameLoadingView)
-        addSubview(departmentLoadingView)
         addSubview(birthdayLabel)
         
         setupConstraints()
-        setLoadingViewsConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -122,59 +101,6 @@ class EmployeeTableViewCell: UITableViewCell {
             departmentLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             departmentLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor, constant: 20)
         ])
-    }
-    
-    private func setLoadingViewsConstraints() {
-        imageLoadingView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            imageLoadingView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            imageLoadingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            imageLoadingView.heightAnchor.constraint(equalToConstant: 72),
-            imageLoadingView.widthAnchor.constraint(equalToConstant: 72)])
-        
-        nameLoadingView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            nameLoadingView.leadingAnchor.constraint(equalTo: imageLoadingView.trailingAnchor, constant: 16),
-            nameLoadingView.centerYAnchor.constraint(equalTo: imageLoadingView.centerYAnchor, constant: -20),
-            nameLoadingView.widthAnchor.constraint(equalToConstant: 144),
-            nameLoadingView.heightAnchor.constraint(equalToConstant: 16)])
-        
-        departmentLoadingView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            departmentLoadingView.leadingAnchor.constraint(equalTo: nameLoadingView.leadingAnchor),
-            departmentLoadingView.centerYAnchor.constraint(equalTo: nameLoadingView.centerYAnchor, constant: 20),
-            departmentLoadingView.widthAnchor.constraint(equalToConstant: 80),
-            departmentLoadingView.heightAnchor.constraint(equalToConstant: 12)])
-        
-        birthdayLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            birthdayLabel.centerYAnchor.constraint(equalTo: employeeImageView.centerYAnchor, constant: -12),
-            birthdayLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -19.5)
-        ])
-    }
-    
-    func setLoadingView() {
-        nameLabel.isHidden = true
-        employeeImageView.isHidden = true
-        departmentLabel.isHidden = true
-        tagLabel.isHidden = true
-        departmentLabel.isHidden = true
-
-        imageLoadingView.isHidden = false
-        nameLoadingView.isHidden = false
-        departmentLoadingView.isHidden = false
-    }
-    
-    func setViewWithData() {
-        nameLabel.isHidden = false
-        employeeImageView.isHidden = false
-        departmentLabel.isHidden = false
-        tagLabel.isHidden = false
-        departmentLabel.isHidden = false
-        
-        imageLoadingView.isHidden = true
-        nameLoadingView.isHidden = true
-        departmentLoadingView.isHidden = true
     }
     
     func setData(firstName: String, lastName: String, tag: String, department: DepartmentModel?, dateBirth: String) {
