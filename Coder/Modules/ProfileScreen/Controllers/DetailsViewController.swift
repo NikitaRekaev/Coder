@@ -92,6 +92,5 @@ class DetailsViewController: BaseViewController<ProfileView> {
     
     @objc func phoneButtonClicked() {
         aler(title: formatPhone(phone: employee.phone), titleSecond: formatPhone(phone: employee.phone))
-        print("work phoneButton")
     }
 }
