@@ -17,24 +17,20 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
         super.viewDidLoad()
         mainView.setupSearchBar()
         mainView.errorView.tryAgainButton.addTarget(self, action: #selector(checkConnection(_:)), for: .touchUpInside)
-        mainView.employeeTableView.refreshControl = refreshControl
-        mainView.employeeTableView.separatorColor = .clear
-        mainView.employeeTableView.delegate = self
-        mainView.employeeTableView.dataSource = self
         mainView.topTabsCollectionView.delegate = self
         mainView.topTabsCollectionView.dataSource = self
-        mainView.employeeTableView.register(EmployeeTableViewCell.self,
-                                            forCellReuseIdentifier: EmployeeTableViewCell.identifier)
-        mainView.employeeTableView.rowHeight = 90
         mainView.topTabsCollectionView.register(TopTabsCollectionViewCell.self,
                                                 forCellWithReuseIdentifier: TopTabsCollectionViewCell.identifier)
         mainView.topTabsCollectionView.showsHorizontalScrollIndicator = false
+        setupTableView()
         employeeProvider.getData(EmployeeList.self, from: "/kode-education/trainee-test/25143926/users") { result in
             switch result {
             case let .success(responseData):
                 self.employee = responseData.items
                 self.mainView.setMainView()
                 self.mainView.employeeTableView.reloadData()
+                self.mainView.employeeTableView.hideSkeleton()
+                self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
             case .failure(_:):
                 self.mainView.setErrorView()
             }
@@ -48,6 +44,19 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    func setupTableView() {
+        mainView.employeeTableView.refreshControl = refreshControl
+        mainView.employeeTableView.separatorColor = .clear
+        mainView.employeeTableView.delegate = self
+        mainView.employeeTableView.dataSource = self
+        mainView.employeeTableView.isSkeletonable = true
+        mainView.employeeTableView.showSkeleton(usingColor: .lightGray, animated: true, delay: 0,
+                                                transition: .crossDissolve(0.25))
+        mainView.employeeTableView.register(EmployeeTableViewCell.self,
+                                            forCellReuseIdentifier: EmployeeTableViewCell.identifier)
+        mainView.employeeTableView.rowHeight = 90
     }
     
     private var filteredEmployee: [EmployeeModel] {
@@ -138,9 +147,6 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
     private func loadData(result: Result<EmployeeList, Error>) {
         switch result {
         case let .success(responseData):
-            self.mainView.hideSkeleton()
-            self.mainView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
-
             self.employee = responseData.items
             self.mainView.setMainView()
             self.mainView.employeeTableView.reloadData()
@@ -185,7 +191,12 @@ class EmployeeListViewController: BaseViewController<EmployeeListRootView> {
 
 // MARK: extension for UITableView
 
-extension EmployeeListViewController: UITableViewDelegate, UITableViewDataSource {
+extension EmployeeListViewController: SkeletonTableViewDelegate, SkeletonTableViewDataSource {
+    
+    func collectionSkeletonView(_ skeletonView: UITableView,
+                                cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        EmployeeTableViewCell.identifier
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -250,9 +261,8 @@ extension EmployeeListViewController: UITableViewDelegate, UITableViewDataSource
             }
             
             cell.setBirthdayLabelVisibility(shouldShowBirthday: self.shouldShowBirthday)
-            cell.setViewWithData()
         } else {
-            cell.setLoadingView()
+            mainView.showSkeleton()
         }
         return cell
     }
