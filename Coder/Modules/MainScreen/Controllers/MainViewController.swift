@@ -54,8 +54,8 @@ class MainViewController: BaseViewController<MainRootView> {
         mainView.userTableView.isSkeletonable = true
         mainView.userTableView.showSkeleton(usingColor: .lightGray, animated: true, delay: 0,
                                                 transition: .crossDissolve(0.25))
-        mainView.userTableView.register(EmployeeTableViewCell.self,
-                                            forCellReuseIdentifier: EmployeeTableViewCell.identifier)
+        mainView.userTableView.register(UserTableViewCell.self,
+                                            forCellReuseIdentifier: UserTableViewCell.identifier)
         mainView.userTableView.rowHeight = 90
     }
     
@@ -195,7 +195,7 @@ extension MainViewController: SkeletonTableViewDelegate, SkeletonTableViewDataSo
     
     func collectionSkeletonView(_ skeletonView: UITableView,
                                 cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        EmployeeTableViewCell.identifier
+        UserTableViewCell.identifier
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -234,8 +234,8 @@ extension MainViewController: SkeletonTableViewDelegate, SkeletonTableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: EmployeeTableViewCell.identifier)
-                as? EmployeeTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.identifier)
+                as? UserTableViewCell else {
             return UITableViewCell()
         }
         
@@ -269,7 +269,7 @@ extension MainViewController: SkeletonTableViewDelegate, SkeletonTableViewDataSo
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let viewController = DetailsViewController()
+        let viewController = ProfileViewController()
         viewController.item = filteredUser[indexPath.item]
         tableView.deselectRow(at: indexPath, animated: false)
         navigationController?.pushViewController(viewController, animated: true)

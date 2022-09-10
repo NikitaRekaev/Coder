@@ -1,12 +1,12 @@
 import UIKit
 import SkeletonView
 
-class EmployeeTableViewCell: UITableViewCell {
+class UserTableViewCell: UITableViewCell {
     
     static let identifier = "tableCell"
     var shouldShowBirthday = false
     
-    let employeeImageView: UIImageView = {
+    let avatarImageView: UIImageView = {
         let view = UIImageView()
         view.skeletonCornerRadius = 36
         view.showSkeleton(usingColor: .lightGray, animated: true, delay: 0, transition: .crossDissolve(0.25))
@@ -58,7 +58,7 @@ class EmployeeTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = .white
         
-        addSubview(employeeImageView)
+        addSubview(avatarImageView)
         addSubview(nameLabel)
         addSubview(tagLabel)
         addSubview(departmentLabel)
@@ -76,18 +76,18 @@ class EmployeeTableViewCell: UITableViewCell {
     }
     
     private func setupConstraints() {
-        employeeImageView.translatesAutoresizingMaskIntoConstraints = false
+        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            employeeImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-             employeeImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            employeeImageView.heightAnchor.constraint(equalToConstant: 72),
-             employeeImageView.widthAnchor.constraint(equalToConstant: 72)
+            avatarImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 72),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 72)
         ])
         
        nameLabel.translatesAutoresizingMaskIntoConstraints = false
        NSLayoutConstraint.activate([
-        nameLabel.leadingAnchor.constraint(equalTo: employeeImageView.trailingAnchor, constant: 16),
-        nameLabel.centerYAnchor.constraint(equalTo: employeeImageView.centerYAnchor, constant: -20)
+        nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
+        nameLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor, constant: -20)
        ])
         
         tagLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -103,8 +103,8 @@ class EmployeeTableViewCell: UITableViewCell {
         ])
     }
     
-    func setData(firstName: String, lastName: String, tag: String, department: DepartmentModel?, dateBirth: String) {
-        employeeImageView.image = UIImage(named: "goose")
+    func setData(firstName: String, lastName: String, tag: String, department: Department?, dateBirth: String) {
+        avatarImageView.image = UIImage(named: "goose")
         nameLabel.text = "\(firstName) \(lastName)"
         tagLabel.text = tag
         departmentLabel.text = department?.title
