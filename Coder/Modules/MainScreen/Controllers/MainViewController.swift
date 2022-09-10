@@ -2,12 +2,20 @@ import UIKit
 
 class MainViewController: BaseViewController<MainRootView> {
     
-    var shouldShowBirthday: Bool = false
+    private lazy var shouldShowBirthday: Bool = false
+    private lazy var sortVC = SortViewController()
+    private lazy var model = MainModel()
+    private lazy var tabs = Department.allCases
+    private lazy var apiProvider = ApiProvider()
     
-    private let sortVC = SortViewController()
-    private let model = MainModel()
-    private let tabs = Department.allCases
-    private let apiProvider = ApiProvider()
+    private lazy var refreshControl: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        refresh.tintColor = .lightGray
+        return refresh
+    }()
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,9 +23,7 @@ class MainViewController: BaseViewController<MainRootView> {
         setupNavigationItem()
         setupTopTabs()
         setupTableView()
-        
-        mainView.errorView.tryAgainButton.addTarget(self, action: #selector(checkConnection), for: .touchUpInside)
-        mainView.searchBar.searchTextField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+        setupTargets()
         
         apiProvider.getData(UserModel.self, from: "/kode-education/trainee-test/25143926/users") { result in
             switch result {
@@ -30,82 +36,9 @@ class MainViewController: BaseViewController<MainRootView> {
             }
         }
     }
-    
-    private lazy var refreshControl: UIRefreshControl = {
-        let refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
-        refresh.tintColor = .lightGray
-        return refresh
-    }()
-    
-    private func setupNavigationItem() {
-        mainView.setupSearchBar()
-        mainView.searchBar.delegate = self
-        navigationItem.titleView = mainView.searchBar
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    }
-    
-    private func setupTopTabs() {
-        mainView.topTabsCollectionView.delegate = self
-        mainView.topTabsCollectionView.dataSource = self
-        mainView.topTabsCollectionView.showsHorizontalScrollIndicator = false
-        mainView.topTabsCollectionView.register(
-            TopTabsCollectionViewCell.self,
-            forCellWithReuseIdentifier: TopTabsCollectionViewCell.identifier
-        )
-    }
-    
-    private func setupTableView() {
-        mainView.userTableView.refreshControl = refreshControl
-        mainView.userTableView.separatorColor = .clear
-        mainView.userTableView.delegate = self
-        mainView.userTableView.dataSource = self
-        mainView.userTableView.register(UserTableViewCell.self,
-                                            forCellReuseIdentifier: UserTableViewCell.identifier)
-        mainView.userTableView.rowHeight = 90
-    }
-    
-    private func updateSearchResults(_ searchBar: UISearchBar) {
-        model.searchText = mainView.searchBar.text ?? ""
-        if model.searchText.isEmpty {
-            mainView.setNotFoundView()
-        } else {
-            mainView.setIsFoundView()
-        }
-            mainView.userTableView.reloadData()
-    }
-    
-    private func loadData(result: Result<UserModel, Error>) {
-        switch result {
-        case let .success(responseData):
-            self.model.users = responseData.items
-            self.mainView.setMainView()
-            self.mainView.userTableView.reloadData()
-        case .failure(_:):
-            self.mainView.setErrorView()
-        }
-    }
-    
-    private func updateDepartmentSelection() {
-        mainView.topTabsCollectionView.visibleCells.compactMap({ $0 as? TopTabsCollectionViewCell }).forEach({ cell in
-            let shouldBeSelected = cell.model == model.selectedDepartment
-            cell.setCellSelected(shouldBeSelected)
-        })
-    }
-    
-    private func updateSortButtonSelection() {
-        if shouldShowBirthday {
-            mainView.searchBar.setImage(UIImage(named: "list-ui-alt"), for: .bookmark, state: .normal)
-        } else {
-            mainView.searchBar.setImage(UIImage(named: "list-ui-alt_selected"), for: .bookmark, state: .normal)
-        }
-    }
 }
 
-// MARK: UITableViewDelegate
+// MARK: - UITableViewDelegate
 
 extension MainViewController: UITableViewDelegate {
     
@@ -128,6 +61,8 @@ extension MainViewController: UITableViewDelegate {
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
+
+// MARK: - UITableViewDataSource
 
 extension MainViewController: UITableViewDataSource {
     
@@ -184,7 +119,7 @@ extension MainViewController: UITableViewDataSource {
     }
 }
 
-// MARK: UICollectionViewDelegate
+// MARK: - UICollectionViewDelegate
 
 extension MainViewController: UICollectionViewDelegate {
     
@@ -208,7 +143,7 @@ extension MainViewController: UICollectionViewDelegate {
     }
 }
 
-// MARK: UICollectionViewDataSource
+// MARK: - UICollectionViewDataSource
 
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -224,7 +159,7 @@ extension MainViewController: UICollectionViewDataSource {
     }
 }
 
-// MARK: UISearchBarDelegate
+// MARK: - UISearchBarDelegate
 
 extension MainViewController: UISearchBarDelegate {
     
@@ -258,7 +193,7 @@ extension MainViewController: UISearchBarDelegate {
     }
 }
 
-// MARK: SortDelegate
+// MARK: - SortDelegate
 
 extension MainViewController: SortDelegate {
     
@@ -277,6 +212,82 @@ extension MainViewController: SortDelegate {
     func showBirthday(shouldShow: Bool) {
         self.shouldShowBirthday = shouldShow
         mainView.userTableView.reloadData()
+    }
+}
+
+// MARK: - Private Methods
+
+private extension MainViewController {
+    
+    func setupTargets() {
+        mainView.errorView.tryAgainButton.addTarget(self, action: #selector(checkConnection), for: .touchUpInside)
+        mainView.searchBar.searchTextField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+    }
+    
+    func setupNavigationItem() {
+        mainView.setupSearchBar()
+        mainView.searchBar.delegate = self
+        navigationItem.titleView = mainView.searchBar
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    func setupTopTabs() {
+        mainView.topTabsCollectionView.delegate = self
+        mainView.topTabsCollectionView.dataSource = self
+        mainView.topTabsCollectionView.showsHorizontalScrollIndicator = false
+        mainView.topTabsCollectionView.register(
+            TopTabsCollectionViewCell.self,
+            forCellWithReuseIdentifier: TopTabsCollectionViewCell.identifier
+        )
+    }
+    
+    func setupTableView() {
+        mainView.userTableView.refreshControl = refreshControl
+        mainView.userTableView.separatorColor = .clear
+        mainView.userTableView.delegate = self
+        mainView.userTableView.dataSource = self
+        mainView.userTableView.register(UserTableViewCell.self,
+                                            forCellReuseIdentifier: UserTableViewCell.identifier)
+        mainView.userTableView.rowHeight = 90
+    }
+    
+    func updateSearchResults(_ searchBar: UISearchBar) {
+        model.searchText = mainView.searchBar.text ?? ""
+        if model.searchText.isEmpty {
+            mainView.setNotFoundView()
+        } else {
+            mainView.setIsFoundView()
+        }
+            mainView.userTableView.reloadData()
+    }
+    
+    func loadData(result: Result<UserModel, Error>) {
+        switch result {
+        case let .success(responseData):
+            self.model.users = responseData.items
+            self.mainView.setMainView()
+            self.mainView.userTableView.reloadData()
+        case .failure(_:):
+            self.mainView.setErrorView()
+        }
+    }
+    
+    func updateDepartmentSelection() {
+        mainView.topTabsCollectionView.visibleCells.compactMap({ $0 as? TopTabsCollectionViewCell }).forEach({ cell in
+            let shouldBeSelected = cell.model == model.selectedDepartment
+            cell.setCellSelected(shouldBeSelected)
+        })
+    }
+    
+    func updateSortButtonSelection() {
+        if shouldShowBirthday {
+            mainView.searchBar.setImage(UIImage(named: "list-ui-alt"), for: .bookmark, state: .normal)
+        } else {
+            mainView.searchBar.setImage(UIImage(named: "list-ui-alt_selected"), for: .bookmark, state: .normal)
+        }
     }
 }
 
