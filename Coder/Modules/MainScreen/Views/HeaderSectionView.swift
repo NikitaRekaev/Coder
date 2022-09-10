@@ -2,37 +2,31 @@ import UIKit
 
 class HeaderSectionView: BaseView {
     
-    private let yearLabel: UILabel = {
-        let view = UILabel()
-        view.font = UIFont(name: "Inter-SemiBold", size: 15)
-        view.text = "2023"
-        view.textColor = UIColor(red: 0.765, green: 0.765, blue: 0.776, alpha: 1)
-        view.contentMode = .scaleAspectFit
-        view.textAlignment = .center
-        return view
-    }()
-    
-    private let rightLine: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
-        view.backgroundColor = UIColor(red: 0.765, green: 0.765, blue: 0.776, alpha: 1)
-        return view
-    }()
-    
-    private let leftLine: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
-        view.backgroundColor = UIColor(red: 0.765, green: 0.765, blue: 0.776, alpha: 1)
-        return view
-    }()
+    private let yearLabel = UILabel()
+    private let rightLine = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
+    private let leftLine = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
     
     override func setup() {
-        addSubview(yearLabel)
-        addSubview(rightLine)
-        addSubview(leftLine)
-        
+        setupUI()
         setupConstraints()
     }
     
-    func setupConstraints() {
+    private func setupUI() {
+        addSubview(yearLabel)
+        yearLabel.font = UIFont(name: "Inter-SemiBold", size: 15)
+        yearLabel.text = "2023"
+        yearLabel.textColor = UIColor(red: 0.765, green: 0.765, blue: 0.776, alpha: 1)
+        yearLabel.contentMode = .scaleAspectFit
+        yearLabel.textAlignment = .center
+        
+        addSubview(rightLine)
+        rightLine.backgroundColor = UIColor(red: 0.765, green: 0.765, blue: 0.776, alpha: 1)
+        
+        addSubview(leftLine)
+        leftLine.backgroundColor = UIColor(red: 0.765, green: 0.765, blue: 0.776, alpha: 1)
+    }
+    
+    private func setupConstraints() {
         yearLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             yearLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -15),
