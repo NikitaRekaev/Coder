@@ -1,16 +1,17 @@
 import UIKit
 
 class ProfileView: BaseView {
-    private let birthView = BirthView()
-    private let phoneView = PhoneView()
+    
+    let birthView = BirthView()
+    let phoneView = PhoneView()
+    
     private let upView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0,
-                                        width: UIScreen.main.bounds.width,
-                                        height: UIScreen.main.bounds.height/2.7))
+        let view = UIView()
         view.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 248/255, alpha: 1)
         return view
     }()
-    private let employeeImageView: UIImageView = {
+    
+    private let avatarImageView: UIImageView = {
             let view = UIImageView()
             view.image = UIImage(named: "goose")
             view.layer.shadowColor = CGColor(red: 22/255, green: 30/255, blue: 52/255, alpha: 0.08)
@@ -19,6 +20,7 @@ class ProfileView: BaseView {
             view.layer.shadowOpacity = 1
             return view
         }()
+    
      let nameLabel: UILabel = {
         let view = UILabel()
         view.numberOfLines = 0
@@ -26,6 +28,7 @@ class ProfileView: BaseView {
         view.textColor = UIColor(red: 0.02, green: 0.02, blue: 0.063, alpha: 1)
         return view
     }()
+    
      let tagLabel: UILabel = {
         let view = UILabel()
         view.numberOfLines = 0
@@ -33,6 +36,7 @@ class ProfileView: BaseView {
         view.textColor = UIColor(red: 0.591, green: 0.591, blue: 0.609, alpha: 1)
         return view
     }()
+    
      let departmentLabel: UILabel = {
         let view = UILabel()
         view.numberOfLines = 0
@@ -40,6 +44,7 @@ class ProfileView: BaseView {
         view.textColor = UIColor(red: 0.333, green: 0.333, blue: 0.361, alpha: 1)
         return view
     }()
+    
     private let stackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -48,41 +53,65 @@ class ProfileView: BaseView {
         return view
     }()
 
-        override func setup() {
-        employeeImageView.image = employeeImageView.image?.resized(CGSize(width: 104, height: 104))
-        employeeImageView.contentMode = .scaleAspectFill
+    override func setup() {
+        avatarImageView.image = avatarImageView.image?.resized(CGSize(width: 104, height: 104))
+        avatarImageView.contentMode = .scaleAspectFill
         backgroundColor = .white
-        stackView.addArrangedSubview(birthView)
-        stackView.addArrangedSubview(phoneView)
-        addSubview(stackView)
+        
         addSubview(upView)
-        addSubview(employeeImageView)
+        addSubview(avatarImageView)
         addSubview(nameLabel)
         addSubview(tagLabel)
         addSubview(departmentLabel)
+        addSubview(stackView)
+        stackView.addArrangedSubview(birthView)
+        stackView.addArrangedSubview(phoneView)
         setupConstraints()
     }
+    
     private func setupConstraints() {
-        employeeImageView.translatesAutoresizingMaskIntoConstraints = false
-        employeeImageView.topAnchor.constraint(equalTo: upView.topAnchor, constant: 104).isActive = true
-        employeeImageView.centerXAnchor.constraint(equalTo: upView.centerXAnchor).isActive = true
+        upView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            upView.topAnchor.constraint(equalTo: topAnchor),
+            upView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            upView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 104),
+            upView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            upView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0)])
+        
+        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+        avatarImageView.topAnchor.constraint(equalTo: upView.topAnchor, constant: 72),
+        avatarImageView.centerXAnchor.constraint(equalTo: upView.centerXAnchor)])
+        
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.centerXAnchor.constraint(equalTo: upView.centerXAnchor).isActive = true
-        nameLabel.topAnchor.constraint(equalTo: employeeImageView.bottomAnchor, constant: 24).isActive = true
+        NSLayoutConstraint.activate([
+        nameLabel.centerXAnchor.constraint(equalTo: upView.centerXAnchor),
+        nameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 24)])
+        
         tagLabel.translatesAutoresizingMaskIntoConstraints = false
-        tagLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 4).isActive = true
-        tagLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
+        tagLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 4),
+        tagLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor)])
+        
         departmentLabel.translatesAutoresizingMaskIntoConstraints = false
-        departmentLabel.centerXAnchor.constraint(equalTo: upView.centerXAnchor).isActive = true
-        departmentLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 12).isActive = true
-        stackView.topAnchor.constraint(equalTo: upView.bottomAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        NSLayoutConstraint.activate([
+        departmentLabel.centerXAnchor.constraint(equalTo: upView.centerXAnchor),
+        departmentLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 12)])
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+        stackView.topAnchor.constraint(equalTo: upView.bottomAnchor),
+        stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+        stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+        stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
     }
+    
+// swiftlint:disable function_parameter_count
     func setData(firstName: String,
                  lastName: String,
                  tag: String,
-                 department: DepartmentModel?,
+                 department: Department?,
                  phone: String,
                  dateBirth: String,
                  years: String) {
@@ -92,4 +121,5 @@ class ProfileView: BaseView {
         phoneView.setData(phoneNumber: phone)
         birthView.setData(dateBirth: dateBirth, years: years)
     }
+// swiftlint:enable function_parameter_count
 }

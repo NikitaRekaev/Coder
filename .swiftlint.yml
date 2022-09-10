@@ -1,0 +1,12 @@
+excluded: 
+  - Carthage
+  - Pods
+  - Source/ExcludedFolder
+  - Source/ExcludedFile.swif
+  - BaseViewController.swift
+disabled_rules:
+  - colon
+  - comma
+  - control_statement
+  - trailing_whitespace
+warning_threshold: 5

@@ -1,42 +1,50 @@
 import UIKit
 
 class PhoneView: BaseView {
+    
     private let phoneView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 73.5))
         return view
     }()
+    
     private let phoneImageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "phone")
         view.layer.borderWidth = 0
         return view
     }()
-   private let phoneLabel: UILabel = {
-       let label = UILabel()
-       label.textColor = .black
-       label.font = UIFont(name: "Inter-Medium", size: 16)
-       return label
-    }()
+    
+    let phoneButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.gray, for: .highlighted)
+        button.isHidden = false
+        button.titleLabel?.font = UIFont(name: "Inter-Medium", size: 16)
+        return button
+     }()
+    
     override func setup() {
         addSubview(phoneView)
         addSubview(phoneImageView)
-        addSubview(phoneLabel)
-        setPhoneImageConstraints()
-        setPhoneLabelConstraints()
+        addSubview(phoneButton)
+        
+        setupConstraints()
     }
-   private func setPhoneImageConstraints() {
+    
+    private func setupConstraints() {
         phoneImageView.translatesAutoresizingMaskIntoConstraints = false
-        phoneImageView.centerYAnchor.constraint(equalTo: phoneView.centerYAnchor).isActive = true
-        phoneImageView.leadingAnchor.constraint(equalTo: phoneView.safeAreaLayoutGuide.leadingAnchor,
-                                                constant: 20).isActive = true
-    }
-    private func setPhoneLabelConstraints() {
-        phoneLabel.translatesAutoresizingMaskIntoConstraints = false
-        phoneLabel.leadingAnchor.constraint(equalTo: phoneImageView.trailingAnchor, constant: 14).isActive = true
-        phoneLabel.centerYAnchor.constraint(equalTo: phoneImageView.centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            phoneImageView.centerYAnchor.constraint(equalTo: phoneView.centerYAnchor),
+            phoneImageView.leadingAnchor.constraint(
+                equalTo: phoneView.safeAreaLayoutGuide.leadingAnchor, constant: 20)])
+        
+        phoneButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            phoneButton.leadingAnchor.constraint(equalTo: phoneImageView.trailingAnchor, constant: 14),
+            phoneButton.centerYAnchor.constraint(equalTo: phoneImageView.centerYAnchor)])
     }
 
     func setData(phoneNumber: String) {
-        self.phoneLabel.text = phoneNumber
+        phoneButton.setTitle(phoneNumber, for: .normal)
     }
 }

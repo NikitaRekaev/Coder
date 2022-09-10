@@ -1,9 +1,11 @@
 import Foundation
 
 class ApiProvider {
+    
     init(baseUrl: URL = URL(string: "https://stoplight.io/mocks/")!) {
         self.baseUrl = baseUrl
     }
+    
     private let baseUrl: URL
     @discardableResult func getData<Response: Codable>(
         _ model: Response.Type = Response.self,
@@ -11,7 +13,7 @@ class ApiProvider {
         _ completion: @escaping (Result<Response, Error>) -> Void
     ) -> URLSessionDataTask {
         let url = baseUrl.appendingPathComponent(endpoint)
-        let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
+        let dataTask = URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {
                 print("Ошибка получения данных")
                 DispatchQueue.main.async {
@@ -23,6 +25,7 @@ class ApiProvider {
                 }
              return
             }
+            
             do {
                 let decoder = JSONDecoder()
                 let dateFormatter = DateFormatter()
