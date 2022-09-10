@@ -2,107 +2,32 @@ import UIKit
 
 class MainViewController: BaseViewController<MainRootView> {
     
-    let sortVC = SortViewController()
     var shouldShowBirthday: Bool = false
     
-    private var searchText: String = ""
+    private let sortVC = SortViewController()
+    private let model = MainModel()
     private let tabs = Department.allCases
-    private let departmentAll = Department.all
-    private var selectedDepartment: Department?
-    private var users: [Item] = []
     private let apiProvider = ApiProvider()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainView.setupSearchBar()
-        mainView.errorView.tryAgainButton.addTarget(self, action: #selector(checkConnection(_:)), for: .touchUpInside)
-        mainView.topTabsCollectionView.delegate = self
-        mainView.topTabsCollectionView.dataSource = self
-        mainView.topTabsCollectionView.register(TopTabsCollectionViewCell.self,
-                                                forCellWithReuseIdentifier: TopTabsCollectionViewCell.identifier)
-        mainView.topTabsCollectionView.showsHorizontalScrollIndicator = false
+        
+        setupNavigationItem()
+        setupTopTabs()
         setupTableView()
+        
+        mainView.errorView.tryAgainButton.addTarget(self, action: #selector(checkConnection(_:)), for: .touchUpInside)
+        
         apiProvider.getData(UserModel.self, from: "/kode-education/trainee-test/25143926/users") { result in
             switch result {
             case let .success(responseData):
-                self.users = responseData.items
+                self.model.users = responseData.items
                 self.mainView.setMainView()
                 self.mainView.userTableView.reloadData()
             case .failure(_:):
                 self.mainView.setErrorView()
             }
         }
-        mainView.searchBar.delegate = self
-        navigationItem.titleView = mainView.searchBar
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    }
-    
-    func setupTableView() {
-        mainView.userTableView.refreshControl = refreshControl
-        mainView.userTableView.separatorColor = .clear
-        mainView.userTableView.delegate = self
-        mainView.userTableView.dataSource = self
-        mainView.userTableView.register(UserTableViewCell.self,
-                                            forCellReuseIdentifier: UserTableViewCell.identifier)
-        mainView.userTableView.rowHeight = 90
-    }
-    
-    private var filteredUser: [Item] {
-        return users
-            .filter({
-                $0.department == selectedDepartment || selectedDepartment == nil || selectedDepartment == departmentAll
-            })
-            .filter({
-                $0.firstName.starts(with: searchText) || $0.lastName.starts(with: searchText) || searchText.isEmpty
-            })
-    }
-    
-    var thisYearBirthdayUser: [Item] {
-        return filteredUser.filter {
-            return self.calculateDayDifference(birthdayDate: $0.birthdayDate) > 0
-        }
-    }
-    
-    var nextYearBirthdayUser: [Item] {
-        return filteredUser.filter {
-            return self.calculateDayDifference(birthdayDate: $0.birthdayDate) < 0
-        }
-    }
-    
-    var userModelForSections: [[Item]] {
-        return [thisYearBirthdayUser, nextYearBirthdayUser]
-    }
-    
-    func calculateDayDifference(birthdayDate: Date?) -> Int {
-        guard let date = birthdayDate else { return 0}
-        let calendar = Calendar.current
-        let dateCurrent = Date()
-        let dateComponentsNow = calendar.dateComponents([.day, .month, .year], from: dateCurrent)
-        let birthdayDateComponents = calendar.dateComponents([.day, .month], from: date)
-        var bufferDateComponents = DateComponents()
-        bufferDateComponents.year = dateComponentsNow.year
-        bufferDateComponents.month = birthdayDateComponents.month
-        bufferDateComponents.day = birthdayDateComponents.day
-        guard let bufferDate = calendar.date(from: bufferDateComponents) else { return 0 }
-        guard let dayDifference = calendar.dateComponents([.day],
-                                                          from: dateCurrent, to: bufferDate).day else { return 0 }
-        return dayDifference
-    }
-    
-    func updateSearchResults(_ searchBar: UISearchBar) {
-        searchText = mainView.searchBar.text ?? ""
-        if searchText.isEmpty {
-            mainView.setNotFoundView()
-        } else {
-            mainView.setIsFoundView()
-        }
-            mainView.userTableView.reloadData()
     }
     
     private lazy var refreshControl: UIRefreshControl = {
@@ -118,7 +43,7 @@ class MainViewController: BaseViewController<MainRootView> {
                                  from: "/kode-education/trainee-test/25143926/users") { result in
             switch result {
             case let .success(responseData):
-                self.users = responseData.items
+                self.model.users = responseData.items
                 self.mainView.setMainView()
                 self.shouldShowBirthday = false
                 self.mainView.userTableView.reloadData()
@@ -138,10 +63,50 @@ class MainViewController: BaseViewController<MainRootView> {
                                  from: "/kode-education/trainee-test/25143926/users", self.loadData(result:))
     }
     
+    private func setupNavigationItem() {
+        mainView.setupSearchBar()
+        mainView.searchBar.delegate = self
+        navigationItem.titleView = mainView.searchBar
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    private func setupTopTabs() {
+        mainView.topTabsCollectionView.delegate = self
+        mainView.topTabsCollectionView.dataSource = self
+        mainView.topTabsCollectionView.showsHorizontalScrollIndicator = false
+        mainView.topTabsCollectionView.register(
+            TopTabsCollectionViewCell.self,
+            forCellWithReuseIdentifier: TopTabsCollectionViewCell.identifier
+        )
+    }
+    
+    private func setupTableView() {
+        mainView.userTableView.refreshControl = refreshControl
+        mainView.userTableView.separatorColor = .clear
+        mainView.userTableView.delegate = self
+        mainView.userTableView.dataSource = self
+        mainView.userTableView.register(UserTableViewCell.self,
+                                            forCellReuseIdentifier: UserTableViewCell.identifier)
+        mainView.userTableView.rowHeight = 90
+    }
+    
+    private func updateSearchResults(_ searchBar: UISearchBar) {
+        model.searchText = mainView.searchBar.text ?? ""
+        if model.searchText.isEmpty {
+            mainView.setNotFoundView()
+        } else {
+            mainView.setIsFoundView()
+        }
+            mainView.userTableView.reloadData()
+    }
+    
     private func loadData(result: Result<UserModel, Error>) {
         switch result {
         case let .success(responseData):
-            self.users = responseData.items
+            self.model.users = responseData.items
             self.mainView.setMainView()
             self.mainView.userTableView.reloadData()
         case .failure(_:):
@@ -149,27 +114,9 @@ class MainViewController: BaseViewController<MainRootView> {
         }
     }
     
-    private func formatDate (date: Date?) -> String {
-            let formatter = DateFormatter()
-            formatter.locale = Locale(identifier: "ru_RU")
-            formatter.setLocalizedDateFormatFromTemplate("dd MMM")
-
-        if let date = date {
-            var date = formatter.string(from: date)
-            if date.count == 7 {
-                date.removeLast()
-            }
-            if date.count == 8 {
-                date.removeLast(2)
-            }
-            return date
-        }
-        return "Дата не была получена"
-    }
-    
     private func updateDepartmentSelection() {
         mainView.topTabsCollectionView.visibleCells.compactMap({ $0 as? TopTabsCollectionViewCell }).forEach({ cell in
-            let shouldBeSelected = cell.model == self.selectedDepartment
+            let shouldBeSelected = cell.model == model.selectedDepartment
             cell.setCellSelected(shouldBeSelected)
         })
     }
@@ -183,27 +130,9 @@ class MainViewController: BaseViewController<MainRootView> {
     }
 }
 
-// MARK: extension for UITableView
+// MARK: UITableViewDelegate
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if users.isEmpty {
-            return 15
-        } else {
-            if self.shouldShowBirthday {
-                return section == 0 ? thisYearBirthdayUser.count : nextYearBirthdayUser.count
-            } else {
-                return filteredUser.count
-            }
-        }
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        
-        return self.shouldShowBirthday ?  2 : 1
-    }
+extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
@@ -212,13 +141,35 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             return HeaderSectionView()
         }
     }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
             return 0
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewController = ProfileViewController()
+        viewController.item = model.filteredUser[indexPath.item]
+        tableView.deselectRow(at: indexPath, animated: false)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+extension MainViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if model.users.isEmpty {
+            return 15
         } else {
-            return 68
+            if self.shouldShowBirthday {
+                return section == 0 ? model.thisYearBirthdayUser.count : model.nextYearBirthdayUser.count
+            } else {
+                return model.filteredUser.count
+            }
         }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.shouldShowBirthday ?  2 : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -228,25 +179,24 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: tableView.bounds.width)
-        
-        if !users.isEmpty {
+        if !model.users.isEmpty {
             if shouldShowBirthday {
-                let sortedUser = userModelForSections[indexPath.section][indexPath.row]
+                let sortedUser = model.userModelForSections[indexPath.section][indexPath.row]
                 cell.setData(firstName: sortedUser.firstName,
                              lastName: sortedUser.lastName,
                              tag: sortedUser.userTag,
                              department: sortedUser.department,
-                             dateBirth: formatDate(date: sortedUser.birthdayDate))
+                             dateBirth: model.formatDate(date: sortedUser.birthdayDate))
             } else {
-                let user = filteredUser[indexPath.row]
+                let user = model.filteredUser[indexPath.row]
                 
                 cell.setData(
                     firstName: user.firstName,
                     lastName: user.lastName,
                     tag: user.userTag,
                     department: user.department,
-                    dateBirth: formatDate(date: user.birthdayDate))
+                    dateBirth: model.formatDate(date: user.birthdayDate)
+                )
             }
             
             cell.setBirthdayLabelVisibility(shouldShowBirthday: self.shouldShowBirthday)
@@ -257,19 +207,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let viewController = ProfileViewController()
-        viewController.item = filteredUser[indexPath.item]
-        tableView.deselectRow(at: indexPath, animated: false)
-        navigationController?.pushViewController(viewController, animated: true)
-    }
 }
 
-// MARK: extension for UICollectionView
+// MARK: UICollectionViewDelegate
 
-extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MainViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tabs.count
@@ -277,23 +219,29 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopTabsCollectionViewCell.identifier,
-                                                            for: indexPath) as? TopTabsCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: TopTabsCollectionViewCell.identifier,
+            for: indexPath
+        ) as? TopTabsCollectionViewCell else {
             return UICollectionViewCell()
         }
         
         cell.setModel(tabs[indexPath.item])
-        cell.setCellSelected(tabs[indexPath.item] == selectedDepartment)
+        cell.setCellSelected(tabs[indexPath.item] == model.selectedDepartment)
         
         return cell
     }
-    
+}
+
+// MARK: UICollectionViewDataSource
+
+extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if selectedDepartment == tabs[indexPath.item] {
-            selectedDepartment = nil
+        if model.selectedDepartment == tabs[indexPath.item] {
+            model.selectedDepartment = nil
         } else {
-            selectedDepartment = tabs[indexPath.item]
+            model.selectedDepartment = tabs[indexPath.item]
         }
         
         mainView.userTableView.reloadData()
@@ -301,14 +249,14 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
-// MARK: - UISearchBarDelegate
+// MARK: UISearchBarDelegate
 
 extension MainViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.searchText = mainView.searchBar.text ?? ""
+        model.searchText = mainView.searchBar.text ?? ""
         
-        if self.searchText.isEmpty {
+        if model.searchText.isEmpty {
             mainView.setNotFoundView()
         } else {
             mainView.setIsFoundView()
@@ -325,7 +273,7 @@ extension MainViewController: UISearchBarDelegate {
         mainView.searchBar.showsBookmarkButton = true
         mainView.searchBar.text = nil
         mainView.searchBar.endEditing(true)
-        searchText = ""
+        model.searchText = ""
         mainView.setIsFoundView()
         mainView.userTableView.reloadData()
     }
@@ -335,32 +283,18 @@ extension MainViewController: UISearchBarDelegate {
     }
 }
 
-// MARK: - SortViewDelegate
+// MARK: SortDelegate
 
-extension MainViewController: SortViewDelegate {
+extension MainViewController: SortDelegate {
     
     func sortByAlphabet() {
-        users.sort(by: { $0.firstName < $1.firstName })
+        model.users.sort(by: { $0.firstName < $1.firstName })
         updateSortButtonSelection()
         mainView.userTableView.reloadData()
     }
     
     func sortByBirthday() {
-        users.sort { date1, date2 in
-            guard let date1 = date1.birthdayDate else { return false }
-            guard let date2 = date2.birthdayDate else { return false }
-            var dayDifference1 = calculateDayDifference(birthdayDate: date1)
-            var dayDifference2 = calculateDayDifference(birthdayDate: date2)
-            
-            if dayDifference1 < 0 {
-                dayDifference1 += 365
-            }
-            if dayDifference2 < 0 {
-                dayDifference2 += 365
-            }
-            
-            return dayDifference1 < dayDifference2
-        }
+        model.userSortByDate()
         mainView.userTableView.reloadData()
         updateSortButtonSelection()
     }

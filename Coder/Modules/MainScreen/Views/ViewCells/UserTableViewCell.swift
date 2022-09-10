@@ -47,7 +47,7 @@ class UserTableViewCell: UITableViewCell {
         return view
     }()
     
-    //  MARK: SkeletonView
+    // MARK: SkeletonView
     
     private let nameSkeletonView: UIView = {
         let view = UIView()
@@ -73,7 +73,7 @@ class UserTableViewCell: UITableViewCell {
         return view
     }()
     
-    // MARK: - Initialization
+    // MARK: Initialization
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -97,7 +97,7 @@ class UserTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Public method
+    // MARK: Public method
     
     func setBirthdayLabelVisibility(shouldShowBirthday: Bool) {
         birthdayLabel.isHidden = !shouldShowBirthday
@@ -140,7 +140,7 @@ class UserTableViewCell: UITableViewCell {
         birthdayLabel.text = dateBirth
     }
     
-    // MARK: - Private methods
+    // MARK: Private methods
     
     private func setupConstraints() {
 

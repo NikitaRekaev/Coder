@@ -5,13 +5,7 @@ class ProfileView: BaseView {
     let birthView = BirthView()
     let phoneView = PhoneView()
     
-    private let upView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 248/255, alpha: 1)
-        return view
-    }()
-    
-    private let avatarImageView: UIImageView = {
+    let avatarImageView: UIImageView = {
             let view = UIImageView()
             view.image = UIImage(named: "goose")
             view.layer.shadowColor = CGColor(red: 22/255, green: 30/255, blue: 52/255, alpha: 0.08)
@@ -45,6 +39,12 @@ class ProfileView: BaseView {
         return view
     }()
     
+    private let upView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 248/255, alpha: 1)
+        return view
+    }()
+    
     private let stackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -68,6 +68,22 @@ class ProfileView: BaseView {
         stackView.addArrangedSubview(phoneView)
         setupConstraints()
     }
+    
+    // swiftlint:disable function_parameter_count
+        func setData(firstName: String,
+                     lastName: String,
+                     tag: String,
+                     department: Department?,
+                     phone: String,
+                     dateBirth: String,
+                     years: String) {
+            self.nameLabel.text = "\(firstName) \(lastName)"
+            self.tagLabel.text = tag
+            self.departmentLabel.text = department?.title
+            phoneView.setData(phoneNumber: phone)
+            birthView.setData(dateBirth: dateBirth, years: years)
+        }
+    // swiftlint:enable function_parameter_count
     
     private func setupConstraints() {
         upView.translatesAutoresizingMaskIntoConstraints = false
@@ -106,20 +122,4 @@ class ProfileView: BaseView {
         stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
-    
-// swiftlint:disable function_parameter_count
-    func setData(firstName: String,
-                 lastName: String,
-                 tag: String,
-                 department: Department?,
-                 phone: String,
-                 dateBirth: String,
-                 years: String) {
-        self.nameLabel.text = "\(firstName) \(lastName)"
-        self.tagLabel.text = tag
-        self.departmentLabel.text = department?.title
-        phoneView.setData(phoneNumber: phone)
-        birthView.setData(dateBirth: dateBirth, years: years)
-    }
-// swiftlint:enable function_parameter_count
 }
