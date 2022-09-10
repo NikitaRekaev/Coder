@@ -3,6 +3,7 @@ import UIKit
 class TopTabsCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "Cell"
+    
     private(set) var model: Department?
     private var bottomBorderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 2))
     
@@ -31,10 +32,13 @@ class TopTabsCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         label.textColor = .black
+        
         bottomBorderView.backgroundColor = #colorLiteral(red: 0.4257887602, green: 0.1908605397, blue: 1, alpha: 1)
         bottomBorderView.isHidden = false
+        
         contentView.addSubview(label)
         contentView.addSubview(bottomBorderView)
+        
         layoutSubviews()
     }
     
@@ -48,20 +52,23 @@ class TopTabsCollectionViewCell: UICollectionViewCell {
             label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             label.centerYAnchor.constraint(equalTo: centerYAnchor),
             label.heightAnchor.constraint(equalTo: contentView.heightAnchor),
-            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)])
+            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+        ])
         
         bottomBorderView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             bottomBorderView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             bottomBorderView.leadingAnchor.constraint(equalTo: label.leadingAnchor),
             bottomBorderView.trailingAnchor.constraint(equalTo: label.trailingAnchor),
-            bottomBorderView.heightAnchor.constraint(equalToConstant: 2)])
+            bottomBorderView.heightAnchor.constraint(equalToConstant: 2)
+        ])
         
         contentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             contentView.heightAnchor.constraint(equalToConstant: 36),
             contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            contentView.widthAnchor.constraint(equalTo: widthAnchor, constant: -16)])
+            contentView.widthAnchor.constraint(equalTo: widthAnchor, constant: -16)
+        ])
     }
 }
