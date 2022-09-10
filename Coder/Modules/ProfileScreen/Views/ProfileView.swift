@@ -111,7 +111,7 @@ class ProfileView: BaseView {
     func setData(firstName: String,
                  lastName: String,
                  tag: String,
-                 department: DepartmentModel?,
+                 department: Department?,
                  phone: String,
                  dateBirth: String,
                  years: String) {
