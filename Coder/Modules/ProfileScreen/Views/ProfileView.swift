@@ -11,7 +11,7 @@ class ProfileView: BaseView {
         return view
     }()
     
-    private let employeeImageView: UIImageView = {
+    private let avatarImageView: UIImageView = {
             let view = UIImageView()
             view.image = UIImage(named: "goose")
             view.layer.shadowColor = CGColor(red: 22/255, green: 30/255, blue: 52/255, alpha: 0.08)
@@ -54,12 +54,12 @@ class ProfileView: BaseView {
     }()
 
     override func setup() {
-        employeeImageView.image = employeeImageView.image?.resized(CGSize(width: 104, height: 104))
-        employeeImageView.contentMode = .scaleAspectFill
+        avatarImageView.image = avatarImageView.image?.resized(CGSize(width: 104, height: 104))
+        avatarImageView.contentMode = .scaleAspectFill
         backgroundColor = .white
         
         addSubview(upView)
-        addSubview(employeeImageView)
+        addSubview(avatarImageView)
         addSubview(nameLabel)
         addSubview(tagLabel)
         addSubview(departmentLabel)
@@ -74,19 +74,19 @@ class ProfileView: BaseView {
         NSLayoutConstraint.activate([
             upView.topAnchor.constraint(equalTo: topAnchor),
             upView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            upView.bottomAnchor.constraint(equalTo: employeeImageView.bottomAnchor, constant: 104),
+            upView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 104),
             upView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             upView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0)])
         
-        employeeImageView.translatesAutoresizingMaskIntoConstraints = false
+        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-        employeeImageView.topAnchor.constraint(equalTo: upView.topAnchor, constant: 72),
-        employeeImageView.centerXAnchor.constraint(equalTo: upView.centerXAnchor)])
+        avatarImageView.topAnchor.constraint(equalTo: upView.topAnchor, constant: 72),
+        avatarImageView.centerXAnchor.constraint(equalTo: upView.centerXAnchor)])
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
         nameLabel.centerXAnchor.constraint(equalTo: upView.centerXAnchor),
-        nameLabel.topAnchor.constraint(equalTo: employeeImageView.bottomAnchor, constant: 24)])
+        nameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 24)])
         
         tagLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
