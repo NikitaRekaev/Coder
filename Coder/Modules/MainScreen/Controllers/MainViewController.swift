@@ -16,7 +16,8 @@ class MainViewController: BaseViewController<MainRootView> {
         setupTopTabs()
         setupTableView()
         
-        mainView.errorView.tryAgainButton.addTarget(self, action: #selector(checkConnection(_:)), for: .touchUpInside)
+        mainView.errorView.tryAgainButton.addTarget(self, action: #selector(checkConnection), for: .touchUpInside)
+        mainView.searchBar.searchTextField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
         
         apiProvider.getData(UserModel.self, from: "/kode-education/trainee-test/25143926/users") { result in
             switch result {
@@ -36,32 +37,6 @@ class MainViewController: BaseViewController<MainRootView> {
         refresh.tintColor = .lightGray
         return refresh
     }()
-    
-    @objc private func didPullToRefresh(_ sender: UIRefreshControl) {
-        self.mainView.setMainView()
-        apiProvider.getData(UserModel.self,
-                                 from: "/kode-education/trainee-test/25143926/users") { result in
-            switch result {
-            case let .success(responseData):
-                self.model.users = responseData.items
-                self.mainView.setMainView()
-                self.shouldShowBirthday = false
-                self.mainView.userTableView.reloadData()
-                self.refreshControl.endRefreshing()
-            case let .failure(error):
-                self.refreshControl.endRefreshing()
-                self.mainView.setErrorView()
-                print(error)
-            }
-        }
-    }
-    
-    @objc private func checkConnection(_ sender: UIButton) {
-        sender.backgroundColor = UIColor(red: 0.3, green: 0.5, blue: 0.8, alpha: 0.3)
-        self.mainView.setMainView()
-        apiProvider.getData(UserModel.self,
-                                 from: "/kode-education/trainee-test/25143926/users", self.loadData(result:))
-    }
     
     private func setupNavigationItem() {
         mainView.setupSearchBar()
@@ -302,5 +277,42 @@ extension MainViewController: SortDelegate {
     func showBirthday(shouldShow: Bool) {
         self.shouldShowBirthday = shouldShow
         mainView.userTableView.reloadData()
+    }
+}
+
+// MARK: - Actions
+
+@objc
+private extension MainViewController {
+    
+    func textChanged(_ sender: UITextField) {
+        let image = sender.text?.count == .zero ? UIImage(named: "vector") : UIImage(named: "vector_editing")
+        sender.leftView = UIImageView.init(image: image)
+    }
+    
+    func didPullToRefresh(_ sender: UIRefreshControl) {
+        self.mainView.setMainView()
+        apiProvider.getData(UserModel.self,
+                                 from: "/kode-education/trainee-test/25143926/users") { result in
+            switch result {
+            case let .success(responseData):
+                self.model.users = responseData.items
+                self.mainView.setMainView()
+                self.shouldShowBirthday = false
+                self.mainView.userTableView.reloadData()
+                self.refreshControl.endRefreshing()
+            case let .failure(error):
+                self.refreshControl.endRefreshing()
+                self.mainView.setErrorView()
+                print(error)
+            }
+        }
+    }
+    
+    func checkConnection(_ sender: UIButton) {
+        sender.backgroundColor = UIColor(red: 0.3, green: 0.5, blue: 0.8, alpha: 0.3)
+        self.mainView.setMainView()
+        apiProvider.getData(UserModel.self,
+                                 from: "/kode-education/trainee-test/25143926/users", self.loadData(result:))
     }
 }

@@ -27,33 +27,23 @@ class MainRootView: BaseView {
     // MARK: Public methods
     
     func setupSearchBar() {
-        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
-        textFieldInsideSearchBar?.backgroundColor = UIColor(
-            red: 247.0/255.0,
-            green: 247.0/255.0,
-            blue: 248.0/255.0,
-            alpha: 1)
-        
-        searchBar.setImage(
-            UIImage(named: "list-ui-alt"),
-            for: .bookmark,
-            state: .normal
-        )
-        
-        searchBar.setImage(
-            UIImage(named: "list-ui-alt_selected"),
-            for: .bookmark,
-            state: .selected
-        )
-        
+        searchBar.setImage(UIImage(named: "list-ui-alt"), for: .bookmark, state: .normal)
+        searchBar.setImage(UIImage(named: "list-ui-alt_selected"), for: .bookmark, state: .selected)
         searchBar.setImage(UIImage(named: "x-clear"), for: .clear, state: .normal)
-
+        searchBar.searchTextField.leftView = UIImageView(image: UIImage(named: "vector"))
         searchBar.tintColor = #colorLiteral(red: 0.4257887602, green: 0.1908605397, blue: 1, alpha: 1)
         searchBar.backgroundColor = .white
         searchBar.showsBookmarkButton = true
         searchBar.sizeToFit()
         searchBar.placeholder = "Введи имя, тег, почту..."
         searchBar.setValue("Отмена", forKey: "cancelButtonText")
+        
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.backgroundColor = UIColor(
+            red: 247.0/255.0,
+            green: 247.0/255.0,
+            blue: 248.0/255.0,
+            alpha: 1)
     }
     
     func setNotFoundView() {
