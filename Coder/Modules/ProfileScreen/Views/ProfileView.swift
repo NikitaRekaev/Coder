@@ -34,6 +34,8 @@ class ProfileView: BaseView {
     }
     // swiftlint:enable function_parameter_count
     
+    // MARK: Private methods
+    
     private func setupUI() {
         backgroundColor = .white
         
