@@ -34,7 +34,7 @@ class ProfileViewController: BaseViewController<ProfileView> {
     }
 }
 
-//MARK: - Alert
+// MARK: Alert
 
 extension ProfileViewController {
     
