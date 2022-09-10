@@ -2,38 +2,32 @@ import UIKit
 
 class NotFoundOnSearchView: BaseView {
     
-    private let loupe: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: "loupe")
-        return view
-    }()
+    private let loupe = UIImageView()
+    private let userNotFoundLabel = UILabel()
+    private let tryToCorrectLabel = UILabel()
     
-    private let userNotFoundLabel: UILabel = {
-        let view = UILabel()
-        view.text = "Мы никого не нашли"
-        view.font = UIFont(name: "Inter-SemiBold", size: 17)
-        view.textColor = UIColor(red: 0.02, green: 0.02, blue: 0.063, alpha: 1)
-        view.contentMode = .scaleAspectFit
-        view.textAlignment = .center
-        return view
-    }()
-    
-    private let tryToCorrectLabel: UILabel = {
-        let view = UILabel()
-        view.text = "Попробуйте скорректировать запрос"
-        view.font = UIFont(name: "Inter-Regular", size: 16)
-        view.textColor = UIColor(red: 0.591, green: 0.591, blue: 0.609, alpha: 1)
-        view.contentMode = .scaleAspectFit
-        view.textAlignment = .center
-        return view
-    }()
-
     override func setup() {
-        addSubview(loupe)
-        addSubview(userNotFoundLabel)
-        addSubview(tryToCorrectLabel)
-        
+        setupUI()
         setupConstraints()
+    }
+    
+    private func setupUI() {
+        addSubview(loupe)
+        loupe.image = UIImage(named: "loupe")
+        
+        addSubview(userNotFoundLabel)
+        userNotFoundLabel.text = "Мы никого не нашли"
+        userNotFoundLabel.font = UIFont(name: "Inter-SemiBold", size: 17)
+        userNotFoundLabel.textColor = UIColor(red: 0.02, green: 0.02, blue: 0.063, alpha: 1)
+        userNotFoundLabel.contentMode = .scaleAspectFit
+        userNotFoundLabel.textAlignment = .center
+        
+        addSubview(tryToCorrectLabel)
+        tryToCorrectLabel.text = "Попробуйте скорректировать запрос"
+        tryToCorrectLabel.font = UIFont(name: "Inter-Regular", size: 16)
+        tryToCorrectLabel.textColor = UIColor(red: 0.591, green: 0.591, blue: 0.609, alpha: 1)
+        tryToCorrectLabel.contentMode = .scaleAspectFit
+        tryToCorrectLabel.textAlignment = .center
     }
     
     private func setupConstraints() {

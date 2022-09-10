@@ -39,6 +39,7 @@
 		11300F2D28953E5E00BC51E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11300F2B28953E5E00BC51E4 /* LaunchScreen.storyboard */; };
 		113E079628CCD72000AC6FFB /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E079528CCD72000AC6FFB /* ProfileModel.swift */; };
 		113E079928CCDCA800AC6FFB /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E079828CCDCA800AC6FFB /* MainModel.swift */; };
+		113E079E28CD2ABE00AC6FFB /* BackBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E079D28CD2ABE00AC6FFB /* BackBarButtonItem.swift */; };
 		1184A27928BBC855000D9497 /* HeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1184A27828BBC855000D9497 /* HeaderSectionView.swift */; };
 		118BBA6228BB7C2400194F05 /* SortingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BBA6128BB7C2400194F05 /* SortingView.swift */; };
 		118BBA6428BB7F6800194F05 /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BBA6328BB7F6800194F05 /* SortViewController.swift */; };
@@ -80,6 +81,7 @@
 		11300F2E28953E5E00BC51E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		113E079528CCD72000AC6FFB /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		113E079828CCDCA800AC6FFB /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		113E079D28CD2ABE00AC6FFB /* BackBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBarButtonItem.swift; sourceTree = "<group>"; };
 		1184A27828BBC855000D9497 /* HeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
 		118BBA6128BB7C2400194F05 /* SortingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingView.swift; sourceTree = "<group>"; };
 		118BBA6328BB7F6800194F05 /* SortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
@@ -191,7 +193,7 @@
 		111B697028B65FD9006E2BF0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				111B697528B6631B006E2BF0 /* ViewCells */,
+				111B697528B6631B006E2BF0 /* Cells */,
 				111B698028B669F4006E2BF0 /* MainRootView.swift */,
 				111B697C28B66934006E2BF0 /* NotFoundOnSearchView.swift */,
 				111B697E28B6698E006E2BF0 /* LostInternetConnectionView.swift */,
@@ -201,13 +203,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		111B697528B6631B006E2BF0 /* ViewCells */ = {
+		111B697528B6631B006E2BF0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				111B697328B66313006E2BF0 /* TopTabsCollectionViewCell.swift */,
 				111B697628B663BB006E2BF0 /* UserTableViewCell.swift */,
 			);
-			path = ViewCells;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		111B698A28B674A7006E2BF0 /* ProfileScreen */ = {
@@ -223,6 +225,7 @@
 		111B698B28B674D1006E2BF0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				113E079F28CD2CC000AC6FFB /* Cells */,
 				111B699028B67545006E2BF0 /* ProfileView.swift */,
 				111B698C28B674E6006E2BF0 /* PhoneView.swift */,
 				111B698E28B67518006E2BF0 /* BirthView.swift */,
@@ -282,6 +285,14 @@
 				113E079828CCDCA800AC6FFB /* MainModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		113E079F28CD2CC000AC6FFB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				113E079D28CD2ABE00AC6FFB /* BackBarButtonItem.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		4049CF99DA23E4E7B3E3BFF4 /* Pods */ = {
@@ -432,6 +443,7 @@
 				111B696128B64FFD006E2BF0 /* Department.swift in Sources */,
 				111B696328B65231006E2BF0 /* ApiProvider.swift in Sources */,
 				111B696828B653AD006E2BF0 /* BaseView.swift in Sources */,
+				113E079E28CD2ABE00AC6FFB /* BackBarButtonItem.swift in Sources */,
 				113E079928CCDCA800AC6FFB /* MainModel.swift in Sources */,
 				111B697728B663BB006E2BF0 /* UserTableViewCell.swift in Sources */,
 				111B696A28B65589006E2BF0 /* BaseViewController.swift in Sources */,
