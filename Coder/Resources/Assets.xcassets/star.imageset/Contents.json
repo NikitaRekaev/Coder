@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "star.svg",
+      "filename" : "star-selected-x1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "star-selected-x2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "star-selected-x3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

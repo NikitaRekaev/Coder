@@ -1,10 +1,10 @@
 import UIKit
 import SkeletonView
 
-class EmployeeListRootView: BaseView {
+class MainRootView: BaseView {
     
     let errorView = LostInternetConnectionView()
-    let employeeTableView = UITableView()
+    let userTableView = UITableView()
     let searchBar = UISearchBar()
     
     let notFoundSearchView: NotFoundOnSearchView = {
@@ -30,15 +30,15 @@ class EmployeeListRootView: BaseView {
     
     override func setup() {
         backgroundColor = .white
-        employeeTableView.backgroundColor = .white
+        userTableView.backgroundColor = .white
         
-        addSubview(employeeTableView)
+        addSubview(userTableView)
         addSubview(notFoundSearchView)
         addSubview(topTabsCollectionView)
         addSubview(separatorLineUnderTabs)
         addSubview(errorView)
 
-        employeeTableView.isSkeletonable = true
+        userTableView.isSkeletonable = true
         setupConstraints()
         setViewDependingOnConnection()
     }
@@ -68,12 +68,12 @@ class EmployeeListRootView: BaseView {
             notFoundSearchView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
-        employeeTableView.translatesAutoresizingMaskIntoConstraints = false
+        userTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            employeeTableView.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor, constant: 0),
-            employeeTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            employeeTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            employeeTableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            userTableView.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor, constant: 0),
+            userTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            userTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            userTableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
         errorView.translatesAutoresizingMaskIntoConstraints = false
@@ -93,11 +93,11 @@ class EmployeeListRootView: BaseView {
         if NetworkMonitor.shared.isConnected {
             print("Интернет присутствует")
             errorView.isHidden = true
-            employeeTableView.isHidden = false
+            userTableView.isHidden = false
             topTabsCollectionView.isHidden = false
         } else {
             print("Интернет отсутствует")
-            employeeTableView.isHidden = true
+            userTableView.isHidden = true
             topTabsCollectionView.isHidden = true
             errorView.isHidden = false
         }
@@ -134,7 +134,7 @@ class EmployeeListRootView: BaseView {
     }
     
     func setNotFoundView() {
-        employeeTableView.isHidden = true
+        userTableView.isHidden = true
         
         notFoundSearchView.isHidden = false
     }
@@ -142,11 +142,11 @@ class EmployeeListRootView: BaseView {
     func setIsFoundView() {
         notFoundSearchView.isHidden = true
         
-        employeeTableView.isHidden = false
+        userTableView.isHidden = false
     }
     
     func setErrorView() {
-        employeeTableView.isHidden = true
+        userTableView.isHidden = true
         topTabsCollectionView.isHidden = true
         searchBar.isHidden = true
         
@@ -156,7 +156,7 @@ class EmployeeListRootView: BaseView {
     func setMainView() {
         errorView.isHidden = true
         
-        employeeTableView.isHidden = false
+        userTableView.isHidden = false
         topTabsCollectionView.isHidden = false
         searchBar.isHidden = false
     }

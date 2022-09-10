@@ -8,7 +8,7 @@ class NotFoundOnSearchView: BaseView {
         return view
     }()
     
-    private let employeeNotFoundLabel: UILabel = {
+    private let userNotFoundLabel: UILabel = {
         let view = UILabel()
         view.text = "Мы никого не нашли"
         view.font = UIFont(name: "Inter-SemiBold", size: 17)
@@ -30,7 +30,7 @@ class NotFoundOnSearchView: BaseView {
 
     override func setup() {
         addSubview(loupe)
-        addSubview(employeeNotFoundLabel)
+        addSubview(userNotFoundLabel)
         addSubview(tryToCorrectLabel)
         
         setupConstraints()
@@ -45,16 +45,16 @@ class NotFoundOnSearchView: BaseView {
             loupe.heightAnchor.constraint(equalToConstant: 56)
         ])
         
-        employeeNotFoundLabel.translatesAutoresizingMaskIntoConstraints = false
+        userNotFoundLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            employeeNotFoundLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            employeeNotFoundLabel.topAnchor.constraint(equalTo: loupe.bottomAnchor, constant: 8)
+            userNotFoundLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            userNotFoundLabel.topAnchor.constraint(equalTo: loupe.bottomAnchor, constant: 8)
         ])
         
         tryToCorrectLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tryToCorrectLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            tryToCorrectLabel.topAnchor.constraint(equalTo: employeeNotFoundLabel.bottomAnchor, constant: 12)
+            tryToCorrectLabel.topAnchor.constraint(equalTo: userNotFoundLabel.bottomAnchor, constant: 12)
         ])
     }
 }

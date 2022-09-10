@@ -1,8 +1,8 @@
 import UIKit
 
-class DetailsViewController: BaseViewController<ProfileView> {
+class ProfileViewController: BaseViewController<ProfileView> {
     
-    var employee: EmployeeModel!
+    var item: Item!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -14,13 +14,13 @@ class DetailsViewController: BaseViewController<ProfileView> {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.tintColor = .black
         
-        let formattedPhone = formatPhone(phone: employee.phone)
-        let formattedBirthday = formatDate(date: employee.birthdayDate)
-        let calculatedYears = calculateYears(date: employee.birthdayDate)
-        mainView.setData(firstName: employee.firstName,
-                         lastName: employee.lastName,
-                         tag: employee.userTag,
-                         department: employee.department,
+        let formattedPhone = formatPhone(phone: item.phone)
+        let formattedBirthday = formatDate(date: item.birthdayDate)
+        let calculatedYears = calculateYears(date: item.birthdayDate)
+        mainView.setData(firstName: item.firstName,
+                         lastName: item.lastName,
+                         tag: item.userTag,
+                         department: item.department,
                          phone: formattedPhone,
                          dateBirth: formattedBirthday,
                          years: calculatedYears)
@@ -91,6 +91,6 @@ class DetailsViewController: BaseViewController<ProfileView> {
     }
     
     @objc func phoneButtonClicked() {
-        aler(title: formatPhone(phone: employee.phone), titleSecond: formatPhone(phone: employee.phone))
+        aler(title: formatPhone(phone: item.phone), titleSecond: formatPhone(phone: item.phone))
     }
 }

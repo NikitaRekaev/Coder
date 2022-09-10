@@ -7,7 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let navController = UINavigationController(rootViewController: EmployeeListViewController())
+        let navController = UINavigationController(rootViewController: MainViewController())
         navController.navigationBar.prefersLargeTitles = false
         navController.navigationBar.isHidden = false
         navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]

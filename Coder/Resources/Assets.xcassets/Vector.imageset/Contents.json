@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Vector.svg",
+      "filename" : "magnifying-glass-x1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "magnifying-glass-x2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "magnifying-glass-x3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -3,7 +3,7 @@ import UIKit
 class TopTabsCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "Cell"
-    private(set) var model: DepartmentModel?
+    private(set) var model: Department?
     private var bottomBorderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 2))
     
     private let label: UILabel = {
@@ -22,7 +22,7 @@ class TopTabsCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func setModel(_ department: DepartmentModel) {
+    func setModel(_ department: Department) {
         self.model = department
         label.text = department.title
         label.textColor = UIColor(red: 0.591, green: 0.591, blue: 0.609, alpha: 1)
