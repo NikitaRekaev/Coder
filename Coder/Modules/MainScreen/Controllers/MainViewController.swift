@@ -203,7 +203,7 @@ extension MainViewController: UITableViewDataSource {
             cell.setViewWithData()
             
         } else {
-            cell.setLoadingView()
+            cell.setSkeletonView()
         }
         return cell
     }
