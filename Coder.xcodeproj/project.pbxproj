@@ -97,6 +97,7 @@
 		111B694828B64A80006E2BF0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				11300F2B28953E5E00BC51E4 /* LaunchScreen.storyboard */,
 				11300F2E28953E5E00BC51E4 /* Info.plist */,
 				11300F2928953E5E00BC51E4 /* Assets.xcassets */,
 				111B694928B64A8F006E2BF0 /* Fonts */,
@@ -254,7 +255,6 @@
 				111B696D28B65F9F006E2BF0 /* Modules */,
 				111B696628B65384006E2BF0 /* Supporting */,
 				111B694828B64A80006E2BF0 /* Resources */,
-				11300F2B28953E5E00BC51E4 /* LaunchScreen.storyboard */,
 			);
 			path = Coder;
 			sourceTree = "<group>";
