@@ -6,7 +6,6 @@ class ProfileViewController: BaseViewController<ProfileView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "SecondViewController"
         mainView.phoneView.phoneButton.addTarget(self, action: #selector(phoneButtonClicked), for: .touchUpInside)
     }
     
