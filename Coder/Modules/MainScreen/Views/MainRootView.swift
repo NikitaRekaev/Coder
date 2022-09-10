@@ -46,6 +46,8 @@ class MainRootView: BaseView {
             state: .selected
         )
         
+        searchBar.setImage(UIImage(named: "x-clear"), for: .clear, state: .normal)
+
         searchBar.tintColor = #colorLiteral(red: 0.4257887602, green: 0.1908605397, blue: 1, alpha: 1)
         searchBar.backgroundColor = .white
         searchBar.showsBookmarkButton = true
