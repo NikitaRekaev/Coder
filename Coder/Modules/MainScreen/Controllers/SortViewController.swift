@@ -1,6 +1,6 @@
 import UIKit
 
-protocol SortViewDelegate: AnyObject {
+protocol SortDelegate: AnyObject {
     
     func sortByAlphabet()
     func sortByBirthday()
@@ -9,7 +9,7 @@ protocol SortViewDelegate: AnyObject {
 
 class SortViewController: BaseViewController<SortView> {
     
-    weak var delegate: SortViewDelegate?
+    weak var delegate: SortDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
