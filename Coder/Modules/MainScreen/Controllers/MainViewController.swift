@@ -250,7 +250,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             cell.setBirthdayLabelVisibility(shouldShowBirthday: self.shouldShowBirthday)
+            cell.setViewWithData()
+            
         } else {
+            cell.setLoadingView()
         }
         return cell
     }
