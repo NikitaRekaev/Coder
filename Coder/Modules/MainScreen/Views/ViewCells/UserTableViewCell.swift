@@ -1,5 +1,4 @@
 import UIKit
-import SkeletonView
 
 class UserTableViewCell: UITableViewCell {
     
@@ -8,8 +7,6 @@ class UserTableViewCell: UITableViewCell {
     
     let avatarImageView: UIImageView = {
         let view = UIImageView()
-        view.skeletonCornerRadius = 36
-        view.showSkeleton(usingColor: .lightGray, animated: true, delay: 0, transition: .crossDissolve(0.25))
         view.clipsToBounds = true
         view.layer.borderWidth = 0
         return view
@@ -17,8 +14,6 @@ class UserTableViewCell: UITableViewCell {
     
     let nameLabel: UILabel = {
         let view = UILabel()
-        view.skeletonCornerRadius = 8
-        view.showSkeleton(usingColor: .lightGray, animated: true, delay: 0, transition: .crossDissolve(0.25))
         view.numberOfLines = 0
         view.text = "Nikita Rekaev"
         view.textColor = UIColor(red: 0.02, green: 0.02, blue: 0.063, alpha: 1)
@@ -28,8 +23,6 @@ class UserTableViewCell: UITableViewCell {
     
     let departmentLabel: UILabel = {
         let view = UILabel()
-        view.skeletonCornerRadius = 7
-        view.showSkeleton(usingColor: .lightGray, animated: true, delay: 0, transition: .crossDissolve(0.25))
         view.numberOfLines = 0
         view.text = "iOS Developer"
         view.textColor = UIColor(red: 0.333, green: 0.333, blue: 0.361, alpha: 1)

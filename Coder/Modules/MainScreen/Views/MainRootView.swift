@@ -1,5 +1,4 @@
 import UIKit
-import SkeletonView
 
 class MainRootView: BaseView {
     
@@ -38,7 +37,6 @@ class MainRootView: BaseView {
         addSubview(separatorLineUnderTabs)
         addSubview(errorView)
 
-        userTableView.isSkeletonable = true
         setupConstraints()
         setViewDependingOnConnection()
     }

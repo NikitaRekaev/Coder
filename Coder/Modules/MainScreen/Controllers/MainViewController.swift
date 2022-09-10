@@ -1,5 +1,4 @@
 import UIKit
-import SkeletonView
 
 class MainViewController: BaseViewController<MainRootView> {
     
@@ -29,8 +28,6 @@ class MainViewController: BaseViewController<MainRootView> {
                 self.users = responseData.items
                 self.mainView.setMainView()
                 self.mainView.userTableView.reloadData()
-                self.mainView.userTableView.hideSkeleton()
-                self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
             case .failure(_:):
                 self.mainView.setErrorView()
             }
@@ -51,9 +48,6 @@ class MainViewController: BaseViewController<MainRootView> {
         mainView.userTableView.separatorColor = .clear
         mainView.userTableView.delegate = self
         mainView.userTableView.dataSource = self
-        mainView.userTableView.isSkeletonable = true
-        mainView.userTableView.showSkeleton(usingColor: .lightGray, animated: true, delay: 0,
-                                                transition: .crossDissolve(0.25))
         mainView.userTableView.register(UserTableViewCell.self,
                                             forCellReuseIdentifier: UserTableViewCell.identifier)
         mainView.userTableView.rowHeight = 90
@@ -191,12 +185,7 @@ class MainViewController: BaseViewController<MainRootView> {
 
 // MARK: extension for UITableView
 
-extension MainViewController: SkeletonTableViewDelegate, SkeletonTableViewDataSource {
-    
-    func collectionSkeletonView(_ skeletonView: UITableView,
-                                cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        UserTableViewCell.identifier
-    }
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -262,7 +251,6 @@ extension MainViewController: SkeletonTableViewDelegate, SkeletonTableViewDataSo
             
             cell.setBirthdayLabelVisibility(shouldShowBirthday: self.shouldShowBirthday)
         } else {
-            mainView.showSkeleton()
         }
         return cell
     }
