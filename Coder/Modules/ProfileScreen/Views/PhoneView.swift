@@ -16,6 +16,8 @@ class PhoneView: BaseView {
         phoneButton.setTitle(phoneNumber, for: .normal)
     }
     
+    // MARK: Private methods
+    
     private func setupUI() {
         addSubview(phoneView)
         
