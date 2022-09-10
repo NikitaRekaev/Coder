@@ -130,12 +130,33 @@ class MainViewController: BaseViewController<MainRootView> {
     }
 }
 
-// MARK: extension for UITableView
+// MARK: UITableViewDelegate
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+extension MainViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return nil
+        } else {
+            return HeaderSectionView()
+        }
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return 0
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewController = ProfileViewController()
+        viewController.item = model.filteredUser[indexPath.item]
+        tableView.deselectRow(at: indexPath, animated: false)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if model.users.isEmpty {
             return 15
         } else {
@@ -148,20 +169,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        
         return self.shouldShowBirthday ?  2 : 1
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            return nil
-        } else {
-            return HeaderSectionView()
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -199,19 +207,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let viewController = ProfileViewController()
-        viewController.item = model.filteredUser[indexPath.item]
-        tableView.deselectRow(at: indexPath, animated: false)
-        navigationController?.pushViewController(viewController, animated: true)
-    }
 }
 
-// MARK: extension for UICollectionView
+// MARK: UICollectionViewDelegate
 
-extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MainViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tabs.count
@@ -231,7 +231,11 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         return cell
     }
-    
+}
+
+// MARK: UICollectionViewDataSource
+
+extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if model.selectedDepartment == tabs[indexPath.item] {
@@ -245,7 +249,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
-// MARK: - UISearchBarDelegate
+// MARK: UISearchBarDelegate
 
 extension MainViewController: UISearchBarDelegate {
     
@@ -279,7 +283,7 @@ extension MainViewController: UISearchBarDelegate {
     }
 }
 
-// MARK: - SortDelegate
+// MARK: SortDelegate
 
 extension MainViewController: SortDelegate {
     
