@@ -21,7 +21,7 @@ class ProfileViewController: BaseViewController<ProfileView> {
         let calculatedYears = model.calculateYears(date: item.birthdayDate)
         mainView.setData(firstName: item.firstName,
                          lastName: item.lastName,
-                         tag: item.userTag,
+                         tag: item.userTag.lowercased(),
                          department: item.department,
                          phone: formattedPhone,
                          dateBirth: formattedBirthday,

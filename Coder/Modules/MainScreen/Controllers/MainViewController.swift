@@ -94,7 +94,7 @@ extension MainViewController: UITableViewDataSource {
                 let sortedUser = model.userModelForSections[indexPath.section][indexPath.row]
                 cell.setData(firstName: sortedUser.firstName,
                              lastName: sortedUser.lastName,
-                             tag: sortedUser.userTag,
+                             tag: sortedUser.userTag.lowercased(),
                              department: sortedUser.department,
                              dateBirth: model.formatDate(date: sortedUser.birthdayDate))
             } else {
@@ -103,7 +103,7 @@ extension MainViewController: UITableViewDataSource {
                 cell.setData(
                     firstName: user.firstName,
                     lastName: user.lastName,
-                    tag: user.userTag,
+                    tag: user.userTag.lowercased(),
                     department: user.department,
                     dateBirth: model.formatDate(date: user.birthdayDate)
                 )
