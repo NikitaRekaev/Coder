@@ -4,14 +4,12 @@ class ProfileViewController: BaseViewController<ProfileView> {
     
     var item: Item!
     
-    lazy var backBarButton = BackBarButtonItem(target: navigationController ?? UINavigationController())
-    
     private let model = ProfileModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = backBarButton
+        navigationItem.leftBarButtonItem = BackBarButtonItem(target: navigationController ?? UINavigationController())
         mainView.phoneView.phoneButton.addTarget(self, action: #selector(phoneButtonClicked), for: .touchUpInside)
     }
     

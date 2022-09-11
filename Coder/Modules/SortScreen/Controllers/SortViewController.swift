@@ -9,18 +9,40 @@ protocol SortDelegate: AnyObject {
 
 class SortViewController: BaseViewController<SortView> {
     
+    // MARK: - Delegate Properties
+    
     weak var delegate: SortDelegate?
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupTargets()
+    }
+}
+
+// MARK: - Private Methods
+
+private extension SortViewController {
+    func setupTargets() {
+        mainView.backButton.addTarget(self, action: #selector(backButtonClicked), for: .touchUpInside)
         mainView.alphabetSortButton.addTarget(self, action:
-                                                #selector(self.alphabetSortButtonClicked(_:)), for: .touchUpInside)
+                                                #selector(self.alphabetSortButtonClicked), for: .touchUpInside)
         mainView.birthdaySortButton.addTarget(self, action:
-                                                #selector(self.birthdaySortButtonClicked(_:)), for: .touchUpInside)
+                                                #selector(self.birthdaySortButtonClicked), for: .touchUpInside)
+    }
+}
+
+// MARK: - Actions
+
+@objc
+private extension SortViewController {
+    
+    func backButtonClicked(_ sender: UIButton) {
+        dismiss(animated: true)
     }
     
-    @objc private func alphabetSortButtonClicked(_ sender: UIButton) {
+    func alphabetSortButtonClicked(_ sender: UIButton) {
         mainView.alphabetSortButton.isSelected = true
         mainView.birthdaySortButton.isSelected = false
         dismiss(animated: true)
@@ -28,7 +50,7 @@ class SortViewController: BaseViewController<SortView> {
         delegate?.sortByAlphabet()
     }
     
-    @objc private func birthdaySortButtonClicked(_ sender: UIButton) {
+    func birthdaySortButtonClicked(_ sender: UIButton) {
         mainView.alphabetSortButton.isSelected = false
         mainView.birthdaySortButton.isSelected = true
         dismiss(animated: true)

@@ -230,8 +230,6 @@ private extension MainViewController {
         navigationItem.titleView = mainView.searchBar
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     func setupTopTabs() {
@@ -254,16 +252,6 @@ private extension MainViewController {
         mainView.userTableView.rowHeight = 90
     }
     
-    func updateSearchResults(_ searchBar: UISearchBar) {
-        model.searchText = mainView.searchBar.text ?? ""
-        if model.searchText.isEmpty {
-            mainView.setNotFoundView()
-        } else {
-            mainView.setIsFoundView()
-        }
-            mainView.userTableView.reloadData()
-    }
-    
     func loadData(result: Result<UserModel, Error>) {
         switch result {
         case let .success(responseData):
@@ -273,6 +261,16 @@ private extension MainViewController {
         case .failure(_:):
             self.mainView.setErrorView()
         }
+    }
+    
+    func updateSearchResults(_ searchBar: UISearchBar) {
+        model.searchText = mainView.searchBar.text ?? ""
+        if model.searchText.isEmpty {
+            mainView.setNotFoundView()
+        } else {
+            mainView.setIsFoundView()
+        }
+            mainView.userTableView.reloadData()
     }
     
     func updateDepartmentSelection() {

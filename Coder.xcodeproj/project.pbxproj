@@ -165,6 +165,7 @@
 		111B696D28B65F9F006E2BF0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				113E07A028CE141E00AC6FFB /* SortScreen */,
 				111B696E28B65FBB006E2BF0 /* MainScreen */,
 				111B698A28B674A7006E2BF0 /* ProfileScreen */,
 			);
@@ -185,7 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				11300F2428953E5D00BC51E4 /* MainViewController.swift */,
-				118BBA6328BB7F6800194F05 /* SortViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -197,7 +197,6 @@
 				111B698028B669F4006E2BF0 /* MainRootView.swift */,
 				111B697C28B66934006E2BF0 /* NotFoundOnSearchView.swift */,
 				111B697E28B6698E006E2BF0 /* LostInternetConnectionView.swift */,
-				118BBA6128BB7C2400194F05 /* SortingView.swift */,
 				1184A27828BBC855000D9497 /* HeaderSectionView.swift */,
 			);
 			path = Views;
@@ -293,6 +292,31 @@
 				113E079D28CD2ABE00AC6FFB /* BackBarButtonItem.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		113E07A028CE141E00AC6FFB /* SortScreen */ = {
+			isa = PBXGroup;
+			children = (
+				113E07A228CE143E00AC6FFB /* Controllers */,
+				113E07A128CE143100AC6FFB /* Views */,
+			);
+			path = SortScreen;
+			sourceTree = "<group>";
+		};
+		113E07A128CE143100AC6FFB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				118BBA6128BB7C2400194F05 /* SortingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		113E07A228CE143E00AC6FFB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				118BBA6328BB7F6800194F05 /* SortViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		4049CF99DA23E4E7B3E3BFF4 /* Pods */ = {
