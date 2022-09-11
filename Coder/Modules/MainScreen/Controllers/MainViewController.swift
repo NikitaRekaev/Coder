@@ -19,7 +19,7 @@ class MainViewController: BaseViewController<MainRootView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        sortVC.delegate = self
         setupNavigationItem()
         setupTopTabs()
         setupTableView()
@@ -41,24 +41,24 @@ class MainViewController: BaseViewController<MainRootView> {
 // MARK: - UITableViewDelegate
 
 extension MainViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            return nil
-        } else {
-            return HeaderSectionView()
-        }
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return 0
-    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewController = ProfileViewController()
         viewController.item = model.filteredUser[indexPath.item]
         tableView.deselectRow(at: indexPath, animated: false)
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        84
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        section != 0 ? HeaderSectionView() : nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        section != 0 ? 68 : 0
     }
 }
 
@@ -199,14 +199,14 @@ extension MainViewController: SortDelegate {
     
     func sortByAlphabet() {
         model.users.sort(by: { $0.firstName < $1.firstName })
-        updateSortButtonSelection()
+        mainView.searchBar.setImage(UIImage(named: "list-ui-alt_selected"), for: .bookmark, state: .normal)
         mainView.userTableView.reloadData()
     }
     
     func sortByBirthday() {
         model.userSortByDate()
+        mainView.searchBar.setImage(UIImage(named: "list-ui-alt_selected"), for: .bookmark, state: .normal)
         mainView.userTableView.reloadData()
-        updateSortButtonSelection()
     }
     
     func showBirthday(shouldShow: Bool) {
@@ -230,8 +230,6 @@ private extension MainViewController {
         navigationItem.titleView = mainView.searchBar
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     func setupTopTabs() {
@@ -254,16 +252,6 @@ private extension MainViewController {
         mainView.userTableView.rowHeight = 90
     }
     
-    func updateSearchResults(_ searchBar: UISearchBar) {
-        model.searchText = mainView.searchBar.text ?? ""
-        if model.searchText.isEmpty {
-            mainView.setNotFoundView()
-        } else {
-            mainView.setIsFoundView()
-        }
-            mainView.userTableView.reloadData()
-    }
-    
     func loadData(result: Result<UserModel, Error>) {
         switch result {
         case let .success(responseData):
@@ -275,19 +263,21 @@ private extension MainViewController {
         }
     }
     
+    func updateSearchResults(_ searchBar: UISearchBar) {
+        model.searchText = mainView.searchBar.text ?? ""
+        if model.searchText.isEmpty {
+            mainView.setNotFoundView()
+        } else {
+            mainView.setIsFoundView()
+        }
+            mainView.userTableView.reloadData()
+    }
+    
     func updateDepartmentSelection() {
         mainView.topTabsCollectionView.visibleCells.compactMap({ $0 as? TopTabsCollectionViewCell }).forEach({ cell in
             let shouldBeSelected = cell.model == model.selectedDepartment
             cell.setCellSelected(shouldBeSelected)
         })
-    }
-    
-    func updateSortButtonSelection() {
-        if shouldShowBirthday {
-            mainView.searchBar.setImage(UIImage(named: "list-ui-alt"), for: .bookmark, state: .normal)
-        } else {
-            mainView.searchBar.setImage(UIImage(named: "list-ui-alt_selected"), for: .bookmark, state: .normal)
-        }
     }
 }
 
@@ -303,13 +293,12 @@ private extension MainViewController {
     
     func didPullToRefresh(_ sender: UIRefreshControl) {
         self.mainView.setMainView()
+        shouldShowBirthday = false
         apiProvider.getData(UserModel.self,
                                  from: "/kode-education/trainee-test/25143926/users") { result in
             switch result {
             case let .success(responseData):
                 self.model.users = responseData.items
-                self.mainView.setMainView()
-                self.shouldShowBirthday = false
                 self.mainView.userTableView.reloadData()
                 self.refreshControl.endRefreshing()
             case let .failure(error):

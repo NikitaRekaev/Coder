@@ -97,7 +97,7 @@ class UserTableViewCell: UITableViewCell {
         addSubview(birthdayLabel)
         birthdayLabel.numberOfLines = 0
         birthdayLabel.textColor = UIColor(red: 0.333, green: 0.333, blue: 0.361, alpha: 1)
-        birthdayLabel.font = UIFont(name: "Inter-regular", size: 15)
+        birthdayLabel.font = UIFont(name: "Inter-Regular", size: 15)
         birthdayLabel.isHidden = true
     }
     
@@ -143,6 +143,12 @@ class UserTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             departmentLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             departmentLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor, constant: 20)
+        ])
+        
+        birthdayLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            birthdayLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor, constant: -12),
+            birthdayLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -19.5)
         ])
     }
     
