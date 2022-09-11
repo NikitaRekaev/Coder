@@ -225,7 +225,7 @@ private extension MainViewController {
     }
     
     func setupNavigationItem() {
-        mainView.setupSearchBar()
+//        mainView.setupSearchBar()
         mainView.searchBar.delegate = self
         navigationItem.titleView = mainView.searchBar
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
