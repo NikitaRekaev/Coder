@@ -41,24 +41,24 @@ class MainViewController: BaseViewController<MainRootView> {
 // MARK: - UITableViewDelegate
 
 extension MainViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            return nil
-        } else {
-            return HeaderSectionView()
-        }
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return 0
-    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewController = ProfileViewController()
         viewController.item = model.filteredUser[indexPath.item]
         tableView.deselectRow(at: indexPath, animated: false)
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        84
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        section != 0 ? HeaderSectionView() : nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        section != 0 ? 68 : 0
     }
 }
 

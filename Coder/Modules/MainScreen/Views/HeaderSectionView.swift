@@ -2,6 +2,7 @@ import UIKit
 
 class HeaderSectionView: BaseView {
     
+    private let backgroundView = UIView()
     private let yearLabel = UILabel()
     private let rightLine = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
     private let leftLine = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
@@ -14,7 +15,7 @@ class HeaderSectionView: BaseView {
     private func setupUI() {
         addSubview(yearLabel)
         yearLabel.font = UIFont(name: "Inter-SemiBold", size: 15)
-        yearLabel.text = "2023"
+        yearLabel.text = "\(Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! + 1)"
         yearLabel.textColor = UIColor(red: 0.765, green: 0.765, blue: 0.776, alpha: 1)
         yearLabel.contentMode = .scaleAspectFit
         yearLabel.textAlignment = .center
