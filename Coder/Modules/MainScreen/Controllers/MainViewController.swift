@@ -19,7 +19,7 @@ class MainViewController: BaseViewController<MainRootView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        sortVC.delegate = self
         setupNavigationItem()
         setupTopTabs()
         setupTableView()
@@ -205,8 +205,8 @@ extension MainViewController: SortDelegate {
     
     func sortByBirthday() {
         model.userSortByDate()
-        mainView.userTableView.reloadData()
         updateSortButtonSelection()
+        mainView.userTableView.reloadData()
     }
     
     func showBirthday(shouldShow: Bool) {
