@@ -41,7 +41,7 @@
 		113E079928CCDCA800AC6FFB /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E079828CCDCA800AC6FFB /* MainModel.swift */; };
 		113E079E28CD2ABE00AC6FFB /* BackBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E079D28CD2ABE00AC6FFB /* BackBarButtonItem.swift */; };
 		1184A27928BBC855000D9497 /* HeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1184A27828BBC855000D9497 /* HeaderSectionView.swift */; };
-		118BBA6228BB7C2400194F05 /* SortingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BBA6128BB7C2400194F05 /* SortingView.swift */; };
+		118BBA6228BB7C2400194F05 /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BBA6128BB7C2400194F05 /* SortView.swift */; };
 		118BBA6428BB7F6800194F05 /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BBA6328BB7F6800194F05 /* SortViewController.swift */; };
 		EB99E55C547E01533C4ACA25 /* Pods_Coder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F3461F739C725BC0E29FE4 /* Pods_Coder.framework */; };
 /* End PBXBuildFile section */
@@ -83,7 +83,7 @@
 		113E079828CCDCA800AC6FFB /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		113E079D28CD2ABE00AC6FFB /* BackBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBarButtonItem.swift; sourceTree = "<group>"; };
 		1184A27828BBC855000D9497 /* HeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
-		118BBA6128BB7C2400194F05 /* SortingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingView.swift; sourceTree = "<group>"; };
+		118BBA6128BB7C2400194F05 /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
 		118BBA6328BB7F6800194F05 /* SortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
 		2AA1B1ACAFDF163FFF069568 /* Pods-Coder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coder.debug.xcconfig"; path = "Target Support Files/Pods-Coder/Pods-Coder.debug.xcconfig"; sourceTree = "<group>"; };
 		A3F3461F739C725BC0E29FE4 /* Pods_Coder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -306,7 +306,7 @@
 		113E07A128CE143100AC6FFB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				118BBA6128BB7C2400194F05 /* SortingView.swift */,
+				118BBA6128BB7C2400194F05 /* SortView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -474,7 +474,7 @@
 				111FF48328CC9A6B00CE8E0D /* UserModel.swift in Sources */,
 				111B699128B67545006E2BF0 /* ProfileView.swift in Sources */,
 				118BBA6428BB7F6800194F05 /* SortViewController.swift in Sources */,
-				118BBA6228BB7C2400194F05 /* SortingView.swift in Sources */,
+				118BBA6228BB7C2400194F05 /* SortView.swift in Sources */,
 				111B697F28B6698E006E2BF0 /* LostInternetConnectionView.swift in Sources */,
 				11300F2528953E5D00BC51E4 /* MainViewController.swift in Sources */,
 				111B699428B675C9006E2BF0 /* ProfileViewController.swift in Sources */,

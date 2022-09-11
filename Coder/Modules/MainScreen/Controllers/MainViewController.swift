@@ -293,13 +293,12 @@ private extension MainViewController {
     
     func didPullToRefresh(_ sender: UIRefreshControl) {
         self.mainView.setMainView()
+        shouldShowBirthday = false
         apiProvider.getData(UserModel.self,
                                  from: "/kode-education/trainee-test/25143926/users") { result in
             switch result {
             case let .success(responseData):
                 self.model.users = responseData.items
-                self.mainView.setMainView()
-                self.shouldShowBirthday = false
                 self.mainView.userTableView.reloadData()
                 self.refreshControl.endRefreshing()
             case let .failure(error):
