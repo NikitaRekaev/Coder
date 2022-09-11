@@ -199,13 +199,13 @@ extension MainViewController: SortDelegate {
     
     func sortByAlphabet() {
         model.users.sort(by: { $0.firstName < $1.firstName })
-        updateSortButtonSelection()
+        mainView.searchBar.setImage(UIImage(named: "list-ui-alt_selected"), for: .bookmark, state: .normal)
         mainView.userTableView.reloadData()
     }
     
     func sortByBirthday() {
         model.userSortByDate()
-        updateSortButtonSelection()
+        mainView.searchBar.setImage(UIImage(named: "list-ui-alt_selected"), for: .bookmark, state: .normal)
         mainView.userTableView.reloadData()
     }
     
@@ -278,14 +278,6 @@ private extension MainViewController {
             let shouldBeSelected = cell.model == model.selectedDepartment
             cell.setCellSelected(shouldBeSelected)
         })
-    }
-    
-    func updateSortButtonSelection() {
-        if shouldShowBirthday {
-            mainView.searchBar.setImage(UIImage(named: "list-ui-alt"), for: .bookmark, state: .normal)
-        } else {
-            mainView.searchBar.setImage(UIImage(named: "list-ui-alt_selected"), for: .bookmark, state: .normal)
-        }
     }
 }
 
