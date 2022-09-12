@@ -17,10 +17,13 @@ final class BirthView: BaseView {
         self.birthDataLabel.text = "\(dateBirth)"
         self.yearsLabel.text = "\(years)"
     }
+}
+
+// MARK: - Private Methods
+
+private extension BirthView {
     
-    // MARK: Private methods
-    
-    private func setupUI() {
+    func setupUI() {
         addSubview(birthView)
         
         addSubview(starImageView)
@@ -39,7 +42,7 @@ final class BirthView: BaseView {
         dividingLine.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 248/255, alpha: 1)
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         starImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             starImageView.centerYAnchor.constraint(equalTo: birthView.centerYAnchor),

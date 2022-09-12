@@ -20,7 +20,7 @@ final class PhoneView: BaseView {
 // MARK: - Private Methods
 
 private extension PhoneView {
-   
+    
     func setupUI() {
         addSubview(phoneView)
         
