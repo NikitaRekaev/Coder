@@ -40,6 +40,7 @@
 		113E079628CCD72000AC6FFB /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E079528CCD72000AC6FFB /* ProfileModel.swift */; };
 		113E079928CCDCA800AC6FFB /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E079828CCDCA800AC6FFB /* MainModel.swift */; };
 		113E079E28CD2ABE00AC6FFB /* BackBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E079D28CD2ABE00AC6FFB /* BackBarButtonItem.swift */; };
+		113E07A428CE71DF00AC6FFB /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E07A328CE71DF00AC6FFB /* SearchBar.swift */; };
 		1184A27928BBC855000D9497 /* HeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1184A27828BBC855000D9497 /* HeaderSectionView.swift */; };
 		118BBA6228BB7C2400194F05 /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BBA6128BB7C2400194F05 /* SortView.swift */; };
 		118BBA6428BB7F6800194F05 /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BBA6328BB7F6800194F05 /* SortViewController.swift */; };
@@ -82,6 +83,7 @@
 		113E079528CCD72000AC6FFB /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		113E079828CCDCA800AC6FFB /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		113E079D28CD2ABE00AC6FFB /* BackBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBarButtonItem.swift; sourceTree = "<group>"; };
+		113E07A328CE71DF00AC6FFB /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		1184A27828BBC855000D9497 /* HeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
 		118BBA6128BB7C2400194F05 /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
 		118BBA6328BB7F6800194F05 /* SortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			children = (
 				111B697528B6631B006E2BF0 /* Cells */,
 				111B698028B669F4006E2BF0 /* MainRootView.swift */,
+				113E07A328CE71DF00AC6FFB /* SearchBar.swift */,
 				111B697C28B66934006E2BF0 /* NotFoundOnSearchView.swift */,
 				111B697E28B6698E006E2BF0 /* LostInternetConnectionView.swift */,
 				1184A27828BBC855000D9497 /* HeaderSectionView.swift */,
@@ -472,6 +475,7 @@
 				111B697728B663BB006E2BF0 /* UserTableViewCell.swift in Sources */,
 				111B696A28B65589006E2BF0 /* BaseViewController.swift in Sources */,
 				111FF48328CC9A6B00CE8E0D /* UserModel.swift in Sources */,
+				113E07A428CE71DF00AC6FFB /* SearchBar.swift in Sources */,
 				111B699128B67545006E2BF0 /* ProfileView.swift in Sources */,
 				118BBA6428BB7F6800194F05 /* SortViewController.swift in Sources */,
 				118BBA6228BB7C2400194F05 /* SortView.swift in Sources */,

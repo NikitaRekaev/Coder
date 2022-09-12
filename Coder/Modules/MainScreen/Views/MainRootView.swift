@@ -4,7 +4,7 @@ class MainRootView: BaseView {
     
     let errorView = LostInternetConnectionView()
     let userTableView = UITableView()
-    let searchBar = UISearchBar()
+    let searchBar = SearchBar()
     
     private let notFoundSearchView = NotFoundOnSearchView()
     private let separatorLineUnderTabs = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.33))
@@ -23,54 +23,41 @@ class MainRootView: BaseView {
         setupConstraints()
         setViewDependingOnConnection()
     }
-    
-    // MARK: Public methods
-    
-    func setupSearchBar() {
-        searchBar.setImage(UIImage(named: "list-ui-alt"), for: .bookmark, state: .normal)
-        searchBar.setImage(UIImage(named: "list-ui-alt_selected"), for: .bookmark, state: .selected)
-        searchBar.setImage(UIImage(named: "x-clear"), for: .clear, state: .normal)
-        searchBar.searchTextField.leftView = UIImageView(image: UIImage(named: "vector"))
-        searchBar.tintColor = #colorLiteral(red: 0.4257887602, green: 0.1908605397, blue: 1, alpha: 1)
-        searchBar.backgroundColor = .white
-        searchBar.showsBookmarkButton = true
-        searchBar.sizeToFit()
-        searchBar.placeholder = "Введи имя, тег, почту..."
-        searchBar.setValue("Отмена", forKey: "cancelButtonText")
-        
-        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
-        textFieldInsideSearchBar?.backgroundColor = UIColor(
-            red: 247.0/255.0,
-            green: 247.0/255.0,
-            blue: 248.0/255.0,
-            alpha: 1)
-    }
+}
+
+// MARK: SetView
+
+extension MainRootView {
     
     func setNotFoundView() {
         userTableView.isHidden = true
         notFoundSearchView.isHidden = false
     }
-    
+
     func setIsFoundView() {
         notFoundSearchView.isHidden = true
         userTableView.isHidden = false
     }
-    
+
     func setErrorView() {
         userTableView.isHidden = true
         topTabsCollectionView.isHidden = true
         searchBar.isHidden = true
         errorView.isHidden = false
     }
-    
+
     func setMainView() {
         errorView.isHidden = true
         userTableView.isHidden = false
         topTabsCollectionView.isHidden = false
         searchBar.isHidden = false
     }
-    
-    // MARK: Private methods
+
+}
+
+// MARK: Private methods
+
+extension MainRootView {
     
     private func setViewDependingOnConnection() {
         NetworkMonitor.shared.startMonitoring()
@@ -91,7 +78,7 @@ class MainRootView: BaseView {
         
         NetworkMonitor.shared.stopMonitoring()
     }
-    
+
     private func setupUI() {
         backgroundColor = .white
         
@@ -108,7 +95,7 @@ class MainRootView: BaseView {
         
         addSubview(errorView)
     }
-    
+
     private func setupConstraints() {
         topTabsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
