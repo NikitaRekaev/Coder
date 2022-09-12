@@ -1,6 +1,6 @@
 import UIKit
 
-class SortView: BaseView {
+final class SortView: BaseView {
     
     // MARK: - Properties
     
