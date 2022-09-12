@@ -12,10 +12,12 @@ final class LostInternetConnectionView: BaseView {
         setupUI()
         setupConstraints()
     }
-    
-    // MARK: Private methods
-    
-    private func setupUI() {
+}
+
+// MARK: Private methods
+
+private extension LostInternetConnectionView {
+    func setupUI() {
         addSubview(NLOImageView)
         NLOImageView.image = UIImage(named: "NLO")
         NLOImageView.clipsToBounds = true
@@ -41,7 +43,7 @@ final class LostInternetConnectionView: BaseView {
         tryAgainButton.titleLabel?.font = UIFont(name: "SemiBold", size: 17)
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         NLOImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             NLOImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
