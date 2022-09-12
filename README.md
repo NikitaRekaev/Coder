@@ -9,10 +9,6 @@ Design: https://www.figma.com/file/GRRKONipVClULsfdCAuVs1/KODE-Trainee-Dev-Ос�
 
 API: https://kode-education.stoplight.io/docs/trainee-test/b3A6MjUxNDM5Mjg-get-users
 
-# Important
-* Rename assets.UnChecked -> unChecked
-* Rename assets.Vector -> Vector 
-
 # Result
 Finished time - 150h
 
