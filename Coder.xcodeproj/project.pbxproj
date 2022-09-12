@@ -25,7 +25,7 @@
 		111B696C28B65BC6006E2BF0 /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B696B28B65BC6006E2BF0 /* ImageResizer.swift */; };
 		111B697428B66313006E2BF0 /* TopTabsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697328B66313006E2BF0 /* TopTabsCollectionViewCell.swift */; };
 		111B697728B663BB006E2BF0 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697628B663BB006E2BF0 /* UserTableViewCell.swift */; };
-		111B697D28B66934006E2BF0 /* NotFoundOnSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697C28B66934006E2BF0 /* NotFoundOnSearchView.swift */; };
+		111B697D28B66934006E2BF0 /* SearchErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697C28B66934006E2BF0 /* SearchErrorView.swift */; };
 		111B697F28B6698E006E2BF0 /* LostInternetConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697E28B6698E006E2BF0 /* LostInternetConnectionView.swift */; };
 		111B698128B669F4006E2BF0 /* MainRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B698028B669F4006E2BF0 /* MainRootView.swift */; };
 		111B698D28B674E6006E2BF0 /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B698C28B674E6006E2BF0 /* PhoneView.swift */; };
@@ -66,7 +66,7 @@
 		111B696B28B65BC6006E2BF0 /* ImageResizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
 		111B697328B66313006E2BF0 /* TopTabsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabsCollectionViewCell.swift; sourceTree = "<group>"; };
 		111B697628B663BB006E2BF0 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
-		111B697C28B66934006E2BF0 /* NotFoundOnSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFoundOnSearchView.swift; sourceTree = "<group>"; };
+		111B697C28B66934006E2BF0 /* SearchErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchErrorView.swift; sourceTree = "<group>"; };
 		111B697E28B6698E006E2BF0 /* LostInternetConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostInternetConnectionView.swift; sourceTree = "<group>"; };
 		111B698028B669F4006E2BF0 /* MainRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRootView.swift; sourceTree = "<group>"; };
 		111B698C28B674E6006E2BF0 /* PhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneView.swift; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 				111B697528B6631B006E2BF0 /* Cells */,
 				111B698028B669F4006E2BF0 /* MainRootView.swift */,
 				113E07A328CE71DF00AC6FFB /* SearchBar.swift */,
-				111B697C28B66934006E2BF0 /* NotFoundOnSearchView.swift */,
+				111B697C28B66934006E2BF0 /* SearchErrorView.swift */,
 				111B697E28B6698E006E2BF0 /* LostInternetConnectionView.swift */,
 				1184A27828BBC855000D9497 /* HeaderSectionView.swift */,
 			);
@@ -483,7 +483,7 @@
 				11300F2528953E5D00BC51E4 /* MainViewController.swift in Sources */,
 				111B699428B675C9006E2BF0 /* ProfileViewController.swift in Sources */,
 				111B696C28B65BC6006E2BF0 /* ImageResizer.swift in Sources */,
-				111B697D28B66934006E2BF0 /* NotFoundOnSearchView.swift in Sources */,
+				111B697D28B66934006E2BF0 /* SearchErrorView.swift in Sources */,
 				113E079628CCD72000AC6FFB /* ProfileModel.swift in Sources */,
 				111B697428B66313006E2BF0 /* TopTabsCollectionViewCell.swift in Sources */,
 				11300F2128953E5D00BC51E4 /* AppDelegate.swift in Sources */,
