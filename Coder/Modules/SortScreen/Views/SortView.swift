@@ -35,7 +35,7 @@ private extension SortView {
         
         addSubview(alphabetSortButton)
         alphabetSortButton.setTitle("По алфавиту", for: .normal)
-        alphabetSortButton.setImage(UIImage(named: "unChecked"), for: .normal)
+        alphabetSortButton.setImage(UIImage(named: "UnChecked"), for: .normal)
         alphabetSortButton.setImage(UIImage(named: "isChecked"), for: .selected)
         alphabetSortButton.setTitleColor(.black, for: .normal)
         alphabetSortButton.titleLabel?.font = UIFont(name: "Inter-Medium", size: 16)
@@ -43,7 +43,7 @@ private extension SortView {
         
         addSubview(birthdaySortButton)
         birthdaySortButton.setTitle("По дню рождения", for: .normal)
-        birthdaySortButton.setImage(UIImage(named: "unChecked"), for: .normal)
+        birthdaySortButton.setImage(UIImage(named: "UnChecked"), for: .normal)
         birthdaySortButton.setImage(UIImage(named: "isChecked"), for: .selected)
         birthdaySortButton.setTitleColor(.black, for: .normal)
         birthdaySortButton.titleLabel?.font = UIFont(name: "Inter-Medium", size: 16)

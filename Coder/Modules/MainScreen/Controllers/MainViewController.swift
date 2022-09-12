@@ -276,7 +276,7 @@ private extension MainViewController {
 private extension MainViewController {
     
     func textChanged(_ sender: UITextField) {
-        let image = sender.text?.count == .zero ? UIImage(named: "vector") : UIImage(named: "vector_editing")
+        let image = sender.text?.count == .zero ? UIImage(named: "Vector") : UIImage(named: "vector_editing")
         sender.leftView = UIImageView.init(image: image)
     }
     

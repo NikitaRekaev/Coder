@@ -51,7 +51,7 @@ private extension SearchBar {
         
         searchTextField.layer.masksToBounds = true
         searchTextField.layer.cornerRadius = 16
-        searchTextField.leftView = UIImageView(image: UIImage(named: "vector"))
+        searchTextField.leftView = UIImageView(image: UIImage(named: "Vector"))
         searchTextField.font = UIFont(name: "Inter-Regular", size: 15)
         
         tintColor = #colorLiteral(red: 0.4257887602, green: 0.1908605397, blue: 1, alpha: 1)
