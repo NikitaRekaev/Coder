@@ -29,12 +29,12 @@ class MainRootView: BaseView {
 
 extension MainRootView {
     
-    func setNotFoundView() {
+    func setSearchErrorView() {
         userTableView.isHidden = true
         searchErrorView.isHidden = false
     }
 
-    func setIsFoundView() {
+    func setTableView() {
         searchErrorView.isHidden = true
         userTableView.isHidden = false
     }
