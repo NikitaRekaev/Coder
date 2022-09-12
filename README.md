@@ -9,13 +9,19 @@ Design: https://www.figma.com/file/GRRKONipVClULsfdCAuVs1/KODE-Trainee-Dev-Ос�
 
 API: https://kode-education.stoplight.io/docs/trainee-test/b3A6MjUxNDM5Mjg-get-users
 
+# Result
+Finished time - 150h
+
+Not done:
+* Avatars not uploaded
+* Not done Additionally
+
 # Time costs: 
 * Model - 3h
 * View - 9h
 * Controller - 11h
 * Additionally - 2h
 * All - 25h
-* Finished - 
 
 # Model:
 1. Data - 30м
