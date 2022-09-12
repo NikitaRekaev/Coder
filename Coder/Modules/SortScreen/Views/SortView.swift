@@ -16,10 +16,13 @@ class SortView: BaseView {
         setupUI()
         setupConstraints()
     }
+}
+
+// MARK: - Private Methods
+
+private extension SortView {
     
-    // MARK: - Private Methods
-    
-    private func setupUI() {
+    func setupUI() {
         backgroundColor = .white
         
         addSubview(titleLabel)
@@ -47,7 +50,7 @@ class SortView: BaseView {
         birthdaySortButton.titleEdgeInsets.left = 14
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 21.5),
