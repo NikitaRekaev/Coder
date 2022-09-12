@@ -1,6 +1,6 @@
 import UIKit
 
-class LostInternetConnectionView: BaseView {
+final class LostInternetConnectionView: BaseView {
     
     let tryAgainButton = UIButton()
     

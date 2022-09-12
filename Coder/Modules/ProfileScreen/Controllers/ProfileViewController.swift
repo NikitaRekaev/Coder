@@ -1,6 +1,6 @@
 import UIKit
 
-class ProfileViewController: BaseViewController<ProfileView> {
+final class ProfileViewController: BaseViewController<ProfileView> {
     
     var item: Item!
     

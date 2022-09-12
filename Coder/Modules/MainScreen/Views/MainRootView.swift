@@ -1,6 +1,6 @@
 import UIKit
 
-class MainRootView: BaseView {
+final class MainRootView: BaseView {
     
     let errorView = LostInternetConnectionView()
     let userTableView = UITableView()

@@ -1,6 +1,6 @@
 import UIKit
 
-class HeaderSectionView: BaseView {
+final class HeaderSectionView: BaseView {
     
     private let backgroundView = UIView()
     private let yearLabel = UILabel()

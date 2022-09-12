@@ -1,6 +1,6 @@
 import UIKit
 
-class BirthView: BaseView {
+final class BirthView: BaseView {
     
     private let birthView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 73.5))
     private let starImageView = UIImageView()

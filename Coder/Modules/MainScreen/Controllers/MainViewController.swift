@@ -1,6 +1,6 @@
 import UIKit
 
-class MainViewController: BaseViewController<MainRootView> {
+final class MainViewController: BaseViewController<MainRootView> {
     
     private lazy var shouldShowBirthday: Bool = false
     private lazy var sortVC = SortViewController()

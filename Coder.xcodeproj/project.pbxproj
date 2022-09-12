@@ -146,9 +146,9 @@
 		111B695F28B64EDA006E2BF0 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				111B695C28B64E89006E2BF0 /* DataModel */,
 				111B696228B65231006E2BF0 /* ApiProvider.swift */,
 				111B696428B652DC006E2BF0 /* NetworkMonitor.swift */,
-				111B695C28B64E89006E2BF0 /* DataModel */,
 			);
 			name = API;
 			path = DataModel/API;

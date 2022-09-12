@@ -7,7 +7,7 @@ protocol SortDelegate: AnyObject {
     func showBirthday(shouldShow: Bool)
 }
 
-class SortViewController: BaseViewController<SortView> {
+final class SortViewController: BaseViewController<SortView> {
     
     // MARK: - Delegate Properties
     

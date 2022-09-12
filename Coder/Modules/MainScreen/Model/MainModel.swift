@@ -1,6 +1,6 @@
 import Foundation
 
-class MainModel {
+final class MainModel {
     
     var searchText = ""
     var users: [Item] = []

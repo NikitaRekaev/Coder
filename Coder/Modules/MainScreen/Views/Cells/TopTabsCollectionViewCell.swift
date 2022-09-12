@@ -1,6 +1,6 @@
 import UIKit
 
-class TopTabsCollectionViewCell: UICollectionViewCell {
+final class TopTabsCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "Cell"
     

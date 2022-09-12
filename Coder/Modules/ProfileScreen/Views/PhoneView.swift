@@ -1,6 +1,6 @@
 import UIKit
 
-class PhoneView: BaseView {
+final class PhoneView: BaseView {
     
     let phoneButton = UIButton(type: .system)
     

@@ -1,6 +1,6 @@
 import UIKit
 
-class ProfileView: BaseView {
+final class ProfileView: BaseView {
     
     let phoneView = PhoneView()
     let avatarImageView = UIImageView()

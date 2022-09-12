@@ -1,6 +1,6 @@
 import UIKit
 
-class SearchBar: UISearchBar {
+final class SearchBar: UISearchBar {
     
     // MARK: - Properties
     
