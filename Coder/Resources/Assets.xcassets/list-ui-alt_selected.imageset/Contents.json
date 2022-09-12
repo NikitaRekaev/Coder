@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "filter-list-selected-x1.png",
+      "filename" : "list-ui-alt-selected-x1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "filter-list-selected-x2.png",
+      "filename" : "list-ui-alt-selected-x2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "filter-list-selected-x3.png",
+      "filename" : "list-ui-alt-selected-x3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

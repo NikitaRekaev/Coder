@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "isChecked.svg",
+      "filename" : "unChecked.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
