@@ -10,8 +10,13 @@ final class SearchErrorView: BaseView {
         setupUI()
         setupConstraints()
     }
+}
+
+//MARK: - Private Methods
+
+private extension SearchErrorView {
     
-    private func setupUI() {
+    func setupUI() {
         addSubview(loupe)
         loupe.image = UIImage(named: "loupe")
         
@@ -30,7 +35,7 @@ final class SearchErrorView: BaseView {
         tryToCorrectLabel.textAlignment = .center
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         loupe.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             loupe.centerXAnchor.constraint(equalTo: centerXAnchor),
