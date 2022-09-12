@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "magnifying-glass-selected-x1.png",
+      "filename" : "vector-selected-x1-1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "magnifying-glass-selected-x2.png",
+      "filename" : "vector-selected-x2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "magnifying-glass-selected-x3.png",
+      "filename" : "vector-selected-x3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
