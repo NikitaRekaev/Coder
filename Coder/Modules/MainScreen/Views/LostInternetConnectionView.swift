@@ -17,6 +17,7 @@ final class LostInternetConnectionView: BaseView {
 // MARK: Private methods
 
 private extension LostInternetConnectionView {
+    
     func setupUI() {
         addSubview(NLOImageView)
         NLOImageView.image = UIImage(named: "NLO")
