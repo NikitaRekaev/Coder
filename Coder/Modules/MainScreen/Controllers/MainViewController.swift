@@ -167,9 +167,9 @@ extension MainViewController: UISearchBarDelegate {
         model.searchText = mainView.searchBar.text ?? ""
         
         if model.searchText.isEmpty {
-            mainView.setNotFoundView()
+            mainView.setSearchErrorView()
         } else {
-            mainView.setIsFoundView()
+            mainView.setTableView()
         }
         mainView.userTableView.reloadData()
     }
@@ -184,7 +184,7 @@ extension MainViewController: UISearchBarDelegate {
         mainView.searchBar.text = nil
         mainView.searchBar.endEditing(true)
         model.searchText = ""
-        mainView.setIsFoundView()
+        mainView.setTableView()
         mainView.userTableView.reloadData()
     }
     
@@ -225,7 +225,6 @@ private extension MainViewController {
     }
     
     func setupNavigationItem() {
-//        mainView.setupSearchBar()
         mainView.searchBar.delegate = self
         navigationItem.titleView = mainView.searchBar
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -261,16 +260,6 @@ private extension MainViewController {
         case .failure(_:):
             self.mainView.setErrorView()
         }
-    }
-    
-    func updateSearchResults(_ searchBar: UISearchBar) {
-        model.searchText = mainView.searchBar.text ?? ""
-        if model.searchText.isEmpty {
-            mainView.setNotFoundView()
-        } else {
-            mainView.setIsFoundView()
-        }
-            mainView.userTableView.reloadData()
     }
     
     func updateDepartmentSelection() {

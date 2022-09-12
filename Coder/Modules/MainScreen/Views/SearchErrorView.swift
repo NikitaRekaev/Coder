@@ -1,6 +1,6 @@
 import UIKit
 
-class NotFoundOnSearchView: BaseView {
+final class SearchErrorView: BaseView {
     
     private let loupe = UIImageView()
     private let userNotFoundLabel = UILabel()

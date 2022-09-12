@@ -6,7 +6,7 @@ class MainRootView: BaseView {
     let userTableView = UITableView()
     let searchBar = SearchBar()
     
-    private let notFoundSearchView = NotFoundOnSearchView()
+    private let searchErrorView = SearchErrorView()
     private let separatorLineUnderTabs = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.33))
     
     let topTabsCollectionView: UICollectionView = {
@@ -29,13 +29,13 @@ class MainRootView: BaseView {
 
 extension MainRootView {
     
-    func setNotFoundView() {
+    func setSearchErrorView() {
         userTableView.isHidden = true
-        notFoundSearchView.isHidden = false
+        searchErrorView.isHidden = false
     }
 
-    func setIsFoundView() {
-        notFoundSearchView.isHidden = true
+    func setTableView() {
+        searchErrorView.isHidden = true
         userTableView.isHidden = false
     }
 
@@ -85,8 +85,8 @@ extension MainRootView {
         addSubview(userTableView)
         userTableView.backgroundColor = .white
         
-        addSubview(notFoundSearchView)
-        notFoundSearchView.isHidden = true
+        addSubview(searchErrorView)
+        searchErrorView.isHidden = true
         
         addSubview(topTabsCollectionView)
         
@@ -113,12 +113,12 @@ extension MainRootView {
             separatorLineUnderTabs.heightAnchor.constraint(equalToConstant: 0.33)
         ])
         
-        notFoundSearchView.translatesAutoresizingMaskIntoConstraints = false
+        searchErrorView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            notFoundSearchView.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor, constant: 22),
-            notFoundSearchView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            notFoundSearchView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            notFoundSearchView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            searchErrorView.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor, constant: 22),
+            searchErrorView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            searchErrorView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            searchErrorView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
         userTableView.translatesAutoresizingMaskIntoConstraints = false
