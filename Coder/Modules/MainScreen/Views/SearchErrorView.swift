@@ -12,7 +12,7 @@ final class SearchErrorView: BaseView {
     }
 }
 
-//MARK: - Private Methods
+// MARK: - Private Methods
 
 private extension SearchErrorView {
     
