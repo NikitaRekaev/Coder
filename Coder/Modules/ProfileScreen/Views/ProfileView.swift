@@ -1,6 +1,6 @@
 import UIKit
 
-class ProfileView: BaseView {
+final class ProfileView: BaseView {
     
     let phoneView = PhoneView()
     let avatarImageView = UIImageView()
@@ -33,10 +33,13 @@ class ProfileView: BaseView {
         birthView.setData(dateBirth: dateBirth, years: years)
     }
     // swiftlint:enable function_parameter_count
+}
+
+// MARK: - Private Methods
+
+private extension ProfileView {
     
-    // MARK: Private methods
-    
-    private func setupUI() {
+    func setupUI() {
         backgroundColor = .white
         
         addSubview(upView)
@@ -74,7 +77,7 @@ class ProfileView: BaseView {
         stackView.addArrangedSubview(phoneView)
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         upView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             upView.topAnchor.constraint(equalTo: topAnchor),

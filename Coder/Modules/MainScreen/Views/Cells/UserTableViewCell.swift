@@ -1,6 +1,6 @@
 import UIKit
 
-class UserTableViewCell: UITableViewCell {
+final class UserTableViewCell: UITableViewCell {
     
     static let identifier = "tableCell"
     var shouldShowBirthday = false
@@ -31,8 +31,11 @@ class UserTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    // MARK: Public method
+}
+
+// MARK: - SetViews
+
+extension UserTableViewCell {
     
     func setBirthdayLabelVisibility(shouldShowBirthday: Bool) {
         birthdayLabel.isHidden = !shouldShowBirthday
@@ -69,10 +72,13 @@ class UserTableViewCell: UITableViewCell {
         departmentLabel.text = department?.title
         birthdayLabel.text = dateBirth
     }
+}
+
+// MARK: - Private Methods
+
+private extension UserTableViewCell {
     
-    // MARK: Private methods
-    
-    private func setupUI() {
+    func setupUI() {
         addSubview(avatarImageView)
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.borderWidth = 0
@@ -101,7 +107,7 @@ class UserTableViewCell: UITableViewCell {
         birthdayLabel.isHidden = true
     }
     
-    private func setupSkeletonUI() {
+    func setupSkeletonUI() {
         addSubview(imageSkeletonView)
         imageSkeletonView.frame = CGRect(x: 0, y: 0, width: 72, height: 72)
         imageSkeletonView.layer.cornerRadius = 36
@@ -118,7 +124,7 @@ class UserTableViewCell: UITableViewCell {
         departmentSkeletonView.backgroundColor = UIColor(red: 0.955, green: 0.955, blue: 0.965, alpha: 1)
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             avatarImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -127,11 +133,11 @@ class UserTableViewCell: UITableViewCell {
             avatarImageView.widthAnchor.constraint(equalToConstant: 72)
         ])
         
-       nameLabel.translatesAutoresizingMaskIntoConstraints = false
-       NSLayoutConstraint.activate([
-        nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
-        nameLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor, constant: -20)
-       ])
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
+            nameLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor, constant: -20)
+        ])
         
         tagLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -152,7 +158,7 @@ class UserTableViewCell: UITableViewCell {
         ])
     }
     
-    private func setSkeletonViewsConstraints() {
+    func setSkeletonViewsConstraints() {
         imageSkeletonView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             imageSkeletonView.centerYAnchor.constraint(equalTo: centerYAnchor),

@@ -1,6 +1,6 @@
 import UIKit
 
-class MainViewController: BaseViewController<MainRootView> {
+final class MainViewController: BaseViewController<MainRootView> {
     
     private lazy var shouldShowBirthday: Bool = false
     private lazy var sortVC = SortViewController()
@@ -35,6 +35,102 @@ class MainViewController: BaseViewController<MainRootView> {
                 self.mainView.setErrorView()
             }
         }
+    }
+}
+
+// MARK: - UISearchBarDelegate
+
+extension MainViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        model.searchText = mainView.searchBar.text ?? ""
+        
+        if model.searchText.isEmpty {
+            mainView.setSearchErrorView()
+        } else {
+            mainView.setTableView()
+        }
+        mainView.userTableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        mainView.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        mainView.searchBar.showsCancelButton = false
+        mainView.searchBar.showsBookmarkButton = true
+        mainView.searchBar.text = nil
+        mainView.searchBar.endEditing(true)
+        model.searchText = ""
+        mainView.setTableView()
+        mainView.userTableView.reloadData()
+    }
+    
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        present(sortVC, animated: true, completion: nil)
+    }
+}
+
+// MARK: - SortDelegate
+
+extension MainViewController: SortDelegate {
+    
+    func sortByAlphabet() {
+        model.users.sort(by: { $0.firstName < $1.firstName })
+        mainView.searchBar.setImage(UIImage(named: "list-ui-alt_selected"), for: .bookmark, state: .normal)
+        mainView.userTableView.reloadData()
+    }
+    
+    func sortByBirthday() {
+        model.userSortByDate()
+        mainView.searchBar.setImage(UIImage(named: "list-ui-alt_selected"), for: .bookmark, state: .normal)
+        mainView.userTableView.reloadData()
+    }
+    
+    func showBirthday(shouldShow: Bool) {
+        self.shouldShowBirthday = shouldShow
+        mainView.userTableView.reloadData()
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension MainViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return tabs.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: TopTabsCollectionViewCell.identifier,
+            for: indexPath
+        ) as? TopTabsCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        cell.setModel(tabs[indexPath.item])
+        cell.setCellSelected(tabs[indexPath.item] == model.selectedDepartment)
+        
+        return cell
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension MainViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if model.selectedDepartment == tabs[indexPath.item] {
+            model.selectedDepartment = nil
+        } else {
+            model.selectedDepartment = tabs[indexPath.item]
+        }
+        
+        mainView.userTableView.reloadData()
+        updateDepartmentSelection()
     }
 }
 
@@ -116,102 +212,6 @@ extension MainViewController: UITableViewDataSource {
             cell.setSkeletonView()
         }
         return cell
-    }
-}
-
-// MARK: - UICollectionViewDelegate
-
-extension MainViewController: UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tabs.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: TopTabsCollectionViewCell.identifier,
-            for: indexPath
-        ) as? TopTabsCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        
-        cell.setModel(tabs[indexPath.item])
-        cell.setCellSelected(tabs[indexPath.item] == model.selectedDepartment)
-        
-        return cell
-    }
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension MainViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if model.selectedDepartment == tabs[indexPath.item] {
-            model.selectedDepartment = nil
-        } else {
-            model.selectedDepartment = tabs[indexPath.item]
-        }
-        
-        mainView.userTableView.reloadData()
-        updateDepartmentSelection()
-    }
-}
-
-// MARK: - UISearchBarDelegate
-
-extension MainViewController: UISearchBarDelegate {
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        model.searchText = mainView.searchBar.text ?? ""
-        
-        if model.searchText.isEmpty {
-            mainView.setSearchErrorView()
-        } else {
-            mainView.setTableView()
-        }
-        mainView.userTableView.reloadData()
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        mainView.searchBar.showsCancelButton = true
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        mainView.searchBar.showsCancelButton = false
-        mainView.searchBar.showsBookmarkButton = true
-        mainView.searchBar.text = nil
-        mainView.searchBar.endEditing(true)
-        model.searchText = ""
-        mainView.setTableView()
-        mainView.userTableView.reloadData()
-    }
-    
-    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        present(sortVC, animated: true, completion: nil)
-    }
-}
-
-// MARK: - SortDelegate
-
-extension MainViewController: SortDelegate {
-    
-    func sortByAlphabet() {
-        model.users.sort(by: { $0.firstName < $1.firstName })
-        mainView.searchBar.setImage(UIImage(named: "list-ui-alt_selected"), for: .bookmark, state: .normal)
-        mainView.userTableView.reloadData()
-    }
-    
-    func sortByBirthday() {
-        model.userSortByDate()
-        mainView.searchBar.setImage(UIImage(named: "list-ui-alt_selected"), for: .bookmark, state: .normal)
-        mainView.userTableView.reloadData()
-    }
-    
-    func showBirthday(shouldShow: Bool) {
-        self.shouldShowBirthday = shouldShow
-        mainView.userTableView.reloadData()
     }
 }
 

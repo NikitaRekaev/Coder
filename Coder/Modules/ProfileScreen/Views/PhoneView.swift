@@ -1,6 +1,6 @@
 import UIKit
 
-class PhoneView: BaseView {
+final class PhoneView: BaseView {
     
     let phoneButton = UIButton(type: .system)
     
@@ -15,10 +15,13 @@ class PhoneView: BaseView {
     func setData(phoneNumber: String) {
         phoneButton.setTitle(phoneNumber, for: .normal)
     }
+}
+
+// MARK: - Private Methods
+
+private extension PhoneView {
     
-    // MARK: Private methods
-    
-    private func setupUI() {
+    func setupUI() {
         addSubview(phoneView)
         
         addSubview(phoneImageView)
@@ -32,7 +35,7 @@ class PhoneView: BaseView {
         phoneButton.titleLabel?.font = UIFont(name: "Inter-Medium", size: 16)
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         phoneImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             phoneImageView.centerYAnchor.constraint(equalTo: phoneView.centerYAnchor),

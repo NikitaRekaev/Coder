@@ -1,6 +1,6 @@
 import UIKit
 
-class HeaderSectionView: BaseView {
+final class HeaderSectionView: BaseView {
     
     private let backgroundView = UIView()
     private let yearLabel = UILabel()
@@ -11,8 +11,13 @@ class HeaderSectionView: BaseView {
         setupUI()
         setupConstraints()
     }
+}
+
+// MARK: - Private Methods
+
+private extension HeaderSectionView {
     
-    private func setupUI() {
+    func setupUI() {
         addSubview(yearLabel)
         yearLabel.font = UIFont(name: "Inter-SemiBold", size: 15)
         yearLabel.text = "\(Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! + 1)"
@@ -27,7 +32,7 @@ class HeaderSectionView: BaseView {
         leftLine.backgroundColor = UIColor(red: 0.765, green: 0.765, blue: 0.776, alpha: 1)
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         yearLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             yearLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -15),

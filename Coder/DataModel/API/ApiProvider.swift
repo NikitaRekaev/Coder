@@ -1,6 +1,6 @@
 import Foundation
 
-class ApiProvider {
+final class ApiProvider {
     
     init(baseUrl: URL = URL(string: "https://stoplight.io/mocks/")!) {
         self.baseUrl = baseUrl
