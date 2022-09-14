@@ -58,6 +58,7 @@ extension MainViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        mainView.searchBar.searchTextField.leftView = UIImageView(image: UIImage(named: "Vector"))
         mainView.searchBar.showsCancelButton = false
         mainView.searchBar.showsBookmarkButton = true
         mainView.searchBar.text = nil
