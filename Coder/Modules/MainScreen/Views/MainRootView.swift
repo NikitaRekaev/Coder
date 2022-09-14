@@ -33,12 +33,12 @@ extension MainRootView {
         userTableView.isHidden = true
         searchErrorView.isHidden = false
     }
-
+    
     func setTableView() {
         searchErrorView.isHidden = true
         userTableView.isHidden = false
     }
-
+    
     func setErrorView() {
         userTableView.isHidden = true
         separatorLineUnderTabs.isHidden = true
@@ -46,7 +46,7 @@ extension MainRootView {
         searchBar.isHidden = true
         errorView.isHidden = false
     }
-
+    
     func setMainView() {
         errorView.isHidden = true
         userTableView.isHidden = false
@@ -54,14 +54,14 @@ extension MainRootView {
         topTabsCollectionView.isHidden = false
         searchBar.isHidden = false
     }
-
+    
 }
 
 // MARK: Private methods
 
 extension MainRootView {
     
-    private func setViewDependingOnConnection() {
+    func setViewDependingOnConnection() {
         NetworkMonitor.shared.startMonitoring()
         print("T/f \(NetworkMonitor.shared.isConnected)")
         print("Проверка интернета")
@@ -80,25 +80,19 @@ extension MainRootView {
         
         NetworkMonitor.shared.stopMonitoring()
     }
-
-    private func setupUI() {
+    
+    func setupUI() {
         backgroundColor = .white
-        
-        addSubview(userTableView)
         userTableView.backgroundColor = .white
-        
-        addSubview(searchErrorView)
         searchErrorView.isHidden = true
-        
-        addSubview(topTabsCollectionView)
-        
-        addSubview(separatorLineUnderTabs)
         separatorLineUnderTabs.backgroundColor = UIColor(red: 0.765, green: 0.765, blue: 0.776, alpha: 1)
-        
-        addSubview(errorView)
     }
-
-    private func setupConstraints() {
+    
+    func setupConstraints() {
+        [userTableView, separatorLineUnderTabs, topTabsCollectionView, searchErrorView, errorView].forEach {
+            addSubview($0)
+        }
+        
         topTabsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             topTabsCollectionView.topAnchor.constraint(equalTo: topAnchor, constant: 96),
@@ -115,20 +109,20 @@ extension MainRootView {
             separatorLineUnderTabs.heightAnchor.constraint(equalToConstant: 0.33)
         ])
         
-        searchErrorView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            searchErrorView.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor, constant: 22),
-            searchErrorView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            searchErrorView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            searchErrorView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-        
         userTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             userTableView.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor, constant: 12),
             userTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             userTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             userTableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+        
+        searchErrorView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            searchErrorView.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor, constant: 22),
+            searchErrorView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            searchErrorView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            searchErrorView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
         errorView.translatesAutoresizingMaskIntoConstraints = false
