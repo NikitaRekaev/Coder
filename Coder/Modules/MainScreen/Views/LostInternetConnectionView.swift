@@ -19,24 +19,20 @@ final class LostInternetConnectionView: BaseView {
 private extension LostInternetConnectionView {
     
     func setupUI() {
-        addSubview(NLOImageView)
         NLOImageView.image = UIImage(named: "NLO")
         NLOImageView.clipsToBounds = true
         NLOImageView.layer.borderWidth = 0
         
-        addSubview(titleLabel)
         titleLabel.text = "Какой-то сверхразум всё сломал"
         titleLabel.numberOfLines = 0
         titleLabel.font = UIFont(name: "SemiBold", size: 17)
         titleLabel.textColor = UIColor(red: 0.05, green: 0.05, blue: 0.16, alpha: 1)
         
-        addSubview(subTitleLabel)
         subTitleLabel.text = "Постараемся быстро починить"
         subTitleLabel.numberOfLines = 0
         subTitleLabel.font = UIFont(name: "Regular", size: 16)
         subTitleLabel.textColor = UIColor(red: 151/255, green: 151/255, blue: 155/255, alpha: 1)
         
-        addSubview(tryAgainButton)
         tryAgainButton.backgroundColor = .clear
         tryAgainButton.setTitle("Попробовать снова", for: .normal)
         tryAgainButton.setTitleColor(UIColor(red: 101/255, green: 52/255, blue: 1, alpha: 1), for: .normal)
@@ -45,6 +41,8 @@ private extension LostInternetConnectionView {
     }
     
     func setupConstraints() {
+        [NLOImageView, titleLabel, subTitleLabel, tryAgainButton].forEach { addSubview($0) }
+        
         NLOImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             NLOImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
