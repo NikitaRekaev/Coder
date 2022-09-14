@@ -46,29 +46,23 @@ private extension ProfileView {
     func setupUI() {
         backgroundColor = .white
         
-        addSubview(upView)
         upView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 248/255, alpha: 1)
         
-        addSubview(avatarImageView)
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.cornerRadius = CGFloat(104 / 2)
         
-        addSubview(nameLabel)
         nameLabel.numberOfLines = 0
         nameLabel.font = UIFont(name: "Inter-Bold", size: 24)
         nameLabel.textColor = UIColor(red: 0.02, green: 0.02, blue: 0.063, alpha: 1)
         
-        addSubview(tagLabel)
         tagLabel.numberOfLines = 0
         tagLabel.font = UIFont(name: "Inter-Regular", size: 14)
         tagLabel.textColor = UIColor(red: 0.591, green: 0.591, blue: 0.609, alpha: 1)
         
-        addSubview(departmentLabel)
         departmentLabel.numberOfLines = 0
         departmentLabel.font = UIFont(name: "Inter-Regular", size: 13)
         departmentLabel.textColor = UIColor(red: 0.333, green: 0.333, blue: 0.361, alpha: 1)
         
-        addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 73.5
@@ -77,6 +71,8 @@ private extension ProfileView {
     }
     
     func setupConstraints() {
+        [upView, avatarImageView, nameLabel, tagLabel, departmentLabel, stackView].forEach { addSubview($0) }
+        
         upView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             upView.topAnchor.constraint(equalTo: topAnchor),

@@ -22,13 +22,9 @@ final class PhoneView: BaseView {
 private extension PhoneView {
     
     func setupUI() {
-        addSubview(phoneView)
-        
-        addSubview(phoneImageView)
         phoneImageView.image = UIImage(named: "phone")
         phoneImageView.layer.borderWidth = 0
         
-        addSubview(phoneButton)
         phoneButton.setTitleColor(.black, for: .normal)
         phoneButton.setTitleColor(.gray, for: .highlighted)
         phoneButton.isHidden = false
@@ -36,6 +32,8 @@ private extension PhoneView {
     }
     
     func setupConstraints() {
+        [phoneView, phoneImageView, phoneButton].forEach { addSubview($0) }
+        
         phoneImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             phoneImageView.centerYAnchor.constraint(equalTo: phoneView.centerYAnchor),

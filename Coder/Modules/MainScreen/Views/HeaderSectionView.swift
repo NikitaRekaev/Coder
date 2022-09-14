@@ -18,21 +18,19 @@ final class HeaderSectionView: BaseView {
 private extension HeaderSectionView {
     
     func setupUI() {
-        addSubview(yearLabel)
         yearLabel.font = UIFont(name: "Inter-SemiBold", size: 15)
         yearLabel.text = "\(Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! + 1)"
         yearLabel.textColor = UIColor(red: 0.765, green: 0.765, blue: 0.776, alpha: 1)
         yearLabel.contentMode = .scaleAspectFit
         yearLabel.textAlignment = .center
         
-        addSubview(rightLine)
         rightLine.backgroundColor = UIColor(red: 0.765, green: 0.765, blue: 0.776, alpha: 1)
-        
-        addSubview(leftLine)
         leftLine.backgroundColor = UIColor(red: 0.765, green: 0.765, blue: 0.776, alpha: 1)
     }
     
     func setupConstraints() {
+        [yearLabel, rightLine, leftLine].forEach { addSubview($0) }
+        
         yearLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             yearLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -15),
