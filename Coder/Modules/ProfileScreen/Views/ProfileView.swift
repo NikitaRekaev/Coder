@@ -46,7 +46,6 @@ private extension ProfileView {
         upView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 248/255, alpha: 1)
         
         addSubview(avatarImageView)
-        avatarImageView.image = avatarImageView.image?.resized(CGSize(width: 104, height: 104))
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.image = UIImage(named: "goose")
         avatarImageView.layer.shadowColor = CGColor(red: 22/255, green: 30/255, blue: 52/255, alpha: 0.08)
@@ -90,7 +89,9 @@ private extension ProfileView {
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: upView.topAnchor, constant: 72),
-            avatarImageView.centerXAnchor.constraint(equalTo: upView.centerXAnchor)
+            avatarImageView.centerXAnchor.constraint(equalTo: upView.centerXAnchor),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 104),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 104)
         ])
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
