@@ -24,6 +24,7 @@ final class MainViewController: BaseViewController<MainRootView> {
         setupTopTabs()
         setupTableView()
         setupTargets()
+        setViewDependingOnConnection()
         
         apiProvider.getData(UserModel.self, from: "/kode-education/trainee-test/25143926/users") { result in
             switch result {
@@ -252,6 +253,26 @@ private extension MainViewController {
         mainView.userTableView.register(UserTableViewCell.self,
                                             forCellReuseIdentifier: UserTableViewCell.identifier)
         mainView.userTableView.rowHeight = 90
+    }
+    
+    func setViewDependingOnConnection() {
+        NetworkMonitor.shared.startMonitoring()
+        print("T/f \(NetworkMonitor.shared.isConnected)")
+        print("Проверка интернета")
+        
+        if NetworkMonitor.shared.isConnected {
+            print("Интернет присутствует")
+            mainView.errorView.isHidden = true
+            mainView.userTableView.isHidden = false
+            mainView.topTabsCollectionView.isHidden = false
+        } else {
+            print("Интернет отсутствует")
+            mainView.userTableView.isHidden = true
+            mainView.topTabsCollectionView.isHidden = true
+            mainView.errorView.isHidden = false
+        }
+        
+        NetworkMonitor.shared.stopMonitoring()
     }
     
     func loadData(result: Result<UserModel, Error>) {

@@ -21,7 +21,6 @@ final class MainRootView: BaseView {
     override func setup() {
         setupUI()
         setupConstraints()
-        setViewDependingOnConnection()
     }
 }
 
@@ -59,27 +58,7 @@ extension MainRootView {
 
 // MARK: Private methods
 
-extension MainRootView {
-    
-    func setViewDependingOnConnection() {
-        NetworkMonitor.shared.startMonitoring()
-        print("T/f \(NetworkMonitor.shared.isConnected)")
-        print("Проверка интернета")
-        
-        if NetworkMonitor.shared.isConnected {
-            print("Интернет присутствует")
-            errorView.isHidden = true
-            userTableView.isHidden = false
-            topTabsCollectionView.isHidden = false
-        } else {
-            print("Интернет отсутствует")
-            userTableView.isHidden = true
-            topTabsCollectionView.isHidden = true
-            errorView.isHidden = false
-        }
-        
-        NetworkMonitor.shared.stopMonitoring()
-    }
+private extension MainRootView {
     
     func setupUI() {
         backgroundColor = .white
