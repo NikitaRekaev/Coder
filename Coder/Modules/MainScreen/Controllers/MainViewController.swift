@@ -45,7 +45,7 @@ extension MainViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         model.searchText = mainView.searchBar.text ?? ""
         
-        if model.searchText.isEmpty {
+        if model.filteredUser.isEmpty {
             mainView.setSearchErrorView()
         } else {
             mainView.setTableView()
@@ -58,6 +58,7 @@ extension MainViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        mainView.searchBar.searchTextField.leftView = UIImageView(image: UIImage(named: "Vector"))
         mainView.searchBar.showsCancelButton = false
         mainView.searchBar.showsBookmarkButton = true
         mainView.searchBar.text = nil

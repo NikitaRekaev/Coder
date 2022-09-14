@@ -39,7 +39,7 @@ private extension SearchErrorView {
         loupe.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             loupe.centerXAnchor.constraint(equalTo: centerXAnchor),
-            loupe.topAnchor.constraint(equalTo: topAnchor, constant: 42),
+            loupe.topAnchor.constraint(equalTo: topAnchor, constant: 80),
             loupe.widthAnchor.constraint(equalToConstant: 56),
             loupe.heightAnchor.constraint(equalToConstant: 56)
         ])
