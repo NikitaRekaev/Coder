@@ -17,6 +17,10 @@ final class ProfileView: BaseView {
         setupConstraints()
     }
     
+    func setImage(urlString: String) {
+        avatarImageView.loadImage(from: urlString)
+    }
+    
     // swiftlint:disable function_parameter_count
     func setData(firstName: String,
                  lastName: String,
@@ -25,10 +29,10 @@ final class ProfileView: BaseView {
                  phone: String,
                  dateBirth: String,
                  years: String) {
-        
-        self.nameLabel.text = "\(firstName) \(lastName)"
-        self.tagLabel.text = tag
-        self.departmentLabel.text = department?.title
+        avatarImageView.image = UIImage(named: "goose")
+        nameLabel.text = "\(firstName) \(lastName)"
+        tagLabel.text = tag
+        departmentLabel.text = department?.title
         phoneView.setData(phoneNumber: phone)
         birthView.setData(dateBirth: dateBirth, years: years)
     }
@@ -46,12 +50,8 @@ private extension ProfileView {
         upView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 248/255, alpha: 1)
         
         addSubview(avatarImageView)
-        avatarImageView.contentMode = .scaleAspectFill
-        avatarImageView.image = UIImage(named: "goose")
-        avatarImageView.layer.shadowColor = CGColor(red: 22/255, green: 30/255, blue: 52/255, alpha: 0.08)
-        avatarImageView.layer.shadowOffset = CGSize(width: 0, height: 8)
-        avatarImageView.layer.shadowRadius = 12
-        avatarImageView.layer.shadowOpacity = 1
+        avatarImageView.clipsToBounds = true
+        avatarImageView.layer.cornerRadius = CGFloat(104 / 2)
         
         addSubview(nameLabel)
         nameLabel.numberOfLines = 0

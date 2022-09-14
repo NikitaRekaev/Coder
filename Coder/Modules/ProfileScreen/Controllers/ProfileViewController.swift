@@ -16,6 +16,7 @@ final class ProfileViewController: BaseViewController<ProfileView> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        mainView.setImage(urlString: item.avatarUrl)
         let formattedPhone = model.formatPhone(phone: item.phone)
         let formattedBirthday = model.formatDate(date: item.birthdayDate)
         let calculatedYears = model.calculateYears(date: item.birthdayDate)
