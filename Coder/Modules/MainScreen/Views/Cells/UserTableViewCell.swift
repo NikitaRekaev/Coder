@@ -83,29 +83,24 @@ extension UserTableViewCell {
 private extension UserTableViewCell {
     
     func setupUI() {
-        addSubview(avatarImageView)
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.borderWidth = 0
         avatarImageView.layer.cornerRadius = CGFloat(72 / 2)
         
-        addSubview(nameLabel)
         nameLabel.numberOfLines = 0
         nameLabel.text = "Nikita Rekaev"
         nameLabel.textColor = UIColor(red: 0.02, green: 0.02, blue: 0.063, alpha: 1)
         nameLabel.font = UIFont(name: "Inter-Medium", size: 16)
         
-        addSubview(departmentLabel)
         departmentLabel.numberOfLines = 0
         departmentLabel.text = "iOS Developer"
         departmentLabel.textColor = UIColor(red: 0.333, green: 0.333, blue: 0.361, alpha: 1)
         departmentLabel.font = UIFont(name: "Inter-Regular", size: 13)
         
-        addSubview(tagLabel)
         tagLabel.numberOfLines = 0
         tagLabel.textColor = UIColor(red: 0.591, green: 0.591, blue: 0.609, alpha: 1)
         tagLabel.font = UIFont(name: "Inter-Medium", size: 14)
         
-        addSubview(birthdayLabel)
         birthdayLabel.numberOfLines = 0
         birthdayLabel.textColor = UIColor(red: 0.333, green: 0.333, blue: 0.361, alpha: 1)
         birthdayLabel.font = UIFont(name: "Inter-Regular", size: 15)
@@ -113,23 +108,22 @@ private extension UserTableViewCell {
     }
     
     func setupSkeletonUI() {
-        addSubview(imageSkeletonView)
         imageSkeletonView.frame = CGRect(x: 0, y: 0, width: 72, height: 72)
         imageSkeletonView.layer.cornerRadius = 36
         imageSkeletonView.backgroundColor = UIColor(red: 0.955, green: 0.955, blue: 0.965, alpha: 1)
         
-        addSubview(nameSkeletonView)
         nameSkeletonView.frame = CGRect(x: 0, y: 0, width: 144, height: 16)
         nameSkeletonView.layer.cornerRadius = 8
         nameSkeletonView.backgroundColor = UIColor(red: 0.955, green: 0.955, blue: 0.965, alpha: 1)
         
-        addSubview(departmentSkeletonView)
         departmentSkeletonView.frame = CGRect(x: 0, y: 0, width: 80, height: 12)
         departmentSkeletonView.layer.cornerRadius = 6
         departmentSkeletonView.backgroundColor = UIColor(red: 0.955, green: 0.955, blue: 0.965, alpha: 1)
     }
     
     func setupConstraints() {
+        [avatarImageView, nameLabel, tagLabel, departmentLabel, birthdayLabel].forEach { addSubview($0) }
+        
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             avatarImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -164,6 +158,8 @@ private extension UserTableViewCell {
     }
     
     func setSkeletonViewsConstraints() {
+        [imageSkeletonView, nameSkeletonView, departmentSkeletonView].forEach { addSubview($0) }
+        
         imageSkeletonView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             imageSkeletonView.centerYAnchor.constraint(equalTo: centerYAnchor),
