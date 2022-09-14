@@ -24,25 +24,21 @@ final class BirthView: BaseView {
 private extension BirthView {
     
     func setupUI() {
-        addSubview(birthView)
-        
-        addSubview(starImageView)
         starImageView.image = UIImage(named: "star")
         starImageView.layer.borderWidth = 0
         
-        addSubview(birthDataLabel)
         birthDataLabel.textColor = .black
         birthDataLabel.font = UIFont(name: "Inter-Medium", size: 16)
         
-        addSubview(yearsLabel)
         yearsLabel.textColor = .black
         yearsLabel.font = UIFont(name: "Inter-Medium", size: 16)
         
-        addSubview(dividingLine)
         dividingLine.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 248/255, alpha: 1)
     }
     
     func setupConstraints() {
+        [birthView, starImageView, birthDataLabel, yearsLabel, dividingLine].forEach { addSubview($0) }
+        
         starImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             starImageView.centerYAnchor.constraint(equalTo: birthView.centerYAnchor),
