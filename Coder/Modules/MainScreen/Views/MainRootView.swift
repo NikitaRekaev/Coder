@@ -74,7 +74,7 @@ private extension MainRootView {
         
         topTabsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            topTabsCollectionView.topAnchor.constraint(equalTo: topAnchor, constant: 96),
+            topTabsCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             topTabsCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             topTabsCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             topTabsCollectionView.heightAnchor.constraint(equalToConstant: 36)
@@ -82,7 +82,7 @@ private extension MainRootView {
         
         separatorLineUnderTabs.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            separatorLineUnderTabs.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor, constant: 0),
+            separatorLineUnderTabs.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor),
             separatorLineUnderTabs.leadingAnchor.constraint(equalTo: leadingAnchor),
             separatorLineUnderTabs.trailingAnchor.constraint(equalTo: trailingAnchor),
             separatorLineUnderTabs.heightAnchor.constraint(equalToConstant: 0.33)
@@ -90,7 +90,7 @@ private extension MainRootView {
         
         userTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            userTableView.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor, constant: 12),
+            userTableView.topAnchor.constraint(equalTo: separatorLineUnderTabs.bottomAnchor),
             userTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             userTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             userTableView.bottomAnchor.constraint(equalTo: bottomAnchor)
@@ -98,7 +98,7 @@ private extension MainRootView {
         
         searchErrorView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            searchErrorView.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor, constant: 22),
+            searchErrorView.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor),
             searchErrorView.leadingAnchor.constraint(equalTo: leadingAnchor),
             searchErrorView.trailingAnchor.constraint(equalTo: trailingAnchor),
             searchErrorView.bottomAnchor.constraint(equalTo: bottomAnchor)
