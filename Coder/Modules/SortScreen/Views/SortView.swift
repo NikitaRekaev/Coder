@@ -25,15 +25,12 @@ private extension SortView {
     func setupUI() {
         backgroundColor = .white
         
-        addSubview(titleLabel)
         titleLabel.text = "Сортировка"
         titleLabel.textColor = UIColor(red: 0.02, green: 0.02, blue: 0.063, alpha: 1)
         titleLabel.font = UIFont(name: "Inter-SemiBold", size: 20)
         
-        addSubview(backButton)
         backButton.setImage(UIImage(named: "back-arrow"), for: .normal)
         
-        addSubview(alphabetSortButton)
         alphabetSortButton.setTitle("По алфавиту", for: .normal)
         alphabetSortButton.setImage(UIImage(named: "UnChecked"), for: .normal)
         alphabetSortButton.setImage(UIImage(named: "isChecked"), for: .selected)
@@ -41,7 +38,6 @@ private extension SortView {
         alphabetSortButton.titleLabel?.font = UIFont(name: "Inter-Medium", size: 16)
         alphabetSortButton.titleEdgeInsets.left = 14
         
-        addSubview(birthdaySortButton)
         birthdaySortButton.setTitle("По дню рождения", for: .normal)
         birthdaySortButton.setImage(UIImage(named: "UnChecked"), for: .normal)
         birthdaySortButton.setImage(UIImage(named: "isChecked"), for: .selected)
@@ -51,6 +47,8 @@ private extension SortView {
     }
     
     func setupConstraints() {
+        [titleLabel, backButton, alphabetSortButton, birthdaySortButton].forEach { addSubview($0) }
+        
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 21.5),
