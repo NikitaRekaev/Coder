@@ -120,19 +120,17 @@ extension MainViewController: UICollectionViewDelegate {
     }
 }
 
-// MARK: - UICollectionViewDataSource
+// MARK: - UICollectionViewDelegateFlowLayout
 
-extension MainViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if model.selectedDepartment == tabs[indexPath.item] {
-            model.selectedDepartment = nil
-        } else {
-            model.selectedDepartment = tabs[indexPath.item]
-        }
-        
-        mainView.userTableView.reloadData()
-        updateDepartmentSelection()
+extension MainViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let label = UILabel(frame: CGRect.zero)
+        label.text = tabs[indexPath.item].title
+        label.sizeToFit()
+
+        return CGSize(width: label.frame.width, height: mainView.topTabsCollectionView.frame.height)
     }
 }
 
