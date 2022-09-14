@@ -86,6 +86,7 @@ private extension UserTableViewCell {
         addSubview(avatarImageView)
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.borderWidth = 0
+        avatarImageView.layer.cornerRadius = CGFloat(72 / 2)
         
         addSubview(nameLabel)
         nameLabel.numberOfLines = 0
