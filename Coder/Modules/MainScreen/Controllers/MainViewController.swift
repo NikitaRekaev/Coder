@@ -100,6 +100,22 @@ extension MainViewController: SortDelegate {
 
 extension MainViewController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if model.selectedDepartment == tabs[indexPath.item] {
+            model.selectedDepartment = nil
+        } else {
+            model.selectedDepartment = tabs[indexPath.item]
+        }
+        
+        mainView.userTableView.reloadData()
+        updateDepartmentSelection()
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tabs.count
     }
