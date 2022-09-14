@@ -3,7 +3,7 @@ import UIKit
 final class MainRootView: BaseView {
     
     let errorView = LostInternetConnectionView()
-    let userTableView = UITableView()
+    let userTableView = UITableView(frame: .zero, style: .grouped)
     let searchBar = SearchBar()
     
     private let searchErrorView = SearchErrorView()
@@ -41,6 +41,7 @@ extension MainRootView {
 
     func setErrorView() {
         userTableView.isHidden = true
+        separatorLineUnderTabs.isHidden = true
         topTabsCollectionView.isHidden = true
         searchBar.isHidden = true
         errorView.isHidden = false
@@ -49,6 +50,7 @@ extension MainRootView {
     func setMainView() {
         errorView.isHidden = true
         userTableView.isHidden = false
+        separatorLineUnderTabs.isHidden = false
         topTabsCollectionView.isHidden = false
         searchBar.isHidden = false
     }
@@ -123,7 +125,7 @@ extension MainRootView {
         
         userTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            userTableView.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor, constant: 0),
+            userTableView.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor, constant: 12),
             userTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             userTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             userTableView.bottomAnchor.constraint(equalTo: bottomAnchor)
