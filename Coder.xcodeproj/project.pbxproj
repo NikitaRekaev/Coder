@@ -41,6 +41,7 @@
 		113E079928CCDCA800AC6FFB /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E079828CCDCA800AC6FFB /* MainModel.swift */; };
 		113E079E28CD2ABE00AC6FFB /* BackBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E079D28CD2ABE00AC6FFB /* BackBarButtonItem.swift */; };
 		113E07A428CE71DF00AC6FFB /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E07A328CE71DF00AC6FFB /* SearchBar.swift */; };
+		113E07B728D2576400AC6FFB /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113E07B628D2576400AC6FFB /* ImageLoader.swift */; };
 		1184A27928BBC855000D9497 /* HeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1184A27828BBC855000D9497 /* HeaderSectionView.swift */; };
 		118BBA6228BB7C2400194F05 /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BBA6128BB7C2400194F05 /* SortView.swift */; };
 		118BBA6428BB7F6800194F05 /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BBA6328BB7F6800194F05 /* SortViewController.swift */; };
@@ -84,6 +85,7 @@
 		113E079828CCDCA800AC6FFB /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		113E079D28CD2ABE00AC6FFB /* BackBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBarButtonItem.swift; sourceTree = "<group>"; };
 		113E07A328CE71DF00AC6FFB /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		113E07B628D2576400AC6FFB /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		1184A27828BBC855000D9497 /* HeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
 		118BBA6128BB7C2400194F05 /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
 		118BBA6328BB7F6800194F05 /* SortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				111B695C28B64E89006E2BF0 /* DataModel */,
 				111B696228B65231006E2BF0 /* ApiProvider.swift */,
 				111B696428B652DC006E2BF0 /* NetworkMonitor.swift */,
+				113E07B628D2576400AC6FFB /* ImageLoader.swift */,
 			);
 			name = API;
 			path = DataModel/API;
@@ -467,6 +470,7 @@
 				111B696528B652DC006E2BF0 /* NetworkMonitor.swift in Sources */,
 				111B698128B669F4006E2BF0 /* MainRootView.swift in Sources */,
 				111B698F28B67518006E2BF0 /* BirthView.swift in Sources */,
+				113E07B728D2576400AC6FFB /* ImageLoader.swift in Sources */,
 				111B696128B64FFD006E2BF0 /* Department.swift in Sources */,
 				111B696328B65231006E2BF0 /* ApiProvider.swift in Sources */,
 				111B696828B653AD006E2BF0 /* BaseView.swift in Sources */,

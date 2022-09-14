@@ -188,6 +188,7 @@ extension MainViewController: UITableViewDataSource {
         if !model.users.isEmpty {
             if shouldShowBirthday {
                 let sortedUser = model.userModelForSections[indexPath.section][indexPath.row]
+                cell.setImage(urlString: sortedUser.avatarUrl)
                 cell.setData(firstName: sortedUser.firstName,
                              lastName: sortedUser.lastName,
                              tag: sortedUser.userTag.lowercased(),
@@ -196,6 +197,7 @@ extension MainViewController: UITableViewDataSource {
             } else {
                 let user = model.filteredUser[indexPath.row]
                 
+                cell.setImage(urlString: user.avatarUrl)
                 cell.setData(
                     firstName: user.firstName,
                     lastName: user.lastName,

@@ -65,6 +65,10 @@ extension UserTableViewCell {
         departmentSkeletonView.isHidden = true
     }
     
+    func setImage(urlString: String) {
+        avatarImageView.loadImage(from: urlString)
+    }
+    
     func setData(firstName: String, lastName: String, tag: String, department: Department?, dateBirth: String) {
         avatarImageView.image = UIImage(named: "goose")
         nameLabel.text = "\(firstName) \(lastName)"
@@ -82,6 +86,7 @@ private extension UserTableViewCell {
         addSubview(avatarImageView)
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.borderWidth = 0
+        avatarImageView.layer.cornerRadius = CGFloat(72 / 2)
         
         addSubview(nameLabel)
         nameLabel.numberOfLines = 0

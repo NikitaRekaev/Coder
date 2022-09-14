@@ -3,7 +3,7 @@ import Foundation
 struct Item: Codable {
     
     let id: String
-    let avatarURL: String?
+    let avatarUrl: String
     let firstName: String
     let lastName: String
     let userTag: String
