@@ -65,6 +65,10 @@ extension UserTableViewCell {
         departmentSkeletonView.isHidden = true
     }
     
+    func setImage(urlString: String) {
+        avatarImageView.loadImage(from: urlString)
+    }
+    
     func setData(firstName: String, lastName: String, tag: String, department: Department?, dateBirth: String) {
         avatarImageView.image = UIImage(named: "goose")
         nameLabel.text = "\(firstName) \(lastName)"
