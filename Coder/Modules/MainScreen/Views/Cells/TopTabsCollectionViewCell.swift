@@ -5,21 +5,19 @@ final class TopTabsCollectionViewCell: UICollectionViewCell {
     static let identifier = "Cell"
     
     private(set) var model: Department?
-    private var bottomBorderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 2))
     
-    private let label: UILabel = {
-        let view = UILabel()
-        view.font = UIFont(name: "Inter-Medium", size: 15)
-        return view
-    }()
+    private let bottomBorderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 2))
+    private let label = UILabel()
     
     func setCellSelected(_ isSelected: Bool) {
         if isSelected {
             bottomBorderView.isHidden = false
             label.textColor = UIColor(red: 0.02, green: 0.02, blue: 0.063, alpha: 1)
+            label.font = UIFont(name: "Inter-Medium", size: 15)
         } else {
             bottomBorderView.isHidden = true
             label.textColor = UIColor(red: 0.591, green: 0.591, blue: 0.609, alpha: 1)
+            label.font = UIFont(name: "Inter-SamiBold", size: 15)
         }
     }
     
