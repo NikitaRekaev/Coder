@@ -270,16 +270,12 @@ private extension MainViewController {
     
     func setViewDependingOnConnection() {
         NetworkMonitor.shared.startMonitoring()
-        print("T/f \(NetworkMonitor.shared.isConnected)")
-        print("Проверка интернета")
         
         if NetworkMonitor.shared.isConnected {
-            print("Интернет присутствует")
             mainView.errorView.isHidden = true
             mainView.userTableView.isHidden = false
             mainView.topTabsCollectionView.isHidden = false
         } else {
-            print("Интернет отсутствует")
             mainView.userTableView.isHidden = true
             mainView.topTabsCollectionView.isHidden = true
             mainView.errorView.isHidden = false
