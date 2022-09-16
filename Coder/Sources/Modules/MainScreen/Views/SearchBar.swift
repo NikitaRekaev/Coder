@@ -28,7 +28,7 @@ final class SearchBar: UISearchBar {
         )
     }
     
-    // MARK: - Initilization
+    // MARK: - Initialization
     
     convenience init() {
         self.init(frame: .zero)

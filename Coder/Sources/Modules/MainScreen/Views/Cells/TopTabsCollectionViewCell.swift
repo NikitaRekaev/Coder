@@ -24,34 +24,12 @@ final class TopTabsCollectionViewCell: UICollectionViewCell {
     private let bottomBorderView = UIView()
     private let label = UILabel()
     
-    func setCellSelected(_ isSelected: Bool) {
-        if isSelected {
-            bottomBorderView.isHidden = false
-            label.textColor = R.Colors.Text.active
-            label.font = Constants.textFont
-        } else {
-            bottomBorderView.isHidden = true
-            label.textColor = R.Colors.Text.inActive
-            label.font = Constants.textSelectedFont
-        }
-    }
-    
-    func setModel(_ department: Department) {
-        self.model = department
-        label.text = department.title
-        label.textColor = R.Colors.Text.inActive
-    }
+    // MARK: - Initialization
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        label.textColor = .black
         
-        bottomBorderView.backgroundColor = R.Colors.violet
-        bottomBorderView.isHidden = false
-        
-        contentView.addSubview(label)
-        contentView.addSubview(bottomBorderView)
-        
+        configureBorder()
         layoutSubviews()
     }
     
@@ -60,6 +38,8 @@ final class TopTabsCollectionViewCell: UICollectionViewCell {
     }
     
     override func layoutSubviews() {
+        [label, bottomBorderView].forEach { contentView.addSubview($0) }
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -83,5 +63,34 @@ final class TopTabsCollectionViewCell: UICollectionViewCell {
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
             contentView.widthAnchor.constraint(equalTo: widthAnchor, constant: Constants.contentWidth)
         ])
+    }
+}
+
+// MARK: - Public Methods
+
+extension TopTabsCollectionViewCell {
+    func setCellSelected(_ isSelected: Bool) {
+        if isSelected {
+            bottomBorderView.isHidden = false
+            label.textColor = R.Colors.Text.active
+            label.font = Constants.textFont
+        } else {
+            bottomBorderView.isHidden = true
+            label.textColor = R.Colors.Text.inActive
+            label.font = Constants.textSelectedFont
+        }
+    }
+    
+    func setModel(_ department: Department) {
+        self.model = department
+        label.text = department.title
+        label.textColor = R.Colors.Text.inActive
+    }
+}
+
+private extension TopTabsCollectionViewCell {
+    func configureBorder() {
+        bottomBorderView.backgroundColor = R.Colors.violet
+        bottomBorderView.isHidden = false
     }
 }
