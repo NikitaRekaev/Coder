@@ -2,8 +2,7 @@ excluded:
   - Carthage
   - Pods
   - Source/ExcludedFolder
-  - Source/ExcludedFile.swif
-  - Source/Supporting/Base/BaseViewController.swift
+  - Source/ExcludedFile.swift
 disabled_rules:
   - colon
   - comma

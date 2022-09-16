@@ -266,7 +266,6 @@ private extension MainViewController {
         mainView.userTableView.dataSource = self
         mainView.userTableView.register(UserTableViewCell.self,
                                             forCellReuseIdentifier: UserTableViewCell.identifier)
-        mainView.userTableView.rowHeight = 90
     }
     
     func setViewDependingOnConnection() {
