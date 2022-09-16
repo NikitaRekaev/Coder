@@ -2,8 +2,50 @@ import UIKit
 
 final class UserTableViewCell: UITableViewCell {
     
+    // MARK: - Constants
+    
     static let identifier = "tableCell"
-    var shouldShowBirthday = false
+    
+    private enum Constants {
+        enum Image {
+            static let leading: CGFloat = 10
+            static let proportions: CGFloat = 72
+            static let cornerRadius = CGFloat(72 / 2)
+            static let frame = CGRect(x: 0, y: 0, width: 72, height: 72)
+        }
+        
+        enum Name {
+            static let font = R.Fonts.interMedium(with: 16)
+            static let leading: CGFloat = 16
+            static let centerYAnchor: CGFloat = -12
+            static let width: CGFloat = 144
+            static let height: CGFloat = 16
+            static let cornerRadius: CGFloat = 8
+            static let frame = CGRect(x: 0, y: 0, width: 144, height: 16)
+        }
+        
+        enum Department {
+            static let font = R.Fonts.interRegular(with: 13)
+            static let centerYAnchor: CGFloat = 20
+            static let width: CGFloat = 80
+            static let height: CGFloat = 12
+            static let cornerRadius: CGFloat = 6
+            static let frame = CGRect(x: 0, y: 0, width: 80, height: 12)
+        }
+        
+        enum Tag {
+            static let font = R.Fonts.interMedium(with: 14)
+            static let leading: CGFloat = 4
+        }
+        
+        enum Birthday {
+            static let font = R.Fonts.interRegular(with: 15)
+            static let centerYAnchor: CGFloat = -12
+            static let trailing: CGFloat = -19.5
+        }
+    }
+    
+    // MARK: - Views
     
     let avatarImageView = UIImageView()
     let nameLabel = UILabel()
@@ -18,14 +60,17 @@ final class UserTableViewCell: UITableViewCell {
     private let nameSkeletonView = UIView()
     private let departmentSkeletonView = UIView()
     
+    // MARK: - Initialization
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = .white
         
         setupUI()
-        setupSkeletonUI()
         setupConstraints()
-        setSkeletonViewsConstraints()
+        
+        setupSkeletonUI()
+        setupSkeletonConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -70,7 +115,7 @@ extension UserTableViewCell {
     }
     
     func setData(firstName: String, lastName: String, tag: String, department: Department?, dateBirth: String) {
-        avatarImageView.image = UIImage(named: "goose")
+        avatarImageView.image = R.Images.stopper
         nameLabel.text = "\(firstName) \(lastName)"
         tagLabel.text = tag
         departmentLabel.text = department?.title
@@ -78,47 +123,26 @@ extension UserTableViewCell {
     }
 }
 
-// MARK: - Private Methods
+// MARK: - Setup Views
 
 private extension UserTableViewCell {
     
     func setupUI() {
         avatarImageView.clipsToBounds = true
-        avatarImageView.layer.borderWidth = 0
-        avatarImageView.layer.cornerRadius = CGFloat(72 / 2)
+        avatarImageView.layer.cornerRadius = Constants.Image.cornerRadius
         
-        nameLabel.numberOfLines = 0
-        nameLabel.text = "Nikita Rekaev"
-        nameLabel.textColor = UIColor(red: 0.02, green: 0.02, blue: 0.063, alpha: 1)
-        nameLabel.font = UIFont(name: "Inter-Medium", size: 16)
+        nameLabel.textColor = R.Colors.Text.active
+        nameLabel.font = Constants.Name.font
+
+        departmentLabel.textColor = R.Colors.Text.secondary
+        departmentLabel.font = Constants.Department.font
         
-        departmentLabel.numberOfLines = 0
-        departmentLabel.text = "iOS Developer"
-        departmentLabel.textColor = UIColor(red: 0.333, green: 0.333, blue: 0.361, alpha: 1)
-        departmentLabel.font = UIFont(name: "Inter-Regular", size: 13)
+        tagLabel.textColor = R.Colors.Text.inActive
+        tagLabel.font = Constants.Tag.font
         
-        tagLabel.numberOfLines = 0
-        tagLabel.textColor = UIColor(red: 0.591, green: 0.591, blue: 0.609, alpha: 1)
-        tagLabel.font = UIFont(name: "Inter-Medium", size: 14)
-        
-        birthdayLabel.numberOfLines = 0
-        birthdayLabel.textColor = UIColor(red: 0.333, green: 0.333, blue: 0.361, alpha: 1)
-        birthdayLabel.font = UIFont(name: "Inter-Regular", size: 15)
+        birthdayLabel.textColor = R.Colors.Text.secondary
+        birthdayLabel.font = Constants.Birthday.font
         birthdayLabel.isHidden = true
-    }
-    
-    func setupSkeletonUI() {
-        imageSkeletonView.frame = CGRect(x: 0, y: 0, width: 72, height: 72)
-        imageSkeletonView.layer.cornerRadius = 36
-        imageSkeletonView.backgroundColor = UIColor(red: 0.955, green: 0.955, blue: 0.965, alpha: 1)
-        
-        nameSkeletonView.frame = CGRect(x: 0, y: 0, width: 144, height: 16)
-        nameSkeletonView.layer.cornerRadius = 8
-        nameSkeletonView.backgroundColor = UIColor(red: 0.955, green: 0.955, blue: 0.965, alpha: 1)
-        
-        departmentSkeletonView.frame = CGRect(x: 0, y: 0, width: 80, height: 12)
-        departmentSkeletonView.layer.cornerRadius = 6
-        departmentSkeletonView.backgroundColor = UIColor(red: 0.955, green: 0.955, blue: 0.965, alpha: 1)
     }
     
     func setupConstraints() {
@@ -127,61 +151,88 @@ private extension UserTableViewCell {
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             avatarImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 72),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 72)
+            avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Image.leading),
+            avatarImageView.heightAnchor.constraint(equalToConstant: Constants.Image.proportions),
+            avatarImageView.widthAnchor.constraint(equalToConstant: Constants.Image.proportions)
         ])
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
-            nameLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor, constant: -20)
+            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor,
+                                               constant: Constants.Name.leading),
+            nameLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor,
+                                               constant: Constants.Name.centerYAnchor)
         ])
         
         tagLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tagLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 4),
+            tagLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: Constants.Tag.leading),
             tagLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor)
         ])
         
         departmentLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             departmentLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            departmentLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor, constant: 20)
+            departmentLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor,
+                                                     constant: Constants.Department.centerYAnchor)
         ])
         
         birthdayLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            birthdayLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor, constant: -12),
-            birthdayLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -19.5)
+            birthdayLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor,
+                                                   constant: Constants.Birthday.centerYAnchor),
+            birthdayLabel.trailingAnchor.constraint(equalTo: trailingAnchor,
+                                                    constant: Constants.Birthday.trailing)
         ])
     }
+}
+
+// MARK: - Setup Skeleton
+
+private extension UserTableViewCell {
     
-    func setSkeletonViewsConstraints() {
+    func setupSkeletonUI() {
+        imageSkeletonView.frame = Constants.Image.frame
+        imageSkeletonView.layer.cornerRadius = Constants.Image.cornerRadius
+        imageSkeletonView.backgroundColor = R.Colors.skeleton
+        
+        nameSkeletonView.frame = Constants.Name.frame
+        nameSkeletonView.layer.cornerRadius = Constants.Name.cornerRadius
+        nameSkeletonView.backgroundColor = R.Colors.skeleton
+        
+        departmentSkeletonView.frame = Constants.Department.frame
+        departmentSkeletonView.layer.cornerRadius = Constants.Department.cornerRadius
+        departmentSkeletonView.backgroundColor = R.Colors.skeleton
+    }
+    
+    func setupSkeletonConstraints() {
         [imageSkeletonView, nameSkeletonView, departmentSkeletonView].forEach { addSubview($0) }
         
         imageSkeletonView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             imageSkeletonView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            imageSkeletonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            imageSkeletonView.heightAnchor.constraint(equalToConstant: 72),
-            imageSkeletonView.widthAnchor.constraint(equalToConstant: 72)
+            imageSkeletonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Image.leading),
+            imageSkeletonView.heightAnchor.constraint(equalToConstant: Constants.Image.proportions),
+            imageSkeletonView.widthAnchor.constraint(equalToConstant: Constants.Image.proportions)
         ])
         
         nameSkeletonView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nameSkeletonView.leadingAnchor.constraint(equalTo: imageSkeletonView.trailingAnchor, constant: 16),
-            nameSkeletonView.centerYAnchor.constraint(equalTo: imageSkeletonView.centerYAnchor, constant: -20),
-            nameSkeletonView.widthAnchor.constraint(equalToConstant: 144),
-            nameSkeletonView.heightAnchor.constraint(equalToConstant: 16)
+            nameSkeletonView.leadingAnchor.constraint(equalTo: imageSkeletonView.trailingAnchor,
+                                                      constant: Constants.Name.leading),
+            nameSkeletonView.centerYAnchor.constraint(equalTo: imageSkeletonView.centerYAnchor,
+                                                      constant: Constants.Name.centerYAnchor),
+            nameSkeletonView.widthAnchor.constraint(equalToConstant: Constants.Name.width),
+            nameSkeletonView.heightAnchor.constraint(equalToConstant: Constants.Name.height)
         ])
         
         departmentSkeletonView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             departmentSkeletonView.leadingAnchor.constraint(equalTo: nameSkeletonView.leadingAnchor),
-            departmentSkeletonView.centerYAnchor.constraint(equalTo: nameSkeletonView.centerYAnchor, constant: 20),
-            departmentSkeletonView.widthAnchor.constraint(equalToConstant: 80),
-            departmentSkeletonView.heightAnchor.constraint(equalToConstant: 12)
+            departmentSkeletonView.centerYAnchor.constraint(equalTo: nameSkeletonView.centerYAnchor,
+                                                            constant: Constants.Department.centerYAnchor),
+            departmentSkeletonView.widthAnchor.constraint(equalToConstant: Constants.Department.width),
+            departmentSkeletonView.heightAnchor.constraint(equalToConstant: Constants.Department.height)
         ])
     }
 }
