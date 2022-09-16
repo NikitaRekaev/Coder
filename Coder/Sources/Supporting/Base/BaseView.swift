@@ -12,6 +12,6 @@ class BaseView: UIView {
     }
     
     func setup() {
-        // for ovveride
+        // for override
     }
 }

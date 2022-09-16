@@ -1,10 +1,10 @@
 import UIKit
 
-class BaseViewController<T: UIView>: UIViewController {
+class BaseViewController<View: UIView>: UIViewController {
     // swiftlint:disable force_cast
-    var mainView: T { view as! T }
+    var mainView: View { view as! View }
     // swiftlint:enable force_cast
     override func loadView() {
-            view = T()
+            view = View()
     }
 }

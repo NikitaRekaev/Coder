@@ -3,10 +3,12 @@ excluded:
   - Pods
   - Source/ExcludedFolder
   - Source/ExcludedFile.swif
-  - BaseViewController.swift
+  - Source/Supporting/Base/BaseViewController.swift
 disabled_rules:
   - colon
   - comma
   - control_statement
   - trailing_whitespace
+  - nesting
+  - identifier_name
 warning_threshold: 5
