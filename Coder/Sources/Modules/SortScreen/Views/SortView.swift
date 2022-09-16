@@ -9,21 +9,18 @@ final class SortView: BaseView {
         
         enum TitleLable {
             static let text = "Сортировка"
-            static let font = UIFont(name: "Inter-SemiBold", size: 20)
+            static let font = R.Fonts.interSemiBold(with: 20)
             static let topAnchor: CGFloat = 21.5
         }
         
         enum BackButton {
-            static let image = UIImage(named: "back-arrow")
             static let topAnchor: CGFloat = 22.75
             static let leadingAnchor: CGFloat = 33.5
         }
         
         enum SortButton {
-            static let font = UIFont(name: "Inter-Medium", size: 16)
+            static let font = R.Fonts.interMedium(with: 16)
             static let insetsLeft: CGFloat = 14
-            static let imageUnChecked = UIImage(named: "UnChecked")
-            static let imageIsChecked = UIImage(named: "isChecked")
         }
         
         enum AlphabetSortButton {
@@ -67,18 +64,18 @@ private extension SortView {
         titleLabel.font = Constants.TitleLable.font
         titleLabel.textColor = Constants.textColor
         
-        backButton.setImage(Constants.BackButton.image, for: .normal)
+        backButton.setImage(R.Images.backArrow, for: .normal)
         
         alphabetSortButton.setTitle(Constants.AlphabetSortButton.sortString, for: .normal)
-        alphabetSortButton.setImage(Constants.SortButton.imageUnChecked, for: .normal)
-        alphabetSortButton.setImage(Constants.SortButton.imageIsChecked, for: .selected)
+        alphabetSortButton.setImage(R.Images.Sort.unChecked, for: .normal)
+        alphabetSortButton.setImage(R.Images.Sort.isChecked, for: .selected)
         alphabetSortButton.setTitleColor(Constants.textColor, for: .normal)
         alphabetSortButton.titleLabel?.font = Constants.SortButton.font
         alphabetSortButton.titleEdgeInsets.left = Constants.SortButton.insetsLeft
         
         birthdaySortButton.setTitle(Constants.BirthdaySortButton.sortString, for: .normal)
-        birthdaySortButton.setImage(Constants.SortButton.imageUnChecked, for: .normal)
-        birthdaySortButton.setImage(Constants.SortButton.imageIsChecked, for: .selected)
+        birthdaySortButton.setImage(R.Images.Sort.unChecked, for: .normal)
+        birthdaySortButton.setImage(R.Images.Sort.isChecked, for: .selected)
         birthdaySortButton.setTitleColor(Constants.textColor, for: .normal)
         birthdaySortButton.titleLabel?.font = Constants.SortButton.font
         birthdaySortButton.titleEdgeInsets.left = Constants.SortButton.insetsLeft
