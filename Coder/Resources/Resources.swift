@@ -6,7 +6,7 @@ enum Resources {
     
     enum Images {
         static let stopper = UIImage(named: "goose")
-        static let backArrow = UIImage(named: "back-arrow")?.withRenderingMode(.alwaysTemplate)
+        static let backArrow = UIImage(named: "back-arrow")
         static let nlo = UIImage(named: "NLO")
         static let loupe = UIImage(named: "loupe")
         
@@ -16,7 +16,7 @@ enum Resources {
         }
         
         enum SearchBar {
-            static let xClear = UIImage(named: "x-clear")
+            static let clear = UIImage(named: "x-clear")
             static let leftImageNormal = UIImage(named: "Vector")
             static let leftImageSelected = UIImage(named: "vector_editing")
             static let rightImageNormal = UIImage(named: "list-ui-alt")

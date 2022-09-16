@@ -6,25 +6,21 @@ final class SearchBar: UISearchBar {
     
     private enum Constants {
         static let cornerRadius: CGFloat = 16
-        static let activeTextFont = UIFont(name: "Inter-Regular", size: 15)
-        static let tintColor = #colorLiteral(red: 0.3960784314, green: 0.2039215686, blue: 1, alpha: 1)
+        static let activeTextFont = R.Fonts.interRegular(with: 15)
         static let adjustingTextOffset: UIOffset = .init(horizontal: 10, vertical: .zero)
         static let adjustingRightIconOffset: UIOffset = .init(horizontal: -10, vertical: .zero)
-        static let clearImage = UIImage(named: "x-clear")
-        static let sortImage = UIImage(named: "list-ui-alt")
-        static let sortImageSelected = UIImage(named: "list-ui-alt_selected")
-        static let leftView = UIImageView(image: UIImage(named: "Vector"))
+        static let leftView = UIImageView(image: R.Images.SearchBar.leftImageNormal)
         static let textFildKey = "searchField"
-        static let textFildColor = UIColor(red: 247/255, green: 247/255, blue: 248/255, alpha: 1)
+        static let textFildColor = R.Colors.SearchBar.secondary
         static let cancelTitle = "Отмена"
         static let cancelKey = "cancelButtonText"
         static let cancelBarButtonAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont(name: "Inter-SemiBold", size: 15) ?? .boldSystemFont(ofSize: 15),
-            .foregroundColor: tintColor
+            .font: R.Fonts.interSemiBold(with: 15),
+            .foregroundColor: R.Colors.violet
         ]
         static let placeholderAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont(name: "Inter-Medium", size: 15) ?? .systemFont(ofSize: 15),
-            .foregroundColor: UIColor(red: 195/255, green: 195/255, blue: 198/255, alpha: 1)
+            .font: R.Fonts.interMedium(with: 15),
+            .foregroundColor: R.Colors.SearchBar.placeholder
         ]
         static let placeholderAttributedString: NSAttributedString = .init(
             string: "Введи имя, тег, почту...",
@@ -55,9 +51,9 @@ private extension SearchBar {
     func setupUI() {
         showsBookmarkButton = true
         
-        setImage(Constants.sortImage, for: .bookmark, state: .normal)
-        setImage(Constants.sortImageSelected, for: .bookmark, state: .selected)
-        setImage(Constants.clearImage, for: .clear, state: .normal)
+        setImage(R.Images.SearchBar.rightImageNormal, for: .bookmark, state: .normal)
+        setImage(R.Images.SearchBar.rightImageSelected, for: .bookmark, state: .selected)
+        setImage(R.Images.SearchBar.clear, for: .clear, state: .normal)
         
         setValue(Constants.cancelTitle, forKey: Constants.cancelKey)
         
@@ -71,7 +67,7 @@ private extension SearchBar {
         searchTextField.leftView = Constants.leftView
         searchTextField.font = Constants.activeTextFont
         searchTextField.attributedPlaceholder = Constants.placeholderAttributedString
-        searchTextField.tintColor = Constants.tintColor
+        searchTextField.tintColor = R.Colors.violet
         
         let barButtonAppearance = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])
         barButtonAppearance.setTitleTextAttributes(Constants.cancelBarButtonAttributes, for: .normal)
