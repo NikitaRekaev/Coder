@@ -5,8 +5,6 @@ final class SortView: BaseView {
     // MARK: - Constants
     
     private enum Constants {
-        static let textColor = UIColor(red: 0.02, green: 0.02, blue: 0.063, alpha: 1)
-        
         enum TitleLable {
             static let text = "Сортировка"
             static let font = R.Fonts.interSemiBold(with: 20)
@@ -62,21 +60,21 @@ private extension SortView {
         
         titleLabel.text = Constants.TitleLable.text
         titleLabel.font = Constants.TitleLable.font
-        titleLabel.textColor = Constants.textColor
+        titleLabel.textColor = R.Colors.Text.active
         
         backButton.setImage(R.Images.backArrow, for: .normal)
         
         alphabetSortButton.setTitle(Constants.AlphabetSortButton.sortString, for: .normal)
         alphabetSortButton.setImage(R.Images.Sort.unChecked, for: .normal)
         alphabetSortButton.setImage(R.Images.Sort.isChecked, for: .selected)
-        alphabetSortButton.setTitleColor(Constants.textColor, for: .normal)
+        alphabetSortButton.setTitleColor(R.Colors.Text.active, for: .normal)
         alphabetSortButton.titleLabel?.font = Constants.SortButton.font
         alphabetSortButton.titleEdgeInsets.left = Constants.SortButton.insetsLeft
         
         birthdaySortButton.setTitle(Constants.BirthdaySortButton.sortString, for: .normal)
         birthdaySortButton.setImage(R.Images.Sort.unChecked, for: .normal)
         birthdaySortButton.setImage(R.Images.Sort.isChecked, for: .selected)
-        birthdaySortButton.setTitleColor(Constants.textColor, for: .normal)
+        birthdaySortButton.setTitleColor(R.Colors.Text.active, for: .normal)
         birthdaySortButton.titleLabel?.font = Constants.SortButton.font
         birthdaySortButton.titleEdgeInsets.left = Constants.SortButton.insetsLeft
     }
