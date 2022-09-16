@@ -2,12 +2,21 @@ import UIKit
 
 final class MainRootView: BaseView {
     
+    // MARK: - Constants
+    
+    private enum Constants {
+        static let tabsHeight: CGFloat = 36
+        static let separatorHeight: CGFloat = 0.33
+    }
+    
+    // MARK: - Views
+    
     let errorView = LostInternetConnectionView()
     let userTableView = UITableView(frame: .zero, style: .grouped)
     let searchBar = SearchBar()
     
     private let searchErrorView = SearchErrorView()
-    private let separatorLineUnderTabs = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.33))
+    private let separatorLineUnderTabs = UIView()
     
     let topTabsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -17,6 +26,8 @@ final class MainRootView: BaseView {
         tab.backgroundColor = .clear
         return tab
     }()
+    
+    // MARK: - Setup
     
     override func setup() {
         setupUI()
@@ -64,7 +75,7 @@ private extension MainRootView {
         backgroundColor = .white
         userTableView.backgroundColor = .white
         searchErrorView.isHidden = true
-        separatorLineUnderTabs.backgroundColor = UIColor(red: 0.765, green: 0.765, blue: 0.776, alpha: 1)
+        separatorLineUnderTabs.backgroundColor = R.Colors.separator
     }
     
     func setupConstraints() {
@@ -77,7 +88,7 @@ private extension MainRootView {
             topTabsCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             topTabsCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             topTabsCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            topTabsCollectionView.heightAnchor.constraint(equalToConstant: 36)
+            topTabsCollectionView.heightAnchor.constraint(equalToConstant: Constants.tabsHeight)
         ])
         
         separatorLineUnderTabs.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +96,7 @@ private extension MainRootView {
             separatorLineUnderTabs.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor),
             separatorLineUnderTabs.leadingAnchor.constraint(equalTo: leadingAnchor),
             separatorLineUnderTabs.trailingAnchor.constraint(equalTo: trailingAnchor),
-            separatorLineUnderTabs.heightAnchor.constraint(equalToConstant: 0.33)
+            separatorLineUnderTabs.heightAnchor.constraint(equalToConstant: Constants.separatorHeight)
         ])
         
         userTableView.translatesAutoresizingMaskIntoConstraints = false
