@@ -25,7 +25,6 @@ struct ImageLoader {
 }
 
 // MARK: - Cache
-
 private extension ImageLoader {
     
     func getCacheImage(url: URL) -> UIImage? {
@@ -44,7 +43,6 @@ private extension ImageLoader {
 }
 
 // MARK: - UIImageView
-
 extension UIImageView {
     
     func loadImage(from url: URL) {

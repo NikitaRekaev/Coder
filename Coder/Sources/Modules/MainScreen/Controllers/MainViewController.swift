@@ -6,7 +6,7 @@ final class MainViewController: BaseViewController<MainRootView> {
     private lazy var sortVC = SortViewController()
     private lazy var model = MainModel()
     private lazy var tabs = Department.allCases
-    private lazy var apiProvider = ApiProvider()
+    private lazy var networkTask = NetworkTask()
     
     private lazy var refreshControl: UIRefreshControl = {
         let refresh = UIRefreshControl()
@@ -26,7 +26,7 @@ final class MainViewController: BaseViewController<MainRootView> {
         setupTargets()
         setViewDependingOnConnection()
         
-        apiProvider.getData(UserModel.self, from: "/kode-education/trainee-test/25143926/users") { result in
+        networkTask.getData(UserModel.self, from: "/kode-education/trainee-test/25143926/users") { result in
             switch result {
             case let .success(responseData):
                 self.model.users = responseData.items
@@ -321,7 +321,7 @@ private extension MainViewController {
     func didPullToRefresh(_ sender: UIRefreshControl) {
         self.mainView.setMainView()
         shouldShowBirthday = false
-        apiProvider.getData(UserModel.self,
+        networkTask.getData(UserModel.self,
                                  from: "/kode-education/trainee-test/25143926/users") { result in
             switch result {
             case let .success(responseData):
@@ -339,7 +339,7 @@ private extension MainViewController {
     func checkConnection(_ sender: UIButton) {
         sender.backgroundColor = UIColor(red: 0.3, green: 0.5, blue: 0.8, alpha: 0.3)
         self.mainView.setMainView()
-        apiProvider.getData(UserModel.self,
+        networkTask.getData(UserModel.self,
                                  from: "/kode-education/trainee-test/25143926/users", self.loadData(result:))
     }
 }

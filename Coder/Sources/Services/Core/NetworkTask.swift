@@ -1,6 +1,6 @@
 import Foundation
 
-final class ApiProvider {
+final class NetworkTask {
     
     private let baseUrl: URL
     
