@@ -31,7 +31,7 @@ final class TopTabsCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         label.textColor = .black
         
-        bottomBorderView.backgroundColor = #colorLiteral(red: 0.4257887602, green: 0.1908605397, blue: 1, alpha: 1)
+        bottomBorderView.backgroundColor = #colorLiteral(red: 0.3960784314, green: 0.2039215686, blue: 1, alpha: 1)
         bottomBorderView.isHidden = false
         
         contentView.addSubview(label)

@@ -145,12 +145,6 @@
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "1024.png",
-      "idiom" : "ios-marketing",
-      "scale" : "1x",
-      "size" : "1024x1024"
-    },
-    {
       "filename" : "iPhone App - 2x.png",
       "idiom" : "car",
       "scale" : "2x",
@@ -161,6 +155,12 @@
       "idiom" : "car",
       "scale" : "3x",
       "size" : "60x60"
+    },
+    {
+      "filename" : "1024.png",
+      "idiom" : "ios-marketing",
+      "scale" : "1x",
+      "size" : "1024x1024"
     },
     {
       "filename" : "16.png",
@@ -221,11 +221,6 @@
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "512x512"
-    },
-    {
-      "filename" : "1024-2.png",
-      "idiom" : "mac",
-      "size" : "1024x1024"
     }
   ],
   "info" : {

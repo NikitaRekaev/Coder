@@ -6,7 +6,7 @@ final class SearchBar: UISearchBar {
     
     private lazy var cancelBarButtonAttributes: [NSAttributedString.Key: Any] = [
         .font: UIFont(name: "Inter-SemiBold", size: 15) ?? .boldSystemFont(ofSize: 15),
-        .foregroundColor: #colorLiteral(red: 0.4257887602, green: 0.1908605397, blue: 1, alpha: 1)
+        .foregroundColor: #colorLiteral(red: 0.3960784314, green: 0.2039215686, blue: 1, alpha: 1)
     ]
     
     private lazy var placeholderAttributes: [NSAttributedString.Key: Any] = [
@@ -58,7 +58,7 @@ private extension SearchBar {
         searchTextField.leftView = UIImageView(image: UIImage(named: "Vector"))
         searchTextField.font = UIFont(name: "Inter-Regular", size: 15)
         searchTextField.attributedPlaceholder = placeholderAttributedString
-        searchTextField.tintColor = #colorLiteral(red: 0.4257887602, green: 0.1908605397, blue: 1, alpha: 1)
+        searchTextField.tintColor = #colorLiteral(red: 0.3960784314, green: 0.2039215686, blue: 1, alpha: 1)
         
         let barButtonAppearance = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])
         barButtonAppearance.setTitleTextAttributes(cancelBarButtonAttributes, for: .normal)
