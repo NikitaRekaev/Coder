@@ -40,6 +40,7 @@
 		11E9F91728D4A1B80040D7B3 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11E9F90E28D4A1B80040D7B3 /* Inter-Regular.ttf */; };
 		11E9F91B28D4A1B80040D7B3 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11E9F91228D4A1B80040D7B3 /* Inter-SemiBold.ttf */; };
 		11E9F91E28D506F00040D7B3 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9F91D28D506F00040D7B3 /* UIColor+Hex.swift */; };
+		11E9F92028D5077E0040D7B3 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9F91F28D5077E0040D7B3 /* Resources.swift */; };
 		EB99E55C547E01533C4ACA25 /* Pods_Coder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F3461F739C725BC0E29FE4 /* Pods_Coder.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		11E9F90E28D4A1B80040D7B3 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
 		11E9F91228D4A1B80040D7B3 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
 		11E9F91D28D506F00040D7B3 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		11E9F91F28D5077E0040D7B3 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		2AA1B1ACAFDF163FFF069568 /* Pods-Coder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coder.debug.xcconfig"; path = "Target Support Files/Pods-Coder/Pods-Coder.debug.xcconfig"; sourceTree = "<group>"; };
 		A3F3461F739C725BC0E29FE4 /* Pods_Coder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE667551734BA2BD261D694C /* Pods-Coder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coder.release.xcconfig"; path = "Target Support Files/Pods-Coder/Pods-Coder.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		111B694828B64A80006E2BF0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				11E9F91F28D5077E0040D7B3 /* Resources.swift */,
 				11300F2B28953E5E00BC51E4 /* LaunchScreen.storyboard */,
 				11300F2E28953E5E00BC51E4 /* Info.plist */,
 				11300F2928953E5E00BC51E4 /* Assets.xcassets */,
@@ -120,7 +123,7 @@
 		111B696628B65384006E2BF0 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
-				11E9F91C28D506A80040D7B3 /* UIKit */,
+				11E9F91C28D506A80040D7B3 /* Extension */,
 				11E9F8F528D49D6D0040D7B3 /* Application */,
 				11E9F8F428D49D630040D7B3 /* Base */,
 			);
@@ -190,10 +193,10 @@
 		111B698B28B674D1006E2BF0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				113E079F28CD2CC000AC6FFB /* Cells */,
 				111B699028B67545006E2BF0 /* ProfileView.swift */,
 				111B698C28B674E6006E2BF0 /* PhoneView.swift */,
 				111B698E28B67518006E2BF0 /* BirthView.swift */,
+				113E079D28CD2ABE00AC6FFB /* BackBarButtonItem.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -247,14 +250,6 @@
 				113E079828CCDCA800AC6FFB /* MainModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		113E079F28CD2CC000AC6FFB /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				113E079D28CD2ABE00AC6FFB /* BackBarButtonItem.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		113E07A028CE141E00AC6FFB /* SortScreen */ = {
@@ -347,12 +342,12 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		11E9F91C28D506A80040D7B3 /* UIKit */ = {
+		11E9F91C28D506A80040D7B3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				11E9F91D28D506F00040D7B3 /* UIColor+Hex.swift */,
 			);
-			path = UIKit;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		4049CF99DA23E4E7B3E3BFF4 /* Pods */ = {
@@ -500,6 +495,7 @@
 				113E079E28CD2ABE00AC6FFB /* BackBarButtonItem.swift in Sources */,
 				11E9F8FD28D4A05C0040D7B3 /* NetworkMonitor.swift in Sources */,
 				11E9F90328D4A0F00040D7B3 /* NetworkTask.swift in Sources */,
+				11E9F92028D5077E0040D7B3 /* Resources.swift in Sources */,
 				11E9F90828D4A1770040D7B3 /* Item.swift in Sources */,
 				11E9F90628D4A14C0040D7B3 /* Department.swift in Sources */,
 				113E079928CCDCA800AC6FFB /* MainModel.swift in Sources */,

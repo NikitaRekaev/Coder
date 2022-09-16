@@ -31,7 +31,7 @@ final class ProfileView: BaseView {
                  years: String) {
         avatarImageView.image = UIImage(named: "goose")
         nameLabel.text = "\(firstName) \(lastName)"
-        tagLabel.text = tag
+        tagLabel.text = tag.lowercased()
         departmentLabel.text = department?.title
         phoneView.setData(phoneNumber: phone)
         birthView.setData(dateBirth: dateBirth, years: years)

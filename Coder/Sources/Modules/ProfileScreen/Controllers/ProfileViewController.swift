@@ -22,7 +22,7 @@ final class ProfileViewController: BaseViewController<ProfileView> {
         let calculatedYears = model.calculateYears(date: item.birthdayDate)
         mainView.setData(firstName: item.firstName,
                          lastName: item.lastName,
-                         tag: item.userTag.lowercased(),
+                         tag: item.userTag,
                          department: item.department,
                          phone: formattedPhone,
                          dateBirth: formattedBirthday,
@@ -30,7 +30,7 @@ final class ProfileViewController: BaseViewController<ProfileView> {
     }
     
     @objc func phoneButtonClicked() {
-        aler(title: model.formatPhone(phone: item.phone), titleSecond: model.formatPhone(phone: item.phone))
+        aler(title: model.formatPhone(phone: item.phone), titleSecond: item.phone)
     }
 }
 

@@ -10,4 +10,5 @@ disabled_rules:
   - trailing_whitespace
   - nesting
   - identifier_name
+  - type_name
 warning_threshold: 5
