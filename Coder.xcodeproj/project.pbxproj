@@ -123,7 +123,7 @@
 		111B696628B65384006E2BF0 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
-				11E9F91C28D506A80040D7B3 /* Extension */,
+				11E9F91C28D506A80040D7B3 /* UIKitExt */,
 				11E9F8F528D49D6D0040D7B3 /* Application */,
 				11E9F8F428D49D630040D7B3 /* Base */,
 			);
@@ -342,12 +342,12 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		11E9F91C28D506A80040D7B3 /* Extension */ = {
+		11E9F91C28D506A80040D7B3 /* UIKitExt */ = {
 			isa = PBXGroup;
 			children = (
 				11E9F91D28D506F00040D7B3 /* UIColor+Hex.swift */,
 			);
-			path = Extension;
+			path = UIKitExt;
 			sourceTree = "<group>";
 		};
 		4049CF99DA23E4E7B3E3BFF4 /* Pods */ = {

@@ -109,6 +109,11 @@ extension UserTableViewCell {
         nameSkeletonView.isHidden = true
         departmentSkeletonView.isHidden = true
     }
+}
+
+// MARK: - SetData
+
+extension UserTableViewCell {
     
     func setImage(urlString: String) {
         avatarImageView.loadImage(from: urlString)
