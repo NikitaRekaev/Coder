@@ -11,7 +11,7 @@ final class MainRootView: BaseView {
     
     // MARK: - Views
     
-    let errorView = LostInternetConnectionView()
+    let errorView = UnknownErrorView()
     let userTableView = UITableView(frame: .zero, style: .grouped)
     let searchBar = SearchBar()
     
