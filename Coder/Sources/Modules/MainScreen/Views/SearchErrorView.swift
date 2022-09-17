@@ -2,9 +2,35 @@ import UIKit
 
 final class SearchErrorView: BaseView {
     
+    // MARK: - Constants
+    
+    private enum Constants {
+        
+        enum Image {
+            static let top: CGFloat = 80
+            static let proportions: CGFloat = 56
+        }
+        
+        enum Title {
+            static let text = "Мы никого не нашли"
+            static let font = R.Fonts.interSemiBold(with: 17)
+            static let top: CGFloat = 8
+        }
+        
+        enum SupTitle {
+            static let text = "Попробуйте скорректировать запрос"
+            static let font = R.Fonts.interRegular(with: 16)
+            static let top: CGFloat = 12
+        }
+    }
+    
+    // MARK: - Views
+    
     private let loupe = UIImageView()
-    private let userNotFoundLabel = UILabel()
-    private let tryToCorrectLabel = UILabel()
+    private let titleLabel = UILabel()
+    private let subTitleLabel = UILabel()
+    
+    // MARK: - Setup
     
     override func setup() {
         setupUI()
@@ -17,38 +43,39 @@ final class SearchErrorView: BaseView {
 private extension SearchErrorView {
     
     func setupUI() {
-        loupe.image = UIImage(named: "loupe")
+        loupe.image = R.Images.loupe
         
-        userNotFoundLabel.text = "Мы никого не нашли"
-        userNotFoundLabel.font = UIFont(name: "Inter-SemiBold", size: 17)
-        userNotFoundLabel.textColor = UIColor(red: 0.02, green: 0.02, blue: 0.063, alpha: 1)
+        titleLabel.text = Constants.Title.text
+        titleLabel.font = Constants.Title.font
+        titleLabel.textColor = R.Colors.Text.active
         
-        tryToCorrectLabel.text = "Попробуйте скорректировать запрос"
-        tryToCorrectLabel.font = UIFont(name: "Inter-Regular", size: 16)
-        tryToCorrectLabel.textColor = UIColor(red: 0.591, green: 0.591, blue: 0.609, alpha: 1)
+        subTitleLabel.text = Constants.SupTitle.text
+        subTitleLabel.font = Constants.SupTitle.font
+        subTitleLabel.textColor = R.Colors.Text.inActive
     }
     
     func setupConstraints() {
-        [loupe, userNotFoundLabel, tryToCorrectLabel].forEach { addSubview($0) }
+        [loupe, titleLabel, subTitleLabel].forEach { addSubview($0) }
         
         loupe.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             loupe.centerXAnchor.constraint(equalTo: centerXAnchor),
-            loupe.topAnchor.constraint(equalTo: topAnchor, constant: 80),
-            loupe.widthAnchor.constraint(equalToConstant: 56),
-            loupe.heightAnchor.constraint(equalToConstant: 56)
+            loupe.topAnchor.constraint(equalTo: topAnchor, constant: Constants.Image.top),
+            loupe.widthAnchor.constraint(equalToConstant: Constants.Image.proportions),
+            loupe.heightAnchor.constraint(equalToConstant: Constants.Image.proportions)
         ])
         
-        userNotFoundLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            userNotFoundLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            userNotFoundLabel.topAnchor.constraint(equalTo: loupe.bottomAnchor, constant: 8)
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: loupe.bottomAnchor, constant: Constants.Title.top)
         ])
         
-        tryToCorrectLabel.translatesAutoresizingMaskIntoConstraints = false
+        subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tryToCorrectLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            tryToCorrectLabel.topAnchor.constraint(equalTo: userNotFoundLabel.bottomAnchor, constant: 12)
+            subTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
+                                                   constant: Constants.SupTitle.top)
         ])
     }
 }
