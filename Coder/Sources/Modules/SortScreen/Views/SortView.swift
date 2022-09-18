@@ -8,12 +8,12 @@ final class SortView: BaseView {
         enum TitleLable {
             static let text = "Сортировка"
             static let font = R.Fonts.interSemiBold(with: 20)
-            static let topAnchor: CGFloat = 21.5
+            static let top: CGFloat = 21.5
         }
         
         enum BackButton {
-            static let topAnchor: CGFloat = 22.75
-            static let leadingAnchor: CGFloat = 33.5
+            static let top: CGFloat = 22.75
+            static let leading: CGFloat = 33.5
         }
         
         enum SortButton {
@@ -22,16 +22,16 @@ final class SortView: BaseView {
         }
         
         enum AlphabetSortButton {
-            static let sortString = "По алфавиту"
-            static let topAnchor: CGFloat = 41.5
-            static let leadingAnchor: CGFloat = 26
-            static let widthAnchor: CGFloat = 140
+            static let text = "По алфавиту"
+            static let top: CGFloat = 41.5
+            static let leading: CGFloat = 26
+            static let width: CGFloat = 140
         }
         
         enum BirthdaySortButton {
-            static let sortString = "По дню рождения"
-            static let topAnchor: CGFloat = 35
-            static let widthAnchor: CGFloat = 180
+            static let text = "По дню рождения"
+            static let top: CGFloat = 35
+            static let width: CGFloat = 180
         }
     }
     
@@ -64,14 +64,14 @@ private extension SortView {
         
         backButton.setImage(R.Images.backArrow, for: .normal)
         
-        alphabetSortButton.setTitle(Constants.AlphabetSortButton.sortString, for: .normal)
+        alphabetSortButton.setTitle(Constants.AlphabetSortButton.text, for: .normal)
         alphabetSortButton.setImage(R.Images.Sort.unChecked, for: .normal)
         alphabetSortButton.setImage(R.Images.Sort.isChecked, for: .selected)
         alphabetSortButton.setTitleColor(R.Colors.Text.active, for: .normal)
         alphabetSortButton.titleLabel?.font = Constants.SortButton.font
         alphabetSortButton.titleEdgeInsets.left = Constants.SortButton.insetsLeft
         
-        birthdaySortButton.setTitle(Constants.BirthdaySortButton.sortString, for: .normal)
+        birthdaySortButton.setTitle(Constants.BirthdaySortButton.text, for: .normal)
         birthdaySortButton.setImage(R.Images.Sort.unChecked, for: .normal)
         birthdaySortButton.setImage(R.Images.Sort.isChecked, for: .selected)
         birthdaySortButton.setTitleColor(R.Colors.Text.active, for: .normal)
@@ -84,31 +84,31 @@ private extension SortView {
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.TitleLable.topAnchor),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.TitleLable.top),
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
         
         backButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            backButton.topAnchor.constraint(equalTo: topAnchor, constant: Constants.BackButton.topAnchor),
-            backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.BackButton.leadingAnchor)
+            backButton.topAnchor.constraint(equalTo: topAnchor, constant: Constants.BackButton.top),
+            backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.BackButton.leading)
         ])
         
         alphabetSortButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             alphabetSortButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
-                                                    constant: Constants.AlphabetSortButton.topAnchor),
+                                                    constant: Constants.AlphabetSortButton.top),
             alphabetSortButton.leadingAnchor.constraint(equalTo: leadingAnchor,
-                                                        constant: Constants.AlphabetSortButton.leadingAnchor),
-            alphabetSortButton.widthAnchor.constraint(equalToConstant: Constants.AlphabetSortButton.widthAnchor)
+                                                        constant: Constants.AlphabetSortButton.leading),
+            alphabetSortButton.widthAnchor.constraint(equalToConstant: Constants.AlphabetSortButton.width)
         ])
         
         birthdaySortButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             birthdaySortButton.topAnchor.constraint(equalTo: alphabetSortButton.bottomAnchor,
-                                                    constant: Constants.BirthdaySortButton.topAnchor),
+                                                    constant: Constants.BirthdaySortButton.top),
             birthdaySortButton.leadingAnchor.constraint(equalTo: alphabetSortButton.leadingAnchor),
-            birthdaySortButton.widthAnchor.constraint(equalToConstant: Constants.BirthdaySortButton.widthAnchor)
+            birthdaySortButton.widthAnchor.constraint(equalToConstant: Constants.BirthdaySortButton.width)
         ])
     }
 }
