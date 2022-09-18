@@ -1,0 +1,126 @@
+import UIKit
+
+final class MainRootView: BaseView {
+    
+    // MARK: - Constants
+    
+    private enum Constants {
+        static let tabsHeight: CGFloat = 36
+        static let separatorHeight: CGFloat = 0.33
+    }
+    
+    // MARK: - Views
+    
+    let errorView = UnknownErrorView()
+    let userTableView = UITableView(frame: .zero, style: .grouped)
+    let searchBar = SearchBar()
+    
+    private let searchErrorView = SearchErrorView()
+    private let separatorLineUnderTabs = UIView()
+    
+    let topTabsCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        let tab = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        tab.backgroundColor = .clear
+        return tab
+    }()
+    
+    // MARK: - Setup
+    
+    override func setup() {
+        setupUI()
+        setupConstraints()
+    }
+}
+
+// MARK: SetView
+
+extension MainRootView {
+    
+    func setSearchErrorView() {
+        userTableView.isHidden = true
+        searchErrorView.isHidden = false
+    }
+    
+    func setTableView() {
+        searchErrorView.isHidden = true
+        userTableView.isHidden = false
+    }
+    
+    func setErrorView() {
+        userTableView.isHidden = true
+        separatorLineUnderTabs.isHidden = true
+        topTabsCollectionView.isHidden = true
+        searchBar.isHidden = true
+        errorView.isHidden = false
+    }
+    
+    func setMainView() {
+        errorView.isHidden = true
+        userTableView.isHidden = false
+        separatorLineUnderTabs.isHidden = false
+        topTabsCollectionView.isHidden = false
+        searchBar.isHidden = false
+    }
+    
+}
+
+// MARK: Private methods
+
+private extension MainRootView {
+    
+    func setupUI() {
+        backgroundColor = .white
+        userTableView.backgroundColor = .white
+        searchErrorView.isHidden = true
+        separatorLineUnderTabs.backgroundColor = R.Colors.separator
+    }
+    
+    func setupConstraints() {
+        [userTableView, separatorLineUnderTabs, topTabsCollectionView, searchErrorView, errorView].forEach {
+            addSubview($0)
+        }
+        
+        topTabsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            topTabsCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            topTabsCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            topTabsCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            topTabsCollectionView.heightAnchor.constraint(equalToConstant: Constants.tabsHeight)
+        ])
+        
+        separatorLineUnderTabs.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            separatorLineUnderTabs.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor),
+            separatorLineUnderTabs.leadingAnchor.constraint(equalTo: leadingAnchor),
+            separatorLineUnderTabs.trailingAnchor.constraint(equalTo: trailingAnchor),
+            separatorLineUnderTabs.heightAnchor.constraint(equalToConstant: Constants.separatorHeight)
+        ])
+        
+        userTableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            userTableView.topAnchor.constraint(equalTo: separatorLineUnderTabs.bottomAnchor),
+            userTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            userTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            userTableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+        
+        searchErrorView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            searchErrorView.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor),
+            searchErrorView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            searchErrorView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            searchErrorView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+        
+        errorView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            errorView.topAnchor.constraint(equalTo: topAnchor),
+            errorView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            errorView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            errorView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+}
