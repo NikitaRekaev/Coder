@@ -66,7 +66,7 @@ extension ProfileView {
                  phone: String,
                  dateBirth: String,
                  years: String) {
-        avatarImageView.image = UIImage(named: "goose")
+        avatarImageView.image = R.Images.stopper
         nameLabel.text = "\(firstName) \(lastName)"
         tagLabel.text = tag.lowercased()
         departmentLabel.text = department?.title
