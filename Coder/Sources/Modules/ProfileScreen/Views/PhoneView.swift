@@ -71,7 +71,8 @@ private extension PhoneView {
         
         phoneButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            phoneButton.leadingAnchor.constraint(equalTo: phoneImageView.trailingAnchor, constant: Constants.Button.trailig),
+            phoneButton.leadingAnchor.constraint(equalTo: phoneImageView.trailingAnchor,
+                                                 constant: Constants.Button.trailig),
             phoneButton.centerYAnchor.constraint(equalTo: phoneImageView.centerYAnchor)
         ])
     }
