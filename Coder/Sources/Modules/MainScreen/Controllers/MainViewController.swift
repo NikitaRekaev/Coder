@@ -145,10 +145,12 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 extension MainViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = ProfileViewController()
-        viewController.item = model.filteredUser[indexPath.item]
-        tableView.deselectRow(at: indexPath, animated: false)
-        navigationController?.pushViewController(viewController, animated: true)
+        if model.filteredUser.endIndex != 0 {
+            let viewController = ProfileViewController()
+            viewController.item = model.filteredUser[indexPath.item]
+            tableView.deselectRow(at: indexPath, animated: false)
+            navigationController?.pushViewController(viewController, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
