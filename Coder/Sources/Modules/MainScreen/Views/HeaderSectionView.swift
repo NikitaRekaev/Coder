@@ -21,10 +21,10 @@ final class HeaderSectionView: BaseView {
     
     // MARK: - Views
     
-    private let backgroundView = UIView()
-    private let yearLabel = UILabel()
-    private let rightLine = UIView()
-    private let leftLine = UIView()
+    private lazy var backgroundView = UIView()
+    private lazy var yearLabel = UILabel()
+    private lazy var rightLine = UIView()
+    private lazy var leftLine = UIView()
     
     // MARK: - Initialization
     
