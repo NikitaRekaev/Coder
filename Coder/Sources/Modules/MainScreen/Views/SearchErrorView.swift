@@ -26,9 +26,9 @@ final class SearchErrorView: BaseView {
     
     // MARK: - Views
     
-    private let loupe = UIImageView()
-    private let titleLabel = UILabel()
-    private let subTitleLabel = UILabel()
+    private lazy var loupe = UIImageView()
+    private lazy var titleLabel = UILabel()
+    private lazy var subTitleLabel = UILabel()
     
     // MARK: - Setup
     
