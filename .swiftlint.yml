@@ -12,4 +12,5 @@ disabled_rules:
   - identifier_name
   - type_name
   - class_delegate_protocol
+  - function_parameter_count
 warning_threshold: 5
