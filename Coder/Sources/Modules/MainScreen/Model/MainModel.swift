@@ -18,10 +18,15 @@ extension MainModel {
     var filteredUser: [Item] {
         return users
             .filter({
-                $0.department == selectedDepartment || selectedDepartment == nil || selectedDepartment == departmentAll
+                $0.department == selectedDepartment ||
+                selectedDepartment == nil ||
+                selectedDepartment == departmentAll
             })
             .filter({
-                $0.firstName.starts(with: searchText) || $0.lastName.starts(with: searchText) || searchText.isEmpty
+                $0.firstName.starts(with: searchText) ||
+                $0.lastName.starts(with: searchText) ||
+                $0.userTag.starts(with: searchText) ||
+                searchText.isEmpty
             })
     }
 }
