@@ -2,10 +2,31 @@ import UIKit
 
 final class HeaderSectionView: BaseView {
     
+    // MARK: - Constants
+    private enum Constants {
+        
+        enum Label {
+            static let text = "\(Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! + 1)"
+            static let font = R.Fonts.interMedium(with: 15)
+            static let centerY: CGFloat = -15
+        }
+        
+        enum Line {
+            static let leading: CGFloat = 24
+            static let trailing: CGFloat = -24
+            static let height: CGFloat = 1
+            static let width: CGFloat = 72
+        }
+    }
+    
+    // MARK: - Views
+    
     private let backgroundView = UIView()
     private let yearLabel = UILabel()
-    private let rightLine = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
-    private let leftLine = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
+    private let rightLine = UIView()
+    private let leftLine = UIView()
+    
+    // MARK: - Initialization
     
     override func setup() {
         setupUI()
@@ -18,14 +39,14 @@ final class HeaderSectionView: BaseView {
 private extension HeaderSectionView {
     
     func setupUI() {
-        yearLabel.font = UIFont(name: "Inter-SemiBold", size: 15)
-        yearLabel.text = "\(Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! + 1)"
-        yearLabel.textColor = UIColor(red: 0.765, green: 0.765, blue: 0.776, alpha: 1)
+        yearLabel.text = Constants.Label.text
+        yearLabel.font = Constants.Label.font
+        yearLabel.textColor = R.Colors.separator
         yearLabel.contentMode = .scaleAspectFit
         yearLabel.textAlignment = .center
         
-        rightLine.backgroundColor = UIColor(red: 0.765, green: 0.765, blue: 0.776, alpha: 1)
-        leftLine.backgroundColor = UIColor(red: 0.765, green: 0.765, blue: 0.776, alpha: 1)
+        rightLine.backgroundColor = R.Colors.separator
+        leftLine.backgroundColor = R.Colors.separator
     }
     
     func setupConstraints() {
@@ -33,7 +54,7 @@ private extension HeaderSectionView {
         
         yearLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            yearLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -15),
+            yearLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: Constants.Label.centerY),
             yearLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
         
@@ -41,18 +62,18 @@ private extension HeaderSectionView {
         NSLayoutConstraint.activate([
             leftLine.centerYAnchor.constraint(equalTo: yearLabel.centerYAnchor),
             leftLine.trailingAnchor.constraint(equalTo: yearLabel.leadingAnchor),
-            leftLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            leftLine.heightAnchor.constraint(equalToConstant: 1),
-            leftLine.widthAnchor.constraint(equalToConstant: 72)
+            leftLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Line.leading),
+            leftLine.heightAnchor.constraint(equalToConstant: Constants.Line.height),
+            leftLine.widthAnchor.constraint(equalToConstant: Constants.Line.width)
         ])
         
         rightLine.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             rightLine.centerYAnchor.constraint(equalTo: yearLabel.centerYAnchor),
-            rightLine.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            rightLine.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constants.Line.trailing),
             rightLine.leadingAnchor.constraint(equalTo: yearLabel.trailingAnchor),
-            rightLine.heightAnchor.constraint(equalToConstant: 1),
-            rightLine.widthAnchor.constraint(equalToConstant: 72)
+            rightLine.heightAnchor.constraint(equalToConstant: Constants.Line.height),
+            rightLine.widthAnchor.constraint(equalToConstant: Constants.Line.width)
         ])
     }
 }
