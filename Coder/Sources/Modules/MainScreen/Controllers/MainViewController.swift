@@ -25,17 +25,7 @@ final class MainViewController: BaseViewController<MainRootView> {
         setupTableView()
         setupTargets()
         setViewDependingOnConnection()
-        
-        networkTask.getData(UserModel.self, from: "/kode-education/trainee-test/25143926/users") { result in
-            switch result {
-            case let .success(responseData):
-                self.model.users = responseData.items
-                self.mainView.setMainView()
-                self.mainView.userTableView.reloadData()
-            case .failure(_:):
-                self.mainView.setErrorView()
-            }
-        }
+        getUser()
     }
 }
 
@@ -59,7 +49,7 @@ extension MainViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        mainView.searchBar.searchTextField.leftView = UIImageView(image: UIImage(named: "Vector"))
+        mainView.searchBar.searchTextField.leftView = UIImageView(image: R.Images.SearchBar.leftImageNormal)
         mainView.searchBar.showsCancelButton = false
         mainView.searchBar.showsBookmarkButton = true
         mainView.searchBar.text = nil
@@ -80,13 +70,13 @@ extension MainViewController: SortDelegate {
     
     func sortByAlphabet() {
         model.users.sort(by: { $0.firstName < $1.firstName })
-        mainView.searchBar.setImage(UIImage(named: "list-ui-alt_selected"), for: .bookmark, state: .normal)
+        mainView.searchBar.setImage(R.Images.SearchBar.rightImageSelected, for: .bookmark, state: .normal)
         mainView.userTableView.reloadData()
     }
     
     func sortByBirthday() {
         model.userSortByDate()
-        mainView.searchBar.setImage(UIImage(named: "list-ui-alt_selected"), for: .bookmark, state: .normal)
+        mainView.searchBar.setImage(R.Images.SearchBar.rightImageSelected, for: .bookmark, state: .normal)
         mainView.userTableView.reloadData()
     }
     
@@ -284,6 +274,19 @@ private extension MainViewController {
         NetworkMonitor.shared.stopMonitoring()
     }
     
+    func getUser() {
+        networkTask.getData(UserModel.self, from: "/kode-education/trainee-test/25143926/users") { result in
+            switch result {
+            case let .success(responseData):
+                self.model.users = responseData.items
+                self.mainView.setMainView()
+                self.mainView.userTableView.reloadData()
+            case .failure(_:):
+                self.mainView.setErrorView()
+            }
+        }
+    }
+    
     func loadData(result: Result<UserModel, Error>) {
         switch result {
         case let .success(responseData):
@@ -309,7 +312,8 @@ private extension MainViewController {
 private extension MainViewController {
     
     func textChanged(_ sender: UITextField) {
-        let image = sender.text?.count == .zero ? UIImage(named: "Vector") : UIImage(named: "vector_editing")
+        let image = sender.text?.count == .zero ? R.Images.SearchBar.leftImageNormal :
+        R.Images.SearchBar.leftImageSelected
         sender.leftView = UIImageView.init(image: image)
     }
     
@@ -332,7 +336,6 @@ private extension MainViewController {
     }
     
     func checkConnection(_ sender: UIButton) {
-        sender.backgroundColor = UIColor(red: 0.3, green: 0.5, blue: 0.8, alpha: 0.3)
         self.mainView.setMainView()
         networkTask.getData(UserModel.self,
                                  from: "/kode-education/trainee-test/25143926/users", self.loadData(result:))
