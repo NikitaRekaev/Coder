@@ -17,7 +17,7 @@ final class UserTableViewCell: UITableViewCell {
         enum Name {
             static let font = R.Fonts.interMedium(with: 16)
             static let leading: CGFloat = 16
-            static let centerYAnchor: CGFloat = -12
+            static let centerY: CGFloat = -12
             static let width: CGFloat = 144
             static let height: CGFloat = 16
             static let cornerRadius: CGFloat = 8
@@ -26,7 +26,7 @@ final class UserTableViewCell: UITableViewCell {
         
         enum Department {
             static let font = R.Fonts.interRegular(with: 13)
-            static let centerYAnchor: CGFloat = 20
+            static let centerY: CGFloat = 20
             static let width: CGFloat = 80
             static let height: CGFloat = 12
             static let cornerRadius: CGFloat = 6
@@ -40,7 +40,7 @@ final class UserTableViewCell: UITableViewCell {
         
         enum Birthday {
             static let font = R.Fonts.interRegular(with: 15)
-            static let centerYAnchor: CGFloat = -12
+            static let centerY: CGFloat = -12
             static let trailing: CGFloat = -19.5
         }
     }
@@ -166,7 +166,7 @@ private extension UserTableViewCell {
             nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor,
                                                constant: Constants.Name.leading),
             nameLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor,
-                                               constant: Constants.Name.centerYAnchor)
+                                               constant: Constants.Name.centerY)
         ])
         
         tagLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -179,13 +179,13 @@ private extension UserTableViewCell {
         NSLayoutConstraint.activate([
             departmentLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             departmentLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor,
-                                                     constant: Constants.Department.centerYAnchor)
+                                                     constant: Constants.Department.centerY)
         ])
         
         birthdayLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             birthdayLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor,
-                                                   constant: Constants.Birthday.centerYAnchor),
+                                                   constant: Constants.Birthday.centerY),
             birthdayLabel.trailingAnchor.constraint(equalTo: trailingAnchor,
                                                     constant: Constants.Birthday.trailing)
         ])
@@ -226,7 +226,7 @@ private extension UserTableViewCell {
             nameSkeletonView.leadingAnchor.constraint(equalTo: imageSkeletonView.trailingAnchor,
                                                       constant: Constants.Name.leading),
             nameSkeletonView.centerYAnchor.constraint(equalTo: imageSkeletonView.centerYAnchor,
-                                                      constant: Constants.Name.centerYAnchor),
+                                                      constant: Constants.Name.centerY),
             nameSkeletonView.widthAnchor.constraint(equalToConstant: Constants.Name.width),
             nameSkeletonView.heightAnchor.constraint(equalToConstant: Constants.Name.height)
         ])
@@ -235,7 +235,7 @@ private extension UserTableViewCell {
         NSLayoutConstraint.activate([
             departmentSkeletonView.leadingAnchor.constraint(equalTo: nameSkeletonView.leadingAnchor),
             departmentSkeletonView.centerYAnchor.constraint(equalTo: nameSkeletonView.centerYAnchor,
-                                                            constant: Constants.Department.centerYAnchor),
+                                                            constant: Constants.Department.centerY),
             departmentSkeletonView.widthAnchor.constraint(equalToConstant: Constants.Department.width),
             departmentSkeletonView.heightAnchor.constraint(equalToConstant: Constants.Department.height)
         ])
