@@ -2,8 +2,21 @@ import UIKit
 
 final class MainViewController: BaseViewController<MainRootView> {
     
-    private lazy var shouldShowBirthday: Bool = false
+    // MARK: - Constants
+    
+    private enum Constants {
+        static let skeletonCellCount: Int = 15
+        static let rowCellHeight: CGFloat = 84
+        static let headerViewHeight: CGFloat = 68
+    }
+    
+    // MARK: - Views
+    
     private lazy var sortVC = SortViewController()
+    
+    // MARK: - Internal Properties
+    
+    private lazy var shouldShowBirthday: Bool = false
     private lazy var model = MainModel()
     private lazy var tabs = Department.allCases
     private lazy var networkTask = NetworkTask()
@@ -138,7 +151,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 extension MainViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if model.filteredUser.endIndex != 0 {
+        if model.filteredUser.endIndex != .zero {
             let viewController = ProfileViewController()
             viewController.item = model.filteredUser[indexPath.item]
             tableView.deselectRow(at: indexPath, animated: false)
@@ -147,15 +160,15 @@ extension MainViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        84
+        Constants.rowCellHeight
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        section != 0 ? HeaderSectionView() : nil
+        section != .zero ? HeaderSectionView() : nil
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        section != 0 ? 68 : 0
+        section != .zero ? Constants.headerViewHeight : .zero
     }
 }
 
@@ -165,10 +178,10 @@ extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if model.users.isEmpty {
-            return 15
+            return Constants.skeletonCellCount
         } else {
             if self.shouldShowBirthday {
-                return section == 0 ? model.thisYearBirthdayUser.count : model.nextYearBirthdayUser.count
+                return section == .zero ? model.thisYearBirthdayUser.count : model.nextYearBirthdayUser.count
             } else {
                 return model.filteredUser.count
             }
