@@ -9,13 +9,30 @@ final class ProfileViewController: BaseViewController<ProfileView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = BackBarButtonItem(target: navigationController ?? UINavigationController())
-        mainView.phoneView.phoneButton.addTarget(self, action: #selector(phoneButtonClicked), for: .touchUpInside)
+        setBackButton()
+        setTargets()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        setData()
+    }
+}
+
+// MARK: Private Methods
+
+private extension ProfileViewController {
+    
+    func setBackButton() {
+        navigationItem.leftBarButtonItem = BackBarButtonItem(target: navigationController ?? UINavigationController())
+    }
+    
+    func setTargets() {
+        mainView.phoneView.phoneButton.addTarget(self, action: #selector(phoneButtonClicked), for: .touchUpInside)
+    }
+    
+    func setData() {
         mainView.setImage(urlString: item.avatarUrl)
         let formattedPhone = model.formatPhone(phone: item.phone)
         let formattedBirthday = model.formatDate(date: item.birthdayDate)
@@ -29,16 +46,7 @@ final class ProfileViewController: BaseViewController<ProfileView> {
                          years: calculatedYears)
     }
     
-    @objc func phoneButtonClicked() {
-        aler(title: model.formatPhone(phone: item.phone), titleSecond: item.phone)
-    }
-}
-
-// MARK: Alert
-
-extension ProfileViewController {
-    
-    private func aler(title: String, titleSecond: String) {
+    func aler(title: String, titleSecond: String) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let number = UIAlertAction(title: title, style: .default) { _ in
@@ -56,5 +64,14 @@ extension ProfileViewController {
         alert.addAction(number)
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
+    }
+}
+
+// MARK: - Action
+
+@objc
+private extension ProfileViewController {
+    func phoneButtonClicked() {
+        aler(title: model.formatPhone(phone: item.phone), titleSecond: item.phone)
     }
 }
