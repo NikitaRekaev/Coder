@@ -2,6 +2,38 @@ import UIKit
 
 final class ProfileView: BaseView {
     
+    // MARK: - Contstants
+    
+    private enum Constants {
+        
+        static let stackViewSpacing: CGFloat = 73.5
+        static let upViewBottom: CGFloat = 104
+        
+        enum Avatar {
+            static let cornerRadius = CGFloat(104 / 2)
+            static let top: CGFloat = 72
+            static let proportions: CGFloat = 104
+        }
+        
+        enum Name {
+            static let font = R.Fonts.interBold(with: 24)
+            static let top: CGFloat = 24
+        }
+        
+        enum Tag {
+            static let font = R.Fonts.interRegular(with: 17)
+            static let leading: CGFloat = 4
+        }
+        
+        enum Department {
+            static let font = R.Fonts.interRegular(with: 13)
+            static let top: CGFloat = 12
+        }
+        
+    }
+    
+    // MARK: - Views
+    
     let phoneView = PhoneView()
     let avatarImageView = UIImageView()
     
@@ -16,6 +48,11 @@ final class ProfileView: BaseView {
         setupUI()
         setupConstraints()
     }
+}
+
+// MARK: - SetData
+
+extension ProfileView {
     
     func setImage(urlString: String) {
         avatarImageView.loadImage(from: urlString)
@@ -46,26 +83,23 @@ private extension ProfileView {
     func setupUI() {
         backgroundColor = .white
         
-        upView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 248/255, alpha: 1)
+        upView.backgroundColor = R.Colors.profileBackground
         
         avatarImageView.clipsToBounds = true
-        avatarImageView.layer.cornerRadius = CGFloat(104 / 2)
+        avatarImageView.layer.cornerRadius = Constants.Avatar.cornerRadius
         
-        nameLabel.numberOfLines = 0
-        nameLabel.font = UIFont(name: "Inter-Bold", size: 24)
-        nameLabel.textColor = UIColor(red: 0.02, green: 0.02, blue: 0.063, alpha: 1)
+        nameLabel.font = Constants.Name.font
+        nameLabel.textColor = R.Colors.Text.active
         
-        tagLabel.numberOfLines = 0
-        tagLabel.font = UIFont(name: "Inter-Regular", size: 14)
-        tagLabel.textColor = UIColor(red: 0.591, green: 0.591, blue: 0.609, alpha: 1)
+        tagLabel.font = Constants.Tag.font
+        tagLabel.textColor = R.Colors.Text.inActive
         
-        departmentLabel.numberOfLines = 0
-        departmentLabel.font = UIFont(name: "Inter-Regular", size: 13)
-        departmentLabel.textColor = UIColor(red: 0.333, green: 0.333, blue: 0.361, alpha: 1)
+        departmentLabel.font = Constants.Department.font
+        departmentLabel.textColor = R.Colors.Text.secondary
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 73.5
+        stackView.spacing = Constants.stackViewSpacing
         stackView.addArrangedSubview(birthView)
         stackView.addArrangedSubview(phoneView)
     }
@@ -77,35 +111,35 @@ private extension ProfileView {
         NSLayoutConstraint.activate([
             upView.topAnchor.constraint(equalTo: topAnchor),
             upView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            upView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 104),
-            upView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            upView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0)
+            upView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: Constants.upViewBottom),
+            upView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            upView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
         
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: upView.topAnchor, constant: 72),
+            avatarImageView.topAnchor.constraint(equalTo: upView.topAnchor, constant: Constants.Avatar.top),
             avatarImageView.centerXAnchor.constraint(equalTo: upView.centerXAnchor),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 104),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 104)
+            avatarImageView.heightAnchor.constraint(equalToConstant: Constants.Avatar.proportions),
+            avatarImageView.widthAnchor.constraint(equalToConstant: Constants.Avatar.proportions)
         ])
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             nameLabel.centerXAnchor.constraint(equalTo: upView.centerXAnchor),
-            nameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 24)
+            nameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: Constants.Name.top)
         ])
         
         tagLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tagLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 4),
+            tagLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: Constants.Tag.leading),
             tagLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor)
         ])
         
         departmentLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             departmentLabel.centerXAnchor.constraint(equalTo: upView.centerXAnchor),
-            departmentLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 12)
+            departmentLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Constants.Department.top)
         ])
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
