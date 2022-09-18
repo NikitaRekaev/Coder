@@ -11,14 +11,15 @@ final class MainRootView: BaseView {
     
     // MARK: - Views
     
-    let errorView = UnknownErrorView()
-    let userTableView = UITableView(frame: .zero, style: .grouped)
-    let searchBar = SearchBar()
+    lazy var errorView = UnknownErrorView()
+    lazy var userTableView = UserTableView(refreshController: refreshControl)
+    lazy var refreshControl = UIRefreshControl()
+    lazy var searchBar = SearchBar()
     
-    private let searchErrorView = SearchErrorView()
-    private let separatorLineUnderTabs = UIView()
+    private lazy var searchErrorView = SearchErrorView()
+    private lazy var separatorLineUnderTabs = UIView()
     
-    let topTabsCollectionView: UICollectionView = {
+    lazy var topTabsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize

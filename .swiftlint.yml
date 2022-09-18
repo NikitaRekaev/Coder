@@ -11,4 +11,5 @@ disabled_rules:
   - nesting
   - identifier_name
   - type_name
+  - class_delegate_protocol
 warning_threshold: 5
