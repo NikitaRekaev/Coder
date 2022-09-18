@@ -25,7 +25,7 @@ private extension BackBarButtonItem {
     
     func configureAppearance() {
         style = .plain
-        image = UIImage(named: "back-arrow")
+        image = R.Images.backArrow
         tintColor = .black
         action = #selector(UINavigationController.popViewController(animated:))
     }
