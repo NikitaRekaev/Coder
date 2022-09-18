@@ -8,13 +8,6 @@ final class MainViewController: BaseViewController<MainRootView> {
     private lazy var tabs = Department.allCases
     private lazy var networkTask = NetworkTask()
     
-    private lazy var refreshControl: UIRefreshControl = {
-        let refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
-        refresh.tintColor = .lightGray
-        return refresh
-    }()
-    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -232,6 +225,7 @@ private extension MainViewController {
     func setupTargets() {
         mainView.errorView.tryAgainButton.addTarget(self, action: #selector(checkConnection), for: .touchUpInside)
         mainView.searchBar.searchTextField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+        mainView.refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
     }
     
     func setupNavigationItem() {
@@ -252,7 +246,6 @@ private extension MainViewController {
     }
     
     func setupTableView() {
-        mainView.userTableView.refreshControl = refreshControl
         mainView.userTableView.separatorColor = .clear
         mainView.userTableView.delegate = self
         mainView.userTableView.dataSource = self
@@ -328,9 +321,9 @@ private extension MainViewController {
             case let .success(responseData):
                 self.model.users = responseData.items
                 self.mainView.userTableView.reloadData()
-                self.refreshControl.endRefreshing()
+                self.mainView.refreshControl.endRefreshing()
             case let .failure(error):
-                self.refreshControl.endRefreshing()
+                self.mainView.refreshControl.endRefreshing()
                 self.mainView.setErrorView()
                 print(error)
             }
