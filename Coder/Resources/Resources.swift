@@ -10,7 +10,7 @@ enum Resources {
         static let nlo = UIImage(named: "NLO")
         static let loupe = UIImage(named: "loupe")
         
-        enum Details {
+        enum Profile {
             static let start = UIImage(named: "star")
             static let phone = UIImage(named: "phone")
         }
