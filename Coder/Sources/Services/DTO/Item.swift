@@ -7,7 +7,7 @@ struct Item: Codable {
     let firstName: String
     let lastName: String
     let userTag: String
-    let department: Department?
+    let department: Department
     let position: String
     let birthday: String
     let phone: String
