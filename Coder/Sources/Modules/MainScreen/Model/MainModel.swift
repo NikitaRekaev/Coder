@@ -2,12 +2,19 @@ import Foundation
 
 final class MainModel {
     
+    //MARK: - Variable
+    
     var searchText = ""
     var users: [Item] = []
     var selectedDepartment: Department?
     
     private let departmentAll = Department.all
     
+}
+
+// MARK: - Search and Tabs
+
+extension MainModel {
     var filteredUser: [Item] {
         return users
             .filter({
@@ -17,6 +24,11 @@ final class MainModel {
                 $0.firstName.starts(with: searchText) || $0.lastName.starts(with: searchText) || searchText.isEmpty
             })
     }
+}
+
+// MARK: - Sort By Date Birh
+
+extension MainModel {
     
     var thisYearBirthdayUser: [Item] {
         return filteredUser.filter {

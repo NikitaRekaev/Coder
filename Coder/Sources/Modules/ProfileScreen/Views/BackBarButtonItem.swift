@@ -2,7 +2,7 @@ import UIKit
 
 final class BackBarButtonItem: UIBarButtonItem {
         
-    // MARK: - UIBarButtonItem
+    // MARK: - Initialization
         
     convenience init(target: UINavigationController) {
         self.init()

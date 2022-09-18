@@ -6,6 +6,8 @@ final class ProfileViewController: BaseViewController<ProfileView> {
     
     private let model = ProfileModel()
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
