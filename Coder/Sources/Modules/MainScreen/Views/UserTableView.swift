@@ -6,10 +6,6 @@ final class UserTableView: UITableView {
     
     private var refreshController: UIRefreshControl?
     
-    // MARK: - Delegate Properties
-    
-     var touchedDelegate: UserTableViewTouchDelegate?
-    
     // MARK: - UITableView
     
     convenience init(refreshController: UIRefreshControl) {
@@ -24,13 +20,6 @@ final class UserTableView: UITableView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-    }
-    
-    // MARK: - UITouch
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        touchedDelegate?.touchesBegunInTableview(touches, with: event)
     }
 }
 

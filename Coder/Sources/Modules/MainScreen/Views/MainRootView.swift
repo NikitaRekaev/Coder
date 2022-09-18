@@ -11,22 +11,14 @@ final class MainRootView: BaseView {
     
     // MARK: - Views
     
-    lazy var errorView = UnknownErrorView()
+    lazy var searchBar = SearchBar()
+    lazy var topTabsCollectionView = TopTabsCollectionView()
     lazy var userTableView = UserTableView(refreshController: refreshControl)
     lazy var refreshControl = UIRefreshControl()
-    lazy var searchBar = SearchBar()
+    lazy var errorView = UnknownErrorView()
     
     private lazy var searchErrorView = SearchErrorView()
     private lazy var separatorLineUnderTabs = UIView()
-    
-    lazy var topTabsCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        let tab = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        tab.backgroundColor = .clear
-        return tab
-    }()
     
     // MARK: - Setup
     
@@ -74,7 +66,6 @@ private extension MainRootView {
     
     func setupUI() {
         backgroundColor = .white
-        userTableView.backgroundColor = .white
         searchErrorView.isHidden = true
         separatorLineUnderTabs.backgroundColor = R.Colors.separator
     }

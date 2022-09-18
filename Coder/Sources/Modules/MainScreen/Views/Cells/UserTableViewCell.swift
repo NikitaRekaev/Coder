@@ -47,18 +47,18 @@ final class UserTableViewCell: UITableViewCell {
     
     // MARK: - Views
     
-    let avatarImageView = UIImageView()
-    let nameLabel = UILabel()
-    let departmentLabel = UILabel()
-    let birthdayLabel = UILabel()
+    lazy var avatarImageView = UIImageView()
+    lazy var nameLabel = UILabel()
+    lazy var departmentLabel = UILabel()
+    lazy var birthdayLabel = UILabel()
     
-    private let tagLabel = UILabel()
+    private lazy var tagLabel = UILabel()
     
     // MARK: SkeletonView
     
-    private let imageSkeletonView = UIView()
-    private let nameSkeletonView = UIView()
-    private let departmentSkeletonView = UIView()
+    private lazy var imageSkeletonView = UIView()
+    private lazy var nameSkeletonView = UIView()
+    private lazy var departmentSkeletonView = UIView()
     
     // MARK: - Initialization
     

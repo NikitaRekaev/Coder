@@ -34,15 +34,15 @@ final class ProfileView: BaseView {
     
     // MARK: - Views
     
-    let phoneView = PhoneView()
-    let avatarImageView = UIImageView()
+    lazy var phoneView = PhoneView()
+    lazy var avatarImageView = UIImageView()
     
-    private let nameLabel = UILabel()
-    private let tagLabel = UILabel()
-    private let departmentLabel = UILabel()
-    private let upView = UIView()
-    private let stackView = UIStackView()
-    private let birthView = BirthView()
+    private lazy var nameLabel = UILabel()
+    private lazy var tagLabel = UILabel()
+    private lazy var departmentLabel = UILabel()
+    private lazy var upView = UIView()
+    private lazy var stackView = UIStackView()
+    private lazy var birthView = BirthView()
     
     override func setup() {
         setupUI()
@@ -58,7 +58,6 @@ extension ProfileView {
         avatarImageView.loadImage(from: urlString)
     }
     
-    // swiftlint:disable function_parameter_count
     func setData(firstName: String,
                  lastName: String,
                  tag: String,
@@ -73,7 +72,6 @@ extension ProfileView {
         phoneView.setData(phoneNumber: phone)
         birthView.setData(dateBirth: dateBirth, years: years)
     }
-    // swiftlint:enable function_parameter_count
 }
 
 // MARK: - Private Methods

@@ -23,12 +23,12 @@ final class PhoneView: BaseView {
     
     // MARK: - Views
     
-    let phoneButton = UIButton(type: .system)
+    lazy var phoneButton = UIButton(type: .system)
     
-    private let phoneView = UIView(frame: CGRect(x: 0, y: 0,
+    private lazy var phoneView = UIView(frame: CGRect(x: 0, y: 0,
                                                  width: Constants.View.width,
                                                  height: Constants.View.height))
-    private let phoneImageView = UIImageView()
+    private lazy var phoneImageView = UIImageView()
     
     // MARK: - Initialization
     

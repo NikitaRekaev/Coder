@@ -31,11 +31,11 @@ final class UnknownErrorView: BaseView {
     
     // MARK: - Views
     
-    let tryAgainButton = UIButton()
+    lazy var tryAgainButton = UIButton()
     
-    private let imageView = UIImageView()
-    private let titleLabel = UILabel()
-    private let subTitleLabel = UILabel()
+    private lazy var imageView = UIImageView()
+    private lazy var titleLabel = UILabel()
+    private lazy var subTitleLabel = UILabel()
     
     // MARK: - Setup
     

@@ -27,12 +27,12 @@ final class BirthView: BaseView {
     
     // MARK: - Views
     
-    private let birthView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.View.widht,
+    private lazy var birthView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.View.widht,
                                                  height: Constants.View.height))
-    private let starImageView = UIImageView()
-    private let birthDataLabel = UILabel()
-    private let yearsLabel = UILabel()
-    private let dividingLine = UIView(frame: .zero)
+    private lazy var starImageView = UIImageView()
+    private lazy var birthDataLabel = UILabel()
+    private lazy var yearsLabel = UILabel()
+    private lazy var dividingLine = UIView(frame: .zero)
     
     // MARK: - Initialization
     

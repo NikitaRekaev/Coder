@@ -42,6 +42,7 @@
 		11E9F91E28D506F00040D7B3 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9F91D28D506F00040D7B3 /* UIColor+Hex.swift */; };
 		11E9F92028D5077E0040D7B3 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9F91F28D5077E0040D7B3 /* Resources.swift */; };
 		11E9F92228D7761C0040D7B3 /* UserTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9F92128D7761C0040D7B3 /* UserTableView.swift */; };
+		11E9F92428D7A9130040D7B3 /* TopTabsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9F92328D7A9130040D7B3 /* TopTabsCollectionView.swift */; };
 		EB99E55C547E01533C4ACA25 /* Pods_Coder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F3461F739C725BC0E29FE4 /* Pods_Coder.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		11E9F91D28D506F00040D7B3 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		11E9F91F28D5077E0040D7B3 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		11E9F92128D7761C0040D7B3 /* UserTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableView.swift; sourceTree = "<group>"; };
+		11E9F92328D7A9130040D7B3 /* TopTabsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabsCollectionView.swift; sourceTree = "<group>"; };
 		2AA1B1ACAFDF163FFF069568 /* Pods-Coder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coder.debug.xcconfig"; path = "Target Support Files/Pods-Coder/Pods-Coder.debug.xcconfig"; sourceTree = "<group>"; };
 		A3F3461F739C725BC0E29FE4 /* Pods_Coder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE667551734BA2BD261D694C /* Pods-Coder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coder.release.xcconfig"; path = "Target Support Files/Pods-Coder/Pods-Coder.release.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				111B697528B6631B006E2BF0 /* Cells */,
 				111B698028B669F4006E2BF0 /* MainRootView.swift */,
+				11E9F92328D7A9130040D7B3 /* TopTabsCollectionView.swift */,
 				11E9F92128D7761C0040D7B3 /* UserTableView.swift */,
 				113E07A328CE71DF00AC6FFB /* SearchBar.swift */,
 				111B697C28B66934006E2BF0 /* SearchErrorView.swift */,
@@ -515,6 +518,7 @@
 				111B699428B675C9006E2BF0 /* ProfileViewController.swift in Sources */,
 				111B697D28B66934006E2BF0 /* SearchErrorView.swift in Sources */,
 				113E079628CCD72000AC6FFB /* ProfileModel.swift in Sources */,
+				11E9F92428D7A9130040D7B3 /* TopTabsCollectionView.swift in Sources */,
 				111B697428B66313006E2BF0 /* TopTabsCollectionViewCell.swift in Sources */,
 				11300F2128953E5D00BC51E4 /* AppDelegate.swift in Sources */,
 				111B698D28B674E6006E2BF0 /* PhoneView.swift in Sources */,

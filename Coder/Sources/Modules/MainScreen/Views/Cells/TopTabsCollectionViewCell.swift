@@ -7,12 +7,18 @@ final class TopTabsCollectionViewCell: UICollectionViewCell {
     static let identifier = "Cell"
     
     private enum Constants {
-        static let textFont = R.Fonts.interMedium(with: 15)
-        static let textSelectedFont = R.Fonts.interSemiBold(with: 15)
         static let borderHeight: CGFloat = 2
-        static let contentHeight: CGFloat = 36
-        static let contentWidth: CGFloat = -16
-        static let contentLeading: CGFloat = 16
+        
+        enum Text {
+            static let font = R.Fonts.interMedium(with: 15)
+            static let selectedFont = R.Fonts.interSemiBold(with: 15)
+        }
+        
+        enum Content {
+            static let height: CGFloat = 36
+            static let width: CGFloat = -16
+            static let leading: CGFloat = 16
+        }
     }
     
     // MARK: - Properties
@@ -21,8 +27,8 @@ final class TopTabsCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Views
     
-    private let bottomBorderView = UIView()
-    private let label = UILabel()
+    private lazy var bottomBorderView = UIView()
+    private lazy var label = UILabel()
     
     // MARK: - Initialization
     
@@ -58,10 +64,10 @@ final class TopTabsCollectionViewCell: UICollectionViewCell {
         
         contentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            contentView.heightAnchor.constraint(equalToConstant: Constants.contentHeight),
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.contentLeading),
+            contentView.heightAnchor.constraint(equalToConstant: Constants.Content.height),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Content.leading),
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            contentView.widthAnchor.constraint(equalTo: widthAnchor, constant: Constants.contentWidth)
+            contentView.widthAnchor.constraint(equalTo: widthAnchor, constant: Constants.Content.width)
         ])
     }
 }
@@ -73,11 +79,11 @@ extension TopTabsCollectionViewCell {
         if isSelected {
             bottomBorderView.isHidden = false
             label.textColor = R.Colors.Text.active
-            label.font = Constants.textFont
+            label.font = Constants.Text.font
         } else {
             bottomBorderView.isHidden = true
             label.textColor = R.Colors.Text.inActive
-            label.font = Constants.textSelectedFont
+            label.font = Constants.Text.selectedFont
         }
     }
     

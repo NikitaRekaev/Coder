@@ -6,26 +6,35 @@ final class SearchBar: UISearchBar {
     
     private enum Constants {
         static let cornerRadius: CGFloat = 16
-        static let activeTextFont = R.Fonts.interRegular(with: 15)
         static let adjustingTextOffset: UIOffset = .init(horizontal: 10, vertical: .zero)
         static let adjustingRightIconOffset: UIOffset = .init(horizontal: -10, vertical: .zero)
         static let leftView = UIImageView(image: R.Images.SearchBar.leftImageNormal)
-        static let textFildKey = "searchField"
-        static let textFildColor = R.Colors.SearchBar.secondary
-        static let cancelTitle = "Отмена"
-        static let cancelKey = "cancelButtonText"
-        static let cancelBarButtonAttributes: [NSAttributedString.Key: Any] = [
-            .font: R.Fonts.interSemiBold(with: 15),
-            .foregroundColor: R.Colors.violet
-        ]
-        static let placeholderAttributes: [NSAttributedString.Key: Any] = [
-            .font: R.Fonts.interMedium(with: 15),
-            .foregroundColor: R.Colors.SearchBar.placeholder
-        ]
-        static let placeholderAttributedString: NSAttributedString = .init(
-            string: "Введи имя, тег, почту...",
-            attributes: placeholderAttributes
-        )
+        
+        enum TextFild {
+            static let font = R.Fonts.interRegular(with: 15)
+            static let key = "searchField"
+            static let color = R.Colors.SearchBar.secondary
+        }
+        
+        enum CancelButton {
+            static let title = "Отмена"
+            static let key = "cancelButtonText"
+            static let attributes: [NSAttributedString.Key: Any] = [
+                .font: R.Fonts.interSemiBold(with: 15),
+                .foregroundColor: R.Colors.violet
+            ]
+        }
+        
+        enum Placeholder {
+            static let attributes: [NSAttributedString.Key: Any] = [
+                .font: R.Fonts.interMedium(with: 15),
+                .foregroundColor: R.Colors.SearchBar.placeholder
+            ]
+            static let attributedString: NSAttributedString = .init(
+                string: "Введи имя, тег, почту...",
+                attributes: attributes
+            )
+        }
     }
     
     // MARK: - Initialization
@@ -55,7 +64,7 @@ private extension SearchBar {
         setImage(R.Images.SearchBar.rightImageSelected, for: .bookmark, state: .selected)
         setImage(R.Images.SearchBar.clear, for: .clear, state: .normal)
         
-        setValue(Constants.cancelTitle, forKey: Constants.cancelKey)
+        setValue(Constants.CancelButton.title, forKey: Constants.CancelButton.key)
         
         setPositionAdjustment(Constants.adjustingTextOffset, for: .search)
         setPositionAdjustment(Constants.adjustingRightIconOffset, for: .bookmark)
@@ -65,14 +74,14 @@ private extension SearchBar {
         searchTextField.layer.masksToBounds = true
         searchTextField.layer.cornerRadius = Constants.cornerRadius
         searchTextField.leftView = Constants.leftView
-        searchTextField.font = Constants.activeTextFont
-        searchTextField.attributedPlaceholder = Constants.placeholderAttributedString
+        searchTextField.font = Constants.TextFild.font
+        searchTextField.attributedPlaceholder = Constants.Placeholder.attributedString
         searchTextField.tintColor = R.Colors.violet
         
         let barButtonAppearance = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])
-        barButtonAppearance.setTitleTextAttributes(Constants.cancelBarButtonAttributes, for: .normal)
+        barButtonAppearance.setTitleTextAttributes(Constants.CancelButton.attributes, for: .normal)
         
-        let textFieldInsideSearchBar = value(forKey: Constants.textFildKey) as? UITextField
-        textFieldInsideSearchBar?.backgroundColor = Constants.textFildColor
+        let textFieldInsideSearchBar = value(forKey: Constants.TextFild.key) as? UITextField
+        textFieldInsideSearchBar?.backgroundColor = Constants.TextFild.color
     }
 }
