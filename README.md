@@ -1,4 +1,4 @@
-<h1 align="center">Coder - test app for <a href="https://kode.ru/">KODE</a></h1>
+<h1 align="center">Coder - test app for <a href="https://github.com/appKODE/trainee-test-ios/">KODE</a></h1>
 
 ## Overview
 
