@@ -2,13 +2,6 @@ import UIKit
 
 final class MainRootView: BaseView {
     
-    // MARK: - Constants
-    
-    private enum Constants {
-        static let tabsHeight: CGFloat = 36
-        static let separatorHeight: CGFloat = 0.33
-    }
-    
     // MARK: - Views
     
     lazy var searchBar = SearchBar()
@@ -115,4 +108,11 @@ private extension MainRootView {
             errorView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
+}
+
+// MARK: - Constants
+
+private enum Constants {
+    static let tabsHeight: CGFloat = 36
+    static let separatorHeight: CGFloat = 0.33
 }
