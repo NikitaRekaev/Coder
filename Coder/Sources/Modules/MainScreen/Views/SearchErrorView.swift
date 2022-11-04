@@ -21,6 +21,8 @@ final class SearchErrorView: BaseView {
 private extension SearchErrorView {
     
     func setupUI() {
+        self.backgroundColor = .white
+        
         loupe.image = R.Images.loupe
         
         titleLabel.text = Constants.Title.text
