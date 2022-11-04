@@ -83,6 +83,7 @@ private extension SortView {
 // MARK: - Constants
 
 private enum Constants {
+    
     enum TitleLable {
         static let text = "Сортировка"
         static let font = R.Fonts.interSemiBold(with: 20)
