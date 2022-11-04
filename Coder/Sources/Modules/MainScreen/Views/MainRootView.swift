@@ -25,32 +25,14 @@ final class MainRootView: BaseView {
 
 extension MainRootView {
     
-    func setSearchErrorView() {
-        userTableView.isHidden = true
-        searchErrorView.isHidden = false
+    func setSearchErrorView(error: Bool) {
+        searchErrorView.isHidden = !error
     }
     
-    func setTableView() {
-        searchErrorView.isHidden = true
-        userTableView.isHidden = false
+    func setErrorView(error: Bool) {
+        errorView.isHidden = !error
+        searchBar.isHidden = error
     }
-    
-    func setErrorView() {
-        userTableView.isHidden = true
-        separatorLineUnderTabs.isHidden = true
-        topTabsCollectionView.isHidden = true
-        searchBar.isHidden = true
-        errorView.isHidden = false
-    }
-    
-    func setMainView() {
-        errorView.isHidden = true
-        userTableView.isHidden = false
-        separatorLineUnderTabs.isHidden = false
-        topTabsCollectionView.isHidden = false
-        searchBar.isHidden = false
-    }
-    
 }
 
 // MARK: Private methods

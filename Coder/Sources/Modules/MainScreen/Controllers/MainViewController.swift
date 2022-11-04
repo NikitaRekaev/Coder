@@ -33,12 +33,7 @@ extension MainViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         model.searchText = mainView.searchBar.text ?? ""
-        
-        if model.filteredUser.isEmpty {
-            mainView.setSearchErrorView()
-        } else {
-            mainView.setTableView()
-        }
+        mainView.setSearchErrorView(error: model.filteredUser.isEmpty)
         mainView.userTableView.reloadData()
     }
     
@@ -53,7 +48,7 @@ extension MainViewController: UISearchBarDelegate {
         mainView.searchBar.text = nil
         mainView.searchBar.endEditing(true)
         model.searchText = ""
-        mainView.setTableView()
+        mainView.setSearchErrorView(error: false)
         mainView.userTableView.reloadData()
     }
     
@@ -68,26 +63,15 @@ extension MainViewController: SortDelegate {
     
     func sort(model: SortModel) {
         switch(model) {
-        case .alphabet: sortByAlphabet()
-        case .birhDate: sortByBirthday()
+        case .alphabet: self.model.users.sort(by: { $0.firstName < $1.firstName })
+        case .birhDate: self.model.userSortByDate()
         }
-    }
-    
-    func sortByAlphabet() {
-        model.users.sort(by: { $0.firstName < $1.firstName })
-        mainView.searchBar.setImage(R.Images.SearchBar.rightImageSelected, for: .bookmark, state: .normal)
-        mainView.userTableView.reloadData()
-    }
-    
-    func sortByBirthday() {
-        model.userSortByDate()
         mainView.searchBar.setImage(R.Images.SearchBar.rightImageSelected, for: .bookmark, state: .normal)
         mainView.userTableView.reloadData()
     }
     
     func showBirthday(shouldShow: Bool) {
         self.shouldShowBirthday = shouldShow
-        mainView.userTableView.reloadData()
     }
 }
 
@@ -292,10 +276,10 @@ private extension MainViewController {
         switch result {
         case let .success(responseData):
             self.model.users = responseData.items
-            self.mainView.setMainView()
+            self.mainView.setErrorView(error: false)
             self.mainView.userTableView.reloadData()
         case .failure(_:):
-            self.mainView.setErrorView()
+            self.mainView.setErrorView(error: true)
         }
     }
     
@@ -317,13 +301,13 @@ private extension MainViewController {
     }
     
     func didPullToRefresh(_ sender: UIRefreshControl) {
-        self.mainView.setMainView()
+        self.mainView.setErrorView(error: false)
         shouldShowBirthday = false
         networkTask.getData(from: "users", pullRefresh(result:))
     }
     
     func checkConnection(_ sender: UIButton) {
-        self.mainView.setMainView()
+        self.mainView.setErrorView(error: false)
         networkTask.getData(from: "users", loadData(result:))
     }
 }
