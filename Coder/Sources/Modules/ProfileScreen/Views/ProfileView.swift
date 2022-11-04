@@ -65,11 +65,8 @@ private extension ProfileView {
         departmentLabel.font = Constants.Department.font
         departmentLabel.textColor = R.Colors.Text.secondary
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = Constants.stackViewSpacing
-        stackView.addArrangedSubview(birthView)
-        stackView.addArrangedSubview(phoneView)
     }
     
     func setupConstraints() {
@@ -109,6 +106,8 @@ private extension ProfileView {
             departmentLabel.centerXAnchor.constraint(equalTo: upView.centerXAnchor),
             departmentLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Constants.Department.top)
         ])
+        
+        [birthView, phoneView].forEach { addSubview($0) }
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
