@@ -2,33 +2,6 @@ import UIKit
 
 final class UnknownErrorView: BaseView {
     
-    // MARK: - Constants
-    
-    private enum Constants {
-        enum Image {
-            static let centerYAnchor: CGFloat = -50
-        }
-        
-        enum Title {
-            static let text = "Какой-то сверхразум всё сломал"
-            static let font = R.Fonts.interSemiBold(with: 17)
-            static let top: CGFloat = 8
-        }
-        
-        enum SubTitle {
-            static let text = "Постараемся быстро починить"
-            static let font = R.Fonts.interRegular(with: 16)
-            static let top: CGFloat = 12
-        }
-        
-        enum Button {
-            static let isNormaltext = "Попробовать снова"
-            static let isSelectedText = "Меня нажали"
-            static let font = R.Fonts.interSemiBold(with: 17)
-            static let top: CGFloat = 12
-        }
-    }
-    
     // MARK: - Views
     
     lazy var tryAgainButton = UIButton()
@@ -94,5 +67,33 @@ private extension UnknownErrorView {
             tryAgainButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             tryAgainButton.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: Constants.Button.top)
         ])
+    }
+}
+
+// MARK: - Constants
+
+private enum Constants {
+    
+    enum Image {
+        static let centerYAnchor: CGFloat = -50
+    }
+    
+    enum Title {
+        static let text = "Какой-то сверхразум всё сломал"
+        static let font = R.Fonts.interSemiBold(with: 17)
+        static let top: CGFloat = 8
+    }
+    
+    enum SubTitle {
+        static let text = "Постараемся быстро починить"
+        static let font = R.Fonts.interRegular(with: 16)
+        static let top: CGFloat = 12
+    }
+    
+    enum Button {
+        static let isNormaltext = "Попробовать снова"
+        static let isSelectedText = "Меня нажали"
+        static let font = R.Fonts.interSemiBold(with: 17)
+        static let top: CGFloat = 12
     }
 }
