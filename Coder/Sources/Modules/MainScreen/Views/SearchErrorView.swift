@@ -2,28 +2,6 @@ import UIKit
 
 final class SearchErrorView: BaseView {
     
-    // MARK: - Constants
-    
-    private enum Constants {
-        
-        enum Image {
-            static let top: CGFloat = 80
-            static let proportions: CGFloat = 56
-        }
-        
-        enum Title {
-            static let text = "Мы никого не нашли"
-            static let font = R.Fonts.interSemiBold(with: 17)
-            static let top: CGFloat = 8
-        }
-        
-        enum SupTitle {
-            static let text = "Попробуйте скорректировать запрос"
-            static let font = R.Fonts.interRegular(with: 16)
-            static let top: CGFloat = 12
-        }
-    }
-    
     // MARK: - Views
     
     private lazy var loupe = UIImageView()
@@ -77,5 +55,27 @@ private extension SearchErrorView {
             subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
                                                    constant: Constants.SupTitle.top)
         ])
+    }
+}
+
+// MARK: - Constants
+
+private enum Constants {
+    
+    enum Image {
+        static let top: CGFloat = 80
+        static let proportions: CGFloat = 56
+    }
+    
+    enum Title {
+        static let text = "Мы никого не нашли"
+        static let font = R.Fonts.interSemiBold(with: 17)
+        static let top: CGFloat = 8
+    }
+    
+    enum SupTitle {
+        static let text = "Попробуйте скорректировать запрос"
+        static let font = R.Fonts.interRegular(with: 16)
+        static let top: CGFloat = 12
     }
 }
