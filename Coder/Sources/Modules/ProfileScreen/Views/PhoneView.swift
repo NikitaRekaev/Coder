@@ -2,30 +2,11 @@ import UIKit
 
 final class PhoneView: BaseView {
     
-    // MARK: - Constants
-    
-    private enum Constants {
-        
-        enum View {
-            static let width: CGFloat = UIScreen.main.bounds.width
-            static let height: CGFloat = 73.5
-        }
-        
-        enum Image {
-            static let leading: CGFloat = 20
-        }
-        
-        enum Button {
-            static let font = R.Fonts.interMedium(with: 16)
-            static let trailig: CGFloat = 14
-        }
-    }
-    
     // MARK: - Views
     
     lazy var phoneButton = UIButton(type: .system)
     
-    private lazy var phoneView = UIView(frame: CGRect(x: 0, y: 0,
+    private lazy var phoneView = UIView(frame: CGRect(x: .zero, y: .zero,
                                                  width: Constants.View.width,
                                                  height: Constants.View.height))
     private lazy var phoneImageView = UIImageView()
@@ -75,5 +56,24 @@ private extension PhoneView {
                                                  constant: Constants.Button.trailig),
             phoneButton.centerYAnchor.constraint(equalTo: phoneImageView.centerYAnchor)
         ])
+    }
+}
+
+// MARK: - Constants
+
+private enum Constants {
+    
+    enum View {
+        static let width: CGFloat = UIScreen.main.bounds.width
+        static let height: CGFloat = 73.5
+    }
+    
+    enum Image {
+        static let leading: CGFloat = 20
+    }
+    
+    enum Button {
+        static let font = R.Fonts.interMedium(with: 16)
+        static let trailig: CGFloat = 14
     }
 }
