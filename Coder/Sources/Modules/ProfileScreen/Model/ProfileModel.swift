@@ -5,9 +5,13 @@ final class ProfileModel {
     func formatPhone(phone: String) -> String {
         
         var formattedPhone = "+7 (" + phone.filter { $0.isNumber }
-        formattedPhone.insert(contentsOf: [")", " "], at: formattedPhone.index(formattedPhone.startIndex, offsetBy: 7))
-        formattedPhone.insert(" ", at: formattedPhone.index(formattedPhone.startIndex, offsetBy: 12))
-        formattedPhone.insert(" ", at: formattedPhone.index(formattedPhone.startIndex, offsetBy: 15))
+        formattedPhone.insert(contentsOf: [")", " "],
+                              at: formattedPhone.index(formattedPhone.startIndex,
+                                                       offsetBy: Constants.Phone.startIndex))
+        formattedPhone.insert(" ", at: formattedPhone.index(formattedPhone.startIndex,
+                                                            offsetBy: Constants.Phone.offsetByTwelve))
+        formattedPhone.insert(" ", at: formattedPhone.index(formattedPhone.startIndex,
+                                                            offsetBy: Constants.Phone.offsetByFifteen))
         
         return formattedPhone
     }
@@ -20,7 +24,7 @@ final class ProfileModel {
         
         if let date = date {
             var date = formatter.string(from: date)
-            date.removeLast(3)
+            date.removeLast(.three)
             return date
         }
         
@@ -49,5 +53,18 @@ final class ProfileModel {
         }
         
         return "Не удалось вычислить год"
+    }
+}
+
+// MARK: - Constants
+
+private enum Constants {
+    
+    static let four = 4
+    
+    enum Phone {
+        static let startIndex = 7
+        static let offsetByTwelve = 12
+        static let offsetByFifteen = 15
     }
 }
