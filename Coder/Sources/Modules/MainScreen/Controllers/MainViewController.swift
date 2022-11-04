@@ -23,7 +23,7 @@ final class MainViewController: BaseViewController<MainRootView> {
         setupTableView()
         setupTargets()
         setViewDependingOnConnection()
-        getUser()
+        networkTask.getData(from: "users", loadData(result:))
     }
 }
 
@@ -127,13 +127,13 @@ extension MainViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let label = UILabel(frame: CGRect.zero)
         label.text = tabs[indexPath.item].title
         label.sizeToFit()
-
+        
         return CGSize(width: label.frame.width, height: mainView.topTabsCollectionView.frame.height)
     }
 }
@@ -141,7 +141,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UITableViewDelegate
 
 extension MainViewController: UITableViewDelegate {
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if model.filteredUser.endIndex != .zero {
             let viewController = ProfileViewController()
@@ -230,7 +230,7 @@ private extension MainViewController {
     func setupTargets() {
         mainView.errorView.tryAgainButton.addTarget(self, action: #selector(checkConnection), for: .touchUpInside)
         mainView.searchBar.searchTextField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
-        mainView.refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        mainView.refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
     }
     
     func setupNavigationItem() {
@@ -255,7 +255,7 @@ private extension MainViewController {
         mainView.userTableView.delegate = self
         mainView.userTableView.dataSource = self
         mainView.userTableView.register(UserTableViewCell.self,
-                                            forCellReuseIdentifier: UserTableViewCell.identifier)
+                                        forCellReuseIdentifier: UserTableViewCell.identifier)
     }
     
     func setViewDependingOnConnection() {
@@ -274,17 +274,11 @@ private extension MainViewController {
         NetworkMonitor.shared.stopMonitoring()
     }
     
-    func getUser() {
-        networkTask.getData(UserModel.self, from: "users") { result in
-            switch result {
-            case let .success(responseData):
-                self.model.users = responseData.items
-                self.mainView.setMainView()
-                self.mainView.userTableView.reloadData()
-            case .failure(_:):
-                self.mainView.setErrorView()
-            }
-        }
+    func updateDepartmentSelection() {
+        mainView.topTabsCollectionView.visibleCells.compactMap({ $0 as? TopTabsCollectionViewCell }).forEach({ cell in
+            let shouldBeSelected = cell.model == model.selectedDepartment
+            cell.setCellSelected(shouldBeSelected)
+        })
     }
     
     func loadData(result: Result<UserModel, Error>) {
@@ -298,11 +292,9 @@ private extension MainViewController {
         }
     }
     
-    func updateDepartmentSelection() {
-        mainView.topTabsCollectionView.visibleCells.compactMap({ $0 as? TopTabsCollectionViewCell }).forEach({ cell in
-            let shouldBeSelected = cell.model == model.selectedDepartment
-            cell.setCellSelected(shouldBeSelected)
-        })
+    func pullRefresh(result: Result<UserModel, Error>) {
+        loadData(result: result)
+        self.mainView.refreshControl.endRefreshing()
     }
 }
 
@@ -320,25 +312,12 @@ private extension MainViewController {
     func didPullToRefresh(_ sender: UIRefreshControl) {
         self.mainView.setMainView()
         shouldShowBirthday = false
-        networkTask.getData(UserModel.self,
-                                 from: "users") { result in
-            switch result {
-            case let .success(responseData):
-                self.model.users = responseData.items
-                self.mainView.userTableView.reloadData()
-                self.mainView.refreshControl.endRefreshing()
-            case let .failure(error):
-                self.mainView.refreshControl.endRefreshing()
-                self.mainView.setErrorView()
-                print(error)
-            }
-        }
+        networkTask.getData(from: "users", pullRefresh(result:))
     }
     
     func checkConnection(_ sender: UIButton) {
         self.mainView.setMainView()
-        networkTask.getData(UserModel.self,
-                                 from: "users", self.loadData(result:))
+        networkTask.getData(from: "users", loadData(result:))
     }
 }
 
