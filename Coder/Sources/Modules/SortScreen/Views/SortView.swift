@@ -4,12 +4,12 @@ final class SortView: BaseView {
     
     // MARK: - Views
     
-    lazy var backButton = UIButton()
-    lazy var alphabetSortButton = SortButton()
-    lazy var birthdaySortButton = SortButton()
-    lazy var buttonStack = UIStackView()
+    let backButton = UIButton()
+    let buttonStack = UIStackView()
     
-    private lazy var titleLabel = UILabel()
+    var sortButtonArray: [SortButton] = []
+    
+    private let titleLabel = UILabel()
     
     // MARK: - Initilization
     
@@ -36,8 +36,18 @@ private extension SortView {
         buttonStack.spacing = 35
         buttonStack.alignment = .leading
         
-        alphabetSortButton.setTitle(Constants.AlphabetSortButton.text, for: .normal)
-        birthdaySortButton.setTitle(Constants.BirthdaySortButton.text, for: .normal)
+        SortModel.allCases.forEach({ model in
+            let sortButton = SortButton(model: model, title: getModelName(model))
+            buttonStack.addArrangedSubview(sortButton)
+            sortButtonArray.append(sortButton)
+        })
+    }
+    
+    func getModelName(_ model: SortModel) -> String {
+        switch(model) {
+        case .alphabet: return "по алфавиту"
+        case .birhDate: return "по дню рождения"
+        }
     }
     
     func setupConstraints() {
@@ -55,34 +65,15 @@ private extension SortView {
             backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.BackButton.leading)
         ])
         
-        [alphabetSortButton, birthdaySortButton].forEach { buttonStack.addArrangedSubview($0) }
-        
         buttonStack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             buttonStack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
-                                             constant: Constants.AlphabetSortButton.top),
+                                             constant: Constants.ButtonStack.top),
             buttonStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,
-                                                 constant: Constants.AlphabetSortButton.leading),
+                                                 constant: Constants.ButtonStack.leading),
             buttonStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,
-                                                 constant: Constants.AlphabetSortButton.trailing)
+                                                  constant: Constants.ButtonStack.trailing)
         ])
-        
-//                alphabetSortButton.translatesAutoresizingMaskIntoConstraints = false
-//                NSLayoutConstraint.activate([
-        //            alphabetSortButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
-        //                                                    constant: Constants.AlphabetSortButton.top),
-        //            alphabetSortButton.leadingAnchor.constraint(equalTo: leadingAnchor,
-        //                                                        constant: Constants.AlphabetSortButton.leading),
-        //            alphabetSortButton.widthAnchor.constraint(equalToConstant: Constants.AlphabetSortButton.width)
-        //        ])
-        //
-        //        birthdaySortButton.translatesAutoresizingMaskIntoConstraints = false
-        //        NSLayoutConstraint.activate([
-        //            birthdaySortButton.topAnchor.constraint(equalTo: alphabetSortButton.bottomAnchor,
-        //                                                    constant: Constants.BirthdaySortButton.top),
-        //            birthdaySortButton.leadingAnchor.constraint(equalTo: alphabetSortButton.leadingAnchor),
-        //            birthdaySortButton.widthAnchor.constraint(equalToConstant: Constants.BirthdaySortButton.width)
-        //        ])
     }
 }
 
@@ -101,17 +92,9 @@ private enum Constants {
         static let leading: CGFloat = 33.5
     }
     
-    enum AlphabetSortButton {
-        static let text = "По алфавиту"
+    enum ButtonStack {
         static let top: CGFloat = 41.5
         static let leading: CGFloat = 26
         static let trailing: CGFloat = 26
-        static let width: CGFloat = 140
-    }
-    
-    enum BirthdaySortButton {
-        static let text = "По дню рождения"
-        static let top: CGFloat = 35
-        static let width: CGFloat = 180
     }
 }
