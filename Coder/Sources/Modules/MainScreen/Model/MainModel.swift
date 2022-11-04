@@ -37,13 +37,13 @@ extension MainModel {
     
     var thisYearBirthdayUser: [Item] {
         return filteredUser.filter {
-            return self.calculateDayDifference(birthdayDate: $0.birthdayDate) > 0
+            return self.calculateDayDifference(birthdayDate: $0.birthdayDate) > .zero
         }
     }
     
     var nextYearBirthdayUser: [Item] {
         return filteredUser.filter {
-            return self.calculateDayDifference(birthdayDate: $0.birthdayDate) < 0
+            return self.calculateDayDifference(birthdayDate: $0.birthdayDate) < .zero
         }
     }
     
@@ -58,11 +58,11 @@ extension MainModel {
 
         if let date = date {
             var date = formatter.string(from: date)
-            if date.count == 7 {
+            if date.count == Constants.week {
                 date.removeLast()
             }
-            if date.count == 8 {
-                date.removeLast(2)
+            if date.count == Constants.moreWeek {
+                date.removeLast(.two)
             }
             return date
         }
@@ -71,7 +71,7 @@ extension MainModel {
     
     func calculateDayDifference(birthdayDate: Date?) -> Int {
         guard let date = birthdayDate else {
-            return 0
+            return .zero
         }
         
         let calendar = Calendar.current
@@ -85,12 +85,12 @@ extension MainModel {
         bufferDateComponents.day = birthdayDateComponents.day
         
         guard let bufferDate = calendar.date(from: bufferDateComponents) else {
-            return 0
+            return .zero
         }
         
         guard let dayDifference = calendar.dateComponents([.day],
                                                           from: dateCurrent, to: bufferDate).day else {
-            return 0
+            return .zero
         }
         
         return dayDifference
@@ -103,14 +103,22 @@ extension MainModel {
             var dayDifference1 = calculateDayDifference(birthdayDate: date1)
             var dayDifference2 = calculateDayDifference(birthdayDate: date2)
             
-            if dayDifference1 < 0 {
-                dayDifference1 += 365
+            if dayDifference1 < .zero {
+                dayDifference1 += Constants.year
             }
-            if dayDifference2 < 0 {
-                dayDifference2 += 365
+            if dayDifference2 < .zero {
+                dayDifference2 += Constants.year
             }
             
             return dayDifference1 < dayDifference2
         }
     }
+}
+
+// MARK: - Constants
+
+private enum Constants {
+    static let year = 365
+    static let week = 7
+    static let moreWeek = 8
 }
