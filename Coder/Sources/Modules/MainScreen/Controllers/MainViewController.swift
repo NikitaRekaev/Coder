@@ -283,7 +283,7 @@ private extension MainViewController {
     }
     
     func getUser() {
-        networkTask.getData(UserModel.self, from: "/kode-education/trainee-test/25143926/users") { result in
+        networkTask.getData(UserModel.self, from: "users") { result in
             switch result {
             case let .success(responseData):
                 self.model.users = responseData.items
@@ -329,7 +329,7 @@ private extension MainViewController {
         self.mainView.setMainView()
         shouldShowBirthday = false
         networkTask.getData(UserModel.self,
-                                 from: "/kode-education/trainee-test/25143926/users") { result in
+                                 from: "users") { result in
             switch result {
             case let .success(responseData):
                 self.model.users = responseData.items
@@ -346,6 +346,6 @@ private extension MainViewController {
     func checkConnection(_ sender: UIButton) {
         self.mainView.setMainView()
         networkTask.getData(UserModel.self,
-                                 from: "/kode-education/trainee-test/25143926/users", self.loadData(result:))
+                                 from: "users", self.loadData(result:))
     }
 }

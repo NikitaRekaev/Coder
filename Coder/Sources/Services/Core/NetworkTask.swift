@@ -4,7 +4,7 @@ final class NetworkTask {
     
     private let baseUrl: URL
     
-    init(baseUrl: URL = URL(string: "https://stoplight.io/mocks/")!) {
+    init(baseUrl: URL = URL(string: "https://stoplight.io/mocks/kode-education/trainee-test/25143926")!) {
         self.baseUrl = baseUrl
     }
     
