@@ -66,6 +66,13 @@ extension MainViewController: UISearchBarDelegate {
 
 extension MainViewController: SortDelegate {
     
+    func sort(model: SortModel) {
+        switch(model) {
+        case .alphabet: sortByAlphabet()
+        case .birhDate: sortByBirthday()
+        }
+    }
+    
     func sortByAlphabet() {
         model.users.sort(by: { $0.firstName < $1.firstName })
         mainView.searchBar.setImage(R.Images.SearchBar.rightImageSelected, for: .bookmark, state: .normal)

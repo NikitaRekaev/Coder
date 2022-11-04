@@ -26,10 +26,9 @@ final class SortViewController: BaseViewController<SortView> {
 private extension SortViewController {
     func setupTargets() {
         mainView.backButton.addTarget(self, action: #selector(backButtonClicked), for: .touchUpInside)
-        mainView.alphabetSortButton.addTarget(self, action:
-                                                #selector(self.alphabetSortButtonClicked), for: .touchUpInside)
-        mainView.birthdaySortButton.addTarget(self, action:
-                                                #selector(self.birthdaySortButtonClicked), for: .touchUpInside)
+        mainView.sortButtonArray.forEach { sortButton in
+            sortButton.addTarget(self, action: #selector(sortButtonClicked), for: .touchUpInside)
+        }
     }
 }
 
@@ -42,19 +41,31 @@ private extension SortViewController {
         dismiss(animated: true)
     }
     
-    func alphabetSortButtonClicked(_ sender: UIButton) {
-        mainView.alphabetSortButton.isSelected = true
-        mainView.birthdaySortButton.isSelected = false
-        delegate?.showBirthday(shouldShow: false)
-        delegate?.sortByAlphabet()
+    func sortButtonClicked(_ sender: SortButton) {
+        
+        mainView.sortButtonArray.forEach { sortButton in
+            if sortButton == sender {
+                return sortButton.isSelected = true
+            }
+            sortButton.isSelected = false
+        }
+        
+        switch(sender.model) {
+        case .alphabet: alphabetSortButtonClicked(sender)
+        case .birhDate: birthdaySortButtonClicked(sender)
+        case .none: return
+        }
+        
         dismiss(animated: true)
     }
     
+    func alphabetSortButtonClicked(_ sender: UIButton) {
+        delegate?.showBirthday(shouldShow: false)
+        delegate?.sortByAlphabet()
+    }
+    
     func birthdaySortButtonClicked(_ sender: UIButton) {
-        mainView.alphabetSortButton.isSelected = false
-        mainView.birthdaySortButton.isSelected = true
         delegate?.showBirthday(shouldShow: true)
         delegate?.sortByBirthday()
-        dismiss(animated: true)
     }
 }
