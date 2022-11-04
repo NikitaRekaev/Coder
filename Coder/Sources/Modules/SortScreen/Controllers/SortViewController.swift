@@ -2,8 +2,7 @@ import UIKit
 
 protocol SortDelegate: AnyObject {
     
-    func sortByAlphabet()
-    func sortByBirthday()
+    func sort(model: SortModel)
     func showBirthday(shouldShow: Bool)
 }
 
@@ -50,22 +49,8 @@ private extension SortViewController {
             sortButton.isSelected = false
         }
         
-        switch(sender.model) {
-        case .alphabet: alphabetSortButtonClicked(sender)
-        case .birhDate: birthdaySortButtonClicked(sender)
-        case .none: return
-        }
-        
+        delegate?.showBirthday(shouldShow: sender.model == .birhDate)
+        delegate?.sort(model: sender.model)
         dismiss(animated: true)
-    }
-    
-    func alphabetSortButtonClicked(_ sender: UIButton) {
-        delegate?.showBirthday(shouldShow: false)
-        delegate?.sortByAlphabet()
-    }
-    
-    func birthdaySortButtonClicked(_ sender: UIButton) {
-        delegate?.showBirthday(shouldShow: true)
-        delegate?.sortByBirthday()
     }
 }
