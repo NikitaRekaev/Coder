@@ -2,10 +2,16 @@ import UIKit
 
 class SortButton: UIButton {
     
+    // MARK: - Properties
+    
+    var model: SortModel!
+    
     // MARK: - Initialization
     
-    convenience init() {
+    convenience init(model: SortModel, title: String) {
         self.init(frame: .zero)
+        self.model = model
+        setTitle(title, for: .normal)
         setupUI()
         setupConstraint()
     }
