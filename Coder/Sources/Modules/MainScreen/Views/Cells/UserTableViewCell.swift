@@ -2,48 +2,9 @@ import UIKit
 
 final class UserTableViewCell: UITableViewCell {
     
-    // MARK: - Constants
+    // MARK: - Properties
     
     static let identifier = "tableCell"
-    
-    private enum Constants {
-        enum Image {
-            static let leading: CGFloat = 10
-            static let proportions: CGFloat = 72
-            static let cornerRadius = CGFloat(72 / 2)
-            static let frame = CGRect(x: 0, y: 0, width: 72, height: 72)
-        }
-        
-        enum Name {
-            static let font = R.Fonts.interMedium(with: 16)
-            static let leading: CGFloat = 16
-            static let centerY: CGFloat = -12
-            static let width: CGFloat = 144
-            static let height: CGFloat = 16
-            static let cornerRadius: CGFloat = 8
-            static let frame = CGRect(x: 0, y: 0, width: 144, height: 16)
-        }
-        
-        enum Department {
-            static let font = R.Fonts.interRegular(with: 13)
-            static let centerY: CGFloat = 20
-            static let width: CGFloat = 80
-            static let height: CGFloat = 12
-            static let cornerRadius: CGFloat = 6
-            static let frame = CGRect(x: 0, y: 0, width: 80, height: 12)
-        }
-        
-        enum Tag {
-            static let font = R.Fonts.interMedium(with: 14)
-            static let leading: CGFloat = 4
-        }
-        
-        enum Birthday {
-            static let font = R.Fonts.interRegular(with: 15)
-            static let centerY: CGFloat = -12
-            static let trailing: CGFloat = -19.5
-        }
-    }
     
     // MARK: - Views
     
@@ -239,5 +200,47 @@ private extension UserTableViewCell {
             departmentSkeletonView.widthAnchor.constraint(equalToConstant: Constants.Department.width),
             departmentSkeletonView.heightAnchor.constraint(equalToConstant: Constants.Department.height)
         ])
+    }
+}
+
+// MARK: - Constants
+
+private enum Constants {
+    
+    enum Image {
+        static let leading: CGFloat = 10
+        static let proportions: CGFloat = 72
+        static let cornerRadius = CGFloat(72 / 2)
+        static let frame = CGRect(x: 0, y: 0, width: 72, height: 72)
+    }
+    
+    enum Name {
+        static let font = R.Fonts.interMedium(with: 16)
+        static let leading: CGFloat = 16
+        static let centerY: CGFloat = -12
+        static let width: CGFloat = 144
+        static let height: CGFloat = 16
+        static let cornerRadius: CGFloat = 8
+        static let frame = CGRect(x: 0, y: 0, width: 144, height: 16)
+    }
+    
+    enum Department {
+        static let font = R.Fonts.interRegular(with: 13)
+        static let centerY: CGFloat = 20
+        static let width: CGFloat = 80
+        static let height: CGFloat = 12
+        static let cornerRadius: CGFloat = 6
+        static let frame = CGRect(x: 0, y: 0, width: 80, height: 12)
+    }
+    
+    enum Tag {
+        static let font = R.Fonts.interMedium(with: 14)
+        static let leading: CGFloat = 4
+    }
+    
+    enum Birthday {
+        static let font = R.Fonts.interRegular(with: 15)
+        static let centerY: CGFloat = -12
+        static let trailing: CGFloat = -19.5
     }
 }
