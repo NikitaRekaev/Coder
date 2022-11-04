@@ -2,23 +2,6 @@ import UIKit
 
 final class HeaderSectionView: BaseView {
     
-    // MARK: - Constants
-    private enum Constants {
-        
-        enum Label {
-            static let text = "\(Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! + 1)"
-            static let font = R.Fonts.interMedium(with: 15)
-            static let centerY: CGFloat = -15
-        }
-        
-        enum Line {
-            static let leading: CGFloat = 24
-            static let trailing: CGFloat = -24
-            static let height: CGFloat = 1
-            static let width: CGFloat = 72
-        }
-    }
-    
     // MARK: - Views
     
     private lazy var backgroundView = UIView()
@@ -75,5 +58,23 @@ private extension HeaderSectionView {
             rightLine.heightAnchor.constraint(equalToConstant: Constants.Line.height),
             rightLine.widthAnchor.constraint(equalToConstant: Constants.Line.width)
         ])
+    }
+}
+
+// MARK: - Constants
+
+private enum Constants {
+    
+    enum Label {
+        static let text = "\(Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! + 1)"
+        static let font = R.Fonts.interMedium(with: 15)
+        static let centerY: CGFloat = -15
+    }
+    
+    enum Line {
+        static let leading: CGFloat = 24
+        static let trailing: CGFloat = -24
+        static let height: CGFloat = 1
+        static let width: CGFloat = 72
     }
 }
