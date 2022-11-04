@@ -23,6 +23,8 @@ final class UnknownErrorView: BaseView {
 private extension UnknownErrorView {
     
     func setupUI() {
+        self.backgroundColor = .white
+        
         imageView.image = R.Images.nlo
         imageView.clipsToBounds = true
         
