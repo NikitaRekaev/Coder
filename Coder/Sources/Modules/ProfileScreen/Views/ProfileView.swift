@@ -2,36 +2,6 @@ import UIKit
 
 final class ProfileView: BaseView {
     
-    // MARK: - Contstants
-    
-    private enum Constants {
-        
-        static let stackViewSpacing: CGFloat = 73.5
-        static let upViewBottom: CGFloat = 104
-        
-        enum Avatar {
-            static let cornerRadius = CGFloat(104 / 2)
-            static let top: CGFloat = 72
-            static let proportions: CGFloat = 104
-        }
-        
-        enum Name {
-            static let font = R.Fonts.interBold(with: 24)
-            static let top: CGFloat = 24
-        }
-        
-        enum Tag {
-            static let font = R.Fonts.interRegular(with: 17)
-            static let leading: CGFloat = 4
-        }
-        
-        enum Department {
-            static let font = R.Fonts.interRegular(with: 13)
-            static let top: CGFloat = 12
-        }
-        
-    }
-    
     // MARK: - Views
     
     lazy var phoneView = PhoneView()
@@ -148,4 +118,34 @@ private extension ProfileView {
             stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
+}
+
+// MARK: - Contstants
+
+private enum Constants {
+    
+    static let stackViewSpacing: CGFloat = 73.5
+    static let upViewBottom: CGFloat = 104
+    
+    enum Avatar {
+        static let cornerRadius = CGFloat(104 / 2)
+        static let top: CGFloat = 72
+        static let proportions: CGFloat = 104
+    }
+    
+    enum Name {
+        static let font = R.Fonts.interBold(with: 24)
+        static let top: CGFloat = 24
+    }
+    
+    enum Tag {
+        static let font = R.Fonts.interRegular(with: 17)
+        static let leading: CGFloat = 4
+    }
+    
+    enum Department {
+        static let font = R.Fonts.interRegular(with: 13)
+        static let top: CGFloat = 12
+    }
+    
 }
