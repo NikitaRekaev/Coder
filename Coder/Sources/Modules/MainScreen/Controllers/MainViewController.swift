@@ -2,14 +2,6 @@ import UIKit
 
 final class MainViewController: BaseViewController<MainRootView> {
     
-    // MARK: - Constants
-    
-    private enum Constants {
-        static let skeletonCellCount: Int = 15
-        static let rowCellHeight: CGFloat = 84
-        static let headerViewHeight: CGFloat = 68
-    }
-    
     // MARK: - Views
     
     private lazy var sortVC = SortViewController()
@@ -189,7 +181,7 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.shouldShowBirthday ?  2 : 1
+        return self.shouldShowBirthday ?  .two : .one
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -348,4 +340,12 @@ private extension MainViewController {
         networkTask.getData(UserModel.self,
                                  from: "/kode-education/trainee-test/25143926/users", self.loadData(result:))
     }
+}
+
+// MARK: - Constants
+
+private enum Constants {
+    static let skeletonCellCount: Int = 15
+    static let rowCellHeight: CGFloat = 84
+    static let headerViewHeight: CGFloat = 68
 }
