@@ -32,20 +32,19 @@ final class ProfileModel {
     }
     
     func calculateYears(date: Date?) -> String {
+        
         if let date = date {
             let calendar = Calendar.current
             let dateCurrent = Date()
             
             if let years = calendar.dateComponents([.year], from: date, to: dateCurrent).year {
+                let age = years % .ten
                 var stringOfAge = "\(years)"
-                let arrayOfAge = stringOfAge.compactMap { $0.wholeNumberValue }
                 
-                if arrayOfAge.last != nil {
-                    switch arrayOfAge.last! {
-                    case 1: stringOfAge = "\(years) год"
-                    case 2...4: stringOfAge = "\(years) года"
-                    default: stringOfAge = "\(years) лет"
-                    }
+                switch age {
+                case .one: stringOfAge = "\(years) год"
+                case .two...Constants.four: stringOfAge = "\(years) года"
+                default: stringOfAge = "\(years) лет"
                 }
                 
                 return stringOfAge
