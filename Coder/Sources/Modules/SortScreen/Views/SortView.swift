@@ -2,39 +2,6 @@ import UIKit
 
 final class SortView: BaseView {
     
-    // MARK: - Constants
-    
-    private enum Constants {
-        enum TitleLable {
-            static let text = "Сортировка"
-            static let font = R.Fonts.interSemiBold(with: 20)
-            static let top: CGFloat = 21.5
-        }
-        
-        enum BackButton {
-            static let top: CGFloat = 22.75
-            static let leading: CGFloat = 33.5
-        }
-        
-        enum SortButton {
-            static let font = R.Fonts.interMedium(with: 16)
-            static let insetsLeft: CGFloat = 14
-        }
-        
-        enum AlphabetSortButton {
-            static let text = "По алфавиту"
-            static let top: CGFloat = 41.5
-            static let leading: CGFloat = 26
-            static let width: CGFloat = 140
-        }
-        
-        enum BirthdaySortButton {
-            static let text = "По дню рождения"
-            static let top: CGFloat = 35
-            static let width: CGFloat = 180
-        }
-    }
-    
     // MARK: - Views
     
     lazy var backButton = UIButton()
@@ -110,5 +77,38 @@ private extension SortView {
             birthdaySortButton.leadingAnchor.constraint(equalTo: alphabetSortButton.leadingAnchor),
             birthdaySortButton.widthAnchor.constraint(equalToConstant: Constants.BirthdaySortButton.width)
         ])
+    }
+}
+
+// MARK: - Constants
+
+private enum Constants {
+    enum TitleLable {
+        static let text = "Сортировка"
+        static let font = R.Fonts.interSemiBold(with: 20)
+        static let top: CGFloat = 21.5
+    }
+    
+    enum BackButton {
+        static let top: CGFloat = 22.75
+        static let leading: CGFloat = 33.5
+    }
+    
+    enum SortButton {
+        static let font = R.Fonts.interMedium(with: 16)
+        static let insetsLeft: CGFloat = 14
+    }
+    
+    enum AlphabetSortButton {
+        static let text = "По алфавиту"
+        static let top: CGFloat = 41.5
+        static let leading: CGFloat = 26
+        static let width: CGFloat = 140
+    }
+    
+    enum BirthdaySortButton {
+        static let text = "По дню рождения"
+        static let top: CGFloat = 35
+        static let width: CGFloat = 180
     }
 }
