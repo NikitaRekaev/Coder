@@ -4,9 +4,9 @@ final class SearchErrorView: BaseView {
     
     // MARK: - Views
     
-    private lazy var loupe = SearchErrorView.makeLoupeImageView()
-    private lazy var titleLabel = SearchErrorView.makeTitleLabel()
-    private lazy var subTitleLabel = SearchErrorView.makeSubTitleLabel()
+    private let loupe = SearchErrorView.makeLoupeImageView()
+    private let titleLabel = SearchErrorView.makeTitleLabel()
+    private let subTitleLabel = SearchErrorView.makeSubTitleLabel()
     
     // MARK: - Setup
     
