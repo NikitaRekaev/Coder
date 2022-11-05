@@ -114,8 +114,8 @@ enum Resources {
         }
         
         enum SearchError: String {
-            case title = "noResult.title"
-            case message = "noResult.text"
+            case title = "searchError.title"
+            case message = "searchError.text"
             
             var localizedString: String {
                 NSLocalizedString(self.rawValue, comment: "")
