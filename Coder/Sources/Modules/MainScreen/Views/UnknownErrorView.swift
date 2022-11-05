@@ -28,19 +28,21 @@ private extension UnknownErrorView {
         imageView.image = R.Images.nlo
         imageView.clipsToBounds = true
         
-        titleLabel.text = Constants.Title.text
+        titleLabel.text = R.Strings.UnknownError.title.localizedString
         titleLabel.font = Constants.Title.font
         titleLabel.textColor = R.Colors.Text.active
         
-        subTitleLabel.text = Constants.SubTitle.text
+        subTitleLabel.text = R.Strings.UnknownError.message.localizedString
         subTitleLabel.font = Constants.SubTitle.font
         subTitleLabel.textColor = R.Colors.Text.inActive
         
         tryAgainButton.backgroundColor = .clear
-        tryAgainButton.setTitle(Constants.Button.isNormaltext, for: .normal)
-        tryAgainButton.setTitleColor(R.Colors.violet, for: .normal)
-        tryAgainButton.setTitle(Constants.Button.isSelectedText, for: .highlighted)
         tryAgainButton.titleLabel?.font = Constants.Button.font
+        tryAgainButton.setTitleColor(R.Colors.violet, for: .normal)
+        tryAgainButton.setTitle(R.Strings.UnknownError.tryAgainSelected.localizedString,
+                                for: .highlighted)
+        tryAgainButton.setTitle(R.Strings.UnknownError.tryAgain.localizedString,
+                                for: .normal)
     }
     
     func setupConstraints() {
@@ -81,20 +83,16 @@ private enum Constants {
     }
     
     enum Title {
-        static let text = "Какой-то сверхразум всё сломал"
         static let font = R.Fonts.interSemiBold(with: 17)
         static let top: CGFloat = 8
     }
     
     enum SubTitle {
-        static let text = "Постараемся быстро починить"
         static let font = R.Fonts.interRegular(with: 16)
         static let top: CGFloat = 12
     }
     
     enum Button {
-        static let isNormaltext = "Попробовать снова"
-        static let isSelectedText = "Меня нажали"
         static let font = R.Fonts.interSemiBold(with: 17)
         static let top: CGFloat = 12
     }
