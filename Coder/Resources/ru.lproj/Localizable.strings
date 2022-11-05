@@ -30,8 +30,8 @@
 "messageAlert.text" = "Постараемся быстро починить";
 
 // NoResult
-"noResult.title" = "Мы никого не нашли";
-"noResult.text" = "Попробуй скорректировать запрос";
+"searchError.title" = "Мы никого не нашли";
+"searchError.text" = "Попробуй скорректировать запрос";
 
 // NoInternet
 "networkConnectionError.text" = "Не могу обновить данные.\nПроверь соединение с интернетом.";
