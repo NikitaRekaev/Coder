@@ -24,8 +24,6 @@
 "sortByAlphabet.text" = "By alphabet";
 "sortByBirthday.text" = "By birthday";
 
-// Alert
-
 // UnknownError
 "tryAgain.title" = "Try again";
 "tryAgainSelected.text" = "I've been pressed";
@@ -38,3 +36,8 @@
 
 // NoInternet
 "networkConnectionError.text" = "I can't update the data.\nCheck your internet connection.";
+
+// Years
+"firstCase.text" = "y. o.";
+"secondCase.text" = "y. o.";
+"thirdCase.text" = "y. o.";
