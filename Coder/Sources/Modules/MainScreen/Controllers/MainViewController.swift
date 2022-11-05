@@ -87,6 +87,8 @@ extension MainViewController: UICollectionViewDelegate {
             model.selectedDepartment = tabs[indexPath.item]
         }
         
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        
         mainView.userTableView.reloadData()
         updateDepartmentSelection()
     }
