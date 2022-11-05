@@ -2,7 +2,7 @@ import Foundation
 
 final class MainModel {
     
-    // MARK: - Variable
+    // MARK: - Properties
     
     var searchText = ""
     var users: [Item] = []
