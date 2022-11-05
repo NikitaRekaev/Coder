@@ -20,9 +20,9 @@
 "cancelSearchBar.title" = "Отмена";
 
 // Filter
-"filter.title" = "Сортировка";
-"filterByAlphabet.text" = "По алфавиту";
-"filterByBirthday.text" = "По дню рождения";
+"sort.title" = "Сортировка";
+"sortByAlphabet.text" = "По алфавиту";
+"sortByBirthday.text" = "По дню рождения";
 
 // Alert
 "tryAgainAlert.title"= "Попробовать снова";
