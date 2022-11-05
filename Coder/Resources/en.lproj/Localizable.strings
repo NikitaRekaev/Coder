@@ -25,9 +25,12 @@
 "sortByBirthday.text" = "By birthday";
 
 // Alert
-"tryAgainAlert.title" = "Try again";
-"alert.title" = "Someone broke everything";
-"messageAlert.text" = "We will try to fix it quickly";
+
+// UnknownError
+"tryAgain.title" = "Try again";
+"tryAgainSelected.text" = "I've been pressed";
+"unknownError.title" = "Someone broke everything";
+"unknownError.text" = "We will try to fix it quickly";
 
 // NoResult
 "serchError.title" = "We didn't find anyone";
