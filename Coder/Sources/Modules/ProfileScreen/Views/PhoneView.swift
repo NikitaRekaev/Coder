@@ -4,18 +4,17 @@ final class PhoneView: BaseView {
     
     // MARK: - Views
     
-    lazy var phoneButton = UIButton(type: .system)
+    let phoneButton = PhoneView.makePhoneButton()
     
-    private lazy var phoneView = UIView(frame: CGRect(x: .zero, y: .zero,
+    private let phoneImageView = PhoneView.makePhoneImageView()
+    private let phoneView = UIView(frame: CGRect(x: .zero, y: .zero,
                                                  width: Constants.View.width,
                                                  height: Constants.View.height))
-    private lazy var phoneImageView = UIImageView()
     
-    // MARK: - Initialization
+    // MARK: - Appearance
     
     override func setup() {
-        setupUI()
-        setupConstraints()
+        setConstraints()
     }
 }
 
@@ -27,20 +26,33 @@ extension PhoneView {
     }
 }
 
-// MARK: - Private Methods
+// MARK: - Created SubViews
 
 private extension PhoneView {
     
-    func setupUI() {
+    static func makePhoneImageView() -> UIImageView {
+        let phoneImageView = UIImageView()
         phoneImageView.image = R.Images.Profile.phone
+        return phoneImageView
+    }
+    
+    static func makePhoneButton() -> UIButton {
+        let phoneButton = UIButton(type: .system)
         
         phoneButton.setTitleColor(R.Colors.Text.active, for: .normal)
         phoneButton.setTitleColor(R.Colors.Text.inActive, for: .highlighted)
         phoneButton.isHidden = false
         phoneButton.titleLabel?.font = Constants.Button.font
+        
+        return phoneButton
     }
+}
+
+// MARK: - Private Methods
+
+private extension PhoneView {
     
-    func setupConstraints() {
+    func setConstraints() {
         [phoneView, phoneImageView, phoneButton].forEach { addSubview($0) }
         
         phoneImageView.translatesAutoresizingMaskIntoConstraints = false
