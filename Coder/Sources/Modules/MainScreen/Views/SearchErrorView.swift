@@ -4,37 +4,54 @@ final class SearchErrorView: BaseView {
     
     // MARK: - Views
     
-    private lazy var loupe = UIImageView()
-    private lazy var titleLabel = UILabel()
-    private lazy var subTitleLabel = UILabel()
+    private lazy var loupe = SearchErrorView.makeLoupeImageView()
+    private lazy var titleLabel = SearchErrorView.makeTitleLabel()
+    private lazy var subTitleLabel = SearchErrorView.makeSubTitleLabel()
     
     // MARK: - Setup
     
     override func setup() {
-        setupUI()
-        setupConstraints()
+        self.backgroundColor = .white
+        setConstraints()
     }
 }
 
-// MARK: - Private Methods
+// MARK: - Created SubViews
 
 private extension SearchErrorView {
     
-    func setupUI() {
-        self.backgroundColor = .white
-        
+    static func makeLoupeImageView() -> UIImageView {
+        let loupe = UIImageView()
         loupe.image = R.Images.loupe
+        return loupe
+    }
+    
+    static func makeTitleLabel() -> UILabel {
+        let titleLabel = UILabel()
         
         titleLabel.text = R.Strings.SearchError.title.localizedString
         titleLabel.font = Constants.Title.font
         titleLabel.textColor = R.Colors.Text.active
         
+        return titleLabel
+    }
+    
+    static func makeSubTitleLabel() -> UILabel {
+        let subTitleLabel = UILabel()
+        
         subTitleLabel.text = R.Strings.SearchError.message.localizedString
         subTitleLabel.font = Constants.SupTitle.font
         subTitleLabel.textColor = R.Colors.Text.inActive
+        
+        return subTitleLabel
     }
+}
+
+// MARK: - Set Constraints
+
+private extension SearchErrorView {
     
-    func setupConstraints() {
+    func setConstraints() {
         [loupe, titleLabel, subTitleLabel].forEach { addSubview($0) }
         
         loupe.translatesAutoresizingMaskIntoConstraints = false
