@@ -93,6 +93,20 @@ private extension MainRootView {
     }
 }
 
+// MARK: SetView
+
+extension MainRootView {
+    
+    func setSearchErrorView(error: Bool) {
+        searchErrorView.isHidden = !error
+    }
+    
+    func setErrorView(error: Bool) {
+        errorView.isHidden = !error
+        searchBar.isHidden = error
+    }
+}
+
 // MARK: - Constants
 
 private enum Constants {
