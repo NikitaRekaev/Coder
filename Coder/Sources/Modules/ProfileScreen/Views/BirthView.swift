@@ -4,19 +4,18 @@ final class BirthView: BaseView {
     
     // MARK: - Views
     
-    private lazy var starImageView = UIImageView()
-    private lazy var birthDataLabel = UILabel()
-    private lazy var yearsLabel = UILabel()
-    private lazy var dividingLine = UIView(frame: .zero)
-    private lazy var birthView = UIView(frame: CGRect(x: .zero, y: .zero,
+    private let starImageView = BirthView.makeStarImageView()
+    private let birthDataLabel = BirthView.makeBirthDataLabel()
+    private let yearsLabel = BirthView.makeYearsLabel()
+    private let dividingLine = BirthView.makeDividingLine()
+    private let birthView = UIView(frame: CGRect(x: .zero, y: .zero,
                                                       width: Constants.View.widht,
                                                       height: Constants.View.height))
     
-    // MARK: - Initialization
+    // MARK: - Appearance
     
     override func setup() {
-        setupUI()
-        setupConstraints()
+        setConstraints()
     }
 }
 
@@ -29,23 +28,46 @@ extension BirthView {
     }
 }
 
-// MARK: - Private Methods
+// MARK: - Created SubViews
 
 private extension BirthView {
     
-    func setupUI() {
+    static func makeStarImageView() -> UIImageView {
+        let starImageView = UIImageView()
         starImageView.image = R.Images.Profile.start
+        return starImageView
+    }
+    
+    static func makeBirthDataLabel() -> UILabel {
+        let birthDataLabel = UILabel()
         
         birthDataLabel.textColor = R.Colors.Text.active
         birthDataLabel.font = Constants.textFont
         
+        return birthDataLabel
+    }
+    
+    static func makeYearsLabel() -> UILabel {
+        let yearsLabel = UILabel()
+        
         yearsLabel.textColor = R.Colors.Text.inActive
         yearsLabel.font = Constants.textFont
         
-        dividingLine.backgroundColor = R.Colors.separator
+        return yearsLabel
     }
     
-    func setupConstraints() {
+    static func makeDividingLine() -> UIView {
+        let dividingLine = UIView(frame: .zero)
+        dividingLine.backgroundColor = R.Colors.separator
+        return dividingLine
+    }
+}
+
+// MARK: - Private Methods
+
+private extension BirthView {
+    
+    func setConstraints() {
         [birthView, starImageView, birthDataLabel, yearsLabel, dividingLine].forEach { addSubview($0) }
         
         starImageView.translatesAutoresizingMaskIntoConstraints = false
