@@ -20,9 +20,9 @@
 "cancelSearchBar.title" = "Cancel";
 
 // Filter
-"filter.title" = "Sorting";
-"filterByAlphabet.text" = "By alphabet";
-"filterByBirthday.text" = "By birthday";
+"sort.title" = "Sorting";
+"sortByAlphabet.text" = "By alphabet";
+"sortByBirthday.text" = "By birthday";
 
 // Alert
 "tryAgainAlert.title" = "Try again";
