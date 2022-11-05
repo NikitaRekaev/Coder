@@ -11,10 +11,24 @@ final class PhoneView: BaseView {
                                                  width: Constants.View.width,
                                                  height: Constants.View.height))
     
-    // MARK: - Appearance
+    // MARK: - ConfigureUI
     
-    override func setup() {
-        setConstraints()
+    override func configureUI() {
+        [phoneView, phoneImageView, phoneButton].forEach { addSubview($0) }
+        
+        phoneImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            phoneImageView.centerYAnchor.constraint(equalTo: phoneView.centerYAnchor),
+            phoneImageView.leadingAnchor.constraint(
+                equalTo: phoneView.safeAreaLayoutGuide.leadingAnchor, constant: Constants.Image.leading)
+        ])
+        
+        phoneButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            phoneButton.leadingAnchor.constraint(equalTo: phoneImageView.trailingAnchor,
+                                                 constant: Constants.Button.trailig),
+            phoneButton.centerYAnchor.constraint(equalTo: phoneImageView.centerYAnchor)
+        ])
     }
 }
 
@@ -45,29 +59,6 @@ private extension PhoneView {
         phoneButton.titleLabel?.font = Constants.Button.font
         
         return phoneButton
-    }
-}
-
-// MARK: - Private Methods
-
-private extension PhoneView {
-    
-    func setConstraints() {
-        [phoneView, phoneImageView, phoneButton].forEach { addSubview($0) }
-        
-        phoneImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            phoneImageView.centerYAnchor.constraint(equalTo: phoneView.centerYAnchor),
-            phoneImageView.leadingAnchor.constraint(
-                equalTo: phoneView.safeAreaLayoutGuide.leadingAnchor, constant: Constants.Image.leading)
-        ])
-        
-        phoneButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            phoneButton.leadingAnchor.constraint(equalTo: phoneImageView.trailingAnchor,
-                                                 constant: Constants.Button.trailig),
-            phoneButton.centerYAnchor.constraint(equalTo: phoneImageView.centerYAnchor)
-        ])
     }
 }
 
