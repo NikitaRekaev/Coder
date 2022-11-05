@@ -14,39 +14,15 @@ final class MainRootView: BaseView {
     private let searchErrorView = SearchErrorView()
     private let separatorLineUnderTabs = UIView()
     
-    // MARK: - Setup
+    // MARK: - Appearance
     
-    override func setup() {
-        configureUI()
-        setConstraints()
-    }
-}
-
-// MARK: SetView
-
-extension MainRootView {
-    
-    func setSearchErrorView(error: Bool) {
-        searchErrorView.isHidden = !error
-    }
-    
-    func setErrorView(error: Bool) {
-        errorView.isHidden = !error
-        searchBar.isHidden = error
-    }
-}
-
-// MARK: Private methods
-
-private extension MainRootView {
-    
-    func configureUI() {
+    override func configureAppearance() {
         backgroundColor = .white
         searchErrorView.isHidden = true
         separatorLineUnderTabs.backgroundColor = R.Colors.separator
     }
     
-    func setConstraints() {
+    override func configureUI() {
         [userTableView, separatorLineUnderTabs, topTabsCollectionView, searchErrorView, errorView].forEach {
             addSubview($0)
         }
