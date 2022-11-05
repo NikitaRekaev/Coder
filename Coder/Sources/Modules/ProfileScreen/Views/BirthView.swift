@@ -12,10 +12,39 @@ final class BirthView: BaseView {
                                                       width: Constants.View.widht,
                                                       height: Constants.View.height))
     
-    // MARK: - Appearance
+    // MARK: - ConfigureUI
     
-    override func setup() {
-        setConstraints()
+    override func configureUI() {
+        
+        [birthView, starImageView, birthDataLabel, yearsLabel, dividingLine].forEach { addSubview($0) }
+        
+        starImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            starImageView.centerYAnchor.constraint(equalTo: birthView.centerYAnchor),
+            starImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.imageLeading)
+        ])
+        
+        birthDataLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            birthDataLabel.centerYAnchor.constraint(equalTo: starImageView.centerYAnchor),
+            birthDataLabel.leadingAnchor.constraint(equalTo: starImageView.trailingAnchor,
+                                                    constant: Constants.birhLeading)
+        ])
+        
+        yearsLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            yearsLabel.centerYAnchor.constraint(equalTo: starImageView.centerYAnchor),
+            yearsLabel.trailingAnchor.constraint(equalTo: birthView.trailingAnchor, constant: Constants.yearsTrailing)
+        ])
+        
+        dividingLine.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            dividingLine.topAnchor.constraint(equalTo: yearsLabel.bottomAnchor, constant: Constants.Line.top),
+            dividingLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Line.leading),
+            dividingLine.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constants.Line.trailing),
+            dividingLine.widthAnchor.constraint(equalToConstant: Constants.Line.width),
+            dividingLine.heightAnchor.constraint(equalToConstant: Constants.Line.height)
+        ])
     }
 }
 
@@ -60,43 +89,6 @@ private extension BirthView {
         let dividingLine = UIView(frame: .zero)
         dividingLine.backgroundColor = R.Colors.separator
         return dividingLine
-    }
-}
-
-// MARK: - Private Methods
-
-private extension BirthView {
-    
-    func setConstraints() {
-        [birthView, starImageView, birthDataLabel, yearsLabel, dividingLine].forEach { addSubview($0) }
-        
-        starImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            starImageView.centerYAnchor.constraint(equalTo: birthView.centerYAnchor),
-            starImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.imageLeading)
-        ])
-        
-        birthDataLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            birthDataLabel.centerYAnchor.constraint(equalTo: starImageView.centerYAnchor),
-            birthDataLabel.leadingAnchor.constraint(equalTo: starImageView.trailingAnchor,
-                                                    constant: Constants.birhLeading)
-        ])
-        
-        yearsLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            yearsLabel.centerYAnchor.constraint(equalTo: starImageView.centerYAnchor),
-            yearsLabel.trailingAnchor.constraint(equalTo: birthView.trailingAnchor, constant: Constants.yearsTrailing)
-        ])
-        
-        dividingLine.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            dividingLine.topAnchor.constraint(equalTo: yearsLabel.bottomAnchor, constant: Constants.Line.top),
-            dividingLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Line.leading),
-            dividingLine.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constants.Line.trailing),
-            dividingLine.widthAnchor.constraint(equalToConstant: Constants.Line.width),
-            dividingLine.heightAnchor.constraint(equalToConstant: Constants.Line.height)
-        ])
     }
 }
 
