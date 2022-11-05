@@ -2,7 +2,7 @@ import UIKit
 
 final class MainViewController: BaseViewController<MainRootView> {
     
-    // MARK: - Views
+    // MARK: - Controllers
     
     private lazy var sortVC = SortViewController()
     
@@ -207,11 +207,12 @@ extension MainViewController: UITableViewDataSource {
             }
             
             cell.setBirthdayLabelVisibility(shouldShowBirthday: self.shouldShowBirthday)
-            cell.setViewWithData()
+            cell.setSkeletonView(show: false)
             
         } else {
-            cell.setSkeletonView()
+            cell.setSkeletonView(show: true)
         }
+        
         return cell
     }
 }

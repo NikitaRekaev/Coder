@@ -4,48 +4,18 @@ final class BirthView: BaseView {
     
     // MARK: - Views
     
-    private lazy var starImageView = UIImageView()
-    private lazy var birthDataLabel = UILabel()
-    private lazy var yearsLabel = UILabel()
-    private lazy var dividingLine = UIView(frame: .zero)
-    private lazy var birthView = UIView(frame: CGRect(x: .zero, y: .zero,
+    private let starImageView = BirthView.makeStarImageView()
+    private let birthDataLabel = BirthView.makeBirthDataLabel()
+    private let yearsLabel = BirthView.makeYearsLabel()
+    private let dividingLine = BirthView.makeDividingLine()
+    private let birthView = UIView(frame: CGRect(x: .zero, y: .zero,
                                                       width: Constants.View.widht,
                                                       height: Constants.View.height))
     
-    // MARK: - Initialization
+    // MARK: - ConfigureUI
     
-    override func setup() {
-        setupUI()
-        setupConstraints()
-    }
-}
-
-// MARK: - Set Data
-
-extension BirthView {
-    func setData(dateBirth: String, years: String) {
-        self.birthDataLabel.text = "\(dateBirth)"
-        self.yearsLabel.text = "\(years)"
-    }
-}
-
-// MARK: - Private Methods
-
-private extension BirthView {
-    
-    func setupUI() {
-        starImageView.image = R.Images.Profile.start
+    override func configureUI() {
         
-        birthDataLabel.textColor = R.Colors.Text.active
-        birthDataLabel.font = Constants.textFont
-        
-        yearsLabel.textColor = R.Colors.Text.inActive
-        yearsLabel.font = Constants.textFont
-        
-        dividingLine.backgroundColor = R.Colors.separator
-    }
-    
-    func setupConstraints() {
         [birthView, starImageView, birthDataLabel, yearsLabel, dividingLine].forEach { addSubview($0) }
         
         starImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +45,50 @@ private extension BirthView {
             dividingLine.widthAnchor.constraint(equalToConstant: Constants.Line.width),
             dividingLine.heightAnchor.constraint(equalToConstant: Constants.Line.height)
         ])
+    }
+}
+
+// MARK: - Set Data
+
+extension BirthView {
+    func setData(dateBirth: String, years: String) {
+        self.birthDataLabel.text = "\(dateBirth)"
+        self.yearsLabel.text = "\(years)"
+    }
+}
+
+// MARK: - Created SubViews
+
+private extension BirthView {
+    
+    static func makeStarImageView() -> UIImageView {
+        let starImageView = UIImageView()
+        starImageView.image = R.Images.Profile.start
+        return starImageView
+    }
+    
+    static func makeBirthDataLabel() -> UILabel {
+        let birthDataLabel = UILabel()
+        
+        birthDataLabel.textColor = R.Colors.Text.active
+        birthDataLabel.font = Constants.textFont
+        
+        return birthDataLabel
+    }
+    
+    static func makeYearsLabel() -> UILabel {
+        let yearsLabel = UILabel()
+        
+        yearsLabel.textColor = R.Colors.Text.inActive
+        yearsLabel.font = Constants.textFont
+        
+        return yearsLabel
+    }
+    
+    static func makeDividingLine() -> UIView {
+        let dividingLine = UIView(frame: .zero)
+        dividingLine.backgroundColor = R.Colors.separator
+        return dividingLine
     }
 }
 

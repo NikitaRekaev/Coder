@@ -4,48 +4,25 @@ final class MainRootView: BaseView {
     
     // MARK: - Views
     
-    lazy var searchBar = SearchBar()
-    lazy var topTabsCollectionView = TopTabsCollectionView()
+    let searchBar = SearchBar()
+    let topTabsCollectionView = TopTabsCollectionView()
+    let refreshControl = UIRefreshControl()
+    let errorView = UnknownErrorView()
+    
     lazy var userTableView = UserTableView(refreshController: refreshControl)
-    lazy var refreshControl = UIRefreshControl()
-    lazy var errorView = UnknownErrorView()
     
-    private lazy var searchErrorView = SearchErrorView()
-    private lazy var separatorLineUnderTabs = UIView()
+    private let searchErrorView = SearchErrorView()
+    private let separatorLineUnderTabs = UIView()
     
-    // MARK: - Setup
+    // MARK: - Appearance
     
-    override func setup() {
-        setupUI()
-        setupConstraints()
-    }
-}
-
-// MARK: SetView
-
-extension MainRootView {
-    
-    func setSearchErrorView(error: Bool) {
-        searchErrorView.isHidden = !error
-    }
-    
-    func setErrorView(error: Bool) {
-        errorView.isHidden = !error
-        searchBar.isHidden = error
-    }
-}
-
-// MARK: Private methods
-
-private extension MainRootView {
-    
-    func setupUI() {
+    override func configureAppearance() {
         backgroundColor = .white
         searchErrorView.isHidden = true
         separatorLineUnderTabs.backgroundColor = R.Colors.separator
     }
     
-    func setupConstraints() {
+    override func configureUI() {
         [userTableView, separatorLineUnderTabs, topTabsCollectionView, searchErrorView, errorView].forEach {
             addSubview($0)
         }
@@ -89,6 +66,20 @@ private extension MainRootView {
             errorView.leadingAnchor.constraint(equalTo: leadingAnchor),
             errorView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
+    }
+}
+
+// MARK: SetView
+
+extension MainRootView {
+    
+    func setSearchErrorView(error: Bool) {
+        searchErrorView.isHidden = !error
+    }
+    
+    func setErrorView(error: Bool) {
+        errorView.isHidden = !error
+        searchBar.isHidden = error
     }
 }
 

@@ -8,18 +8,18 @@ final class UserTableViewCell: UITableViewCell {
     
     // MARK: - Views
     
-    lazy var avatarImageView = UIImageView()
-    lazy var nameLabel = UILabel()
-    lazy var departmentLabel = UILabel()
-    lazy var birthdayLabel = UILabel()
+    let avatarImageView = UserTableViewCell.makeAvatarImageView()
+    let nameLabel = UserTableViewCell.makeNameLable()
+    let departmentLabel = UserTableViewCell.makeDepartmentLabel()
+    let birthdayLabel = UserTableViewCell.makeBirthdayLabel()
     
-    private lazy var tagLabel = UILabel()
+    private let tagLabel = UserTableViewCell.makeTagLabel()
     
     // MARK: SkeletonView
     
-    private lazy var imageSkeletonView = UIView()
-    private lazy var nameSkeletonView = UIView()
-    private lazy var departmentSkeletonView = UIView()
+    private let avatarSkeletonView = UserTableViewCell.makeAvatarSkeletonView()
+    private let nameSkeletonView = UserTableViewCell.makeNameSkeletonView()
+    private let departmentSkeletonView = UserTableViewCell.makeDepartmentSkeletonView()
     
     // MARK: - Initialization
     
@@ -27,11 +27,8 @@ final class UserTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = .white
         
-        setupUI()
-        setupConstraints()
-        
-        setupSkeletonUI()
-        setupSkeletonConstraints()
+        configureUI()
+        configureSkeletonUI()
     }
     
     required init?(coder: NSCoder) {
@@ -39,7 +36,7 @@ final class UserTableViewCell: UITableViewCell {
     }
 }
 
-// MARK: - SetViews
+// MARK: - Set Views
 
 extension UserTableViewCell {
     
@@ -47,32 +44,14 @@ extension UserTableViewCell {
         birthdayLabel.isHidden = !shouldShowBirthday
     }
     
-    func setSkeletonView() {
-        nameLabel.isHidden = true
-        avatarImageView.isHidden = true
-        departmentLabel.isHidden = true
-        tagLabel.isHidden = true
-        departmentLabel.isHidden = true
-        
-        imageSkeletonView.isHidden = false
-        nameSkeletonView.isHidden = false
-        departmentSkeletonView.isHidden = false
-    }
-    
-    func setViewWithData() {
-        nameLabel.isHidden = false
-        avatarImageView.isHidden = false
-        departmentLabel.isHidden = false
-        tagLabel.isHidden = false
-        departmentLabel.isHidden = false
-        
-        imageSkeletonView.isHidden = true
-        nameSkeletonView.isHidden = true
-        departmentSkeletonView.isHidden = true
+    func setSkeletonView(show: Bool) {
+        avatarSkeletonView.isHidden = !show
+        nameSkeletonView.isHidden = !show
+        departmentSkeletonView.isHidden = !show
     }
 }
 
-// MARK: - SetData
+// MARK: - Set Data
 
 extension UserTableViewCell {
     
@@ -89,29 +68,62 @@ extension UserTableViewCell {
     }
 }
 
-// MARK: - Setup Views
+// MARK: - Created SubViews
 
 private extension UserTableViewCell {
     
-    func setupUI() {
+    static func makeAvatarImageView() -> UIImageView {
+        let avatarImageView = UIImageView()
+        
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.cornerRadius = Constants.Image.cornerRadius
         
+        return avatarImageView
+    }
+    
+    static func makeNameLable() -> UILabel {
+        let nameLabel = UILabel()
+        
         nameLabel.textColor = R.Colors.Text.active
         nameLabel.font = Constants.Name.font
-
+        
+        return nameLabel
+    }
+    
+    static func makeDepartmentLabel() -> UILabel {
+        let departmentLabel = UILabel()
+        
         departmentLabel.textColor = R.Colors.Text.secondary
         departmentLabel.font = Constants.Department.font
+        
+        return departmentLabel
+    }
+    
+    static func makeTagLabel() -> UILabel {
+        let tagLabel = UILabel()
         
         tagLabel.textColor = R.Colors.Text.inActive
         tagLabel.font = Constants.Tag.font
         
+        return tagLabel
+    }
+    
+    static func makeBirthdayLabel() -> UILabel {
+        let birthdayLabel = UILabel()
+        
         birthdayLabel.textColor = R.Colors.Text.secondary
         birthdayLabel.font = Constants.Birthday.font
         birthdayLabel.isHidden = true
+        
+        return birthdayLabel
     }
+}
+
+// MARK: - Configure Views
+
+private extension UserTableViewCell {
     
-    func setupConstraints() {
+    func configureUI() {
         [avatarImageView, nameLabel, tagLabel, departmentLabel, birthdayLabel].forEach { addSubview($0) }
         
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -153,40 +165,61 @@ private extension UserTableViewCell {
     }
 }
 
-// MARK: - Setup Skeleton
+// MARK: - Created Skeleton SubViews
 
 private extension UserTableViewCell {
     
-    func setupSkeletonUI() {
-        imageSkeletonView.frame = Constants.Image.frame
-        imageSkeletonView.layer.cornerRadius = Constants.Image.cornerRadius
-        imageSkeletonView.backgroundColor = R.Colors.skeleton
+    static func makeAvatarSkeletonView() -> UIView {
+        let avatarSkeletonView = UIImageView()
+        
+        avatarSkeletonView.frame = Constants.Image.frame
+        avatarSkeletonView.layer.cornerRadius = Constants.Image.cornerRadius
+        avatarSkeletonView.backgroundColor = R.Colors.skeleton
+        
+        return avatarSkeletonView
+    }
+    
+    static func makeNameSkeletonView() -> UIView {
+        let nameSkeletonView = UIView()
         
         nameSkeletonView.frame = Constants.Name.frame
         nameSkeletonView.layer.cornerRadius = Constants.Name.cornerRadius
         nameSkeletonView.backgroundColor = R.Colors.skeleton
         
+        return nameSkeletonView
+    }
+    
+    static func makeDepartmentSkeletonView() -> UIView {
+        let departmentSkeletonView = UIView()
+        
         departmentSkeletonView.frame = Constants.Department.frame
         departmentSkeletonView.layer.cornerRadius = Constants.Department.cornerRadius
         departmentSkeletonView.backgroundColor = R.Colors.skeleton
-    }
-    
-    func setupSkeletonConstraints() {
-        [imageSkeletonView, nameSkeletonView, departmentSkeletonView].forEach { addSubview($0) }
         
-        imageSkeletonView.translatesAutoresizingMaskIntoConstraints = false
+        return departmentSkeletonView
+    }
+}
+
+// MARK: - Configure Skeleton
+
+private extension UserTableViewCell {
+    
+    func configureSkeletonUI() {
+        [avatarSkeletonView, nameSkeletonView, departmentSkeletonView].forEach { addSubview($0) }
+        
+        avatarSkeletonView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageSkeletonView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            imageSkeletonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Image.leading),
-            imageSkeletonView.heightAnchor.constraint(equalToConstant: Constants.Image.proportions),
-            imageSkeletonView.widthAnchor.constraint(equalToConstant: Constants.Image.proportions)
+            avatarSkeletonView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            avatarSkeletonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Image.leading),
+            avatarSkeletonView.heightAnchor.constraint(equalToConstant: Constants.Image.proportions),
+            avatarSkeletonView.widthAnchor.constraint(equalToConstant: Constants.Image.proportions)
         ])
         
         nameSkeletonView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nameSkeletonView.leadingAnchor.constraint(equalTo: imageSkeletonView.trailingAnchor,
+            nameSkeletonView.leadingAnchor.constraint(equalTo: avatarSkeletonView.trailingAnchor,
                                                       constant: Constants.Name.leading),
-            nameSkeletonView.centerYAnchor.constraint(equalTo: imageSkeletonView.centerYAnchor,
+            nameSkeletonView.centerYAnchor.constraint(equalTo: avatarSkeletonView.centerYAnchor,
                                                       constant: Constants.Name.centerY),
             nameSkeletonView.widthAnchor.constraint(equalToConstant: Constants.Name.width),
             nameSkeletonView.heightAnchor.constraint(equalToConstant: Constants.Name.height)

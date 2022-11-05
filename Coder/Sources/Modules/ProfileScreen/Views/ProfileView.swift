@@ -4,72 +4,25 @@ final class ProfileView: BaseView {
     
     // MARK: - Views
     
-    lazy var phoneView = PhoneView()
-    lazy var avatarImageView = UIImageView()
+    let phoneView = PhoneView()
+    let avatarImageView = ProfileView.makeAvatarImageView()
     
-    private lazy var nameLabel = UILabel()
-    private lazy var tagLabel = UILabel()
-    private lazy var departmentLabel = UILabel()
-    private lazy var upView = UIView()
-    private lazy var stackView = UIStackView()
-    private lazy var birthView = BirthView()
+    private let upView = ProfileView.makeUpView()
+    private let nameLabel = ProfileView.makeNameLable()
+    private let tagLabel = ProfileView.makeTagLable()
+    private let departmentLabel = ProfileView.makeDepartmentLabel()
+    private let stackView = ProfileView.makeStackView()
+    private let birthView = BirthView()
     
-    override func setup() {
-        setupUI()
-        setupConstraints()
-    }
-}
-
-// MARK: - SetData
-
-extension ProfileView {
+   // MARK: - Appearance
     
-    func setImage(urlString: String) {
-        avatarImageView.loadImage(from: urlString)
-    }
-    
-    func setData(firstName: String,
-                 lastName: String,
-                 tag: String,
-                 department: Department?,
-                 phone: String,
-                 dateBirth: String,
-                 years: String) {
-        avatarImageView.image = R.Images.stopper
-        nameLabel.text = "\(firstName) \(lastName)"
-        tagLabel.text = tag.lowercased()
-        departmentLabel.text = department?.title
-        phoneView.setData(phoneNumber: phone)
-        birthView.setData(dateBirth: dateBirth, years: years)
-    }
-}
-
-// MARK: - Private Methods
-
-private extension ProfileView {
-    
-    func setupUI() {
+    override func configureAppearance() {
         backgroundColor = .white
-        
-        upView.backgroundColor = R.Colors.profileBackground
-        
-        avatarImageView.clipsToBounds = true
-        avatarImageView.layer.cornerRadius = Constants.Avatar.cornerRadius
-        
-        nameLabel.font = Constants.Name.font
-        nameLabel.textColor = R.Colors.Text.active
-        
-        tagLabel.font = Constants.Tag.font
-        tagLabel.textColor = R.Colors.Text.inActive
-        
-        departmentLabel.font = Constants.Department.font
-        departmentLabel.textColor = R.Colors.Text.secondary
-        
-        stackView.axis = .vertical
-        stackView.spacing = Constants.stackViewSpacing
     }
     
-    func setupConstraints() {
+    // MARK: - ConfigureUI
+    
+    override func configureUI() {
         [upView, avatarImageView, nameLabel, tagLabel, departmentLabel, stackView].forEach { addSubview($0) }
         
         upView.translatesAutoresizingMaskIntoConstraints = false
@@ -116,6 +69,86 @@ private extension ProfileView {
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
+    }
+}
+
+// MARK: - SetData
+
+extension ProfileView {
+    
+    func setImage(urlString: String) {
+        avatarImageView.loadImage(from: urlString)
+    }
+    
+    func setData(firstName: String,
+                 lastName: String,
+                 tag: String,
+                 department: Department?,
+                 phone: String,
+                 dateBirth: String,
+                 years: String) {
+        avatarImageView.image = R.Images.stopper
+        nameLabel.text = "\(firstName) \(lastName)"
+        tagLabel.text = tag.lowercased()
+        departmentLabel.text = department?.title
+        phoneView.setData(phoneNumber: phone)
+        birthView.setData(dateBirth: dateBirth, years: years)
+    }
+}
+
+// MARK: - Created SubViews
+
+private extension ProfileView {
+    
+    static func makeUpView() -> UIView {
+        let upView = UIView()
+        upView.backgroundColor = R.Colors.profileBackground
+        return upView
+    }
+    
+    static func makeAvatarImageView() -> UIImageView {
+        let avatarImageView = UIImageView()
+        
+        avatarImageView.clipsToBounds = true
+        avatarImageView.layer.cornerRadius = Constants.Avatar.cornerRadius
+        
+        return avatarImageView
+    }
+    
+    static func makeNameLable() -> UILabel {
+        let nameLabel = UILabel()
+        
+        nameLabel.font = Constants.Name.font
+        nameLabel.textColor = R.Colors.Text.active
+        
+        return nameLabel
+    }
+    
+    static func makeTagLable() -> UILabel {
+        let tagLabel = UILabel()
+        
+        tagLabel.font = Constants.Tag.font
+        tagLabel.textColor = R.Colors.Text.inActive
+        
+        return tagLabel
+    }
+    
+    static func makeDepartmentLabel() -> UILabel {
+        let departmentLabel = UILabel()
+        
+        departmentLabel.font = Constants.Department.font
+        departmentLabel.textColor = R.Colors.Text.secondary
+        
+        return departmentLabel
+    }
+    
+    static func makeStackView() -> UIStackView {
+        let stackView = UIStackView()
+        
+        stackView.axis = .vertical
+        stackView.spacing = Constants.stackViewSpacing
+        
+        return stackView
     }
 }
 
