@@ -30,8 +30,8 @@
 "messageAlert.text" = "We will try to fix it quickly";
 
 // NoResult
-"noResult.title" = "We didn't find anyone";
-"noResult.text" = "Try to adjust the request";
+"serchError.title" = "We didn't find anyone";
+"searchError.text" = "Try to adjust the request";
 
 // NoInternet
 "networkConnectionError.text" = "I can't update the data.\nCheck your internet connection.";
