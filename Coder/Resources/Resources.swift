@@ -113,7 +113,7 @@ enum Resources {
             }
         }
         
-        enum NoResult: String {
+        enum SearchError: String {
             case title = "noResult.title"
             case message = "noResult.text"
             
