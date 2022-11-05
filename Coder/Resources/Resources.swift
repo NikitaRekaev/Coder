@@ -95,10 +95,10 @@ enum Resources {
             }
         }
         
-        enum Filter: String {
-            case title = "filter.title"
-            case filterByAlphabet = "filterByAlphabet.text"
-            case filterByBirthday = "filterByBirthday.text"
+        enum Sort: String {
+            case title = "sort.title"
+            case sortByAlphabet = "sortByAlphabet.text"
+            case sortByBirthday = "sortByBirthday.text"
             
             var localizedString: String {
                 NSLocalizedString(self.rawValue, comment: "")
