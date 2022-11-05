@@ -122,10 +122,11 @@ enum Resources {
             }
         }
         
-        enum Alert: String {
-            case tryAgain = "tryAgainAlert.title"
-            case title = "alert.title"
-            case message = "messageAlert.text"
+        enum UnknownError: String {
+            case tryAgain = "tryAgain.text"
+            case tryAgainSelected = "tryAgainSelected.text"
+            case title = "unknownError.title"
+            case message = "unknownError.text"
             
             var localizedString: String {
                 NSLocalizedString(self.rawValue, comment: "")
