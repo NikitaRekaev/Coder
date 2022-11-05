@@ -8,11 +8,37 @@ final class SearchErrorView: BaseView {
     private let titleLabel = SearchErrorView.makeTitleLabel()
     private let subTitleLabel = SearchErrorView.makeSubTitleLabel()
     
-    // MARK: - Setup
+    // MARK: - Appearance
     
-    override func setup() {
+    override func configureAppearance() {
         self.backgroundColor = .white
-        setConstraints()
+    }
+    
+    // MARK: - ConfigureUI
+    
+    override func configureUI() {
+        [loupe, titleLabel, subTitleLabel].forEach { addSubview($0) }
+        
+        loupe.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            loupe.centerXAnchor.constraint(equalTo: centerXAnchor),
+            loupe.topAnchor.constraint(equalTo: topAnchor, constant: Constants.Image.top),
+            loupe.widthAnchor.constraint(equalToConstant: Constants.Image.proportions),
+            loupe.heightAnchor.constraint(equalToConstant: Constants.Image.proportions)
+        ])
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: loupe.bottomAnchor, constant: Constants.Title.top)
+        ])
+        
+        subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            subTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
+                                                   constant: Constants.SupTitle.top)
+        ])
     }
 }
 
@@ -44,36 +70,6 @@ private extension SearchErrorView {
         subTitleLabel.textColor = R.Colors.Text.inActive
         
         return subTitleLabel
-    }
-}
-
-// MARK: - Set Constraints
-
-private extension SearchErrorView {
-    
-    func setConstraints() {
-        [loupe, titleLabel, subTitleLabel].forEach { addSubview($0) }
-        
-        loupe.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            loupe.centerXAnchor.constraint(equalTo: centerXAnchor),
-            loupe.topAnchor.constraint(equalTo: topAnchor, constant: Constants.Image.top),
-            loupe.widthAnchor.constraint(equalToConstant: Constants.Image.proportions),
-            loupe.heightAnchor.constraint(equalToConstant: Constants.Image.proportions)
-        ])
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: loupe.bottomAnchor, constant: Constants.Title.top)
-        ])
-        
-        subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            subTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
-                                                   constant: Constants.SupTitle.top)
-        ])
     }
 }
 
