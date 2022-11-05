@@ -27,8 +27,8 @@ final class UserTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = .white
         
-        setConstraints()
-        setSkeletonConstraints()
+        configureUI()
+        configureSkeletonUI()
     }
     
     required init?(coder: NSCoder) {
@@ -123,7 +123,7 @@ private extension UserTableViewCell {
 
 private extension UserTableViewCell {
     
-    func setConstraints() {
+    func configureUI() {
         [avatarImageView, nameLabel, tagLabel, departmentLabel, birthdayLabel].forEach { addSubview($0) }
         
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -204,7 +204,7 @@ private extension UserTableViewCell {
 
 private extension UserTableViewCell {
     
-    func setSkeletonConstraints() {
+    func configureSkeletonUI() {
         [avatarSkeletonView, nameSkeletonView, departmentSkeletonView].forEach { addSubview($0) }
         
         avatarSkeletonView.translatesAutoresizingMaskIntoConstraints = false
