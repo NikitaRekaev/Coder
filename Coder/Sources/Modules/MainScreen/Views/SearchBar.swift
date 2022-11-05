@@ -29,7 +29,7 @@ private extension SearchBar {
         setImage(R.Images.SearchBar.rightImageSelected, for: .bookmark, state: .selected)
         setImage(R.Images.SearchBar.clear, for: .clear, state: .normal)
         
-        setValue(Constants.CancelButton.title, forKey: Constants.CancelButton.key)
+        setValue(R.Strings.SearchBar.cancel.localizedString, forKey: Constants.CancelButton.key)
         
         setPositionAdjustment(Constants.adjustingTextOffset, for: .search)
         setPositionAdjustment(Constants.adjustingRightIconOffset, for: .bookmark)
@@ -66,7 +66,6 @@ private enum Constants {
     }
     
     enum CancelButton {
-        static let title = "Отмена"
         static let key = "cancelButtonText"
         static let attributes: [NSAttributedString.Key: Any] = [
             .font: R.Fonts.interSemiBold(with: 15),
@@ -80,7 +79,7 @@ private enum Constants {
             .foregroundColor: R.Colors.SearchBar.placeholder
         ]
         static let attributedString: NSAttributedString = .init(
-            string: "Введи имя, тег, почту...",
+            string: R.Strings.SearchBar.placeholder.localizedString,
             attributes: attributes
         )
     }
