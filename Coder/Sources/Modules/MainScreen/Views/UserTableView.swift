@@ -11,7 +11,7 @@ final class UserTableView: UITableView {
     convenience init(refreshController: UIRefreshControl) {
         self.init(frame: .zero, style: .grouped)
         self.refreshController = refreshController
-        setupUI()
+        configureUI()
     }
     
     override init(frame: CGRect, style: UITableView.Style) {
@@ -27,7 +27,7 @@ final class UserTableView: UITableView {
 
 private extension UserTableView {
     
-    func setupUI() {
+    func configureUI() {
         backgroundColor = .none
         separatorStyle = .none
         refreshControl = refreshController
