@@ -10,8 +10,8 @@ final class TopTabsCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Views
     
-    private lazy var bottomBorderView = UIView()
-    private lazy var label = UILabel()
+    private let bottomBorderView = UIView()
+    private let label = UILabel()
     
     // MARK: - Initialization
     
