@@ -24,10 +24,11 @@
 "sortByAlphabet.text" = "По алфавиту";
 "sortByBirthday.text" = "По дню рождения";
 
-// Alert
-"tryAgainAlert.title"= "Попробовать снова";
-"alert.title" = "Какой-то сверхразум все сломал";
-"messageAlert.text" = "Постараемся быстро починить";
+// UnknownError
+"tryAgain.text" = "Попробовать снова";
+"tryAgainSelected.text" = "Меня нажали";
+"unknownError.title" = "Какой-то сверхразум все сломал";
+"unknownError.text" = "Постараемся быстро починить";
 
 // NoResult
 "searchError.title" = "Мы никого не нашли";
