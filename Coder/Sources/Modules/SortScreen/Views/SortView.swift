@@ -2,20 +2,56 @@ import UIKit
 
 final class SortView: BaseView {
     
-    // MARK: - Views
-    
-    let backButton = UIButton()
-    let buttonStack = UIStackView()
+    // MARK: - Properties
     
     var sortButtonArray: [SortButton] = []
     
-    private let titleLabel = UILabel()
+    // MARK: - Views
+    
+    let backButton = SortView.makeBackButton()
+    let buttonStack = SortView.makeButtonStack()
+    
+    private let titleLabel = SortView.makeTitleLabel()
     
     // MARK: - Initilization
     
     override func setup() {
+        
         setupUI()
         setupConstraints()
+    }
+}
+
+// MARK: - Creating Subviews
+
+private extension SortView {
+    
+    static func makeBackButton() -> UIButton {
+        let backButton = UIButton()
+        
+        backButton.setImage(R.Images.backArrow, for: .normal)
+        
+        return backButton
+    }
+    
+    static func makeTitleLabel() -> UILabel {
+        let titleLabel = UILabel()
+        
+        titleLabel.text = R.Strings.Sort.title.localizedString
+        titleLabel.font = Constants.TitleLable.font
+        titleLabel.textColor = R.Colors.Text.active
+        
+        return titleLabel
+    }
+    
+    static func makeButtonStack() -> UIStackView {
+        let buttonStack = UIStackView()
+        
+        buttonStack.axis = .vertical
+        buttonStack.spacing = Constants.ButtonStack.spacing
+        buttonStack.alignment = .leading
+        
+        return buttonStack
     }
 }
 
@@ -23,31 +59,21 @@ final class SortView: BaseView {
 
 private extension SortView {
     
+    func getModelName(_ model: SortModel) -> String {
+        switch(model) {
+        case .alphabet: return R.Strings.Sort.sortByAlphabet.localizedString
+        case .birhDate: return R.Strings.Sort.sortByBirthday.localizedString
+        }
+    }
+    
     func setupUI() {
         backgroundColor = .white
-        
-        titleLabel.text = R.Strings.Sort.title.localizedString
-        titleLabel.font = Constants.TitleLable.font
-        titleLabel.textColor = R.Colors.Text.active
-        
-        backButton.setImage(R.Images.backArrow, for: .normal)
-        
-        buttonStack.axis = .vertical
-        buttonStack.spacing = Constants.ButtonStack.spacing
-        buttonStack.alignment = .leading
         
         SortModel.allCases.forEach({ model in
             let sortButton = SortButton(model: model, title: getModelName(model))
             buttonStack.addArrangedSubview(sortButton)
             sortButtonArray.append(sortButton)
         })
-    }
-    
-    func getModelName(_ model: SortModel) -> String {
-        switch(model) {
-        case .alphabet: return R.Strings.Sort.sortByAlphabet.localizedString
-        case .birhDate: return R.Strings.Sort.sortByBirthday.localizedString
-        }
     }
     
     func setupConstraints() {
