@@ -66,6 +66,7 @@ enum Resources {
     }
     
     enum Strings {
+        
         enum Department: String {
             case all = "allTab.title"
             case android = "androidTab.title"
@@ -127,6 +128,16 @@ enum Resources {
             case tryAgainSelected = "tryAgainSelected.text"
             case title = "unknownError.title"
             case message = "unknownError.text"
+            
+            var localizedString: String {
+                NSLocalizedString(self.rawValue, comment: "")
+            }
+        }
+        
+        enum Years: String {
+            case firstCase = "firstCase.text"
+            case secondCase = "secondCase.text"
+            case thirdCase = "thirdCase.text"
             
             var localizedString: String {
                 NSLocalizedString(self.rawValue, comment: "")
