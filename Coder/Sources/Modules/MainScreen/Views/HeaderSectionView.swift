@@ -4,60 +4,62 @@ final class HeaderSectionView: BaseView {
     
     // MARK: - Views
     
-    private lazy var backgroundView = UIView()
-    private lazy var yearLabel = UILabel()
-    private lazy var rightLine = UIView()
-    private lazy var leftLine = UIView()
-    
-    // MARK: - Initialization
-    
-    override func setup() {
-        setupUI()
-        setupConstraints()
-    }
+    private let backgroundView = UIView()
+    private let yearLabel = HeaderSectionView.makeYearLabel()
+    private let rightLine = HeaderSectionView.makeLine()
+    private let leftLine = HeaderSectionView.makeLine()
+     
+     // MARK: - ConfigureUI
+     
+     override func configureUI() {
+         [yearLabel, rightLine, leftLine].forEach { addSubview($0) }
+         
+         yearLabel.translatesAutoresizingMaskIntoConstraints = false
+         NSLayoutConstraint.activate([
+             yearLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: Constants.Label.centerY),
+             yearLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+         ])
+         
+         leftLine.translatesAutoresizingMaskIntoConstraints = false
+         NSLayoutConstraint.activate([
+             leftLine.centerYAnchor.constraint(equalTo: yearLabel.centerYAnchor),
+             leftLine.trailingAnchor.constraint(equalTo: yearLabel.leadingAnchor),
+             leftLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Line.leading),
+             leftLine.heightAnchor.constraint(equalToConstant: Constants.Line.height),
+             leftLine.widthAnchor.constraint(equalToConstant: Constants.Line.width)
+         ])
+         
+         rightLine.translatesAutoresizingMaskIntoConstraints = false
+         NSLayoutConstraint.activate([
+             rightLine.centerYAnchor.constraint(equalTo: yearLabel.centerYAnchor),
+             rightLine.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constants.Line.trailing),
+             rightLine.leadingAnchor.constraint(equalTo: yearLabel.trailingAnchor),
+             rightLine.heightAnchor.constraint(equalToConstant: Constants.Line.height),
+             rightLine.widthAnchor.constraint(equalToConstant: Constants.Line.width)
+         ])
+     }
 }
 
-// MARK: - Private Methods
+// MARK: - Create SubViews
 
 private extension HeaderSectionView {
     
-    func setupUI() {
+    static func makeYearLabel() -> UILabel {
+        let yearLabel = UILabel()
+        
         yearLabel.text = Constants.Label.text
         yearLabel.font = Constants.Label.font
         yearLabel.textColor = R.Colors.separator
         yearLabel.contentMode = .scaleAspectFit
         yearLabel.textAlignment = .center
         
-        rightLine.backgroundColor = R.Colors.separator
-        leftLine.backgroundColor = R.Colors.separator
+        return yearLabel
     }
     
-    func setupConstraints() {
-        [yearLabel, rightLine, leftLine].forEach { addSubview($0) }
-        
-        yearLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            yearLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: Constants.Label.centerY),
-            yearLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ])
-        
-        leftLine.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            leftLine.centerYAnchor.constraint(equalTo: yearLabel.centerYAnchor),
-            leftLine.trailingAnchor.constraint(equalTo: yearLabel.leadingAnchor),
-            leftLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Line.leading),
-            leftLine.heightAnchor.constraint(equalToConstant: Constants.Line.height),
-            leftLine.widthAnchor.constraint(equalToConstant: Constants.Line.width)
-        ])
-        
-        rightLine.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            rightLine.centerYAnchor.constraint(equalTo: yearLabel.centerYAnchor),
-            rightLine.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constants.Line.trailing),
-            rightLine.leadingAnchor.constraint(equalTo: yearLabel.trailingAnchor),
-            rightLine.heightAnchor.constraint(equalToConstant: Constants.Line.height),
-            rightLine.widthAnchor.constraint(equalToConstant: Constants.Line.width)
-        ])
+    static func makeLine() -> UIView {
+        let line = UIView()
+        line.backgroundColor = R.Colors.separator
+        return line
     }
 }
 

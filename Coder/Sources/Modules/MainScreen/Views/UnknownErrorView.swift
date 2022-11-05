@@ -4,48 +4,21 @@ final class UnknownErrorView: BaseView {
     
     // MARK: - Views
     
-    lazy var tryAgainButton = UIButton()
+    let tryAgainButton = UnknownErrorView.makeTryAgainButton()
     
-    private lazy var imageView = UIImageView()
-    private lazy var titleLabel = UILabel()
-    private lazy var subTitleLabel = UILabel()
+    private let imageView = UnknownErrorView.makeImageView()
+    private let titleLabel = UnknownErrorView.makeTitleLabel()
+    private let subTitleLabel = UnknownErrorView.makeSubTitleLabel()
     
-    // MARK: - Setup
+    // MARK: - Appearance
     
-    override func setup() {
-        setupUI()
-        setupConstraints()
-    }
-}
-
-// MARK: Private methods
-
-private extension UnknownErrorView {
-    
-    func setupUI() {
+    override func configureAppearance() {
         self.backgroundColor = .white
-        
-        imageView.image = R.Images.nlo
-        imageView.clipsToBounds = true
-        
-        titleLabel.text = R.Strings.UnknownError.title.localizedString
-        titleLabel.font = Constants.Title.font
-        titleLabel.textColor = R.Colors.Text.active
-        
-        subTitleLabel.text = R.Strings.UnknownError.message.localizedString
-        subTitleLabel.font = Constants.SubTitle.font
-        subTitleLabel.textColor = R.Colors.Text.inActive
-        
-        tryAgainButton.backgroundColor = .clear
-        tryAgainButton.titleLabel?.font = Constants.Button.font
-        tryAgainButton.setTitleColor(R.Colors.violet, for: .normal)
-        tryAgainButton.setTitle(R.Strings.UnknownError.tryAgainSelected.localizedString,
-                                for: .highlighted)
-        tryAgainButton.setTitle(R.Strings.UnknownError.tryAgain.localizedString,
-                                for: .normal)
     }
     
-    func setupConstraints() {
+    // MARK: - ConfigureUI
+    
+    override func configureUI() {
         [imageView, titleLabel, subTitleLabel, tryAgainButton].forEach { addSubview($0) }
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -71,6 +44,54 @@ private extension UnknownErrorView {
             tryAgainButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             tryAgainButton.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: Constants.Button.top)
         ])
+    }
+}
+
+// MARK: - Created SubViews
+
+private extension UnknownErrorView {
+    
+    static func makeImageView() -> UIImageView {
+        let imageView = UIImageView()
+        
+        imageView.image = R.Images.nlo
+        imageView.clipsToBounds = true
+        
+        return imageView
+    }
+    
+    static func makeTitleLabel() -> UILabel {
+        let titleLabel = UILabel()
+        
+        titleLabel.text = R.Strings.UnknownError.title.localizedString
+        titleLabel.font = Constants.Title.font
+        titleLabel.textColor = R.Colors.Text.active
+        
+        return titleLabel
+    }
+    
+    static func makeSubTitleLabel() -> UILabel {
+        let subTitleLabel = UILabel()
+        
+        subTitleLabel.text = R.Strings.UnknownError.message.localizedString
+        subTitleLabel.font = Constants.SubTitle.font
+        subTitleLabel.textColor = R.Colors.Text.inActive
+        
+        return subTitleLabel
+    }
+    
+    static func makeTryAgainButton() -> UIButton {
+        let tryAgainButton = UIButton()
+        
+        tryAgainButton.backgroundColor = .clear
+        tryAgainButton.titleLabel?.font = Constants.Button.font
+        tryAgainButton.setTitleColor(R.Colors.violet, for: .normal)
+        tryAgainButton.setTitle(R.Strings.UnknownError.tryAgainSelected.localizedString,
+                                for: .highlighted)
+        tryAgainButton.setTitle(R.Strings.UnknownError.tryAgain.localizedString,
+                                for: .normal)
+        
+        return tryAgainButton
     }
 }
 

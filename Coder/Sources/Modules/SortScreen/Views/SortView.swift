@@ -13,12 +13,44 @@ final class SortView: BaseView {
     
     private let titleLabel = SortView.makeTitleLabel()
     
-    // MARK: - Initilization
+    // MARK: - Appearance
     
-    override func setup() {
+    override func configureAppearance() {
+        backgroundColor = .white
         
-        setupUI()
-        setupConstraints()
+        SortModel.allCases.forEach({ model in
+            let sortButton = SortButton(model: model, title: getModelName(model))
+            buttonStack.addArrangedSubview(sortButton)
+            sortButtonArray.append(sortButton)
+        })
+    }
+    
+    // MARK: - ConfigureUI
+    
+    override func configureUI() {
+        [titleLabel, backButton, buttonStack].forEach { addSubview($0) }
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.TitleLable.top),
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
+        
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            backButton.topAnchor.constraint(equalTo: topAnchor, constant: Constants.BackButton.top),
+            backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.BackButton.leading)
+        ])
+        
+        buttonStack.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            buttonStack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
+                                             constant: Constants.ButtonStack.top),
+            buttonStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,
+                                                 constant: Constants.ButtonStack.leading),
+            buttonStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,
+                                                  constant: Constants.ButtonStack.trailing)
+        ])
     }
 }
 
@@ -64,42 +96,6 @@ private extension SortView {
         case .alphabet: return R.Strings.Sort.sortByAlphabet.localizedString
         case .birhDate: return R.Strings.Sort.sortByBirthday.localizedString
         }
-    }
-    
-    func setupUI() {
-        backgroundColor = .white
-        
-        SortModel.allCases.forEach({ model in
-            let sortButton = SortButton(model: model, title: getModelName(model))
-            buttonStack.addArrangedSubview(sortButton)
-            sortButtonArray.append(sortButton)
-        })
-    }
-    
-    func setupConstraints() {
-        [titleLabel, backButton, buttonStack].forEach { addSubview($0) }
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.TitleLable.top),
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ])
-        
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            backButton.topAnchor.constraint(equalTo: topAnchor, constant: Constants.BackButton.top),
-            backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.BackButton.leading)
-        ])
-        
-        buttonStack.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            buttonStack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
-                                             constant: Constants.ButtonStack.top),
-            buttonStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,
-                                                 constant: Constants.ButtonStack.leading),
-            buttonStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,
-                                                  constant: Constants.ButtonStack.trailing)
-        ])
     }
 }
 

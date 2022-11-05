@@ -4,37 +4,19 @@ final class SearchErrorView: BaseView {
     
     // MARK: - Views
     
-    private lazy var loupe = UIImageView()
-    private lazy var titleLabel = UILabel()
-    private lazy var subTitleLabel = UILabel()
+    private let loupe = SearchErrorView.makeLoupeImageView()
+    private let titleLabel = SearchErrorView.makeTitleLabel()
+    private let subTitleLabel = SearchErrorView.makeSubTitleLabel()
     
-    // MARK: - Setup
+    // MARK: - Appearance
     
-    override func setup() {
-        setupUI()
-        setupConstraints()
-    }
-}
-
-// MARK: - Private Methods
-
-private extension SearchErrorView {
-    
-    func setupUI() {
+    override func configureAppearance() {
         self.backgroundColor = .white
-        
-        loupe.image = R.Images.loupe
-        
-        titleLabel.text = R.Strings.SearchError.title.localizedString
-        titleLabel.font = Constants.Title.font
-        titleLabel.textColor = R.Colors.Text.active
-        
-        subTitleLabel.text = R.Strings.SearchError.message.localizedString
-        subTitleLabel.font = Constants.SupTitle.font
-        subTitleLabel.textColor = R.Colors.Text.inActive
     }
     
-    func setupConstraints() {
+    // MARK: - ConfigureUI
+    
+    override func configureUI() {
         [loupe, titleLabel, subTitleLabel].forEach { addSubview($0) }
         
         loupe.translatesAutoresizingMaskIntoConstraints = false
@@ -57,6 +39,37 @@ private extension SearchErrorView {
             subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
                                                    constant: Constants.SupTitle.top)
         ])
+    }
+}
+
+// MARK: - Created SubViews
+
+private extension SearchErrorView {
+    
+    static func makeLoupeImageView() -> UIImageView {
+        let loupe = UIImageView()
+        loupe.image = R.Images.loupe
+        return loupe
+    }
+    
+    static func makeTitleLabel() -> UILabel {
+        let titleLabel = UILabel()
+        
+        titleLabel.text = R.Strings.SearchError.title.localizedString
+        titleLabel.font = Constants.Title.font
+        titleLabel.textColor = R.Colors.Text.active
+        
+        return titleLabel
+    }
+    
+    static func makeSubTitleLabel() -> UILabel {
+        let subTitleLabel = UILabel()
+        
+        subTitleLabel.text = R.Strings.SearchError.message.localizedString
+        subTitleLabel.font = Constants.SupTitle.font
+        subTitleLabel.textColor = R.Colors.Text.inActive
+        
+        return subTitleLabel
     }
 }
 

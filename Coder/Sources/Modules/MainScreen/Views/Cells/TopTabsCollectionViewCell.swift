@@ -10,8 +10,8 @@ final class TopTabsCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Views
     
-    private lazy var bottomBorderView = UIView()
-    private lazy var label = UILabel()
+    private let bottomBorderView = UIView()
+    private let label = UILabel()
     
     // MARK: - Initialization
     
@@ -58,6 +58,7 @@ final class TopTabsCollectionViewCell: UICollectionViewCell {
 // MARK: - Public Methods
 
 extension TopTabsCollectionViewCell {
+    
     func setCellSelected(_ isSelected: Bool) {
         if isSelected {
             bottomBorderView.isHidden = false
@@ -77,7 +78,10 @@ extension TopTabsCollectionViewCell {
     }
 }
 
+// MARK: - Private Methods
+
 private extension TopTabsCollectionViewCell {
+    
     func configureBorder() {
         bottomBorderView.backgroundColor = R.Colors.violet
         bottomBorderView.isHidden = false

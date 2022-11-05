@@ -4,43 +4,16 @@ final class PhoneView: BaseView {
     
     // MARK: - Views
     
-    lazy var phoneButton = UIButton(type: .system)
+    let phoneButton = PhoneView.makePhoneButton()
     
-    private lazy var phoneView = UIView(frame: CGRect(x: .zero, y: .zero,
+    private let phoneImageView = PhoneView.makePhoneImageView()
+    private let phoneView = UIView(frame: CGRect(x: .zero, y: .zero,
                                                  width: Constants.View.width,
                                                  height: Constants.View.height))
-    private lazy var phoneImageView = UIImageView()
     
-    // MARK: - Initialization
+    // MARK: - ConfigureUI
     
-    override func setup() {
-        setupUI()
-        setupConstraints()
-    }
-}
-
-// MARK: - Set Data Methods
-
-extension PhoneView {
-    func setData(phoneNumber: String) {
-        phoneButton.setTitle(phoneNumber, for: .normal)
-    }
-}
-
-// MARK: - Private Methods
-
-private extension PhoneView {
-    
-    func setupUI() {
-        phoneImageView.image = R.Images.Profile.phone
-        
-        phoneButton.setTitleColor(R.Colors.Text.active, for: .normal)
-        phoneButton.setTitleColor(R.Colors.Text.inActive, for: .highlighted)
-        phoneButton.isHidden = false
-        phoneButton.titleLabel?.font = Constants.Button.font
-    }
-    
-    func setupConstraints() {
+    override func configureUI() {
         [phoneView, phoneImageView, phoneButton].forEach { addSubview($0) }
         
         phoneImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -56,6 +29,36 @@ private extension PhoneView {
                                                  constant: Constants.Button.trailig),
             phoneButton.centerYAnchor.constraint(equalTo: phoneImageView.centerYAnchor)
         ])
+    }
+}
+
+// MARK: - Set Data Methods
+
+extension PhoneView {
+    func setData(phoneNumber: String) {
+        phoneButton.setTitle(phoneNumber, for: .normal)
+    }
+}
+
+// MARK: - Created SubViews
+
+private extension PhoneView {
+    
+    static func makePhoneImageView() -> UIImageView {
+        let phoneImageView = UIImageView()
+        phoneImageView.image = R.Images.Profile.phone
+        return phoneImageView
+    }
+    
+    static func makePhoneButton() -> UIButton {
+        let phoneButton = UIButton(type: .system)
+        
+        phoneButton.setTitleColor(R.Colors.Text.active, for: .normal)
+        phoneButton.setTitleColor(R.Colors.Text.inActive, for: .highlighted)
+        phoneButton.isHidden = false
+        phoneButton.titleLabel?.font = Constants.Button.font
+        
+        return phoneButton
     }
 }
 
