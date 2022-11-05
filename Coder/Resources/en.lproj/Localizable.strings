@@ -1,0 +1,43 @@
+/* ENG */
+
+// Tabs
+"allTab.title" = "All";
+"androidTab.title" = "Android";
+"iosTab.title" = "iOS";
+"designTab.title" = "Design";
+"managementTab.title" = "Management";
+"qaTab.title" = "QA";
+"backOfficeTab.title" = "Back Office";
+"frontendTab.title" = "Frontend";
+"hrTab.title" = "HR";
+"prTab.title" = "PR";
+"backendTab.title" = "Backend";
+"supportTab.title" = "Support";
+"analyticsTab.title" = "Analytics";
+
+// SearchBar
+"placeholderSearchBar.title" = "Enter your name, tag, and email...";
+"cancelSearchBar.title" = "Cancel";
+
+// Filter
+"sort.title" = "Sorting";
+"sortByAlphabet.text" = "By alphabet";
+"sortByBirthday.text" = "By birthday";
+
+// UnknownError
+"tryAgain.title" = "Try again";
+"tryAgainSelected.text" = "I've been pressed";
+"unknownError.title" = "Someone broke everything";
+"unknownError.text" = "We will try to fix it quickly";
+
+// NoResult
+"serchError.title" = "We didn't find anyone";
+"searchError.text" = "Try to adjust the request";
+
+// NoInternet
+"networkConnectionError.text" = "I can't update the data.\nCheck your internet connection.";
+
+// Years
+"firstCase.text" = "y. o.";
+"secondCase.text" = "y. o.";
+"thirdCase.text" = "y. o.";

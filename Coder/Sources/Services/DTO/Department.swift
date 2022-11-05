@@ -20,31 +20,31 @@ extension Department: CaseIterable {
     var title: String {
         switch self {
         case .all:
-            return "Все"
+            return R.Strings.Department.all.localizedString
         case .design:
-            return "Designers"
+            return R.Strings.Department.design.localizedString
         case .analytics:
-            return "Analysts"
+            return R.Strings.Department.analytics.localizedString
         case .management:
-            return "Managers"
+            return R.Strings.Department.management.localizedString
         case .ios:
-            return "iOS"
+            return R.Strings.Department.ios.localizedString
         case .android:
-            return "Android"
+            return R.Strings.Department.android.localizedString
         case .qa:
-            return "QA"
+            return R.Strings.Department.qa.localizedString
         case .frontend:
-            return "Frontend"
+            return R.Strings.Department.frontend.localizedString
         case .backend:
-            return "Backend"
+            return R.Strings.Department.backend.localizedString
         case .hr:
-            return "HR"
+            return R.Strings.Department.hr.localizedString
         case .pr:
-            return "PR"
+            return R.Strings.Department.pr.localizedString
         case .backOffice:
-            return "Back Office"
+            return R.Strings.Department.backOffice.localizedString
         case .support:
-            return "Support"
+            return R.Strings.Department.support.localizedString
         }
     }
 }

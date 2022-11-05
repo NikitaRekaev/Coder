@@ -22,36 +22,42 @@ final class ProfileModel {
         formatter.locale = Locale(identifier: "ru_RU")
         formatter.setLocalizedDateFormatFromTemplate("dd MMMM yyyy")
         
-        if let date = date {
-            var date = formatter.string(from: date)
-            date.removeLast(.three)
-            return date
-        }
+        guard let date = date else { return "" }
         
-        return "Дата не была получена"
+        var dateFormatter = formatter.string(from: date)
+        dateFormatter.removeLast(.three)
+        return dateFormatter
+        
     }
     
     func calculateYears(date: Date?) -> String {
         
-        if let date = date {
-            let calendar = Calendar.current
-            let dateCurrent = Date()
-            
-            if let years = calendar.dateComponents([.year], from: date, to: dateCurrent).year {
-                let age = years % .ten
-                var stringOfAge = "\(years)"
-                
-                switch age {
-                case .one: stringOfAge = "\(years) год"
-                case .two...Constants.four: stringOfAge = "\(years) года"
-                default: stringOfAge = "\(years) лет"
-                }
-                
-                return stringOfAge
-            }
+        guard let date = date else { return "" }
+        
+        let calendar = Calendar.current
+        let dateCurrent = Date()
+        
+        guard let years = calendar.dateComponents([.year], from: date, to: dateCurrent).year else {
+            return ""
         }
         
-        return "Не удалось вычислить год"
+        if (Constants.eleven...Constants.fourteen).contains(years) {
+            return "\(years) \(R.Strings.Years.thirdCase.localizedString)"
+        }
+        
+        let age = years % .ten
+        var stringOfAge = "\(years)"
+        
+        switch age {
+        case .one:
+            stringOfAge = "\(years) \(R.Strings.Years.firstCase.localizedString)"
+        case .two...Constants.four:
+            stringOfAge = "\(years) \(R.Strings.Years.secondCase.localizedString)"
+        default:
+            stringOfAge = "\(years) \(R.Strings.Years.thirdCase.localizedString)"
+        }
+        
+        return stringOfAge
     }
 }
 
@@ -60,6 +66,8 @@ final class ProfileModel {
 private enum Constants {
     
     static let four = 4
+    static let eleven = 11
+    static let fourteen = 14
     
     enum Phone {
         static let startIndex = 7

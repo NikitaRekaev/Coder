@@ -1,0 +1,43 @@
+/* ENG */
+
+// Tabs
+"allTab.title" = "Все";
+"androidTab.title" = "Android";
+"iosTab.title" = "iOS";
+"designTab.title" = "Design";
+"managementTab.title" = "Management";
+"qaTab.title" = "QA";
+"backOfficeTab.title" = "Back Office";
+"frontendTab.title" = "Frontend";
+"hrTab.title" = "HR";
+"prTab.title" = "PR";
+"backendTab.title" = "Backend";
+"supportTab.title" = "Support";
+"analyticsTab.title" = "Analytics";
+
+// SearchBar
+"placeholderSearchBar.title" = "Введи имя, тег, почту...";
+"cancelSearchBar.title" = "Отмена";
+
+// Filter
+"sort.title" = "Сортировка";
+"sortByAlphabet.text" = "По алфавиту";
+"sortByBirthday.text" = "По дню рождения";
+
+// UnknownError
+"tryAgain.text" = "Попробовать снова";
+"tryAgainSelected.text" = "Меня нажали";
+"unknownError.title" = "Какой-то сверхразум все сломал";
+"unknownError.text" = "Постараемся быстро починить";
+
+// NoResult
+"searchError.title" = "Мы никого не нашли";
+"searchError.text" = "Попробуй скорректировать запрос";
+
+// NoInternet
+"networkConnectionError.text" = "Не могу обновить данные.\nПроверь соединение с интернетом.";
+
+// Years
+"firstCase.text" = "год";
+"secondCase.text" = "года";
+"thirdCase.text" = "лет";

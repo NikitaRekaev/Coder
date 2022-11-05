@@ -26,14 +26,14 @@ private extension SortView {
     func setupUI() {
         backgroundColor = .white
         
-        titleLabel.text = Constants.TitleLable.text
+        titleLabel.text = R.Strings.Sort.title.localizedString
         titleLabel.font = Constants.TitleLable.font
         titleLabel.textColor = R.Colors.Text.active
         
         backButton.setImage(R.Images.backArrow, for: .normal)
         
         buttonStack.axis = .vertical
-        buttonStack.spacing = 35
+        buttonStack.spacing = Constants.ButtonStack.spacing
         buttonStack.alignment = .leading
         
         SortModel.allCases.forEach({ model in
@@ -45,8 +45,8 @@ private extension SortView {
     
     func getModelName(_ model: SortModel) -> String {
         switch(model) {
-        case .alphabet: return "по алфавиту"
-        case .birhDate: return "по дню рождения"
+        case .alphabet: return R.Strings.Sort.sortByAlphabet.localizedString
+        case .birhDate: return R.Strings.Sort.sortByBirthday.localizedString
         }
     }
     
@@ -82,7 +82,6 @@ private extension SortView {
 private enum Constants {
     
     enum TitleLable {
-        static let text = "Сортировка"
         static let font = R.Fonts.interSemiBold(with: 20)
         static let top: CGFloat = 21.5
     }
@@ -93,6 +92,7 @@ private enum Constants {
     }
     
     enum ButtonStack {
+        static let spacing: CGFloat = 35
         static let top: CGFloat = 41.5
         static let leading: CGFloat = 26
         static let trailing: CGFloat = 26

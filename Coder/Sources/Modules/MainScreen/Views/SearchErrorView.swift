@@ -25,11 +25,11 @@ private extension SearchErrorView {
         
         loupe.image = R.Images.loupe
         
-        titleLabel.text = Constants.Title.text
+        titleLabel.text = R.Strings.SearchError.title.localizedString
         titleLabel.font = Constants.Title.font
         titleLabel.textColor = R.Colors.Text.active
         
-        subTitleLabel.text = Constants.SupTitle.text
+        subTitleLabel.text = R.Strings.SearchError.message.localizedString
         subTitleLabel.font = Constants.SupTitle.font
         subTitleLabel.textColor = R.Colors.Text.inActive
     }
@@ -70,13 +70,11 @@ private enum Constants {
     }
     
     enum Title {
-        static let text = "Мы никого не нашли"
         static let font = R.Fonts.interSemiBold(with: 17)
         static let top: CGFloat = 8
     }
     
     enum SupTitle {
-        static let text = "Попробуйте скорректировать запрос"
         static let font = R.Fonts.interRegular(with: 16)
         static let top: CGFloat = 12
     }

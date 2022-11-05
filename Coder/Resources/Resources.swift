@@ -64,4 +64,84 @@ enum Resources {
             UIFont(name: "Inter-Bold", size: size) ?? UIFont()
         }
     }
+    
+    enum Strings {
+        
+        enum Department: String {
+            case all = "allTab.title"
+            case android = "androidTab.title"
+            case ios = "iosTab.title"
+            case design = "designTab.title"
+            case management = "managementTab.title"
+            case qa = "qaTab.title"
+            case backOffice = "backOfficeTab.title"
+            case frontend = "frontendTab.title"
+            case hr = "hrTab.title"
+            case pr = "prTab.title"
+            case backend = "backendTab.title"
+            case support = "supportTab.title"
+            case analytics = "analyticsTab.title"
+            
+            var localizedString: String {
+                NSLocalizedString(self.rawValue, comment: "")
+            }
+        }
+        
+        enum SearchBar: String {
+            case placeholder = "placeholderSearchBar.title"
+            case cancel = "cancelSearchBar.title"
+            
+            var localizedString: String {
+                NSLocalizedString(self.rawValue, comment: "")
+            }
+        }
+        
+        enum Sort: String {
+            case title = "sort.title"
+            case sortByAlphabet = "sortByAlphabet.text"
+            case sortByBirthday = "sortByBirthday.text"
+            
+            var localizedString: String {
+                NSLocalizedString(self.rawValue, comment: "")
+            }
+        }
+        
+        enum NoInternet: String {
+            case connectionError = "networkConnectionError.text"
+            
+            var localizedString: String {
+                NSLocalizedString(self.rawValue, comment: "")
+            }
+        }
+        
+        enum SearchError: String {
+            case title = "searchError.title"
+            case message = "searchError.text"
+            
+            var localizedString: String {
+                NSLocalizedString(self.rawValue, comment: "")
+            }
+        }
+        
+        enum UnknownError: String {
+            case tryAgain = "tryAgain.text"
+            case tryAgainSelected = "tryAgainSelected.text"
+            case title = "unknownError.title"
+            case message = "unknownError.text"
+            
+            var localizedString: String {
+                NSLocalizedString(self.rawValue, comment: "")
+            }
+        }
+        
+        enum Years: String {
+            case firstCase = "firstCase.text"
+            case secondCase = "secondCase.text"
+            case thirdCase = "thirdCase.text"
+            
+            var localizedString: String {
+                NSLocalizedString(self.rawValue, comment: "")
+            }
+        }
+    }
 }
