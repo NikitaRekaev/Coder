@@ -2,7 +2,7 @@ import UIKit
 
 final class MainViewController: BaseViewController<MainRootView> {
     
-    // MARK: - Views
+    // MARK: - Controllers
     
     private lazy var sortVC = SortViewController()
     
@@ -86,6 +86,8 @@ extension MainViewController: UICollectionViewDelegate {
         } else {
             model.selectedDepartment = tabs[indexPath.item]
         }
+        
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         
         mainView.userTableView.reloadData()
         updateDepartmentSelection()
