@@ -36,3 +36,8 @@
 
 // NoInternet
 "networkConnectionError.text" = "Не могу обновить данные.\nПроверь соединение с интернетом.";
+
+// Years
+"firstCase.text" = "год";
+"secondCase.text" = "года";
+"thirdCase.text" = "лет";
