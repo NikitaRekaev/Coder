@@ -61,9 +61,12 @@ extension MainModel {
         var dateFormatter = formatter.string(from: date)
         
         switch dateFormatter.count {
-        case Constants.week: dateFormatter.removeLast()
-        case Constants.moreWeek: dateFormatter.removeLast(.two)
-        default: return dateFormatter
+        case Constants.week:
+            dateFormatter.removeLast()
+        case Constants.moreWeek:
+            dateFormatter.removeLast(.two)
+        default:
+            return dateFormatter
         }
         
         return dateFormatter
