@@ -14,8 +14,8 @@ class SortButton: UIButton {
         
         setTitle(title, for: .normal)
         
-        setupUI()
-        setupConstraint()
+        configureAppearance()
+        configureUI()
     }
     
     override init(frame: CGRect) {
@@ -31,7 +31,7 @@ class SortButton: UIButton {
 
 private extension SortButton {
     
-    func setupUI() {
+    func configureAppearance() {
         self.setImage(R.Images.Sort.unChecked, for: .normal)
         self.setImage(R.Images.Sort.isChecked, for: .selected)
         self.setTitleColor(R.Colors.Text.active, for: .normal)
@@ -40,7 +40,7 @@ private extension SortButton {
         self.contentHorizontalAlignment = .left
     }
     
-    func setupConstraint() {
+    func configureUI() {
         self.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([self.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)])
     }
