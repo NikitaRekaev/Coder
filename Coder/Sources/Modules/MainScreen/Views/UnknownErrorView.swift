@@ -12,9 +12,38 @@ final class UnknownErrorView: BaseView {
     
     // MARK: - Appearance
     
-    override func setup() {
+    override func configureAppearance() {
         self.backgroundColor = .white
-        setConstraints()
+    }
+    
+    // MARK: - ConfigureUI
+    
+    override func configureUI() {
+        [imageView, titleLabel, subTitleLabel, tryAgainButton].forEach { addSubview($0) }
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: Constants.Image.centerYAnchor)
+        ])
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: Constants.Title.top)
+        ])
+        
+        subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            subTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.SubTitle.top)
+        ])
+        
+        tryAgainButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tryAgainButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            tryAgainButton.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: Constants.Button.top)
+        ])
     }
 }
 
@@ -63,39 +92,6 @@ private extension UnknownErrorView {
                                 for: .normal)
         
         return tryAgainButton
-    }
-}
-
-// MARK: Private methods
-
-private extension UnknownErrorView {
-    
-    func setConstraints() {
-        [imageView, titleLabel, subTitleLabel, tryAgainButton].forEach { addSubview($0) }
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: Constants.Image.centerYAnchor)
-        ])
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: Constants.Title.top)
-        ])
-        
-        subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            subTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.SubTitle.top)
-        ])
-        
-        tryAgainButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            tryAgainButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            tryAgainButton.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: Constants.Button.top)
-        ])
     }
 }
 
