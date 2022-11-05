@@ -4,16 +4,38 @@ final class HeaderSectionView: BaseView {
     
     // MARK: - Views
     
-    private lazy var backgroundView = UIView()
-    private lazy var yearLabel = UILabel()
-    private lazy var rightLine = UIView()
-    private lazy var leftLine = UIView()
+    private let backgroundView = UIView()
+    private let yearLabel = HeaderSectionView.makeYearLabel()
+    private let rightLine = HeaderSectionView.makeLine()
+    private let leftLine = HeaderSectionView.makeLine()
     
-    // MARK: - Initialization
+    // MARK: - Appearance
     
     override func setup() {
-        setupUI()
-        setupConstraints()
+        setConstraints()
+    }
+}
+
+//MARK: - Create SubViews
+
+private extension HeaderSectionView {
+    
+    static func makeYearLabel() -> UILabel {
+        let yearLabel = UILabel()
+        
+        yearLabel.text = Constants.Label.text
+        yearLabel.font = Constants.Label.font
+        yearLabel.textColor = R.Colors.separator
+        yearLabel.contentMode = .scaleAspectFit
+        yearLabel.textAlignment = .center
+        
+        return yearLabel
+    }
+    
+    static func makeLine() -> UIView {
+        let line = UIView()
+        line.backgroundColor = R.Colors.separator
+        return line
     }
 }
 
@@ -21,18 +43,7 @@ final class HeaderSectionView: BaseView {
 
 private extension HeaderSectionView {
     
-    func setupUI() {
-        yearLabel.text = Constants.Label.text
-        yearLabel.font = Constants.Label.font
-        yearLabel.textColor = R.Colors.separator
-        yearLabel.contentMode = .scaleAspectFit
-        yearLabel.textAlignment = .center
-        
-        rightLine.backgroundColor = R.Colors.separator
-        leftLine.backgroundColor = R.Colors.separator
-    }
-    
-    func setupConstraints() {
+    func setConstraints() {
         [yearLabel, rightLine, leftLine].forEach { addSubview($0) }
         
         yearLabel.translatesAutoresizingMaskIntoConstraints = false
