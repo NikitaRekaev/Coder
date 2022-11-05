@@ -52,21 +52,21 @@ extension MainModel {
     }
     
     func formatDate (date: Date?) -> String {
-            let formatter = DateFormatter()
-            formatter.locale = Locale(identifier: "ru_RU")
-            formatter.setLocalizedDateFormatFromTemplate("dd MMM")
-
-        if let date = date {
-            var date = formatter.string(from: date)
-            if date.count == Constants.week {
-                date.removeLast()
-            }
-            if date.count == Constants.moreWeek {
-                date.removeLast(.two)
-            }
-            return date
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ru_RU")
+        formatter.setLocalizedDateFormatFromTemplate("dd MMM")
+        
+        guard let date = date else { return "" }
+        
+        var dateFormatter = formatter.string(from: date)
+        
+        switch dateFormatter.count {
+        case Constants.week: dateFormatter.removeLast()
+        case Constants.moreWeek: dateFormatter.removeLast(.two)
+        default: return dateFormatter
         }
-        return "Дата не была получена"
+        
+        return dateFormatter
     }
     
     func calculateDayDifference(birthdayDate: Date?) -> Int {
@@ -89,7 +89,8 @@ extension MainModel {
         }
         
         guard let dayDifference = calendar.dateComponents([.day],
-                                                          from: dateCurrent, to: bufferDate).day else {
+                                                          from: dateCurrent,
+                                                          to: bufferDate).day else {
             return .zero
         }
         
