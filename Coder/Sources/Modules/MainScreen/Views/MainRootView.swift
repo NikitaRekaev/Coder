@@ -4,20 +4,21 @@ final class MainRootView: BaseView {
     
     // MARK: - Views
     
-    lazy var searchBar = SearchBar()
-    lazy var topTabsCollectionView = TopTabsCollectionView()
-    lazy var userTableView = UserTableView(refreshController: refreshControl)
-    lazy var refreshControl = UIRefreshControl()
-    lazy var errorView = UnknownErrorView()
+    let searchBar = SearchBar()
+    let topTabsCollectionView = TopTabsCollectionView()
+    let refreshControl = UIRefreshControl()
+    let errorView = UnknownErrorView()
     
-    private lazy var searchErrorView = SearchErrorView()
-    private lazy var separatorLineUnderTabs = UIView()
+    lazy var userTableView = UserTableView(refreshController: refreshControl)
+    
+    private let searchErrorView = SearchErrorView()
+    private let separatorLineUnderTabs = UIView()
     
     // MARK: - Setup
     
     override func setup() {
-        setupUI()
-        setupConstraints()
+        configureUI()
+        setConstraints()
     }
 }
 
@@ -39,13 +40,13 @@ extension MainRootView {
 
 private extension MainRootView {
     
-    func setupUI() {
+    func configureUI() {
         backgroundColor = .white
         searchErrorView.isHidden = true
         separatorLineUnderTabs.backgroundColor = R.Colors.separator
     }
     
-    func setupConstraints() {
+    func setConstraints() {
         [userTableView, separatorLineUnderTabs, topTabsCollectionView, searchErrorView, errorView].forEach {
             addSubview($0)
         }
