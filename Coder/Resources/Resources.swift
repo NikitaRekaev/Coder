@@ -64,4 +64,72 @@ enum Resources {
             UIFont(name: "Inter-Bold", size: size) ?? UIFont()
         }
     }
+    
+    enum Strings {
+        enum Department: String {
+            case all = "allTab.title"
+            case android = "androidTab.title"
+            case ios = "iosTab.title"
+            case design = "designTab.title"
+            case management = "managementTab.title"
+            case qa = "qaTab.title"
+            case backOffice = "backOfficeTab.title"
+            case frontend = "frontendTab.title"
+            case hr = "hrTab.title"
+            case pr = "prTab.title"
+            case backend = "backendTab.title"
+            case support = "supportTab.title"
+            case analytics = "analyticsTab.title"
+            
+            var localizedString: String {
+                NSLocalizedString(self.rawValue, comment: "")
+            }
+        }
+        
+        enum SearchBar: String {
+            case placeholder = "placeholderSearchBar.title"
+            case cancel = "cancelSearchBar.title"
+            
+            var localizedString: String {
+                NSLocalizedString(self.rawValue, comment: "")
+            }
+        }
+        
+        enum Filter: String {
+            case title = "filter.title"
+            case filterByAlphabet = "filterByAlphabet.text"
+            case filterByBirthday = "filterByBirthday.text"
+            
+            var localizedString: String {
+                NSLocalizedString(self.rawValue, comment: "")
+            }
+        }
+        
+        enum NoInternet: String {
+            case connectionError = "networkConnectionError.text"
+            
+            var localizedString: String {
+                NSLocalizedString(self.rawValue, comment: "")
+            }
+        }
+        
+        enum NoResult: String {
+            case title = "noResult.title"
+            case message = "noResult.text"
+            
+            var localizedString: String {
+                NSLocalizedString(self.rawValue, comment: "")
+            }
+        }
+        
+        enum Alert: String {
+            case tryAgain = "tryAgainAlert.title"
+            case title = "alert.title"
+            case message = "messageAlert.text"
+            
+            var localizedString: String {
+                NSLocalizedString(self.rawValue, comment: "")
+            }
+        }
+    }
 }

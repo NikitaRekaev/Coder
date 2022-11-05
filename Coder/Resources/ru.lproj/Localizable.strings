@@ -1,0 +1,22 @@
+/* ENG */
+
+// SearchBar
+"placeholderSearchBar.title" = "Введи имя, тег, почту...";
+"cancelSearchBar.title" = "Отмена";
+
+// Filter
+"filter.title" = "Сортировка";
+"filterByAlphabet.text" = "По алфавиту";
+"filterByBirthday.text" = "По дню рождения";
+
+// Alert
+"tryAgainAlert.title"= "Попробовать снова";
+"alert.title" = "Какой-то сверхразум все сломал";
+"messageAlert.text" = "Постараемся быстро починить";
+
+// NoResult
+"noResult.title" = "Мы никого не нашли";
+"noResult.text" = "Попробуй скорректировать запрос";
+
+// NoInternet
+"networkConnectionError.text" = "Не могу обновить данные.\nПроверь соединение с интернетом.";

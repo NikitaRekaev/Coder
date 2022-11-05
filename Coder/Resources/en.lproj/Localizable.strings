@@ -1,0 +1,37 @@
+/* ENG */
+
+// Tabs
+"allTab.title" = "All";
+"androidTab.title" = "Android";
+"iosTab.title" = "iOS";
+"designTab.title" = "Design";
+"managementTab.title" = "Management";
+"qaTab.title" = "QA";
+"backOfficeTab.title" = "Back Office";
+"frontendTab.title" = "Frontend";
+"hrTab.title" = "HR";
+"prTab.title" = "PR";
+"backendTab.title" = "Backend";
+"supportTab.title" = "Support";
+"analyticsTab.title" = "Analytics";
+
+// SearchBar
+"placeholderSearchBar.title" = "Enter your name, tag, and email...";
+"cancelSearchBar.title" = "Cancel";
+
+// Filter
+"filter.title" = "Sorting";
+"filterByAlphabet.text" = "By alphabet";
+"filterByBirthday.text" = "By birthday";
+
+// Alert
+"tryAgainAlert.title" = "Try again";
+"alert.title" = "Someone broke everything";
+"messageAlert.text" = "We will try to fix it quickly";
+
+// NoResult
+"noResult.title" = "We didn't find anyone";
+"noResult.text" = "Try to adjust the request";
+
+// NoInternet
+"networkConnectionError.text" = "I can't update the data.\nCheck your internet connection.";
