@@ -4,19 +4,21 @@ final class ProfileView: BaseView {
     
     // MARK: - Views
     
-    lazy var phoneView = PhoneView()
-    lazy var avatarImageView = UIImageView()
+    let phoneView = PhoneView()
+    let avatarImageView = ProfileView.makeAvatarImageView()
     
-    private lazy var nameLabel = UILabel()
-    private lazy var tagLabel = UILabel()
-    private lazy var departmentLabel = UILabel()
-    private lazy var upView = UIView()
-    private lazy var stackView = UIStackView()
-    private lazy var birthView = BirthView()
+    private let upView = ProfileView.makeUpView()
+    private let nameLabel = ProfileView.makeNameLable()
+    private let tagLabel = ProfileView.makeTagLable()
+    private let departmentLabel = ProfileView.makeDepartmentLabel()
+    private let stackView = ProfileView.makeStackView()
+    private let birthView = BirthView()
+    
+    // MARK: - Appearance
     
     override func setup() {
-        setupUI()
-        setupConstraints()
+        backgroundColor = .white
+        setConstraints()
     }
 }
 
@@ -44,32 +46,67 @@ extension ProfileView {
     }
 }
 
-// MARK: - Private Methods
+// MARK: - Created SubViews
 
 private extension ProfileView {
     
-    func setupUI() {
-        backgroundColor = .white
-        
+    static func makeUpView() -> UIView {
+        let upView = UIView()
         upView.backgroundColor = R.Colors.profileBackground
+        return upView
+    }
+    
+    static func makeAvatarImageView() -> UIImageView {
+        let avatarImageView = UIImageView()
         
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.cornerRadius = Constants.Avatar.cornerRadius
         
+        return avatarImageView
+    }
+    
+    static func makeNameLable() -> UILabel {
+        let nameLabel = UILabel()
+        
         nameLabel.font = Constants.Name.font
         nameLabel.textColor = R.Colors.Text.active
+        
+        return nameLabel
+    }
+    
+    static func makeTagLable() -> UILabel {
+        let tagLabel = UILabel()
         
         tagLabel.font = Constants.Tag.font
         tagLabel.textColor = R.Colors.Text.inActive
         
+        return tagLabel
+    }
+    
+    static func makeDepartmentLabel() -> UILabel {
+        let departmentLabel = UILabel()
+        
         departmentLabel.font = Constants.Department.font
         departmentLabel.textColor = R.Colors.Text.secondary
         
-        stackView.axis = .vertical
-        stackView.spacing = Constants.stackViewSpacing
+        return departmentLabel
     }
     
-    func setupConstraints() {
+    static func makeStackView() -> UIStackView {
+        let stackView = UIStackView()
+        
+        stackView.axis = .vertical
+        stackView.spacing = Constants.stackViewSpacing
+        
+        return stackView
+    }
+}
+
+// MARK: - Private Methods
+
+private extension ProfileView {
+    
+    func setConstraints() {
         [upView, avatarImageView, nameLabel, tagLabel, departmentLabel, stackView].forEach { addSubview($0) }
         
         upView.translatesAutoresizingMaskIntoConstraints = false
