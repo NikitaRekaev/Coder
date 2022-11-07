@@ -8,7 +8,7 @@
 
 * iOS 13+
 * Swift 5
-* UIKit
+* UIKit(programmatically UI)
 * SwiftLint
 * MVC
 * <a href="https://www.figma.com/file/GRRKONipVClULsfdCAuVs1/KODE-Trainee-Dev-Осень'21?node-id=0%3A1">Design</a>
