@@ -31,6 +31,8 @@ private extension SearchBar {
         
         setValue(R.Strings.SearchBar.cancel.localizedString, forKey: Constants.CancelButton.key)
         
+        // SearchBar size of the depends on this image
+        setSearchFieldBackgroundImage(UIImage.image(color: R.Colors.SearchBar.secondary), for: .normal)
         setPositionAdjustment(Constants.adjustingTextOffset, for: .search)
         setPositionAdjustment(Constants.adjustingRightIconOffset, for: .bookmark)
         setPositionAdjustment(Constants.adjustingRightIconOffset, for: .clear)
