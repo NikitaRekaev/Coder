@@ -84,3 +84,15 @@ private enum Constants {
         )
     }
 }
+
+// MARK: - Image for SerchBar size
+
+private extension UIImage {
+    
+    static func image(color: UIColor = .clear, size: CGSize = CGSize(width: 1, height: 40)) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { rendererContext in
+            color.setFill()
+            rendererContext.fill(CGRect(origin: .zero, size: size))
+        }
+    }
+}
