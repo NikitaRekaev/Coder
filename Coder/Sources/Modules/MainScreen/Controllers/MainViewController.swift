@@ -253,16 +253,10 @@ private extension MainViewController {
     }
     
     func setViewDependingOnConnection() {
-        NetworkMonitor.shared.startMonitoring()
-        
         if NetworkMonitor.shared.isConnected {
-            mainView.errorView.isHidden = true
-            mainView.userTableView.isHidden = false
-            mainView.topTabsCollectionView.isHidden = false
+            mainView.setErrorView(error: false)
         } else {
-            mainView.userTableView.isHidden = true
-            mainView.topTabsCollectionView.isHidden = true
-            mainView.errorView.isHidden = false
+            mainView.setErrorView(error: true)
         }
         
         NetworkMonitor.shared.stopMonitoring()
