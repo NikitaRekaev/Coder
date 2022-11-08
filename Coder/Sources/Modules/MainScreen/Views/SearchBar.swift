@@ -31,8 +31,8 @@ private extension SearchBar {
         
         setValue(R.Strings.SearchBar.cancel.localizedString, forKey: Constants.CancelButton.key)
         
-        // SearchBar size of the depends on this image
         setSearchFieldBackgroundImage(UIImage.image(color: R.Colors.SearchBar.secondary), for: .normal)
+        
         setPositionAdjustment(Constants.adjustingTextOffset, for: .search)
         setPositionAdjustment(Constants.adjustingRightIconOffset, for: .bookmark)
         setPositionAdjustment(Constants.adjustingRightIconOffset, for: .clear)
@@ -91,6 +91,7 @@ private enum Constants {
 
 private extension UIImage {
     
+    /// SearchBar size of the depends on this image
     static func image(color: UIColor = .clear, size: CGSize = CGSize(width: 1, height: 40)) -> UIImage {
         return UIGraphicsImageRenderer(size: size).image { rendererContext in
             color.setFill()
