@@ -2,6 +2,8 @@ import UIKit
 
 final class MainRootView: BaseView {
     
+    private var screenSize: CGSize { UIScreen.main.bounds.size }
+    
     // MARK: - Views
     
     let searchBar = SearchBar()
@@ -13,19 +15,28 @@ final class MainRootView: BaseView {
     
     private let searchErrorView = SearchErrorView()
     private let separatorLineUnderTabs = UIView()
+    private let grayCircleView = GrayCircleView(frame: Constants.refreshSubViewFrame)
+    private let spinnerView = SpinnerView(frame: Constants.refreshSubViewFrame)
     
     // MARK: - Appearance
     
     override func configureAppearance() {
         backgroundColor = .white
+        
         searchErrorView.isHidden = true
         separatorLineUnderTabs.backgroundColor = R.Colors.separator
+        
+        refreshControl.tintColor = .clear
     }
     
     override func configureUI() {
-        [userTableView, separatorLineUnderTabs, topTabsCollectionView, searchErrorView, errorView].forEach {
-            addSubview($0)
-        }
+        [userTableView,
+         separatorLineUnderTabs,
+         topTabsCollectionView,
+         searchErrorView,
+         errorView].forEach { addSubview($0) }
+        
+        [grayCircleView, spinnerView].forEach { refreshControl.addSubview($0) }
         
         topTabsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -88,4 +99,5 @@ extension MainRootView {
 private enum Constants {
     static let tabsHeight: CGFloat = 36
     static let separatorHeight: CGFloat = 0.33
+    static let refreshSubViewFrame = CGRect(x: UIScreen.main.bounds.width / 2.1, y: 20, width: 20, height: 20)
 }

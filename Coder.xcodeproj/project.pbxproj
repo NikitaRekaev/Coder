@@ -33,6 +33,8 @@
 		11A62E632915317800E5D41E /* SortModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A62E622915317800E5D41E /* SortModel.swift */; };
 		11A62E652915367700E5D41E /* SortButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A62E642915367700E5D41E /* SortButton.swift */; };
 		11A62E6829163C5A00E5D41E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11A62E6A29163C5A00E5D41E /* Localizable.strings */; };
+		11B85114291A58CC0025FF7E /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B85113291A58CC0025FF7E /* SpinnerView.swift */; };
+		11B85116291A590B0025FF7E /* GrayCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B85115291A590B0025FF7E /* GrayCircleView.swift */; };
 		11E9F8FD28D4A05C0040D7B3 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9F8FC28D4A05C0040D7B3 /* NetworkMonitor.swift */; };
 		11E9F8FF28D4A0820040D7B3 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9F8FE28D4A0820040D7B3 /* ImageLoader.swift */; };
 		11E9F90128D4A0B10040D7B3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9F90028D4A0B10040D7B3 /* UserModel.swift */; };
@@ -80,6 +82,8 @@
 		11A62E6929163C5A00E5D41E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		11A62E6B29163D0A00E5D41E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		11A62E6C29163D0B00E5D41E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		11B85113291A58CC0025FF7E /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
+		11B85115291A590B0025FF7E /* GrayCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayCircleView.swift; sourceTree = "<group>"; };
 		11E9F8FC28D4A05C0040D7B3 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		11E9F8FE28D4A0820040D7B3 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		11E9F90028D4A0B10040D7B3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -171,13 +175,13 @@
 		111B697028B65FD9006E2BF0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				11B85118291A5FD00025FF7E /* Errors */,
+				11B85117291A5FB30025FF7E /* RefreshControl */,
 				111B697528B6631B006E2BF0 /* Cells */,
 				111B698028B669F4006E2BF0 /* MainRootView.swift */,
 				11E9F92328D7A9130040D7B3 /* TopTabsCollectionView.swift */,
 				11E9F92128D7761C0040D7B3 /* UserTableView.swift */,
 				113E07A328CE71DF00AC6FFB /* SearchBar.swift */,
-				111B697C28B66934006E2BF0 /* SearchErrorView.swift */,
-				111B697E28B6698E006E2BF0 /* UnknownErrorView.swift */,
 				1184A27828BBC855000D9497 /* HeaderSectionView.swift */,
 			);
 			path = Views;
@@ -312,6 +316,24 @@
 				11A62E622915317800E5D41E /* SortModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		11B85117291A5FB30025FF7E /* RefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				11B85115291A590B0025FF7E /* GrayCircleView.swift */,
+				11B85113291A58CC0025FF7E /* SpinnerView.swift */,
+			);
+			path = RefreshControl;
+			sourceTree = "<group>";
+		};
+		11B85118291A5FD00025FF7E /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				111B697C28B66934006E2BF0 /* SearchErrorView.swift */,
+				111B697E28B6698E006E2BF0 /* UnknownErrorView.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 		11E9F8E228D49AE50040D7B3 /* Networking */ = {
@@ -471,6 +493,7 @@
 				11E9F92228D7761C0040D7B3 /* UserTableView.swift in Sources */,
 				11E9F91E28D506F00040D7B3 /* UIColor+Hex.swift in Sources */,
 				111B696828B653AD006E2BF0 /* BaseView.swift in Sources */,
+				11B85114291A58CC0025FF7E /* SpinnerView.swift in Sources */,
 				11E9F8FF28D4A0820040D7B3 /* ImageLoader.swift in Sources */,
 				113E079E28CD2ABE00AC6FFB /* BackBarButtonItem.swift in Sources */,
 				11E9F8FD28D4A05C0040D7B3 /* NetworkMonitor.swift in Sources */,
@@ -491,6 +514,7 @@
 				11A62E652915367700E5D41E /* SortButton.swift in Sources */,
 				111B699428B675C9006E2BF0 /* ProfileViewController.swift in Sources */,
 				111B697D28B66934006E2BF0 /* SearchErrorView.swift in Sources */,
+				11B85116291A590B0025FF7E /* GrayCircleView.swift in Sources */,
 				113E079628CCD72000AC6FFB /* ProfileModel.swift in Sources */,
 				11E9F92428D7A9130040D7B3 /* TopTabsCollectionView.swift in Sources */,
 				111B697428B66313006E2BF0 /* TopTabsCollectionViewCell.swift in Sources */,
