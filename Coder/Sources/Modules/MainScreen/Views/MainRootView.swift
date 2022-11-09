@@ -2,8 +2,6 @@ import UIKit
 
 final class MainRootView: BaseView {
     
-    private var screenSize: CGSize { UIScreen.main.bounds.size }
-    
     // MARK: - Views
     
     let searchBar = SearchBar()
