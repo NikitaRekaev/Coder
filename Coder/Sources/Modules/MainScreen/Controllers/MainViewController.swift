@@ -53,7 +53,7 @@ extension MainViewController: UISearchBarDelegate {
     }
     
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        present(sortViewController, animated: true, completion: nil)
+        present(sortViewController, animated: true)
     }
 }
 
