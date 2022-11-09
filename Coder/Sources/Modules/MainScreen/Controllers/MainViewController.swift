@@ -4,7 +4,7 @@ final class MainViewController: BaseViewController<MainRootView> {
     
     // MARK: - Controllers
     
-    private lazy var sortVC = SortViewController()
+    private lazy var sortViewController = SortViewController()
     
     // MARK: - Internal Properties
     
@@ -17,7 +17,7 @@ final class MainViewController: BaseViewController<MainRootView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sortVC.delegate = self
+        sortViewController.delegate = self
         setupNavigationItem()
         setupTopTabs()
         setupTableView()
@@ -53,7 +53,7 @@ extension MainViewController: UISearchBarDelegate {
     }
     
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        present(sortVC, animated: true, completion: nil)
+        present(sortViewController, animated: true)
     }
 }
 
