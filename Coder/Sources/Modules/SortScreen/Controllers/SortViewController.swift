@@ -6,7 +6,7 @@ protocol SortDelegate: AnyObject {
     func showBirthday(shouldShow: Bool)
 }
 
-final class SortViewController: BaseViewController<SortView> {
+final class SortViewController: BottomSheetController<SortView> {
     
     // MARK: - Delegate Properties
     
@@ -16,6 +16,7 @@ final class SortViewController: BaseViewController<SortView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.preferredSheetCornerRadius = 8
         setupTargets()
     }
 }
