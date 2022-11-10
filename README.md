@@ -1,8 +1,4 @@
-<h1 align="center">Coder - test app for <a href="https://kode.ru/">KODE</a></h1>
-
-Test task taken from [appKODE](https://kode.ru/) from the public [gitHub](https://github.com/appKODE/trainee-test-ios) repository.
-
----
+<h1 align="center">Coder - test task taken from <a href="https://kode.ru/">KODE</a> from the public <a href="https://github.com/appKODE/trainee-test-ios">gitHub</a> repository.</h1>
 
 ## Contents
 
@@ -96,7 +92,8 @@ To get acquainted with the feature device, you can look in the [history](https:/
     * Custom launchScreen
     * UI-skeleton while loading data from server
 2. Search
-    * Search by first name         * Search by last name
+    * Search by first name
+    * Search by last name
     * Search by tag
     * Search error (not found)
 3. Sorting
@@ -116,10 +113,10 @@ To get acquainted with the feature device, you can look in the [history](https:/
      * If you drag the table, users will be updated
 8. Figma like design
     * Declension of age
-        * Custom back button
+    * Custom back button
     * First 3 letters of the month
     * Input field by layout: filter button and magnifying glass button change color according to the state of the field         * Custom BottomSheet for 13 iOS, no third party frameworks. 
-        * Offer to call
+    * Offer to call
 
 ## FAQ
 
