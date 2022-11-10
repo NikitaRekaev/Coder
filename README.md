@@ -1,4 +1,5 @@
-<h1 align="center">Coder - test task taken from <a href="https://kode.ru/">KODE</a> from the public <a href="https://github.com/appKODE/trainee-test-ios">gitHub</a> repository.</h1>
+<h1 align="center">Coder</h1> 
+<h1 align="center">Test task taken from <a href="https://kode.ru/">KODE</a> from the public <a href="https://github.com/appKODE/trainee-test-ios">gitHub</a> repository.</h1> 
 
 ## Contents
 
