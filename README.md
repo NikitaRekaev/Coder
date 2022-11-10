@@ -24,7 +24,7 @@ Test task taken from [appKODE](https://kode.ru/) from the public [gitHub](https:
     <tbody>
         <tr>
             <td>
-                <img width="250" src="Resources/LaunchScreen.gif">
+                <img width="250" src="Resources/LauncScreen.gif">
             </td>
             <td>
                 <img width="250" src="Resources/Search.gif">
