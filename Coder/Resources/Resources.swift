@@ -34,6 +34,7 @@ enum Resources {
         static let separator = UIColor(hex: "#C3C3C6") ?? .systemGreen
         static let profileBackground = UIColor(hex: "#F7F7F8") ?? .systemGreen
         static let skeleton = UIColor(hex: "#F3F3F6") ?? .systemGreen
+        static let networkError = UIColor(hex: "#F44336") ?? .systemGreen
         
         enum SearchBar {
             static let secondary = UIColor(hex: "#F7F7F8") ?? .systemGreen
