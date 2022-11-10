@@ -6,6 +6,12 @@ final class MainViewController: BaseViewController<MainRootView> {
     
     private lazy var sortViewController = SortViewController()
     
+    private lazy var networkErrorView = NetworkErrorView()
+    
+    // MARK: - Gestures
+    
+    private lazy var hideNoInternetOnTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapNoInternerView))
+    
     // MARK: - Internal Properties
     
     private lazy var shouldShowBirthday: Bool = false
@@ -22,6 +28,7 @@ final class MainViewController: BaseViewController<MainRootView> {
         setupTopTabs()
         setupTableView()
         setupTargets()
+        setupNetworkErrorView()
         setViewDependingOnConnection()
         networkTask.getData(from: "users", loadData(result:))
     }
@@ -234,6 +241,16 @@ private extension MainViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
+    func setupNetworkErrorView() {
+        networkErrorView.addGestureRecognizer(hideNoInternetOnTapGesture)
+        
+        navigationController?.view.addSubview(networkErrorView)
+        networkErrorView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            networkErrorView.heightAnchor.constraint(equalToConstant: 0)
+        ])
+    }
+    
     func setupTopTabs() {
         mainView.topTabsCollectionView.delegate = self
         mainView.topTabsCollectionView.dataSource = self
@@ -273,16 +290,36 @@ private extension MainViewController {
         switch result {
         case let .success(responseData):
             self.model.users = responseData.items
-            self.mainView.setErrorView(error: false)
+            shouldNetworkErrorViewBePresented(true)
+//            self.mainView.setErrorView(error: false)
             self.mainView.userTableView.reloadData()
         case .failure(_:):
-            self.mainView.setErrorView(error: true)
+            shouldNetworkErrorViewBePresented(true)
+//            self.mainView.setErrorView(error: true)
         }
     }
     
     func pullRefresh(result: Result<UserModel, Error>) {
         loadData(result: result)
         self.mainView.refreshControl.endRefreshing()
+    }
+    
+    func shouldNetworkErrorViewBePresented(_ shouldPresenet: Bool) {
+        networkErrorView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            networkErrorView.heightAnchor.constraint(equalToConstant: shouldPresenet ? navigationBarbarContentStart : .zero)])
+        
+        networkErrorView.setNeedsUpdateConstraints()
+        UIView.animate(withDuration: 0.5) { self.networkErrorView.layoutIfNeeded() } completion: { done in
+            if done {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    guard self.networkErrorView.frame.height != self.navigationBarbarContentStart else {
+                        self.shouldNetworkErrorViewBePresented(false)
+                        return
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -307,6 +344,10 @@ private extension MainViewController {
         self.mainView.setErrorView(error: false)
         networkTask.getData(from: "users", loadData(result:))
     }
+    
+    func didTapNoInternerView(_ sender: UITapGestureRecognizer) {
+        shouldNetworkErrorViewBePresented(false)
+    }
 }
 
 // MARK: - Constants
@@ -315,4 +356,18 @@ private enum Constants {
     static let skeletonCellCount: Int = 15
     static let rowCellHeight: CGFloat = 84
     static let headerViewHeight: CGFloat = 68
+}
+
+extension UIViewController {
+    
+    var navigationBarbarContentStart: CGFloat {
+        navigationBarTopOffset + navigationBarHeight
+    }
+    var navigationBarTopOffset: CGFloat {
+        navigationController?.navigationBar.frame.origin.y ?? .zero
+    }
+    
+    var navigationBarHeight: CGFloat {
+        navigationController?.navigationBar.frame.height ?? .zero
+    }
 }
