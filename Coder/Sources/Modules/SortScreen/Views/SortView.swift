@@ -8,9 +8,9 @@ final class SortView: BaseView {
     
     // MARK: - Views
     
-    let backButton = SortView.makeBackButton()
     let buttonStack = SortView.makeButtonStack()
     
+    private let topView = SortView.makeTopView()
     private let titleLabel = SortView.makeTitleLabel()
     
     // MARK: - Appearance
@@ -28,18 +28,19 @@ final class SortView: BaseView {
     // MARK: - ConfigureUI
     
     override func configureUI() {
-        [titleLabel, backButton, buttonStack].forEach { addSubview($0) }
+        [topView, titleLabel, buttonStack].forEach { addSubview($0) }
+        
+        topView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            topView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            topView.widthAnchor.constraint(equalToConstant: Constants.TopView.width),
+            topView.heightAnchor.constraint(equalToConstant: Constants.TopView.height),
+            topView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .zero)])
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.TitleLable.top),
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ])
-        
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            backButton.topAnchor.constraint(equalTo: topAnchor, constant: Constants.BackButton.top),
-            backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.BackButton.leading)
         ])
         
         buttonStack.translatesAutoresizingMaskIntoConstraints = false
@@ -58,12 +59,13 @@ final class SortView: BaseView {
 
 private extension SortView {
     
-    static func makeBackButton() -> UIButton {
-        let backButton = UIButton()
+    static func makeTopView() -> UIView {
+        let topView = UIView()
         
-        backButton.setImage(R.Images.backArrow, for: .normal)
+        topView.backgroundColor = R.Colors.SearchBar.placeholder
+        topView.layer.cornerRadius = Constants.TopView.cornerRadius
         
-        return backButton
+        return topView
     }
     
     static func makeTitleLabel() -> UILabel {
@@ -103,14 +105,15 @@ private extension SortView {
 
 private enum Constants {
     
-    enum TitleLable {
-        static let font = R.Fonts.interSemiBold(with: 20)
-        static let top: CGFloat = 21.5
+    enum TopView {
+        static let cornerRadius: CGFloat = 2
+        static let width: CGFloat = 56
+        static let height: CGFloat = 4
     }
     
-    enum BackButton {
-        static let top: CGFloat = 22.75
-        static let leading: CGFloat = 33.5
+    enum TitleLable {
+        static let font = R.Fonts.interSemiBold(with: 20)
+        static let top: CGFloat = 24
     }
     
     enum ButtonStack {
