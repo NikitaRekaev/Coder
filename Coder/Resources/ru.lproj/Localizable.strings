@@ -4,8 +4,8 @@
 "allTab.title" = "Все";
 "androidTab.title" = "Android";
 "iosTab.title" = "iOS";
-"designTab.title" = "Design";
-"managementTab.title" = "Management";
+"designTab.title" = "Designers";
+"managementTab.title" = "Managements";
 "qaTab.title" = "QA";
 "backOfficeTab.title" = "Back Office";
 "frontendTab.title" = "Frontend";
@@ -13,7 +13,7 @@
 "prTab.title" = "PR";
 "backendTab.title" = "Backend";
 "supportTab.title" = "Support";
-"analyticsTab.title" = "Analytics";
+"analyticsTab.title" = "Analytists";
 
 // SearchBar
 "placeholderSearchBar.title" = "Введи имя, тег, почту...";
