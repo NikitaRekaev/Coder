@@ -7,7 +7,7 @@ final class MainRootView: BaseView {
     let searchBar = SearchBar()
     let topTabsCollectionView = TopTabsCollectionView()
     let refreshControl = UIRefreshControl()
-    let errorView = UnknownErrorView()
+    let errorView = InternalErrorView()
     
     lazy var userTableView = UserTableView(refreshController: refreshControl)
     

@@ -1,14 +1,14 @@
 import UIKit
 
-final class UnknownErrorView: BaseView {
+final class InternalErrorView: BaseView {
     
     // MARK: - Views
     
-    let tryAgainButton = UnknownErrorView.makeTryAgainButton()
+    let tryAgainButton = InternalErrorView.makeTryAgainButton()
     
-    private let imageView = UnknownErrorView.makeImageView()
-    private let titleLabel = UnknownErrorView.makeTitleLabel()
-    private let subTitleLabel = UnknownErrorView.makeSubTitleLabel()
+    private let imageView = InternalErrorView.makeImageView()
+    private let titleLabel = InternalErrorView.makeTitleLabel()
+    private let subTitleLabel = InternalErrorView.makeSubTitleLabel()
     
     // MARK: - Appearance
     
@@ -49,7 +49,7 @@ final class UnknownErrorView: BaseView {
 
 // MARK: - Created SubViews
 
-private extension UnknownErrorView {
+private extension InternalErrorView {
     
     static func makeImageView() -> UIImageView {
         let imageView = UIImageView()
