@@ -107,8 +107,8 @@ enum Resources {
             }
         }
         
-        enum NoInternet: String {
-            case connectionError = "networkConnectionError.text"
+        enum NetworkError: String {
+            case networkErrorText = "networkConnectionError.text"
             
             var localizedString: String {
                 NSLocalizedString(self.rawValue, comment: "")
