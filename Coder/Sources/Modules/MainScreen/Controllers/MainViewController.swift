@@ -222,7 +222,7 @@ extension MainViewController: UITableViewDataSource {
 private extension MainViewController {
     
     func setupTargets() {
-        mainView.errorView.tryAgainButton.addTarget(self, action: #selector(checkConnection), for: .touchUpInside)
+        mainView.internalErrorView.tryAgainButton.addTarget(self, action: #selector(checkConnection), for: .touchUpInside)
         mainView.searchBar.searchTextField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
         mainView.refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
     }
