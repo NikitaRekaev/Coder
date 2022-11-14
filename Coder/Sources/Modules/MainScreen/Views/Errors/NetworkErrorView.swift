@@ -17,14 +17,9 @@ final class NetworkErrorView: BaseView {
     
     override func configureUI() {
         super.configureUI()
-        addSubview(messageErrorLabel)
+        self.addSubview(messageErrorLabel)
         
-        messageErrorLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            messageErrorLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Constants.leftOrRight),
-            messageErrorLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Constants.leftOrRight),
-            messageErrorLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: Constants.bottom)
-        ])
+        messageErrorLabel.frame = CGRect(x: 24, y: frame.midY-10, width: 327, height: 50)
     }
 }
 
