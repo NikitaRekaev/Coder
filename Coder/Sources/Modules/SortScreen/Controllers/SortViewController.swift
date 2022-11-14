@@ -16,7 +16,7 @@ final class SortViewController: BottomSheetController<SortView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.preferredSheetCornerRadius = 8
+        self.preferredSheetCornerRadius = Constants.buttomSheetCornerRadius
         setupTargets()
     }
 }
@@ -53,4 +53,10 @@ private extension SortViewController {
         delegate?.sort(model: sender.model)
         dismiss(animated: true)
     }
+}
+
+// MARK: - Constants
+
+private enum Constants {
+    static let buttomSheetCornerRadius: CGFloat = 8
 }
