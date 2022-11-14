@@ -7,7 +7,7 @@ final class MainRootView: BaseView {
     let searchBar = SearchBar()
     let topTabsCollectionView = TopTabsCollectionView()
     let refreshControl = UIRefreshControl()
-    let errorView = UnknownErrorView()
+    let internalErrorView = InternalErrorView()
     
     lazy var userTableView = UserTableView(refreshController: refreshControl)
     
@@ -32,7 +32,7 @@ final class MainRootView: BaseView {
          separatorLineUnderTabs,
          topTabsCollectionView,
          searchErrorView,
-         errorView].forEach { addSubview($0) }
+         internalErrorView].forEach { addSubview($0) }
         
         [grayCircleView, spinnerView].forEach { refreshControl.addSubview($0) }
         
@@ -68,12 +68,12 @@ final class MainRootView: BaseView {
             searchErrorView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
-        errorView.translatesAutoresizingMaskIntoConstraints = false
+        internalErrorView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            errorView.topAnchor.constraint(equalTo: topAnchor),
-            errorView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            errorView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            errorView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            internalErrorView.topAnchor.constraint(equalTo: topAnchor),
+            internalErrorView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            internalErrorView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            internalErrorView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 }
@@ -87,7 +87,7 @@ extension MainRootView {
     }
     
     func setErrorView(error: Bool) {
-        errorView.isHidden = !error
+        internalErrorView.isHidden = !error
         searchBar.isHidden = error
     }
 }

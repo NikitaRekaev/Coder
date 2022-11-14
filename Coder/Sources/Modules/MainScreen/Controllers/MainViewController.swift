@@ -222,7 +222,7 @@ extension MainViewController: UITableViewDataSource {
 private extension MainViewController {
     
     func setupTargets() {
-        mainView.errorView.tryAgainButton.addTarget(self, action: #selector(checkConnection), for: .touchUpInside)
+        mainView.internalErrorView.tryAgainButton.addTarget(self, action: #selector(checkConnection), for: .touchUpInside)
         mainView.searchBar.searchTextField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
         mainView.refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
     }
@@ -276,7 +276,7 @@ private extension MainViewController {
             self.mainView.setErrorView(error: false)
             self.mainView.userTableView.reloadData()
         case .failure(_:):
-            self.mainView.setErrorView(error: true)
+            PresentNetworkError().error()
         }
     }
     
@@ -298,13 +298,11 @@ private extension MainViewController {
     }
     
     func didPullToRefresh(_ sender: UIRefreshControl) {
-        self.mainView.setErrorView(error: false)
         shouldShowBirthday = false
         networkTask.getData(from: "users", pullRefresh(result:))
     }
     
     func checkConnection(_ sender: UIButton) {
-        self.mainView.setErrorView(error: false)
         networkTask.getData(from: "users", loadData(result:))
     }
 }

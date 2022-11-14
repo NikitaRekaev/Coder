@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1110F882292258CF00A7E288 /* PresentNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1110F881292258CF00A7E288 /* PresentNetworkError.swift */; };
 		111B696828B653AD006E2BF0 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B696728B653AD006E2BF0 /* BaseView.swift */; };
 		111B696A28B65589006E2BF0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B696928B65589006E2BF0 /* BaseViewController.swift */; };
 		111B697428B66313006E2BF0 /* TopTabsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697328B66313006E2BF0 /* TopTabsCollectionViewCell.swift */; };
 		111B697728B663BB006E2BF0 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697628B663BB006E2BF0 /* UserTableViewCell.swift */; };
 		111B697D28B66934006E2BF0 /* SearchErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697C28B66934006E2BF0 /* SearchErrorView.swift */; };
-		111B697F28B6698E006E2BF0 /* UnknownErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697E28B6698E006E2BF0 /* UnknownErrorView.swift */; };
+		111B697F28B6698E006E2BF0 /* InternalErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B697E28B6698E006E2BF0 /* InternalErrorView.swift */; };
 		111B698128B669F4006E2BF0 /* MainRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B698028B669F4006E2BF0 /* MainRootView.swift */; };
 		111B698D28B674E6006E2BF0 /* PhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B698C28B674E6006E2BF0 /* PhoneView.swift */; };
 		111B698F28B67518006E2BF0 /* BirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B698E28B67518006E2BF0 /* BirthView.swift */; };
@@ -39,6 +40,7 @@
 		11B8511F291B78FF0025FF7E /* BottomSheetInteractiveDismissalTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B8511E291B78FF0025FF7E /* BottomSheetInteractiveDismissalTransition.swift */; };
 		11B85121291B7B0F0025FF7E /* BottomSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B85120291B7B0F0025FF7E /* BottomSheetController.swift */; };
 		11B85123291B7B320025FF7E /* BottomSheetTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B85122291B7B320025FF7E /* BottomSheetTransitioningDelegate.swift */; };
+		11B85125291CE7F10025FF7E /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B85124291CE7F10025FF7E /* NetworkErrorView.swift */; };
 		11E9F8FD28D4A05C0040D7B3 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9F8FC28D4A05C0040D7B3 /* NetworkMonitor.swift */; };
 		11E9F8FF28D4A0820040D7B3 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9F8FE28D4A0820040D7B3 /* ImageLoader.swift */; };
 		11E9F90128D4A0B10040D7B3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9F90028D4A0B10040D7B3 /* UserModel.swift */; };
@@ -56,12 +58,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1110F881292258CF00A7E288 /* PresentNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentNetworkError.swift; sourceTree = "<group>"; };
 		111B696728B653AD006E2BF0 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		111B696928B65589006E2BF0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		111B697328B66313006E2BF0 /* TopTabsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabsCollectionViewCell.swift; sourceTree = "<group>"; };
 		111B697628B663BB006E2BF0 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		111B697C28B66934006E2BF0 /* SearchErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchErrorView.swift; sourceTree = "<group>"; };
-		111B697E28B6698E006E2BF0 /* UnknownErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnknownErrorView.swift; sourceTree = "<group>"; };
+		111B697E28B6698E006E2BF0 /* InternalErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalErrorView.swift; sourceTree = "<group>"; };
 		111B698028B669F4006E2BF0 /* MainRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRootView.swift; sourceTree = "<group>"; };
 		111B698C28B674E6006E2BF0 /* PhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneView.swift; sourceTree = "<group>"; };
 		111B698E28B67518006E2BF0 /* BirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthView.swift; sourceTree = "<group>"; };
@@ -92,6 +95,7 @@
 		11B8511E291B78FF0025FF7E /* BottomSheetInteractiveDismissalTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetInteractiveDismissalTransition.swift; sourceTree = "<group>"; };
 		11B85120291B7B0F0025FF7E /* BottomSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetController.swift; sourceTree = "<group>"; };
 		11B85122291B7B320025FF7E /* BottomSheetTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetTransitioningDelegate.swift; sourceTree = "<group>"; };
+		11B85124291CE7F10025FF7E /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
 		11E9F8FC28D4A05C0040D7B3 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		11E9F8FE28D4A0820040D7B3 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		11E9F90028D4A0B10040D7B3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				11300F2428953E5D00BC51E4 /* MainViewController.swift */,
+				1110F881292258CF00A7E288 /* PresentNetworkError.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -340,7 +345,8 @@
 			isa = PBXGroup;
 			children = (
 				111B697C28B66934006E2BF0 /* SearchErrorView.swift */,
-				111B697E28B6698E006E2BF0 /* UnknownErrorView.swift */,
+				111B697E28B6698E006E2BF0 /* InternalErrorView.swift */,
+				11B85124291CE7F10025FF7E /* NetworkErrorView.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -514,9 +520,11 @@
 				11E9F91E28D506F00040D7B3 /* UIColor+Hex.swift in Sources */,
 				111B696828B653AD006E2BF0 /* BaseView.swift in Sources */,
 				11B8511D291B78D10025FF7E /* BottomSheetPresentationController.swift in Sources */,
+				11B85125291CE7F10025FF7E /* NetworkErrorView.swift in Sources */,
 				11B85114291A58CC0025FF7E /* SpinnerView.swift in Sources */,
 				11E9F8FF28D4A0820040D7B3 /* ImageLoader.swift in Sources */,
 				113E079E28CD2ABE00AC6FFB /* BackBarButtonItem.swift in Sources */,
+				1110F882292258CF00A7E288 /* PresentNetworkError.swift in Sources */,
 				11E9F8FD28D4A05C0040D7B3 /* NetworkMonitor.swift in Sources */,
 				11E9F90328D4A0F00040D7B3 /* NetworkTask.swift in Sources */,
 				11B85121291B7B0F0025FF7E /* BottomSheetController.swift in Sources */,
@@ -531,7 +539,7 @@
 				118BBA6428BB7F6800194F05 /* SortViewController.swift in Sources */,
 				118BBA6228BB7C2400194F05 /* SortView.swift in Sources */,
 				11E9F90128D4A0B10040D7B3 /* UserModel.swift in Sources */,
-				111B697F28B6698E006E2BF0 /* UnknownErrorView.swift in Sources */,
+				111B697F28B6698E006E2BF0 /* InternalErrorView.swift in Sources */,
 				11300F2528953E5D00BC51E4 /* MainViewController.swift in Sources */,
 				11A62E652915367700E5D41E /* SortButton.swift in Sources */,
 				11B8511F291B78FF0025FF7E /* BottomSheetInteractiveDismissalTransition.swift in Sources */,

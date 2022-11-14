@@ -50,7 +50,7 @@
                 <img width="250" src="Resources/Refresh.gif">
             </td>
                         <td>
-                <img width="250" src="Resources/Coder.gif">
+                <img width="250" src="Resources/NetworkError.gif">
             </td>
         </tr>
     </tbody>
