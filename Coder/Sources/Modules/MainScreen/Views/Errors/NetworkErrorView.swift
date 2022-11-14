@@ -19,7 +19,10 @@ final class NetworkErrorView: BaseView {
         super.configureUI()
         self.addSubview(messageErrorLabel)
         
-        messageErrorLabel.frame = CGRect(x: Constants.frameX, y: frame.midY-10, width: Constants.width, height: Constants.height)
+        messageErrorLabel.frame = CGRect(x: Constants.frameX,
+                                         y: frame.midY-10,
+                                         width: Constants.width,
+                                         height: Constants.height)
     }
 }
 
