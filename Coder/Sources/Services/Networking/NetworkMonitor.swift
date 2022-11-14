@@ -27,6 +27,8 @@ final class NetworkMonitor {
     }
 }
 
+// MARK: - Interface Type
+
 extension NWInterface.InterfaceType: CaseIterable {
     
     public static var allCases: [NWInterface.InterfaceType] = [
