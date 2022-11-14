@@ -1,6 +1,6 @@
 import UIKit
 
-class SortButton: UIButton {
+final class SortButton: UIButton {
     
     // MARK: - Properties
     
