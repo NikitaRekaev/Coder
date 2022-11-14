@@ -16,6 +16,8 @@ enum Department: String, Codable {
     case support
 }
 
+// MARK: - Localized Depertment
+
 extension Department: CaseIterable {
     var title: String {
         switch self {
