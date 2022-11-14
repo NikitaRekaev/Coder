@@ -19,7 +19,10 @@ final class NetworkErrorView: BaseView {
         super.configureUI()
         self.addSubview(messageErrorLabel)
         
-        messageErrorLabel.frame = CGRect(x: 24, y: frame.midY-10, width: 327, height: 50)
+        messageErrorLabel.frame = CGRect(x: Constants.frameX,
+                                         y: frame.midY-10,
+                                         width: Constants.width,
+                                         height: Constants.height)
     }
 }
 
@@ -42,6 +45,7 @@ private extension NetworkErrorView {
 
 private enum Constants {
     static let textFont = R.Fonts.interMedium(with: 13)
-    static let leftOrRight: CGFloat = 24
-    static let bottom: CGFloat = 12
+    static let frameX: CGFloat = 24
+    static let width: CGFloat = 327
+    static let height: CGFloat = 50
 }
