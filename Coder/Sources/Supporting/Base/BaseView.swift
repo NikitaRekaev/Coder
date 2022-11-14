@@ -12,7 +12,9 @@ class BaseView: UIView {
         super.init(coder: coder)
     }
     
-    // Methods below for overrides
+    /// Method for customizing a visual
     func configureAppearance() { }
+    
+    /// Method for adjusting the position of the view on the screen
     func configureUI() { }
 }
