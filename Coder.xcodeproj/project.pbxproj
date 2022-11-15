@@ -30,6 +30,7 @@
 		1184A27928BBC855000D9497 /* HeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1184A27828BBC855000D9497 /* HeaderSectionView.swift */; };
 		118BBA6228BB7C2400194F05 /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BBA6128BB7C2400194F05 /* SortView.swift */; };
 		118BBA6428BB7F6800194F05 /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118BBA6328BB7F6800194F05 /* SortViewController.swift */; };
+		118F0B312923A82B00F5DD74 /* UIView+AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118F0B302923A82B00F5DD74 /* UIView+AddView.swift */; };
 		11A62E5F2914EDED00E5D41E /* Int+Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A62E5E2914EDED00E5D41E /* Int+Numbers.swift */; };
 		11A62E632915317800E5D41E /* SortModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A62E622915317800E5D41E /* SortModel.swift */; };
 		11A62E652915367700E5D41E /* SortButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A62E642915367700E5D41E /* SortButton.swift */; };
@@ -83,6 +84,7 @@
 		1184A27828BBC855000D9497 /* HeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
 		118BBA6128BB7C2400194F05 /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
 		118BBA6328BB7F6800194F05 /* SortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
+		118F0B302923A82B00F5DD74 /* UIView+AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddView.swift"; sourceTree = "<group>"; };
 		11A62E5E2914EDED00E5D41E /* Int+Numbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Numbers.swift"; sourceTree = "<group>"; };
 		11A62E622915317800E5D41E /* SortModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortModel.swift; sourceTree = "<group>"; };
 		11A62E642915367700E5D41E /* SortButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButton.swift; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				11E9F91D28D506F00040D7B3 /* UIColor+Hex.swift */,
+				118F0B302923A82B00F5DD74 /* UIView+AddView.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				11A62E652915367700E5D41E /* SortButton.swift in Sources */,
 				11B8511F291B78FF0025FF7E /* BottomSheetInteractiveDismissalTransition.swift in Sources */,
 				111B699428B675C9006E2BF0 /* ProfileViewController.swift in Sources */,
+				118F0B312923A82B00F5DD74 /* UIView+AddView.swift in Sources */,
 				111B697D28B66934006E2BF0 /* SearchErrorView.swift in Sources */,
 				11B85116291A590B0025FF7E /* GrayCircleView.swift in Sources */,
 				113E079628CCD72000AC6FFB /* ProfileModel.swift in Sources */,
