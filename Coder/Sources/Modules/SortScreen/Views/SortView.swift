@@ -28,23 +28,17 @@ final class SortView: BaseView {
     // MARK: - ConfigureUI
     
     override func configureUI() {
-        [topView, titleLabel, buttonStack].forEach { addSubview($0) }
+        [topView, titleLabel, buttonStack].forEach { addView($0) }
         
-        topView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             topView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             topView.widthAnchor.constraint(equalToConstant: Constants.TopView.width),
             topView.heightAnchor.constraint(equalToConstant: Constants.TopView.height),
-            topView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .zero)])
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            topView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .zero),
+            
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.TitleLable.top),
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ])
-        
-        buttonStack.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
             buttonStack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
                                              constant: Constants.ButtonStack.top),
             buttonStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,
