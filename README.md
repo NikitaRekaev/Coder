@@ -130,11 +130,11 @@ To get acquainted with the feature device, you can look in the [history](https:/
 
 ## FAQ
 
-Q: Why did not use third-party framework?
-A: I wanted to implement all the functionality completely natively, you can see my work with third-party frameworks in this [project](https://github.com/NikitaRekaev/Recipes).
+Q: Why did not use third-party framework?<br>
+A: I wanted to implement all the functionality completely natively, you can see my work with third-party frameworks in this [project](https://github.com/NikitaRekaev/Recipes).</br>
 
-Q: Why i chose [MVС](https://ru.wikipedia.org/wiki/Model-View-Controller) architecture? </br>
-A: Because it's perfect for this small project.
+Q: Why i chose [MVС](https://ru.wikipedia.org/wiki/Model-View-Controller) architecture? <br>
+A: Because it's perfect for this small project.</br>
 
-Q: Why don’t used [SwiftLint](https://github.com/realm/SwiftLint)?
-A: Because I wanted to keep a completely native implementation and get rid of dependencies.
+Q: Why don’t used [SwiftLint](https://github.com/realm/SwiftLint)?<br>
+A: Because I wanted to keep a completely native implementation and get rid of dependencies.</br>
