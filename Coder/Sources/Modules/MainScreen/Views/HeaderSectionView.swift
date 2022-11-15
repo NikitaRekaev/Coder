@@ -12,25 +12,18 @@ final class HeaderSectionView: BaseView {
      // MARK: - ConfigureUI
      
      override func configureUI() {
-         [yearLabel, rightLine, leftLine].forEach { addSubview($0) }
+         [yearLabel, rightLine, leftLine].forEach { addView($0) }
          
-         yearLabel.translatesAutoresizingMaskIntoConstraints = false
          NSLayoutConstraint.activate([
              yearLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: Constants.Label.centerY),
-             yearLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
-         ])
-         
-         leftLine.translatesAutoresizingMaskIntoConstraints = false
-         NSLayoutConstraint.activate([
+             yearLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+             
              leftLine.centerYAnchor.constraint(equalTo: yearLabel.centerYAnchor),
              leftLine.trailingAnchor.constraint(equalTo: yearLabel.leadingAnchor),
              leftLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Line.leading),
              leftLine.heightAnchor.constraint(equalToConstant: Constants.Line.height),
-             leftLine.widthAnchor.constraint(equalToConstant: Constants.Line.width)
-         ])
-         
-         rightLine.translatesAutoresizingMaskIntoConstraints = false
-         NSLayoutConstraint.activate([
+             leftLine.widthAnchor.constraint(equalToConstant: Constants.Line.width),
+             
              rightLine.centerYAnchor.constraint(equalTo: yearLabel.centerYAnchor),
              rightLine.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constants.Line.trailing),
              rightLine.leadingAnchor.constraint(equalTo: yearLabel.trailingAnchor),
