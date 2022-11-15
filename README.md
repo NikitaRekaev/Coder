@@ -3,10 +3,19 @@
 
 ## Contents
 
-1. [Overview](#overview)
-2. [Description of features](#description-of-features)
-3. [FAQ](#faq)
-4. [Technical Requirements](#technical-requirements)
+1. [Technical Requirements](#technical-requirements)
+2. [Overview](#overview)
+3. [Description of features](#description-of-features)
+4. [FAQ](#faq)
+
+## Technical Requirements
+
+* iOS 13+
+* Swift 5
+* UIKit(programmatically UI)
+* MVC
+* <a href="https://www.figma.com/file/GRRKONipVClULsfdCAuVs1/KODE-Trainee-Dev-Осень'21?node-id=0%3A1">Design</a>
+* <a href="https://kode-education.stoplight.io/docs/trainee-test/b3A6MjUxNDM5Mjg-get-users">API</a>
 
 ## Overview
 
@@ -129,12 +138,3 @@ A: Because it's perfect for this small project.
 
 Q: Why don’t used [SwiftLint](https://github.com/realm/SwiftLint)?
 A: Because I wanted to keep a completely native implementation and get rid of dependencies.
-
-## Technical Requirements
-
-* iOS 13+
-* Swift 5
-* UIKit(programmatically UI)
-* MVC
-* <a href="https://www.figma.com/file/GRRKONipVClULsfdCAuVs1/KODE-Trainee-Dev-Осень'21?node-id=0%3A1">Design</a>
-* <a href="https://kode-education.stoplight.io/docs/trainee-test/b3A6MjUxNDM5Mjg-get-users">API</a>
