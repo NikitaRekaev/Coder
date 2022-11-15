@@ -17,28 +17,23 @@ final class BirthView: BaseView {
     override func configureUI() {
         
         [birthView, starImageView, birthDataLabel, yearsLabel, dividingLine].forEach { addSubview($0) }
+        [starImageView, birthDataLabel, yearsLabel, dividingLine].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
         
-        starImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             starImageView.centerYAnchor.constraint(equalTo: birthView.centerYAnchor),
-            starImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.imageLeading)
-        ])
-        
-        birthDataLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            starImageView.leadingAnchor.constraint(equalTo: leadingAnchor,
+                                                   constant: Constants.imageLeading),
+            
             birthDataLabel.centerYAnchor.constraint(equalTo: starImageView.centerYAnchor),
             birthDataLabel.leadingAnchor.constraint(equalTo: starImageView.trailingAnchor,
-                                                    constant: Constants.birhLeading)
-        ])
-        
-        yearsLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+                                                    constant: Constants.birhLeading),
+            
             yearsLabel.centerYAnchor.constraint(equalTo: starImageView.centerYAnchor),
-            yearsLabel.trailingAnchor.constraint(equalTo: birthView.trailingAnchor, constant: Constants.yearsTrailing)
-        ])
-        
-        dividingLine.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            yearsLabel.trailingAnchor.constraint(equalTo: birthView.trailingAnchor,
+                                                 constant: Constants.yearsTrailing),
+            
             dividingLine.topAnchor.constraint(equalTo: yearsLabel.bottomAnchor, constant: Constants.Line.top),
             dividingLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Line.leading),
             dividingLine.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constants.Line.trailing),

@@ -28,48 +28,29 @@ final class MainRootView: BaseView {
     }
     
     override func configureUI() {
-        [userTableView,
-         separatorLineUnderTabs,
-         topTabsCollectionView,
-         searchErrorView,
-         internalErrorView].forEach { addSubview($0) }
+        addSubView()
         
-        [grayCircleView, spinnerView].forEach { refreshControl.addSubview($0) }
-        
-        topTabsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             topTabsCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             topTabsCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             topTabsCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            topTabsCollectionView.heightAnchor.constraint(equalToConstant: Constants.tabsHeight)
-        ])
-        
-        separatorLineUnderTabs.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            topTabsCollectionView.heightAnchor.constraint(equalToConstant: Constants.tabsHeight),
+            
             separatorLineUnderTabs.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor),
             separatorLineUnderTabs.leadingAnchor.constraint(equalTo: leadingAnchor),
             separatorLineUnderTabs.trailingAnchor.constraint(equalTo: trailingAnchor),
-            separatorLineUnderTabs.heightAnchor.constraint(equalToConstant: Constants.separatorHeight)
-        ])
-        
-        userTableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            separatorLineUnderTabs.heightAnchor.constraint(equalToConstant: Constants.separatorHeight),
+            
             userTableView.topAnchor.constraint(equalTo: separatorLineUnderTabs.bottomAnchor),
             userTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             userTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            userTableView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-        
-        searchErrorView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            userTableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
             searchErrorView.topAnchor.constraint(equalTo: topTabsCollectionView.bottomAnchor),
             searchErrorView.leadingAnchor.constraint(equalTo: leadingAnchor),
             searchErrorView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            searchErrorView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-        
-        internalErrorView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            searchErrorView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
             internalErrorView.topAnchor.constraint(equalTo: topAnchor),
             internalErrorView.bottomAnchor.constraint(equalTo: bottomAnchor),
             internalErrorView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -89,6 +70,22 @@ extension MainRootView {
     func setErrorView(error: Bool) {
         internalErrorView.isHidden = !error
         searchBar.isHidden = error
+    }
+}
+
+// MARK: - Private  Methods
+
+private extension MainRootView {
+    
+    func addSubView() {
+        
+        [userTableView,
+         separatorLineUnderTabs,
+         topTabsCollectionView,
+         searchErrorView,
+         internalErrorView].forEach { addView($0) }
+        
+        [grayCircleView, spinnerView].forEach { refreshControl.addView($0) }
     }
 }
 

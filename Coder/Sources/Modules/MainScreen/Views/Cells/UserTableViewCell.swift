@@ -124,39 +124,26 @@ private extension UserTableViewCell {
 private extension UserTableViewCell {
     
     func configureUI() {
-        [avatarImageView, nameLabel, tagLabel, departmentLabel, birthdayLabel].forEach { addSubview($0) }
+        [avatarImageView, nameLabel, tagLabel, departmentLabel, birthdayLabel].forEach { addView($0) }
         
-        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             avatarImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Image.leading),
             avatarImageView.heightAnchor.constraint(equalToConstant: Constants.Image.proportions),
-            avatarImageView.widthAnchor.constraint(equalToConstant: Constants.Image.proportions)
-        ])
-        
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            avatarImageView.widthAnchor.constraint(equalToConstant: Constants.Image.proportions),
+            
             nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor,
                                                constant: Constants.Name.leading),
             nameLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor,
-                                               constant: Constants.Name.centerY)
-        ])
-        
-        tagLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+                                               constant: Constants.Name.centerY),
+            
             tagLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: Constants.Tag.leading),
-            tagLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor)
-        ])
-        
-        departmentLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            tagLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
+            
             departmentLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             departmentLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor,
-                                                     constant: Constants.Department.centerY)
-        ])
-        
-        birthdayLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+                                                     constant: Constants.Department.centerY),
+            
             birthdayLabel.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor,
                                                    constant: Constants.Birthday.centerY),
             birthdayLabel.trailingAnchor.constraint(equalTo: trailingAnchor,
@@ -205,28 +192,21 @@ private extension UserTableViewCell {
 private extension UserTableViewCell {
     
     func configureSkeletonUI() {
-        [avatarSkeletonView, nameSkeletonView, departmentSkeletonView].forEach { addSubview($0) }
+        [avatarSkeletonView, nameSkeletonView, departmentSkeletonView].forEach { addView($0) }
         
-        avatarSkeletonView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             avatarSkeletonView.centerYAnchor.constraint(equalTo: centerYAnchor),
             avatarSkeletonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Image.leading),
             avatarSkeletonView.heightAnchor.constraint(equalToConstant: Constants.Image.proportions),
-            avatarSkeletonView.widthAnchor.constraint(equalToConstant: Constants.Image.proportions)
-        ])
-        
-        nameSkeletonView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            avatarSkeletonView.widthAnchor.constraint(equalToConstant: Constants.Image.proportions),
+            
             nameSkeletonView.leadingAnchor.constraint(equalTo: avatarSkeletonView.trailingAnchor,
                                                       constant: Constants.Name.leading),
             nameSkeletonView.centerYAnchor.constraint(equalTo: avatarSkeletonView.centerYAnchor,
                                                       constant: Constants.Name.centerY),
             nameSkeletonView.widthAnchor.constraint(equalToConstant: Constants.Name.width),
-            nameSkeletonView.heightAnchor.constraint(equalToConstant: Constants.Name.height)
-        ])
-        
-        departmentSkeletonView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            nameSkeletonView.heightAnchor.constraint(equalToConstant: Constants.Name.height),
+            
             departmentSkeletonView.leadingAnchor.constraint(equalTo: nameSkeletonView.leadingAnchor),
             departmentSkeletonView.centerYAnchor.constraint(equalTo: nameSkeletonView.centerYAnchor,
                                                             constant: Constants.Department.centerY),

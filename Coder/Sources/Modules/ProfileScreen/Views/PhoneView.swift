@@ -15,19 +15,18 @@ final class PhoneView: BaseView {
     
     override func configureUI() {
         [phoneView, phoneImageView, phoneButton].forEach { addSubview($0) }
+        [phoneImageView, phoneButton].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
         
-        phoneImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             phoneImageView.centerYAnchor.constraint(equalTo: phoneView.centerYAnchor),
-            phoneImageView.leadingAnchor.constraint(
-                equalTo: phoneView.safeAreaLayoutGuide.leadingAnchor, constant: Constants.Image.leading)
-        ])
-        
-        phoneButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            phoneImageView.leadingAnchor.constraint(equalTo: phoneView.safeAreaLayoutGuide.leadingAnchor,
+                                                    constant: Constants.Image.leading),
+            
+            phoneButton.centerYAnchor.constraint(equalTo: phoneImageView.centerYAnchor),
             phoneButton.leadingAnchor.constraint(equalTo: phoneImageView.trailingAnchor,
-                                                 constant: Constants.Button.trailig),
-            phoneButton.centerYAnchor.constraint(equalTo: phoneImageView.centerYAnchor)
+                                                 constant: Constants.Button.trailig)
         ])
     }
 }

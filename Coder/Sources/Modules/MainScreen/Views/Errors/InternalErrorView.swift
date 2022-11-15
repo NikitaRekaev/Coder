@@ -19,28 +19,18 @@ final class InternalErrorView: BaseView {
     // MARK: - ConfigureUI
     
     override func configureUI() {
-        [imageView, titleLabel, subTitleLabel, tryAgainButton].forEach { addSubview($0) }
+        [imageView, titleLabel, subTitleLabel, tryAgainButton].forEach { addView($0) }
         
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: Constants.Image.centerYAnchor)
-        ])
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            imageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: Constants.Image.centerYAnchor),
+            
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: Constants.Title.top)
-        ])
-        
-        subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: Constants.Title.top),
+            
             subTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.SubTitle.top)
-        ])
-        
-        tryAgainButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.SubTitle.top),
+            
             tryAgainButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             tryAgainButton.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: Constants.Button.top)
         ])

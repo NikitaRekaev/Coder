@@ -17,27 +17,20 @@ final class SearchErrorView: BaseView {
     // MARK: - ConfigureUI
     
     override func configureUI() {
-        [loupe, titleLabel, subTitleLabel].forEach { addSubview($0) }
+        [loupe, titleLabel, subTitleLabel].forEach { addView($0) }
         
-        loupe.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             loupe.centerXAnchor.constraint(equalTo: centerXAnchor),
             loupe.topAnchor.constraint(equalTo: topAnchor, constant: Constants.Image.top),
             loupe.widthAnchor.constraint(equalToConstant: Constants.Image.proportions),
-            loupe.heightAnchor.constraint(equalToConstant: Constants.Image.proportions)
-        ])
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            loupe.heightAnchor.constraint(equalToConstant: Constants.Image.proportions),
+            
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: loupe.bottomAnchor, constant: Constants.Title.top)
-        ])
-        
-        subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: loupe.bottomAnchor, constant: Constants.Title.top),
+            
             subTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
-                                                   constant: Constants.SupTitle.top)
+                                               constant: Constants.SupTitle.top)
         ])
     }
 }

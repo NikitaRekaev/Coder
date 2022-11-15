@@ -23,52 +23,8 @@ final class ProfileView: BaseView {
     // MARK: - ConfigureUI
     
     override func configureUI() {
-        [upView, avatarImageView, nameLabel, tagLabel, departmentLabel, stackView].forEach { addSubview($0) }
-        
-        upView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            upView.topAnchor.constraint(equalTo: topAnchor),
-            upView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            upView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: Constants.upViewBottom),
-            upView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            upView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-        
-        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: upView.topAnchor, constant: Constants.Avatar.top),
-            avatarImageView.centerXAnchor.constraint(equalTo: upView.centerXAnchor),
-            avatarImageView.heightAnchor.constraint(equalToConstant: Constants.Avatar.proportions),
-            avatarImageView.widthAnchor.constraint(equalToConstant: Constants.Avatar.proportions)
-        ])
-        
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            nameLabel.centerXAnchor.constraint(equalTo: upView.centerXAnchor),
-            nameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: Constants.Name.top)
-        ])
-        
-        tagLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            tagLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: Constants.Tag.leading),
-            tagLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor)
-        ])
-        
-        departmentLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            departmentLabel.centerXAnchor.constraint(equalTo: upView.centerXAnchor),
-            departmentLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Constants.Department.top)
-        ])
-        
-        [birthView, phoneView].forEach { stackView.addArrangedSubview($0) }
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: upView.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        ])
+        configureTop()
+        configureBottom()
     }
 }
 
@@ -149,6 +105,52 @@ private extension ProfileView {
         stackView.spacing = Constants.stackViewSpacing
         
         return stackView
+    }
+}
+
+// MARK: - Private Methods
+
+private extension ProfileView {
+    
+    func configureTop() {
+        [upView, avatarImageView, nameLabel, tagLabel, departmentLabel, stackView].forEach {
+            addView($0)
+        }
+        
+        NSLayoutConstraint.activate([
+            upView.topAnchor.constraint(equalTo: topAnchor),
+            upView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            upView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: Constants.upViewBottom),
+            upView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            upView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            avatarImageView.topAnchor.constraint(equalTo: upView.topAnchor, constant: Constants.Avatar.top),
+            avatarImageView.centerXAnchor.constraint(equalTo: upView.centerXAnchor),
+            avatarImageView.heightAnchor.constraint(equalToConstant: Constants.Avatar.proportions),
+            avatarImageView.widthAnchor.constraint(equalToConstant: Constants.Avatar.proportions),
+            
+            nameLabel.centerXAnchor.constraint(equalTo: upView.centerXAnchor),
+            nameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: Constants.Name.top),
+            
+            tagLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: Constants.Tag.leading),
+            tagLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
+            
+            departmentLabel.centerXAnchor.constraint(equalTo: upView.centerXAnchor),
+            departmentLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Constants.Department.top),
+            
+        ])
+    }
+    
+    func configureBottom() {
+        [birthView, phoneView].forEach { stackView.addArrangedSubview($0) }
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: upView.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
     }
 }
 
