@@ -88,9 +88,11 @@ private extension SortView {
 private extension SortView {
     
     func getModelName(_ model: SortModel) -> String {
-        switch(model) {
-        case .alphabet: return R.Strings.Sort.sortByAlphabet.localizedString
-        case .birhDate: return R.Strings.Sort.sortByBirthday.localizedString
+        switch model {
+        case .alphabet:
+            return R.Strings.Sort.sortByAlphabet.localizedString
+        case .birhDate:
+            return R.Strings.Sort.sortByBirthday.localizedString
         }
     }
 }
