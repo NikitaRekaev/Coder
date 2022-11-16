@@ -8,7 +8,7 @@ final class NetworkMonitor {
     private let monitor: NWPathMonitor
     private let queue = DispatchQueue(label: "NetworkConnectivityMonitor")
     private(set) var isConnected: Bool = true
-
+    
     private(set) var interfaceType: NWInterface.InterfaceType?
     private init() {
         self.monitor = NWPathMonitor()
@@ -17,7 +17,9 @@ final class NetworkMonitor {
     func startMonitoring() {
         monitor.pathUpdateHandler = { [weak self] path in
             self?.isConnected = path.status != .unsatisfied
-            self?.interfaceType = NWInterface.InterfaceType.allCases.filter { path.usesInterfaceType($0) }.first
+            self?.interfaceType = NWInterface.InterfaceType.allCases.filter {
+                path.usesInterfaceType($0)
+            }.first
         }
         monitor.start(queue: queue)
     }
