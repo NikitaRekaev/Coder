@@ -15,7 +15,7 @@ final class UserTableViewCell: UITableViewCell {
     
     private let tagLabel = UserTableViewCell.makeTagLabel()
     
-    // MARK: SkeletonView
+    // MARK: - SkeletonView
     
     private let avatarSkeletonView = UserTableViewCell.makeAvatarSkeletonView()
     private let nameSkeletonView = UserTableViewCell.makeNameSkeletonView()
