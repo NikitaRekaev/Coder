@@ -2,7 +2,7 @@ import UIKit
 
 final class BottomSheetInteractiveDismissalTransition: NSObject {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     var bottomConstraint: NSLayoutConstraint?
     var heightConstraint: NSLayoutConstraint?
@@ -20,7 +20,7 @@ final class BottomSheetInteractiveDismissalTransition: NSObject {
     private var interactiveDismissal: Bool = false
 }
 
-// MARK: Public methods
+// MARK: - Public methods
 
 extension BottomSheetInteractiveDismissalTransition {
     
@@ -95,7 +95,7 @@ extension BottomSheetInteractiveDismissalTransition {
     }
 }
 
-// MARK: UIViewControllerAnimatedTransitioning
+// MARK: - UIViewControllerAnimatedTransitioning
 
 extension BottomSheetInteractiveDismissalTransition: UIViewControllerAnimatedTransitioning {
     
@@ -115,7 +115,7 @@ extension BottomSheetInteractiveDismissalTransition: UIViewControllerAnimatedTra
         let offset = presentedView.frame.height
         let offsetAnimator = createOffsetAnimator(animating: presentedView, to: offset)
         
-        offsetAnimator.addCompletion { position in
+        offsetAnimator.addCompletion { _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
         
@@ -135,7 +135,7 @@ extension BottomSheetInteractiveDismissalTransition: UIViewControllerAnimatedTra
     }
 }
 
-// MARK: UIViewControllerInteractiveTransitioning
+// MARK: - UIViewControllerInteractiveTransitioning
 
 extension BottomSheetInteractiveDismissalTransition: UIViewControllerInteractiveTransitioning {
     
@@ -154,7 +154,7 @@ extension BottomSheetInteractiveDismissalTransition: UIViewControllerInteractive
         let offset = presentedView.frame.height
         let offsetAnimator = createOffsetAnimator(animating: presentedView, to: offset)
         
-        offsetAnimator.addCompletion { position in
+        offsetAnimator.addCompletion { _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
         
