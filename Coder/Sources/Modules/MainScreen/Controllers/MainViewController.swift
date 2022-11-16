@@ -62,10 +62,13 @@ extension MainViewController: UISearchBarDelegate {
 extension MainViewController: SortDelegate {
     
     func sort(model: SortModel) {
-        switch(model) {
-        case .alphabet: self.model.users.sort(by: { $0.firstName < $1.firstName })
-        case .birhDate: self.model.userSortByDate()
+        switch model {
+        case .alphabet:
+            self.model.users.sort(by: { $0.firstName < $1.firstName })
+        case .birhDate:
+            self.model.userSortByDate()
         }
+        
         mainView.searchBar.setImage(R.Images.SearchBar.rightImageSelected, for: .bookmark, state: .normal)
         mainView.userTableView.reloadData()
     }
@@ -121,7 +124,8 @@ extension MainViewController: UICollectionViewDataSource {
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let label = UILabel(frame: CGRect.zero)
         label.text = tabs[indexPath.item].title
@@ -174,7 +178,7 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.shouldShowBirthday ?  .two : .one
+        return self.shouldShowBirthday ? .two : .one
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -294,7 +298,7 @@ private extension MainViewController {
     func textChanged(_ sender: UITextField) {
         let image = sender.text?.count == .zero ? R.Images.SearchBar.leftImageNormal :
         R.Images.SearchBar.leftImageSelected
-        sender.leftView = UIImageView.init(image: image)
+        sender.leftView = UIImageView(image: image)
     }
     
     func didPullToRefresh(_ sender: UIRefreshControl) {

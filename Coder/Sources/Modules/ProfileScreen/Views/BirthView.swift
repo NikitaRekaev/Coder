@@ -8,9 +8,10 @@ final class BirthView: BaseView {
     private let birthDataLabel = BirthView.makeBirthDataLabel()
     private let yearsLabel = BirthView.makeYearsLabel()
     private let dividingLine = BirthView.makeDividingLine()
-    private let birthView = UIView(frame: CGRect(x: .zero, y: .zero,
-                                                      width: Constants.View.widht,
-                                                      height: Constants.View.height))
+    private let birthView = UIView(frame: CGRect(x: .zero,
+                                                 y: .zero,
+                                                 width: Constants.View.widht,
+                                                 height: Constants.View.height))
     
     // MARK: - ConfigureUI
     

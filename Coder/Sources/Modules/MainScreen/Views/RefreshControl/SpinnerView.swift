@@ -6,7 +6,7 @@ class SpinnerView: UIView {
     
     override var layer: CAShapeLayer {
         get {
-            return super.layer as! CAShapeLayer
+            return super.layer as? CAShapeLayer ?? CAShapeLayer()
         }
     }
     
@@ -52,7 +52,7 @@ private extension SpinnerView {
                 Pose(0.2, 1.875, 0.1),
                 Pose(0.2, 2.250, 0.3),
                 Pose(0.2, 2.625, 0.5),
-                Pose(0.2, 3.000, 0.7),
+                Pose(0.2, 3.000, 0.7)
             ]
         }
     }

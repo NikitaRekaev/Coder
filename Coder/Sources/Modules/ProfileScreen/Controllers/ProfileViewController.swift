@@ -22,7 +22,7 @@ final class ProfileViewController: BaseViewController<ProfileView> {
     }
 }
 
-// MARK: Private Methods
+// MARK: - Private Methods
 
 private extension ProfileViewController {
     

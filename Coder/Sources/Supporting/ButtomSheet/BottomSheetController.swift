@@ -6,7 +6,9 @@ class BottomSheetController<View: UIView>: UIViewController {
     
     // MARK: - Following View
     
+    // swiftlint: disable force_cast
     var mainView: View { view as! View }
+    // swiftlint: enable force_cast
     
     override func loadView() {
         view = View()

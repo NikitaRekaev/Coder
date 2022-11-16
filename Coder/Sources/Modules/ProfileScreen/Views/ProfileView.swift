@@ -136,8 +136,7 @@ private extension ProfileView {
             tagLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
             
             departmentLabel.centerXAnchor.constraint(equalTo: upView.centerXAnchor),
-            departmentLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Constants.Department.top),
-            
+            departmentLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Constants.Department.top)
         ])
     }
     
