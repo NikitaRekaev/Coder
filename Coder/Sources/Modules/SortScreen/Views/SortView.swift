@@ -8,8 +8,7 @@ final class SortView: BaseView {
     
     // MARK: - Views
     
-    let buttonStack = SortView.makeButtonStack()
-    
+    private let buttonStack = SortView.makeButtonStack()
     private let topView = SortView.makeTopView()
     private let titleLabel = SortView.makeTitleLabel()
     

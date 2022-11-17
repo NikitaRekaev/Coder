@@ -1,10 +1,10 @@
 import UIKit
 
-class GrayCircleView: BaseView {
+final class GrayCircleView: BaseView {
     
     // MARK: - Views
     
-    let spinnignCircle = CAShapeLayer()
+    private let spinnignCircle = CAShapeLayer()
     
     // MARK: - Appearance
     

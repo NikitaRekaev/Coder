@@ -1,5 +1,7 @@
 import Foundation
 
+// MARK: - Cases
+
 enum Department: String, Codable {
     case all
     case design

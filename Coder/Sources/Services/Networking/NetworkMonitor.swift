@@ -3,6 +3,8 @@ import Network
 
 final class NetworkMonitor {
     
+    // MARK: - Properties
+    
     static let shared = NetworkMonitor()
     
     private let monitor: NWPathMonitor
@@ -13,6 +15,11 @@ final class NetworkMonitor {
     private init() {
         self.monitor = NWPathMonitor()
     }
+}
+
+// MARK: - Public Methods
+
+extension NetworkMonitor {
     
     func startMonitoring() {
         monitor.pathUpdateHandler = { [weak self] path in

@@ -103,9 +103,8 @@ extension BottomSheetInteractiveDismissalTransition: UIViewControllerAnimatedTra
         maxTransitionDuration
     }
     
+    /// This method is never called since we only care about interactive transitions, and use UIKit's default transitions/animations for non-interactive transitions.
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        // This method is never called since we only care about interactive transitions,
-        // and use UIKit's default transitions/animations for non-interactive transitions.
         guard let presentedView = transitionContext.view(forKey: .from) else {
             return
         }

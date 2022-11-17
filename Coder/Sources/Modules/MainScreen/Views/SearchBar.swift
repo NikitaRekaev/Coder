@@ -56,6 +56,7 @@ private extension SearchBar {
 // MARK: - Constants
 
 private enum Constants {
+    
     static let cornerRadius: CGFloat = 16
     static let adjustingTextOffset: UIOffset = .init(horizontal: 10, vertical: .zero)
     static let adjustingRightIconOffset: UIOffset = .init(horizontal: -10, vertical: .zero)

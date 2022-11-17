@@ -1,6 +1,6 @@
 import UIKit
 
-class SpinnerView: UIView {
+final class SpinnerView: UIView {
     
     // MARK: - Lifecycle
     
@@ -18,7 +18,7 @@ class SpinnerView: UIView {
         super.layoutSubviews()
         layer.fillColor = nil
         layer.strokeColor = R.Colors.violet.cgColor
-        layer.lineWidth = 2
+        layer.lineWidth = Constants.lineWidth
         setPath()
     }
     
@@ -69,31 +69,31 @@ private extension SpinnerView {
     }
     
     func animate() {
-        var time: CFTimeInterval = 0
+        var time: CFTimeInterval = .zero
         var times = [CFTimeInterval]()
-        var start: CGFloat = 0
+        var start: CGFloat = .zero
         var rotations = [CGFloat]()
         var strokeEnds = [CGFloat]()
         
         let poses = type(of: self).poses
-        let totalSeconds = poses.reduce(0) { $0 + $1.secondsSincePriorPose }
+        let totalSeconds = poses.reduce(.zero) { $0 + $1.secondsSincePriorPose }
         
         for pose in poses {
             time += pose.secondsSincePriorPose
             times.append(time / totalSeconds)
             start = pose.start
-            rotations.append(start * 2 * .pi)
+            rotations.append(start * Constants.lineWidth * .pi)
             strokeEnds.append(pose.length)
         }
         
         times.append(times.last!)
-        rotations.append(rotations[0])
-        strokeEnds.append(strokeEnds[0])
+        rotations.append(rotations[.zero])
+        strokeEnds.append(strokeEnds[.zero])
         
         animateKeyPath(keyPath: "strokeEnd", duration: totalSeconds, times: times, values: strokeEnds)
         animateKeyPath(keyPath: "transform.rotation", duration: totalSeconds, times: times, values: rotations)
         
-        animateStrokeHueWithDuration(duration: totalSeconds * 5)
+        animateStrokeHueWithDuration(duration: totalSeconds * Constants.duration)
     }
     
     func animateKeyPath(keyPath: String, duration: CFTimeInterval, times: [CFTimeInterval], values: [CGFloat]) {
@@ -107,12 +107,20 @@ private extension SpinnerView {
     }
     
     func animateStrokeHueWithDuration(duration: CFTimeInterval) {
-        let count = 36
+        let count = Constants.countAnimate
         let animation = CAKeyframeAnimation(keyPath: "strokeColor")
-        animation.keyTimes = (0 ... count).map { NSNumber(value: CFTimeInterval($0) / CFTimeInterval(count)) }
+        animation.keyTimes = (.zero ... count).map { NSNumber(value: CFTimeInterval($0) / CFTimeInterval(count)) }
         animation.duration = duration
         animation.calculationMode = .linear
         animation.repeatCount = Float.infinity
         layer.add(animation, forKey: animation.keyPath)
     }
+}
+
+// MARK: - Constants
+
+private enum Constants {
+    static let lineWidth: CGFloat = 2
+    static let duration: Double = 5
+    static let countAnimate: Int = 36
 }

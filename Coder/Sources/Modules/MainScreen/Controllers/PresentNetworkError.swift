@@ -1,6 +1,6 @@
 import UIKit
 
-class PresentNetworkError {
+final class PresentNetworkError {
     
     private lazy var window = UIApplication.shared.windows.last!
     private lazy var top = CGAffineTransform(translationX: .zero, y: -300)

@@ -2,12 +2,19 @@ import Foundation
 
 final class NetworkTask {
     
+    // MARK: - Properties
+    
     private let baseUrl: URL
     
     init(baseUrl: URL = URL(
         string: "https://stoplight.io/mocks/kode-education/trainee-test/25143926")!) {
         self.baseUrl = baseUrl
     }
+}
+
+// MARK: - Public Methods
+
+extension NetworkTask {
     
     @discardableResult
     func getData<Response: Codable>(
