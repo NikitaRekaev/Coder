@@ -27,8 +27,8 @@ final class UserTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = .white
         
-        configureUI()
-        configureSkeletonUI()
+        setViewPosition()
+        setSkeletonViewPosition()
     }
     
     required init?(coder: NSCoder) {
@@ -119,11 +119,11 @@ private extension UserTableViewCell {
     }
 }
 
-// MARK: - Configure Views
+// MARK: - Setting View
 
 private extension UserTableViewCell {
     
-    func configureUI() {
+    func setViewPosition() {
         [avatarImageView, nameLabel, tagLabel, departmentLabel, birthdayLabel].forEach { addView($0) }
         
         NSLayoutConstraint.activate([
@@ -187,11 +187,11 @@ private extension UserTableViewCell {
     }
 }
 
-// MARK: - Configure Skeleton
+// MARK: - Setting SkeletonView
 
 private extension UserTableViewCell {
     
-    func configureSkeletonUI() {
+    func setSkeletonViewPosition() {
         [avatarSkeletonView, nameSkeletonView, departmentSkeletonView].forEach { addView($0) }
         
         NSLayoutConstraint.activate([
