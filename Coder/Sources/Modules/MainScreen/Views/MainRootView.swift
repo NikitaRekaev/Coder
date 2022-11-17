@@ -16,9 +16,9 @@ final class MainRootView: BaseView {
     private let grayCircleView = GrayCircleView(frame: Constants.refreshSubViewFrame)
     private let spinnerView = SpinnerView(frame: Constants.refreshSubViewFrame)
     
-    // MARK: - Appearance
+    // MARK: - Setting View
     
-    override func configureAppearance() {
+    override func setViewAppearance() {
         backgroundColor = .white
         
         searchErrorView.isHidden = true
@@ -27,7 +27,7 @@ final class MainRootView: BaseView {
         refreshControl.tintColor = .clear
     }
     
-    override func configureUI() {
+    override func setViewPosition() {
         addSubView()
         
         NSLayoutConstraint.activate([
