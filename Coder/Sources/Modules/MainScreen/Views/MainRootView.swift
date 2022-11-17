@@ -59,7 +59,7 @@ final class MainRootView: BaseView {
     }
 }
 
-// MARK: - SetView
+// MARK: - Set ErrorView
 
 extension MainRootView {
     
