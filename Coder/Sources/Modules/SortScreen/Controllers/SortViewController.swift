@@ -25,7 +25,7 @@ final class SortViewController: BottomSheetController<SortView> {
 
 private extension SortViewController {
     func setupTargets() {
-        mainView.sortButtonArray.forEach { sortButton in
+        selfView.sortButtonArray.forEach { sortButton in
             sortButton.addTarget(self, action: #selector(sortButtonClicked), for: .touchUpInside)
         }
     }
@@ -42,7 +42,7 @@ private extension SortViewController {
     
     func sortButtonClicked(_ sender: SortButton) {
         
-        mainView.sortButtonArray.forEach { sortButton in
+        selfView.sortButtonArray.forEach { sortButton in
             if sortButton == sender {
                 return sortButton.isSelected = true
             }
