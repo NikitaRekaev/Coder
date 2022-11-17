@@ -11,9 +11,9 @@ final class PhoneView: BaseView {
                                                  width: Constants.View.width,
                                                  height: Constants.View.height))
     
-    // MARK: - ConfigureUI
+    // MARK: - Setting View
     
-    override func configureUI() {
+    override func setViewPosition() {
         [phoneView, phoneImageView, phoneButton].forEach { addSubview($0) }
         [phoneImageView, phoneButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
