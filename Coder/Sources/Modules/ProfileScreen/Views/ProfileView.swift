@@ -14,15 +14,13 @@ final class ProfileView: BaseView {
     private let stackView = ProfileView.makeStackView()
     private let birthView = BirthView()
     
-   // MARK: - Appearance
+    // MARK: - Setting View
     
-    override func configureAppearance() {
+    override func setViewAppearance() {
         backgroundColor = .white
     }
     
-    // MARK: - ConfigureUI
-    
-    override func configureUI() {
+    override func setViewPosition() {
         configureTop()
         configureBottom()
     }
