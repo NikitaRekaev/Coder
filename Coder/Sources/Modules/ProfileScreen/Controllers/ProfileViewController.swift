@@ -75,6 +75,7 @@ private extension ProfileViewController {
 
 @objc
 private extension ProfileViewController {
+    
     func phoneButtonClicked() {
         aler(title: model.formatPhone(phone: item.phone), titleSecond: item.phone)
     }

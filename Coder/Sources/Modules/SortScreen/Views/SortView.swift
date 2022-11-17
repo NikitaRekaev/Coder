@@ -12,9 +12,9 @@ final class SortView: BaseView {
     private let topView = SortView.makeTopView()
     private let titleLabel = SortView.makeTitleLabel()
     
-    // MARK: - Appearance
+    // MARK: - Setting View
     
-    override func configureAppearance() {
+    override func setViewAppearance() {
         backgroundColor = .white
         
         SortModel.allCases.forEach({ model in
@@ -24,9 +24,7 @@ final class SortView: BaseView {
         })
     }
     
-    // MARK: - ConfigureUI
-    
-    override func configureUI() {
+    override func setViewPosition() {
         [topView, titleLabel, buttonStack].forEach { addView($0) }
         
         NSLayoutConstraint.activate([

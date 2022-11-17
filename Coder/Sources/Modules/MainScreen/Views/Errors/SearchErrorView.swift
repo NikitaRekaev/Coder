@@ -8,15 +8,13 @@ final class SearchErrorView: BaseView {
     private let titleLabel = SearchErrorView.makeTitleLabel()
     private let subTitleLabel = SearchErrorView.makeSubTitleLabel()
     
-    // MARK: - Appearance
+    // MARK: - Setting View
     
-    override func configureAppearance() {
+    override func setViewAppearance() {
         self.backgroundColor = .white
     }
     
-    // MARK: - ConfigureUI
-    
-    override func configureUI() {
+    override func setViewPosition() {
         [loupe, titleLabel, subTitleLabel].forEach { addView($0) }
         
         NSLayoutConstraint.activate([

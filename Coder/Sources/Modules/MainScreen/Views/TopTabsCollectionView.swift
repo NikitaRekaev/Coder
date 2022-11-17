@@ -9,7 +9,8 @@ final class TopTabsCollectionView: UICollectionView {
         layout.scrollDirection = .horizontal
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         self.init(frame: .zero, collectionViewLayout: layout)
-        configureAppearance()
+        
+        setViewAppearance()
     }
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
@@ -25,7 +26,7 @@ final class TopTabsCollectionView: UICollectionView {
 
 private extension TopTabsCollectionView {
     
-    func configureAppearance() {
+    func setViewAppearance() {
         showsHorizontalScrollIndicator = false
     }
 }

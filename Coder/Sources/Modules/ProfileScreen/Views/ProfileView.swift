@@ -14,17 +14,15 @@ final class ProfileView: BaseView {
     private let stackView = ProfileView.makeStackView()
     private let birthView = BirthView()
     
-   // MARK: - Appearance
+    // MARK: - Setting View
     
-    override func configureAppearance() {
+    override func setViewAppearance() {
         backgroundColor = .white
     }
     
-    // MARK: - ConfigureUI
-    
-    override func configureUI() {
-        configureTop()
-        configureBottom()
+    override func setViewPosition() {
+        setTopPosition()
+        setBottomPosition()
     }
 }
 
@@ -112,7 +110,7 @@ private extension ProfileView {
 
 private extension ProfileView {
     
-    func configureTop() {
+    func setTopPosition() {
         [upView, avatarImageView, nameLabel, tagLabel, departmentLabel, stackView].forEach {
             addView($0)
         }
@@ -140,7 +138,7 @@ private extension ProfileView {
         ])
     }
     
-    func configureBottom() {
+    func setBottomPosition() {
         [birthView, phoneView].forEach { stackView.addArrangedSubview($0) }
         
         stackView.translatesAutoresizingMaskIntoConstraints = false

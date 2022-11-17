@@ -4,8 +4,8 @@ class BaseView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureAppearance()
-        configureUI()
+        setViewAppearance()
+        setViewPosition()
     }
     
     required init?(coder: NSCoder) {
@@ -13,8 +13,8 @@ class BaseView: UIView {
     }
     
     /// Method for customizing a visual
-    func configureAppearance() { }
+    func setViewAppearance() { }
     
     /// Method for adjusting the position of the view on the screen
-    func configureUI() { }
+    func setViewPosition() { }
 }

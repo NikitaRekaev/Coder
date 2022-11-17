@@ -17,14 +17,15 @@ final class SortViewController: BottomSheetController<SortView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.preferredSheetCornerRadius = Constants.buttomSheetCornerRadius
-        setupTargets()
+        setTargets()
     }
 }
 
 // MARK: - Private Methods
 
 private extension SortViewController {
-    func setupTargets() {
+    
+    func setTargets() {
         selfView.sortButtonArray.forEach { sortButton in
             sortButton.addTarget(self, action: #selector(sortButtonClicked), for: .touchUpInside)
         }
@@ -58,5 +59,6 @@ private extension SortViewController {
 // MARK: - Constants
 
 private enum Constants {
+    
     static let buttomSheetCornerRadius: CGFloat = 8
 }

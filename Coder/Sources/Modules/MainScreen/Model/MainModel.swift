@@ -15,6 +15,7 @@ struct MainModel {
 // MARK: - Search and Tabs
 
 extension MainModel {
+    
     var filteredUser: [Item] {
         return users
             .filter({
@@ -123,6 +124,7 @@ extension MainModel {
 // MARK: - Constants
 
 private enum Constants {
+    
     static let year = 365
     static let week = 7
     static let moreWeek = 8

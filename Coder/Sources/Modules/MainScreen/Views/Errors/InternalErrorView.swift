@@ -10,15 +10,13 @@ final class InternalErrorView: BaseView {
     private let titleLabel = InternalErrorView.makeTitleLabel()
     private let subTitleLabel = InternalErrorView.makeSubTitleLabel()
     
-    // MARK: - Appearance
+    // MARK: - Setting View
     
-    override func configureAppearance() {
+    override func setViewAppearance() {
         self.backgroundColor = .white
     }
     
-    // MARK: - ConfigureUI
-    
-    override func configureUI() {
+    override func setViewPosition() {
         [imageView, titleLabel, subTitleLabel, tryAgainButton].forEach { addView($0) }
         
         NSLayoutConstraint.activate([

@@ -120,6 +120,7 @@ private extension SpinnerView {
 // MARK: - Constants
 
 private enum Constants {
+    
     static let lineWidth: CGFloat = 2
     static let duration: Double = 5
     static let countAnimate: Int = 36

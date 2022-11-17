@@ -7,7 +7,7 @@ final class BackBarButtonItem: UIBarButtonItem {
     convenience init(target: UINavigationController) {
         self.init()
         self.target = target
-        configureAppearance()
+        setViewAppearance()
     }
     
     override init() {
@@ -23,7 +23,7 @@ final class BackBarButtonItem: UIBarButtonItem {
 
 private extension BackBarButtonItem {
     
-    func configureAppearance() {
+    func setViewAppearance() {
         style = .plain
         image = R.Images.backArrow
         tintColor = .black
