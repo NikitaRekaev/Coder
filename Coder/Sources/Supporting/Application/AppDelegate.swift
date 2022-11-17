@@ -9,7 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        configureWindow()
+        setWindowSetting()
         launchCheckingNetworkConnection()
         return true
     }
@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 private extension AppDelegate {
     
-    func configureWindow() {
+    func setWindowSetting() {
         let rootViewController = MainViewController()
         
         window?.rootViewController = UINavigationController(rootViewController: rootViewController)
