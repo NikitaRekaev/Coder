@@ -1,6 +1,6 @@
 import UIKit
 
-class SpinnerView: UIView {
+final class SpinnerView: UIView {
     
     // MARK: - Lifecycle
     
