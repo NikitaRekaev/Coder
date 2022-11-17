@@ -34,6 +34,7 @@ final class PhoneView: BaseView {
 // MARK: - Set Data Methods
 
 extension PhoneView {
+    
     func setData(phoneNumber: String) {
         phoneButton.setTitle(phoneNumber, for: .normal)
     }
