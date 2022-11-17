@@ -9,9 +9,9 @@ final class HeaderSectionView: BaseView {
     private let rightLine = HeaderSectionView.makeLine()
     private let leftLine = HeaderSectionView.makeLine()
      
-     // MARK: - ConfigureUI
+    // MARK: - Setting View
      
-     override func configureUI() {
+     override func setViewPosition() {
          [yearLabel, rightLine, leftLine].forEach { addView($0) }
          
          NSLayoutConstraint.activate([
