@@ -27,7 +27,6 @@ struct ProfileModel {
         var dateFormatter = formatter.string(from: date)
         dateFormatter.removeLast(.three)
         return dateFormatter
-        
     }
     
     func calculateYears(date: Date?) -> String {
