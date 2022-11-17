@@ -33,15 +33,15 @@ private extension ProfileViewController {
     }
     
     func setTargets() {
-        mainView.phoneView.phoneButton.addTarget(self, action: #selector(phoneButtonClicked), for: .touchUpInside)
+        selfView.phoneView.phoneButton.addTarget(self, action: #selector(phoneButtonClicked), for: .touchUpInside)
     }
     
     func setData() {
-        mainView.setImage(urlString: item.avatarUrl)
+        selfView.setImage(urlString: item.avatarUrl)
         let formattedPhone = model.formatPhone(phone: item.phone)
         let formattedBirthday = model.formatDate(date: item.birthdayDate)
         let calculatedYears = model.calculateYears(date: item.birthdayDate)
-        mainView.setData(firstName: item.firstName,
+        selfView.setData(firstName: item.firstName,
                          lastName: item.lastName,
                          tag: item.userTag,
                          department: item.department,
