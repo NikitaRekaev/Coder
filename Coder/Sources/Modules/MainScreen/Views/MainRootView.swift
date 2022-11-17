@@ -92,6 +92,7 @@ private extension MainRootView {
 // MARK: - Constants
 
 private enum Constants {
+    
     static let tabsHeight: CGFloat = 36
     static let separatorHeight: CGFloat = 0.33
     static let refreshSubViewFrame = CGRect(x: UIScreen.main.bounds.width / 2.1, y: 20, width: 20, height: 20)
