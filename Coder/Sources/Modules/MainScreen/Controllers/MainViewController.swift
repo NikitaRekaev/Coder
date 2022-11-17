@@ -32,24 +32,24 @@ final class MainViewController: BaseViewController<MainRootView> {
 extension MainViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        model.searchText = mainView.searchBar.text ?? ""
-        mainView.setSearchErrorView(error: model.filteredUser.isEmpty)
-        mainView.userTableView.reloadData()
+        model.searchText = selfView.searchBar.text ?? ""
+        selfView.setSearchErrorView(error: model.filteredUser.isEmpty)
+        selfView.userTableView.reloadData()
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        mainView.searchBar.showsCancelButton = true
+        selfView.searchBar.showsCancelButton = true
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        mainView.searchBar.searchTextField.leftView = UIImageView(image: R.Images.SearchBar.leftImageNormal)
-        mainView.searchBar.showsCancelButton = false
-        mainView.searchBar.showsBookmarkButton = true
-        mainView.searchBar.text = nil
-        mainView.searchBar.endEditing(true)
+        selfView.searchBar.searchTextField.leftView = UIImageView(image: R.Images.SearchBar.leftImageNormal)
+        selfView.searchBar.showsCancelButton = false
+        selfView.searchBar.showsBookmarkButton = true
+        selfView.searchBar.text = nil
+        selfView.searchBar.endEditing(true)
         model.searchText = ""
-        mainView.setSearchErrorView(error: false)
-        mainView.userTableView.reloadData()
+        selfView.setSearchErrorView(error: false)
+        selfView.userTableView.reloadData()
     }
     
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
@@ -69,8 +69,8 @@ extension MainViewController: SortDelegate {
             self.model.userSortByDate()
         }
         
-        mainView.searchBar.setImage(R.Images.SearchBar.rightImageSelected, for: .bookmark, state: .normal)
-        mainView.userTableView.reloadData()
+        selfView.searchBar.setImage(R.Images.SearchBar.rightImageSelected, for: .bookmark, state: .normal)
+        selfView.userTableView.reloadData()
     }
     
     func showBirthday(shouldShow: Bool) {
@@ -92,7 +92,7 @@ extension MainViewController: UICollectionViewDelegate {
         
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         
-        mainView.userTableView.reloadData()
+        selfView.userTableView.reloadData()
         updateDepartmentSelection()
     }
 }
@@ -131,7 +131,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
         label.text = tabs[indexPath.item].title
         label.sizeToFit()
         
-        return CGSize(width: label.frame.width, height: mainView.topTabsCollectionView.frame.height)
+        return CGSize(width: label.frame.width, height: selfView.topTabsCollectionView.frame.height)
     }
 }
 
@@ -226,48 +226,48 @@ extension MainViewController: UITableViewDataSource {
 private extension MainViewController {
     
     func setupTargets() {
-        mainView.internalErrorView.tryAgainButton.addTarget(self, action: #selector(checkConnection), for: .touchUpInside)
-        mainView.searchBar.searchTextField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
-        mainView.refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        selfView.internalErrorView.tryAgainButton.addTarget(self, action: #selector(checkConnection), for: .touchUpInside)
+        selfView.searchBar.searchTextField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+        selfView.refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
     }
     
     func setupNavigationItem() {
-        mainView.searchBar.delegate = self
-        navigationItem.titleView = mainView.searchBar
+        selfView.searchBar.delegate = self
+        navigationItem.titleView = selfView.searchBar
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     func setupTopTabs() {
-        mainView.topTabsCollectionView.delegate = self
-        mainView.topTabsCollectionView.dataSource = self
-        mainView.topTabsCollectionView.showsHorizontalScrollIndicator = false
-        mainView.topTabsCollectionView.register(
+        selfView.topTabsCollectionView.delegate = self
+        selfView.topTabsCollectionView.dataSource = self
+        selfView.topTabsCollectionView.showsHorizontalScrollIndicator = false
+        selfView.topTabsCollectionView.register(
             TopTabsCollectionViewCell.self,
             forCellWithReuseIdentifier: TopTabsCollectionViewCell.identifier
         )
     }
     
     func setupTableView() {
-        mainView.userTableView.separatorColor = .clear
-        mainView.userTableView.delegate = self
-        mainView.userTableView.dataSource = self
-        mainView.userTableView.register(UserTableViewCell.self,
+        selfView.userTableView.separatorColor = .clear
+        selfView.userTableView.delegate = self
+        selfView.userTableView.dataSource = self
+        selfView.userTableView.register(UserTableViewCell.self,
                                         forCellReuseIdentifier: UserTableViewCell.identifier)
     }
     
     func setViewDependingOnConnection() {
         if NetworkMonitor.shared.isConnected {
-            mainView.setErrorView(error: false)
+            selfView.setErrorView(error: false)
         } else {
-            mainView.setErrorView(error: true)
+            selfView.setErrorView(error: true)
         }
         
         NetworkMonitor.shared.stopMonitoring()
     }
     
     func updateDepartmentSelection() {
-        mainView.topTabsCollectionView.visibleCells.compactMap({ $0 as? TopTabsCollectionViewCell }).forEach({ cell in
+        selfView.topTabsCollectionView.visibleCells.compactMap({ $0 as? TopTabsCollectionViewCell }).forEach({ cell in
             let shouldBeSelected = cell.model == model.selectedDepartment
             cell.setCellSelected(shouldBeSelected)
         })
@@ -277,8 +277,8 @@ private extension MainViewController {
         switch result {
         case let .success(responseData):
             self.model.users = responseData.items
-            self.mainView.setErrorView(error: false)
-            self.mainView.userTableView.reloadData()
+            self.selfView.setErrorView(error: false)
+            self.selfView.userTableView.reloadData()
         case .failure(_:):
             PresentNetworkError().error()
         }
@@ -286,7 +286,7 @@ private extension MainViewController {
     
     func pullRefresh(result: Result<UserModel, Error>) {
         loadData(result: result)
-        self.mainView.refreshControl.endRefreshing()
+        self.selfView.refreshControl.endRefreshing()
     }
 }
 
