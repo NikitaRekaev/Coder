@@ -6,7 +6,7 @@ final class ProfileViewController: BaseViewController<ProfileView> {
     
     var item: Item!
     
-    private let model = ProfileModel()
+    private lazy var model = ProfileModel()
     
     // MARK: - Lifecycle
     
