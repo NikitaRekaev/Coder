@@ -47,6 +47,7 @@ final class BirthView: BaseView {
 // MARK: - Set Data
 
 extension BirthView {
+    
     func setData(dateBirth: String, years: String) {
         self.birthDataLabel.text = "\(dateBirth)"
         self.yearsLabel.text = "\(years)"
