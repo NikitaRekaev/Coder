@@ -333,6 +333,7 @@ private extension MainViewController {
 // MARK: - Constants
 
 private enum Constants {
+    
     static let skeletonCellCount: Int = 15
     static let rowCellHeight: CGFloat = 84
     static let headerViewHeight: CGFloat = 68
