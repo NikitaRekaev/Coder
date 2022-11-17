@@ -18,7 +18,7 @@ final class TopTabsCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        configureBorder()
+        setBorderAppearance()
         layoutSubviews()
     }
     
@@ -78,7 +78,7 @@ extension TopTabsCollectionViewCell {
 
 private extension TopTabsCollectionViewCell {
     
-    func configureBorder() {
+    func setBorderAppearance() {
         bottomBorderView.backgroundColor = R.Colors.violet
         bottomBorderView.isHidden = false
     }
