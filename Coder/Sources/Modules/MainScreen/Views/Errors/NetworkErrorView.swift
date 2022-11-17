@@ -6,17 +6,13 @@ final class NetworkErrorView: BaseView {
     
     private let messageErrorLabel = NetworkErrorView.makeMessageErrorLabel()
     
-    // MARK: - Appearance
+    // MARK: - Setting View
     
-    override func configureAppearance() {
-        super.configureAppearance()
+    override func setViewAppearance() {
         backgroundColor = R.Colors.networkError
     }
     
-    // MARK: - UI
-    
-    override func configureUI() {
-        super.configureUI()
+    override func setViewPosition() {
         self.addSubview(messageErrorLabel)
         
         messageErrorLabel.frame = CGRect(x: Constants.frameX,
