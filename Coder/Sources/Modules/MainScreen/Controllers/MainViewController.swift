@@ -2,27 +2,28 @@ import UIKit
 
 final class MainViewController: BaseViewController<MainRootView> {
     
+    // MARK: - Network
+    
+    private lazy var networkTask = NetworkTask()
+    
     // MARK: - Controllers
     
     private lazy var sortViewController = SortViewController()
     
+    // MARK: - Models
+    
+    private lazy var model = MainModel()
+    private lazy var tabs = Department.allCases
+    
     // MARK: - Internal Properties
     
     private lazy var shouldShowBirthday: Bool = false
-    private lazy var model = MainModel()
-    private lazy var tabs = Department.allCases
-    private lazy var networkTask = NetworkTask()
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sortViewController.delegate = self
-        setNavigationItem()
-        setTopTabs()
-        setTableView()
-        setTargets()
-        setViewDependingOnConnection()
+        setScreenSettings()
         networkTask.getData(from: "users", loadData(result:))
     }
 }
@@ -100,6 +101,7 @@ extension MainViewController: UICollectionViewDelegate {
 // MARK: - UICollectionViewDataSource
 
 extension MainViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tabs.count
     }
@@ -225,6 +227,28 @@ extension MainViewController: UITableViewDataSource {
 
 private extension MainViewController {
     
+    func setScreenSettings() {
+        setDelegate()
+        setDataSource()
+        setNavigationItem()
+        setTopTabs()
+        setTableView()
+        setTargets()
+        setViewDependingOnConnection()
+    }
+    
+    func setDelegate() {
+        sortViewController.delegate = self
+        selfView.searchBar.delegate = self
+        selfView.topTabsCollectionView.delegate = self
+        selfView.userTableView.delegate = self
+    }
+    
+    func setDataSource() {
+        selfView.topTabsCollectionView.dataSource = self
+        selfView.userTableView.dataSource = self
+    }
+    
     func setTargets() {
         selfView.internalErrorView.tryAgainButton.addTarget(self, action: #selector(checkConnection), for: .touchUpInside)
         selfView.searchBar.searchTextField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
@@ -232,15 +256,12 @@ private extension MainViewController {
     }
     
     func setNavigationItem() {
-        selfView.searchBar.delegate = self
         navigationItem.titleView = selfView.searchBar
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     func setTopTabs() {
-        selfView.topTabsCollectionView.delegate = self
-        selfView.topTabsCollectionView.dataSource = self
         selfView.topTabsCollectionView.showsHorizontalScrollIndicator = false
         selfView.topTabsCollectionView.register(
             TopTabsCollectionViewCell.self,
@@ -250,8 +271,6 @@ private extension MainViewController {
     
     func setTableView() {
         selfView.userTableView.separatorColor = .clear
-        selfView.userTableView.delegate = self
-        selfView.userTableView.dataSource = self
         selfView.userTableView.register(UserTableViewCell.self,
                                         forCellReuseIdentifier: UserTableViewCell.identifier)
     }
