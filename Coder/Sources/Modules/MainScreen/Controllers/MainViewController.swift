@@ -18,10 +18,10 @@ final class MainViewController: BaseViewController<MainRootView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         sortViewController.delegate = self
-        setupNavigationItem()
-        setupTopTabs()
-        setupTableView()
-        setupTargets()
+        setNavigationItem()
+        setTopTabs()
+        setTableView()
+        setTargets()
         setViewDependingOnConnection()
         networkTask.getData(from: "users", loadData(result:))
     }
@@ -225,20 +225,20 @@ extension MainViewController: UITableViewDataSource {
 
 private extension MainViewController {
     
-    func setupTargets() {
+    func setTargets() {
         selfView.internalErrorView.tryAgainButton.addTarget(self, action: #selector(checkConnection), for: .touchUpInside)
         selfView.searchBar.searchTextField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
         selfView.refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
     }
     
-    func setupNavigationItem() {
+    func setNavigationItem() {
         selfView.searchBar.delegate = self
         navigationItem.titleView = selfView.searchBar
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
-    func setupTopTabs() {
+    func setTopTabs() {
         selfView.topTabsCollectionView.delegate = self
         selfView.topTabsCollectionView.dataSource = self
         selfView.topTabsCollectionView.showsHorizontalScrollIndicator = false
@@ -248,7 +248,7 @@ private extension MainViewController {
         )
     }
     
-    func setupTableView() {
+    func setTableView() {
         selfView.userTableView.separatorColor = .clear
         selfView.userTableView.delegate = self
         selfView.userTableView.dataSource = self
