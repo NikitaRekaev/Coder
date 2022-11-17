@@ -21,8 +21,8 @@ final class ProfileView: BaseView {
     }
     
     override func setViewPosition() {
-        configureTop()
-        configureBottom()
+        setTopPosition()
+        setBottomPosition()
     }
 }
 
@@ -110,7 +110,7 @@ private extension ProfileView {
 
 private extension ProfileView {
     
-    func configureTop() {
+    func setTopPosition() {
         [upView, avatarImageView, nameLabel, tagLabel, departmentLabel, stackView].forEach {
             addView($0)
         }
@@ -138,7 +138,7 @@ private extension ProfileView {
         ])
     }
     
-    func configureBottom() {
+    func setBottomPosition() {
         [birthView, phoneView].forEach { stackView.addArrangedSubview($0) }
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
