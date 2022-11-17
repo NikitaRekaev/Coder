@@ -1,6 +1,6 @@
 import UIKit
 
-class GrayCircleView: BaseView {
+final class GrayCircleView: BaseView {
     
     // MARK: - Views
     
