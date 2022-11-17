@@ -2,6 +2,8 @@ import UIKit
 
 final class ProfileViewController: BaseViewController<ProfileView> {
     
+    // MARK: - Models
+    
     var item: Item!
     
     private let model = ProfileModel()
