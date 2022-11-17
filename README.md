@@ -14,6 +14,7 @@
 * Swift 5
 * UIKit(programmatically UI)
 * MVC
+* SwiftLint
 * <a href="https://www.figma.com/file/GRRKONipVClULsfdCAuVs1/KODE-Trainee-Dev-Осень'21?node-id=0%3A1">Design</a>
 * <a href="https://kode-education.stoplight.io/docs/trainee-test/b3A6MjUxNDM5Mjg-get-users">API</a>
 
@@ -136,5 +137,5 @@ A: I wanted to implement all the functionality completely natively, you can see 
 Q: Why i chose [MVС](https://ru.wikipedia.org/wiki/Model-View-Controller) architecture? <br>
 A: Because it's perfect for this small project.</br>
 
-Q: Why don’t used [SwiftLint](https://github.com/realm/SwiftLint)?<br>
-A: Because I wanted to keep a completely native implementation and get rid of dependencies.</br>
+Q: Why i used [SwiftLint](https://github.com/realm/SwiftLint)?<br>
+A: To control the code style.</br>
