@@ -1,6 +1,6 @@
 import UIKit
 
-final class ProfileModel {
+struct ProfileModel {
     
     func formatPhone(phone: String) -> String {
         
