@@ -137,5 +137,5 @@ A: I wanted to implement all the functionality completely natively, you can see 
 Q: Why i chose [MVС](https://ru.wikipedia.org/wiki/Model-View-Controller) architecture? <br>
 A: Because it's perfect for this small project.</br>
 
-Q: Why i used [SwiftLint](https://github.com/realm/SwiftLint)?<br>
-A: To control the code style.</br>
+Q: Why used [SwiftLint](https://github.com/realm/SwiftLint)?<br>
+A: For style code control and additional static analysis.</br>
