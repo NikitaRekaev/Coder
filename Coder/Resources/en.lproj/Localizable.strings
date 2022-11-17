@@ -25,13 +25,13 @@
 "sortByBirthday.text" = "By birthday";
 
 // UnknownError
-"tryAgain.title" = "Try again";
+"tryAgain.text" = "Try again";
 "tryAgainSelected.text" = "I've been pressed";
 "unknownError.title" = "Someone broke everything";
 "unknownError.text" = "We will try to fix it quickly";
 
 // NoResult
-"serchError.title" = "We didn't find anyone";
+"searchError.title" = "We didn't find anyone";
 "searchError.text" = "Try to adjust the request";
 
 // NoInternet
