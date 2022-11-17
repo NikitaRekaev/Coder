@@ -6,7 +6,7 @@ final class SearchBar: UISearchBar {
     
     convenience init() {
         self.init(frame: .zero)
-        configureAppearance()
+        setViewAppearance()
     }
     
     override init(frame: CGRect) {
@@ -22,7 +22,7 @@ final class SearchBar: UISearchBar {
 
 private extension SearchBar {
     
-    func configureAppearance() {
+    func setViewAppearance() {
         showsBookmarkButton = true
         
         setImage(R.Images.SearchBar.rightImageNormal, for: .bookmark, state: .normal)
