@@ -14,7 +14,7 @@ final class PresentNetworkError {
 
 extension PresentNetworkError {
    
-    func error() {
+    func presentError() {
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
         swipeUp.direction = .up
         window.addGestureRecognizer(swipeUp)

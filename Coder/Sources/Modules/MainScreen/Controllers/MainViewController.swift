@@ -299,7 +299,7 @@ private extension MainViewController {
             self.selfView.setErrorView(error: false)
             self.selfView.userTableView.reloadData()
         case .failure(_:):
-            PresentNetworkError().error()
+            PresentNetworkError().presentError()
         }
     }
     
