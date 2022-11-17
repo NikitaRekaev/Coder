@@ -1,7 +1,8 @@
 import Foundation
 
+// MARK: - Properties
+
 struct Item: Codable {
-    
     let id: String
     let avatarUrl: String
     let firstName: String
@@ -12,6 +13,8 @@ struct Item: Codable {
     let birthday: String
     let phone: String
 }
+
+// MARK: - Format Date
 
 extension Item {
     var birthdayDate: Date? {
