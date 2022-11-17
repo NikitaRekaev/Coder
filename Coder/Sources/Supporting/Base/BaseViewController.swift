@@ -1,11 +1,12 @@
 import UIKit
 
-class BaseViewController<View: UIView>: UIViewController {
+class BaseViewController<T: UIView>: UIViewController {
+    
     // swiftlint: disable force_cast
-    var mainView: View { view as! View }
+    var selfView: T { view as! T }
     // swiftlint: enable force_cast
     
     override func loadView() {
-        view = View()
+        view = selfView
     }
 }
