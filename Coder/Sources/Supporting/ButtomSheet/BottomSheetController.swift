@@ -2,16 +2,16 @@
 
 import UIKit
 
-class BottomSheetController<View: UIView>: UIViewController {
+class BottomSheetController<T: UIView>: UIViewController {
     
     // MARK: - Following View
     
     // swiftlint: disable force_cast
-    var mainView: View { view as! View }
+    var selfView: T { view as! T }
     // swiftlint: enable force_cast
     
     override func loadView() {
-        view = View()
+        view = selfView
     }
     
     // MARK: - Properties
