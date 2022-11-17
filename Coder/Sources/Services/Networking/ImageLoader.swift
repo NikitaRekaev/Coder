@@ -2,6 +2,8 @@ import UIKit
 
 struct ImageLoader {
     
+    // MARK: - Load Image
+    
     func loadImage(from url: URL, _ onLoadWasCompleted: @escaping (_ result: Result<UIImage, Error>) -> Void) {
         if let imageFromCache = getCacheImage(url: url) {
             onLoadWasCompleted(.success(imageFromCache))
