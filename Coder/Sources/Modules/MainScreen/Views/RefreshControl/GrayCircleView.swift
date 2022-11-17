@@ -6,9 +6,9 @@ final class GrayCircleView: BaseView {
     
     private let spinnignCircle = CAShapeLayer()
     
-    // MARK: - Appearance
+    // MARK: - Setting View
     
-    override func configureAppearance() {
+    override func setViewAppearance() {
         let rect = self.bounds
         let circlarPath = UIBezierPath(ovalIn: rect)
         
