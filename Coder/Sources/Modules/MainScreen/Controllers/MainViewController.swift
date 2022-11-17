@@ -28,7 +28,7 @@ final class MainViewController: BaseViewController<MainRootView> {
     }
 }
 
-// MARK: - UISearchBarDelegate
+// MARK: - SearchBar Delegate
 
 extension MainViewController: UISearchBarDelegate {
     
@@ -58,7 +58,7 @@ extension MainViewController: UISearchBarDelegate {
     }
 }
 
-// MARK: - SortDelegate
+// MARK: - Sort Delegate
 
 extension MainViewController: SortDelegate {
     
@@ -79,7 +79,7 @@ extension MainViewController: SortDelegate {
     }
 }
 
-// MARK: - UICollectionViewDelegate
+// MARK: - CollectionView Delegate
 
 extension MainViewController: UICollectionViewDelegate {
     
@@ -98,7 +98,7 @@ extension MainViewController: UICollectionViewDelegate {
     }
 }
 
-// MARK: - UICollectionViewDataSource
+// MARK: - CollectionView DataSource
 
 extension MainViewController: UICollectionViewDataSource {
     
@@ -122,7 +122,7 @@ extension MainViewController: UICollectionViewDataSource {
     }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
+// MARK: - CollectionView Delegate FlowLayout
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     
@@ -137,7 +137,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - TableView Delegate
 
 extension MainViewController: UITableViewDelegate {
     
@@ -163,7 +163,7 @@ extension MainViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - TableView DataSource
 
 extension MainViewController: UITableViewDataSource {
     
