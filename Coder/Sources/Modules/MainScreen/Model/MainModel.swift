@@ -1,6 +1,6 @@
 import Foundation
 
-final class MainModel {
+struct MainModel {
     
     // MARK: - Properties
     
@@ -100,7 +100,8 @@ extension MainModel {
         return dayDifference
     }
     
-    func userSortByDate() {
+    mutating func userSortByDate() {
+        var users = users
         users.sort { date1, date2 in
             guard let date1 = date1.birthdayDate else { return false }
             guard let date2 = date2.birthdayDate else { return false }
