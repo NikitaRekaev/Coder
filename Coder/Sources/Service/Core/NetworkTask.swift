@@ -33,8 +33,6 @@ extension NetworkTask {
                 DispatchQueue.main.async {
                     if let error = error {
                         completion(.failure(error))
-                    } else {
-                        print("неизвестная ошибка")
                     }
                 }
                 return
