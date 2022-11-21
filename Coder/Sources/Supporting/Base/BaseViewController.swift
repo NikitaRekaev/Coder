@@ -7,6 +7,6 @@ class BaseViewController<T: UIView>: UIViewController {
     // swiftlint: enable force_cast
     
     override func loadView() {
-        view = selfView
+        view = T()
     }
 }
