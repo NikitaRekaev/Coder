@@ -10,7 +10,6 @@ final class SpinnerView: UIView {
         static let duration: Double = 5
         static let countAnimate: Int = 36
     }
-
     
     // MARK: - Lifecycle
     
