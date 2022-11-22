@@ -168,15 +168,16 @@ extension MainViewController: UITableViewDelegate {
 extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if model.users.isEmpty {
             return Constants.skeletonCellCount
-        } else {
-            if self.shouldShowBirthday {
-                return section == .zero ? model.thisYearBirthdayUser.count : model.nextYearBirthdayUser.count
-            } else {
-                return model.filteredUser.count
-            }
         }
+        
+        if self.shouldShowBirthday {
+            return section == .zero ? model.thisYearBirthdayUser.count : model.nextYearBirthdayUser.count
+        }
+        
+        return model.filteredUser.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
