@@ -334,15 +334,3 @@ private enum Constants {
     static let rowCellHeight: CGFloat = 84
     static let headerViewHeight: CGFloat = 68
 }
-
-
-protocol UserProvider {
-    func getUser() -> Item
-}
-
-class FilteredUser: UserProvider {
-    
-    func getUser() -> Item {
-        
-    }
-}
