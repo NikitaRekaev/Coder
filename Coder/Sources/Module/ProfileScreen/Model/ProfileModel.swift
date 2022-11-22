@@ -2,6 +2,26 @@ import UIKit
 
 struct ProfileModel {
     
+    // MARK: - Constants
+
+    private enum Constants {
+        
+        static let four = 4
+        static let eleven = 11
+        static let fourteen = 14
+        
+        enum Phone {
+            static let startIndex = 7
+            static let offsetByTwelve = 12
+            static let offsetByFifteen = 15
+        }
+    }
+}
+
+// MARK: - Public Methods
+
+extension ProfileModel {
+    
     func formatPhone(phone: String) -> String {
         
         var formattedPhone = "+7 (" + phone.filter { $0.isNumber }
@@ -57,20 +77,5 @@ struct ProfileModel {
         }
         
         return stringOfAge
-    }
-}
-
-// MARK: - Constants
-
-private enum Constants {
-    
-    static let four = 4
-    static let eleven = 11
-    static let fourteen = 14
-    
-    enum Phone {
-        static let startIndex = 7
-        static let offsetByTwelve = 12
-        static let offsetByFifteen = 15
     }
 }
