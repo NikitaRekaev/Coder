@@ -168,15 +168,16 @@ extension MainViewController: UITableViewDelegate {
 extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if model.users.isEmpty {
             return Constants.skeletonCellCount
-        } else {
-            if self.shouldShowBirthday {
-                return section == .zero ? model.thisYearBirthdayUser.count : model.nextYearBirthdayUser.count
-            } else {
-                return model.filteredUser.count
-            }
         }
+        
+        if self.shouldShowBirthday {
+            return section == .zero ? model.thisYearBirthdayUser.count : model.nextYearBirthdayUser.count
+        }
+        
+        return model.filteredUser.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -190,34 +191,29 @@ extension MainViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        if !model.users.isEmpty {
-            if shouldShowBirthday {
-                let sortedUser = model.userModelForSections[indexPath.section][indexPath.row]
-                cell.setImage(urlString: sortedUser.avatarUrl)
-                cell.setData(firstName: sortedUser.firstName,
-                             lastName: sortedUser.lastName,
-                             tag: sortedUser.userTag.lowercased(),
-                             department: sortedUser.department,
-                             dateBirth: model.formatDate(date: sortedUser.birthdayDate))
-            } else {
-                let user = model.filteredUser[indexPath.row]
-                
-                cell.setImage(urlString: user.avatarUrl)
-                cell.setData(
-                    firstName: user.firstName,
-                    lastName: user.lastName,
-                    tag: user.userTag.lowercased(),
-                    department: user.department,
-                    dateBirth: model.formatDate(date: user.birthdayDate)
-                )
-            }
-            
-            cell.setBirthdayLabelVisibility(shouldShowBirthday: self.shouldShowBirthday)
-            cell.setSkeletonView(show: false)
-            
-        } else {
+        var user: Item!
+        
+        if model.users.isEmpty {
             cell.setSkeletonView(show: true)
+            return cell
         }
+
+        if shouldShowBirthday {
+            user = model.userModelForSections[indexPath.section][indexPath.row]
+        } else {
+            user = model.filteredUser[indexPath.row]
+        }
+        
+        cell.setSkeletonView(show: false)
+        cell.setBirthdayLabelVisibility(shouldShowBirthday: self.shouldShowBirthday)
+        cell.setImage(urlString: user.avatarUrl)
+        cell.setData(
+            firstName: user.firstName,
+            lastName: user.lastName,
+            tag: user.userTag.lowercased(),
+            department: user.department,
+            dateBirth: model.formatDate(date: user.birthdayDate)
+        )
         
         return cell
     }
