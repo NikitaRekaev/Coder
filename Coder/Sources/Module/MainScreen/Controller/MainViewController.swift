@@ -191,34 +191,29 @@ extension MainViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        if !model.users.isEmpty {
-            if shouldShowBirthday {
-                let sortedUser = model.userModelForSections[indexPath.section][indexPath.row]
-                cell.setImage(urlString: sortedUser.avatarUrl)
-                cell.setData(firstName: sortedUser.firstName,
-                             lastName: sortedUser.lastName,
-                             tag: sortedUser.userTag.lowercased(),
-                             department: sortedUser.department,
-                             dateBirth: model.formatDate(date: sortedUser.birthdayDate))
-            } else {
-                let user = model.filteredUser[indexPath.row]
-                
-                cell.setImage(urlString: user.avatarUrl)
-                cell.setData(
-                    firstName: user.firstName,
-                    lastName: user.lastName,
-                    tag: user.userTag.lowercased(),
-                    department: user.department,
-                    dateBirth: model.formatDate(date: user.birthdayDate)
-                )
-            }
-            
-            cell.setBirthdayLabelVisibility(shouldShowBirthday: self.shouldShowBirthday)
-            cell.setSkeletonView(show: false)
-            
-        } else {
+        var user: Item!
+        
+        if model.users.isEmpty {
             cell.setSkeletonView(show: true)
+            return cell
         }
+
+        if shouldShowBirthday {
+            user = model.userModelForSections[indexPath.section][indexPath.row]
+        } else {
+            user = model.filteredUser[indexPath.row]
+        }
+        
+        cell.setSkeletonView(show: false)
+        cell.setBirthdayLabelVisibility(shouldShowBirthday: self.shouldShowBirthday)
+        cell.setImage(urlString: user.avatarUrl)
+        cell.setData(
+            firstName: user.firstName,
+            lastName: user.lastName,
+            tag: user.userTag.lowercased(),
+            department: user.department,
+            dateBirth: model.formatDate(date: user.birthdayDate)
+        )
         
         return cell
     }
@@ -338,4 +333,16 @@ private enum Constants {
     static let skeletonCellCount: Int = 15
     static let rowCellHeight: CGFloat = 84
     static let headerViewHeight: CGFloat = 68
+}
+
+
+protocol UserProvider {
+    func getUser() -> Item
+}
+
+class FilteredUser: UserProvider {
+    
+    func getUser() -> Item {
+        
+    }
 }
