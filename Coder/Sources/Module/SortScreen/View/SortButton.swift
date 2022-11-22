@@ -2,6 +2,13 @@ import UIKit
 
 final class SortButton: UIButton {
     
+    // MARK: - Constants
+
+    private enum Constants {
+        static let font = R.Fonts.interMedium(with: 16)
+        static let insetsLeft: CGFloat = 14
+    }
+    
     // MARK: - Properties
     
     var model: SortModel!
@@ -44,11 +51,4 @@ private extension SortButton {
         self.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([self.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)])
     }
-}
-
-// MARK: - Constants
-
-private enum Constants {
-    static let font = R.Fonts.interMedium(with: 16)
-    static let insetsLeft: CGFloat = 14
 }
