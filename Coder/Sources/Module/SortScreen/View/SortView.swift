@@ -2,6 +2,29 @@ import UIKit
 
 final class SortView: BaseView {
     
+    // MARK: - Constants
+
+    private enum Constants {
+        
+        enum TopView {
+            static let cornerRadius: CGFloat = 2
+            static let width: CGFloat = 56
+            static let height: CGFloat = 4
+        }
+        
+        enum TitleLable {
+            static let font = R.Fonts.interSemiBold(with: 20)
+            static let top: CGFloat = 24
+        }
+        
+        enum ButtonStack {
+            static let spacing: CGFloat = 35
+            static let top: CGFloat = 41.5
+            static let leading: CGFloat = 26
+            static let trailing: CGFloat = 26
+        }
+    }
+    
     // MARK: - Properties
     
     var sortButtonArray: [SortButton] = []
@@ -91,28 +114,5 @@ private extension SortView {
         case .birhDate:
             return R.Strings.Sort.sortByBirthday.localizedString
         }
-    }
-}
-
-// MARK: - Constants
-
-private enum Constants {
-    
-    enum TopView {
-        static let cornerRadius: CGFloat = 2
-        static let width: CGFloat = 56
-        static let height: CGFloat = 4
-    }
-    
-    enum TitleLable {
-        static let font = R.Fonts.interSemiBold(with: 20)
-        static let top: CGFloat = 24
-    }
-    
-    enum ButtonStack {
-        static let spacing: CGFloat = 35
-        static let top: CGFloat = 41.5
-        static let leading: CGFloat = 26
-        static let trailing: CGFloat = 26
     }
 }
