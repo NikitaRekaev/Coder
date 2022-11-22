@@ -2,6 +2,26 @@ import UIKit
 
 final class SearchErrorView: BaseView {
     
+    // MARK: - Constants
+
+    private enum Constants {
+        
+        enum Image {
+            static let top: CGFloat = 80
+            static let proportions: CGFloat = 56
+        }
+        
+        enum Title {
+            static let font = R.Fonts.interSemiBold(with: 17)
+            static let top: CGFloat = 8
+        }
+        
+        enum SupTitle {
+            static let font = R.Fonts.interRegular(with: 16)
+            static let top: CGFloat = 12
+        }
+    }
+    
     // MARK: - Views
     
     private let loupe = SearchErrorView.makeLoupeImageView()
@@ -61,25 +81,5 @@ private extension SearchErrorView {
         subTitleLabel.textColor = R.Colors.Text.inActive
         
         return subTitleLabel
-    }
-}
-
-// MARK: - Constants
-
-private enum Constants {
-    
-    enum Image {
-        static let top: CGFloat = 80
-        static let proportions: CGFloat = 56
-    }
-    
-    enum Title {
-        static let font = R.Fonts.interSemiBold(with: 17)
-        static let top: CGFloat = 8
-    }
-    
-    enum SupTitle {
-        static let font = R.Fonts.interRegular(with: 16)
-        static let top: CGFloat = 12
     }
 }
