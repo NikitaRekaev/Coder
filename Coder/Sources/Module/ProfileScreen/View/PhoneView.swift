@@ -2,6 +2,25 @@ import UIKit
 
 final class PhoneView: BaseView {
     
+    // MARK: - Constants
+
+    private enum Constants {
+        
+        enum View {
+            static let width: CGFloat = UIScreen.main.bounds.width
+            static let height: CGFloat = 73.5
+        }
+        
+        enum Image {
+            static let leading: CGFloat = 20
+        }
+        
+        enum Button {
+            static let font = R.Fonts.interMedium(with: 16)
+            static let trailig: CGFloat = 14
+        }
+    }
+    
     // MARK: - Views
     
     let phoneButton = PhoneView.makePhoneButton()
@@ -59,24 +78,5 @@ private extension PhoneView {
         phoneButton.titleLabel?.font = Constants.Button.font
         
         return phoneButton
-    }
-}
-
-// MARK: - Constants
-
-private enum Constants {
-    
-    enum View {
-        static let width: CGFloat = UIScreen.main.bounds.width
-        static let height: CGFloat = 73.5
-    }
-    
-    enum Image {
-        static let leading: CGFloat = 20
-    }
-    
-    enum Button {
-        static let font = R.Fonts.interMedium(with: 16)
-        static let trailig: CGFloat = 14
     }
 }
