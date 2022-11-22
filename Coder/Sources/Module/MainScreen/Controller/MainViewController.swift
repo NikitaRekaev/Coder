@@ -2,6 +2,15 @@ import UIKit
 
 final class MainViewController: BaseViewController<MainRootView> {
     
+    // MARK: - Constants
+
+    private enum Constants {
+        
+        static let skeletonCellCount: Int = 15
+        static let rowCellHeight: CGFloat = 84
+        static let headerViewHeight: CGFloat = 68
+    }
+    
     // MARK: - Network
     
     private lazy var networkTask = NetworkTask()
@@ -324,13 +333,4 @@ private extension MainViewController {
     func checkConnection(_ sender: UIButton) {
         networkTask.getData(from: "users", loadData(result:))
     }
-}
-
-// MARK: - Constants
-
-private enum Constants {
-    
-    static let skeletonCellCount: Int = 15
-    static let rowCellHeight: CGFloat = 84
-    static let headerViewHeight: CGFloat = 68
 }
