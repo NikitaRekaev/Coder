@@ -2,6 +2,24 @@ import UIKit
 
 final class TopTabsCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Constants
+
+    private enum Constants {
+        
+        static let borderHeight: CGFloat = 2
+        
+        enum Text {
+            static let font = R.Fonts.interMedium(with: 15)
+            static let selectedFont = R.Fonts.interSemiBold(with: 15)
+        }
+        
+        enum Content {
+            static let height: CGFloat = 36
+            static let width: CGFloat = -16
+            static let leading: CGFloat = 16
+        }
+    }
+    
     // MARK: - Properties
     
     static let identifier = "Cell"
@@ -81,23 +99,5 @@ private extension TopTabsCollectionViewCell {
     func setBorderAppearance() {
         bottomBorderView.backgroundColor = R.Colors.violet
         bottomBorderView.isHidden = false
-    }
-}
-
-// MARK: - Constants
-
-private enum Constants {
-    
-    static let borderHeight: CGFloat = 2
-    
-    enum Text {
-        static let font = R.Fonts.interMedium(with: 15)
-        static let selectedFont = R.Fonts.interSemiBold(with: 15)
-    }
-    
-    enum Content {
-        static let height: CGFloat = 36
-        static let width: CGFloat = -16
-        static let leading: CGFloat = 16
     }
 }
