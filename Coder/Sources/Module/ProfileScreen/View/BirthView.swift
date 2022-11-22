@@ -2,6 +2,29 @@ import UIKit
 
 final class BirthView: BaseView {
     
+    // MARK: - Constants
+
+    private enum Constants {
+        
+        static let textFont = R.Fonts.interMedium(with: 16)
+        static let imageLeading: CGFloat = 20
+        static let birhLeading: CGFloat = 14
+        static let yearsTrailing: CGFloat = -20
+        
+        enum View {
+            static let widht: CGFloat = UIScreen.main.bounds.width
+            static let height: CGFloat = 73.5
+        }
+        
+        enum Line {
+            static let top: CGFloat = 27.5
+            static let leading: CGFloat = 16
+            static let trailing: CGFloat = -16
+            static let width: CGFloat = UIScreen.main.bounds.size.width - 32.0
+            static let height: CGFloat = 0.5
+        }
+    }
+    
     // MARK: - Views
     
     private let starImageView = BirthView.makeStarImageView()
@@ -86,28 +109,5 @@ private extension BirthView {
         let dividingLine = UIView(frame: .zero)
         dividingLine.backgroundColor = R.Colors.separator
         return dividingLine
-    }
-}
-
-// MARK: - Constants
-
-private enum Constants {
-    
-    static let textFont = R.Fonts.interMedium(with: 16)
-    static let imageLeading: CGFloat = 20
-    static let birhLeading: CGFloat = 14
-    static let yearsTrailing: CGFloat = -20
-    
-    enum View {
-        static let widht: CGFloat = UIScreen.main.bounds.width
-        static let height: CGFloat = 73.5
-    }
-    
-    enum Line {
-        static let top: CGFloat = 27.5
-        static let leading: CGFloat = 16
-        static let trailing: CGFloat = -16
-        static let width: CGFloat = UIScreen.main.bounds.size.width - 32.0
-        static let height: CGFloat = 0.5
     }
 }
