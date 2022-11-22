@@ -2,6 +2,15 @@ import UIKit
 
 final class MainRootView: BaseView {
     
+    // MARK: - Constants
+
+    private enum Constants {
+        
+        static let tabsHeight: CGFloat = 36
+        static let separatorHeight: CGFloat = 0.33
+        static let refreshSubViewFrame = CGRect(x: UIScreen.main.bounds.width / 2.1, y: 20, width: 20, height: 20)
+    }
+    
     // MARK: - Views
     
     let searchBar = SearchBar()
@@ -87,13 +96,4 @@ private extension MainRootView {
         
         [grayCircleView, spinnerView].forEach { refreshControl.addView($0) }
     }
-}
-
-// MARK: - Constants
-
-private enum Constants {
-    
-    static let tabsHeight: CGFloat = 36
-    static let separatorHeight: CGFloat = 0.33
-    static let refreshSubViewFrame = CGRect(x: UIScreen.main.bounds.width / 2.1, y: 20, width: 20, height: 20)
 }
