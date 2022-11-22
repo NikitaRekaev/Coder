@@ -2,6 +2,15 @@ import UIKit
 
 final class SpinnerView: UIView {
     
+    // MARK: - Constants
+
+    private enum Constants {
+        
+        static let lineWidth: CGFloat = 2
+        static let duration: Double = 5
+        static let countAnimate: Int = 36
+    }
+    
     // MARK: - Lifecycle
     
     override var layer: CAShapeLayer {
@@ -115,13 +124,4 @@ private extension SpinnerView {
         animation.repeatCount = Float.infinity
         layer.add(animation, forKey: animation.keyPath)
     }
-}
-
-// MARK: - Constants
-
-private enum Constants {
-    
-    static let lineWidth: CGFloat = 2
-    static let duration: Double = 5
-    static let countAnimate: Int = 36
 }

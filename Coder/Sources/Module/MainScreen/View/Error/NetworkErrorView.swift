@@ -2,6 +2,16 @@ import UIKit
 
 final class NetworkErrorView: BaseView {
     
+    // MARK: - Constants
+
+    private enum Constants {
+        
+        static let textFont = R.Fonts.interMedium(with: 13)
+        static let frameX: CGFloat = 24
+        static let width: CGFloat = 327
+        static let height: CGFloat = 50
+    }
+    
     // MARK: - Views
     
     private let messageErrorLabel = NetworkErrorView.makeMessageErrorLabel()
@@ -35,14 +45,4 @@ private extension NetworkErrorView {
         
         return label
     }
-}
-
-// MARK: - Constants
-
-private enum Constants {
-    
-    static let textFont = R.Fonts.interMedium(with: 13)
-    static let frameX: CGFloat = 24
-    static let width: CGFloat = 327
-    static let height: CGFloat = 50
 }

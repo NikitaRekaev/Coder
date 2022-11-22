@@ -2,6 +2,41 @@ import UIKit
 
 final class SearchBar: UISearchBar {
     
+    // MARK: - Constants
+
+    private enum Constants {
+        
+        static let cornerRadius: CGFloat = 16
+        static let adjustingTextOffset: UIOffset = .init(horizontal: 10, vertical: .zero)
+        static let adjustingRightIconOffset: UIOffset = .init(horizontal: -10, vertical: .zero)
+        static let leftView = UIImageView(image: R.Images.SearchBar.leftImageNormal)
+        
+        enum TextFild {
+            static let font = R.Fonts.interRegular(with: 15)
+            static let key = "searchField"
+            static let color = R.Colors.SearchBar.secondary
+        }
+        
+        enum CancelButton {
+            static let key = "cancelButtonText"
+            static let attributes: [NSAttributedString.Key: Any] = [
+                .font: R.Fonts.interSemiBold(with: 15),
+                .foregroundColor: R.Colors.violet
+            ]
+        }
+        
+        enum Placeholder {
+            static let attributes: [NSAttributedString.Key: Any] = [
+                .font: R.Fonts.interMedium(with: 15),
+                .foregroundColor: R.Colors.SearchBar.placeholder
+            ]
+            static let attributedString: NSAttributedString = .init(
+                string: R.Strings.SearchBar.placeholder.localizedString,
+                attributes: attributes
+            )
+        }
+    }
+    
     // MARK: - Initialization
     
     convenience init() {
@@ -50,41 +85,6 @@ private extension SearchBar {
         
         let textFieldInsideSearchBar = value(forKey: Constants.TextFild.key) as? UITextField
         textFieldInsideSearchBar?.backgroundColor = Constants.TextFild.color
-    }
-}
-
-// MARK: - Constants
-
-private enum Constants {
-    
-    static let cornerRadius: CGFloat = 16
-    static let adjustingTextOffset: UIOffset = .init(horizontal: 10, vertical: .zero)
-    static let adjustingRightIconOffset: UIOffset = .init(horizontal: -10, vertical: .zero)
-    static let leftView = UIImageView(image: R.Images.SearchBar.leftImageNormal)
-    
-    enum TextFild {
-        static let font = R.Fonts.interRegular(with: 15)
-        static let key = "searchField"
-        static let color = R.Colors.SearchBar.secondary
-    }
-    
-    enum CancelButton {
-        static let key = "cancelButtonText"
-        static let attributes: [NSAttributedString.Key: Any] = [
-            .font: R.Fonts.interSemiBold(with: 15),
-            .foregroundColor: R.Colors.violet
-        ]
-    }
-    
-    enum Placeholder {
-        static let attributes: [NSAttributedString.Key: Any] = [
-            .font: R.Fonts.interMedium(with: 15),
-            .foregroundColor: R.Colors.SearchBar.placeholder
-        ]
-        static let attributedString: NSAttributedString = .init(
-            string: R.Strings.SearchBar.placeholder.localizedString,
-            attributes: attributes
-        )
     }
 }
 

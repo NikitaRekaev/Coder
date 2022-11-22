@@ -2,6 +2,15 @@ import Foundation
 
 struct MainModel {
     
+    // MARK: - Constants
+
+    private enum Constants {
+        
+        static let year = 365
+        static let week = 7
+        static let moreWeek = 8
+    }
+    
     // MARK: - Properties
     
     var searchText = ""
@@ -119,13 +128,4 @@ extension MainModel {
             return dayDifference1 < dayDifference2
         }
     }
-}
-
-// MARK: - Constants
-
-private enum Constants {
-    
-    static let year = 365
-    static let week = 7
-    static let moreWeek = 8
 }

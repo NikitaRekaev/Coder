@@ -2,6 +2,24 @@ import UIKit
 
 final class HeaderSectionView: BaseView {
     
+    // MARK: - Constants
+
+    private enum Constants {
+        
+        enum Label {
+            static let text = "\(Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! + 1)"
+            static let font = R.Fonts.interMedium(with: 15)
+            static let centerY: CGFloat = -15
+        }
+        
+        enum Line {
+            static let leading: CGFloat = 24
+            static let trailing: CGFloat = -24
+            static let height: CGFloat = 1
+            static let width: CGFloat = 72
+        }
+    }
+    
     // MARK: - Views
     
     private let backgroundView = UIView()
@@ -53,23 +71,5 @@ private extension HeaderSectionView {
         let line = UIView()
         line.backgroundColor = R.Colors.separator
         return line
-    }
-}
-
-// MARK: - Constants
-
-private enum Constants {
-    
-    enum Label {
-        static let text = "\(Calendar(identifier: .gregorian).dateComponents([.year], from: Date()).year! + 1)"
-        static let font = R.Fonts.interMedium(with: 15)
-        static let centerY: CGFloat = -15
-    }
-    
-    enum Line {
-        static let leading: CGFloat = 24
-        static let trailing: CGFloat = -24
-        static let height: CGFloat = 1
-        static let width: CGFloat = 72
     }
 }

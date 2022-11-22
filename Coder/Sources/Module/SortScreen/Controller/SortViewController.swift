@@ -8,6 +8,13 @@ protocol SortDelegate: AnyObject {
 
 final class SortViewController: BottomSheetController<SortView> {
     
+    // MARK: - Constants
+
+    private enum Constants {
+        
+        static let buttomSheetCornerRadius: CGFloat = 8
+    }
+    
     // MARK: - Delegate Properties
     
     weak var delegate: SortDelegate?
@@ -54,11 +61,4 @@ private extension SortViewController {
         delegate?.sort(model: sender.model)
         dismiss(animated: true)
     }
-}
-
-// MARK: - Constants
-
-private enum Constants {
-    
-    static let buttomSheetCornerRadius: CGFloat = 8
 }

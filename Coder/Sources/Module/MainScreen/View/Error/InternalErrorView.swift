@@ -2,6 +2,30 @@ import UIKit
 
 final class InternalErrorView: BaseView {
     
+    // MARK: - Constants
+
+    private enum Constants {
+        
+        enum Image {
+            static let centerYAnchor: CGFloat = -50
+        }
+        
+        enum Title {
+            static let font = R.Fonts.interSemiBold(with: 17)
+            static let top: CGFloat = 8
+        }
+        
+        enum SubTitle {
+            static let font = R.Fonts.interRegular(with: 16)
+            static let top: CGFloat = 12
+        }
+        
+        enum Button {
+            static let font = R.Fonts.interSemiBold(with: 17)
+            static let top: CGFloat = 12
+        }
+    }
+    
     // MARK: - Views
     
     let tryAgainButton = InternalErrorView.makeTryAgainButton()
@@ -80,29 +104,5 @@ private extension InternalErrorView {
                                 for: .normal)
         
         return tryAgainButton
-    }
-}
-
-// MARK: - Constants
-
-private enum Constants {
-    
-    enum Image {
-        static let centerYAnchor: CGFloat = -50
-    }
-    
-    enum Title {
-        static let font = R.Fonts.interSemiBold(with: 17)
-        static let top: CGFloat = 8
-    }
-    
-    enum SubTitle {
-        static let font = R.Fonts.interRegular(with: 16)
-        static let top: CGFloat = 12
-    }
-    
-    enum Button {
-        static let font = R.Fonts.interSemiBold(with: 17)
-        static let top: CGFloat = 12
     }
 }
