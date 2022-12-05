@@ -5,12 +5,8 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Inter-Medium.ttf</string>
-		<string>Inter-Light.ttf</string>
-		<string>Inter-Thin.ttf</string>
 		<string>Inter-Bold.ttf</string>
 		<string>Inter-Regular.ttf</string>
-		<string>Inter-ExtraBold.ttf</string>
-		<string>Inter-Black.ttf</string>
 		<string>Inter-SemiBold.ttf</string>
 	</array>
 </dict>
